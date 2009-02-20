@@ -27,11 +27,13 @@ reuse_block(blk, 'Reset', 'built-in/inport', 'Position', [65    25   95    40], 
 reuse_block(blk, 'Count_Odd', 'built-in/inport', 'Position', [75    60   105    75], 'Port', '1');
 reuse_block(blk, 'Count_Even', 'built-in/inport', 'Position', [75+even_x_offset    60   105+even_x_offset    75], 'Port', '2');
 
-reuse_block(blk, 'Counter_Odd', 'xbsIndex_r3/Counter', 'n_bits',num2str(log2(numcomputers)), 'rst', 'On', 'en', 'On', 'Position', [125    47   170    73]);
+reuse_block(blk, 'Counter_Odd', 'xbsIndex_r3/Counter', 'n_bits',num2str(log2(numcomputers)), 'arith_type', 'Unsigned', ...
+    'cnt_type', 'Free Running', 'rst', 'On', 'en', 'On', 'Position', [125    47   170    73]);
 reuse_block(blk, 'IPMux_Odd', 'xbsIndex_r3/Mux','inputs', num2str(numcomputers), 'Position', [260    40   280   40+50*numcomputers]);
 reuse_block(blk, 'PortMux_Odd', 'xbsIndex_r3/Mux','inputs', num2str(numcomputers), 'Position', [260    40+60*numcomputers   280   40+110*numcomputers]);
 
-reuse_block(blk, 'Counter_Even', 'xbsIndex_r3/Counter', 'n_bits',num2str(log2(numcomputers)), 'rst', 'On', 'en', 'On', 'Position', [125+even_x_offset    47   170+even_x_offset    73]);
+reuse_block(blk, 'Counter_Even', 'xbsIndex_r3/Counter', 'n_bits',num2str(log2(numcomputers)), 'arith_type', 'Unsigned', ...
+    'cnt_type', 'Free Running', 'rst', 'On', 'en', 'On', 'Position', [125+even_x_offset    47   170+even_x_offset    73]);
 reuse_block(blk, 'IPMux_Even', 'xbsIndex_r3/Mux','inputs', num2str(numcomputers), 'Position', [260+even_x_offset    40   280+even_x_offset   40+50*numcomputers]);
 reuse_block(blk, 'PortMux_Even', 'xbsIndex_r3/Mux','inputs', num2str(numcomputers), 'Position', [260+even_x_offset    40+60*numcomputers   280+even_x_offset   40+110*numcomputers]);
 

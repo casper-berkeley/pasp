@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.26"
+    ComputedModelVersion    "1.35"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -54,8 +54,8 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "tfiliba"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Feb 19 16:34:02 2009"
-  ModelVersionFormat	  "1.%<AutoIncrement:26>"
+  LastModifiedDate	  "Thu Feb 19 17:13:55 2009"
+  ModelVersionFormat	  "1.%<AutoIncrement:35>"
   ConfigurationManager	  "None"
   LinearizationMsg	  "none"
   Profile		  off
@@ -524,9 +524,6 @@ Model {
       InitialOutput	      "[]"
     }
     Block {
-      BlockType		      Reference
-    }
-    Block {
       BlockType		      RelationalOperator
       Operator		      ">="
       InputSameDT	      on
@@ -613,7 +610,7 @@ Model {
     PaperPositionMode	    "auto"
     PaperType		    "usletter"
     PaperUnits		    "inches"
-    ZoomFactor		    "54"
+    ZoomFactor		    "83"
     ReportName		    "simulink-default.rpt"
     Block {
       BlockType		      Reference
@@ -985,7 +982,7 @@ Model {
       Name		      "dist_gbe"
       Ports		      [3, 2]
       Position		      [2025, 968, 2135, 1072]
-      AttributesFormatString  "IPs=8"
+      AttributesFormatString  "IPs=16"
       UserDataPersistent      on
       UserData		      "DataTag1"
       TreatAsAtomicUnit	      off
@@ -1011,7 +1008,7 @@ Model {
       MaskIconOpaque	      on
       MaskIconRotate	      "none"
       MaskIconUnits	      "autoscale"
-      MaskValueString	      "8|16|64"
+      MaskValueString	      "16|16|64"
       MaskTabNameString	      ",,"
       System {
 	Name			"dist_gbe"
@@ -1024,7 +1021,7 @@ Model {
 	PaperPositionMode	"auto"
 	PaperType		"usletter"
 	PaperUnits		"inches"
-	ZoomFactor		"80"
+	ZoomFactor		"100"
 	Block {
 	  BlockType		  Inport
 	  Name			  "sync"
@@ -1124,6 +1121,29 @@ Model {
 	  Name			  "Gateway Out1"
 	  Ports			  [1, 1]
 	  Position		  [340, 1179, 395, 1201]
+	  ShowName		  off
+	  SourceBlock		  "xbsIndex_r3/Gateway Out"
+	  SourceType		  "Xilinx Gateway Out"
+	  output_type		  "Double"
+	  nbits			  "8"
+	  bin_pt		  "6"
+	  arith_type		  "Boolean"
+	  quantization		  "Truncate"
+	  overflow		  "Wrap"
+	  hdl_port		  on
+	  timing_constraint	  "None"
+	  locs_specified	  off
+	  LOCs			  "{}"
+	  needs_fixed_name	  off
+	  show_param		  off
+	  xl_area		  "[0, 0, 0, 0, 0, 0, 0]"
+	  xl_use_area		  off
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Gateway Out10"
+	  Ports			  [1, 1]
+	  Position		  [2000, 964, 2055, 986]
 	  ShowName		  off
 	  SourceBlock		  "xbsIndex_r3/Gateway Out"
 	  SourceType		  "Xilinx Gateway Out"
@@ -1304,7 +1324,7 @@ Model {
 	  BlockType		  Reference
 	  Name			  "Gateway Out5"
 	  Ports			  [1, 1]
-	  Position		  [2000, 944, 2055, 966]
+	  Position		  [2000, 934, 2055, 956]
 	  ShowName		  off
 	  SourceBlock		  "xbsIndex_r3/Gateway Out"
 	  SourceType		  "Xilinx Gateway Out"
@@ -1350,7 +1370,7 @@ Model {
 	  BlockType		  Reference
 	  Name			  "Gateway Out7"
 	  Ports			  [1, 1]
-	  Position		  [2000, 864, 2055, 886]
+	  Position		  [2000, 874, 2055, 896]
 	  ShowName		  off
 	  SourceBlock		  "xbsIndex_r3/Gateway Out"
 	  SourceType		  "Xilinx Gateway Out"
@@ -1503,9 +1523,9 @@ Model {
 	  Ports			  [4]
 	  Position		  [2155, 30, 2225, 150]
 	  Location		  [5, 49, 1437, 865]
-	  Open			  off
+	  Open			  on
 	  NumInputPorts		  "4"
-	  ZoomMode		  "yonly"
+	  ZoomMode		  "xonly"
 	  List {
 	    ListType		    AxesTitles
 	    axes1		    "%<SignalLabel>"
@@ -1515,7 +1535,30 @@ Model {
 	  }
 	  TimeRange		  "10000"
 	  YMin			  "0~0~0~0"
-	  YMax			  "1~1~275~2e+019"
+	  YMax			  "1~1~10000~6.5e+010"
+	  DataFormat		  "StructureWithTime"
+	  LimitDataPoints	  off
+	}
+	Block {
+	  BlockType		  Scope
+	  Name			  "Scope2"
+	  Ports			  [4]
+	  Position		  [2090, 870, 2160, 990]
+	  Location		  [5, 49, 1437, 865]
+	  Open			  on
+	  NumInputPorts		  "4"
+	  ZoomMode		  "xonly"
+	  List {
+	    ListType		    AxesTitles
+	    axes1		    "%<SignalLabel>"
+	    axes2		    "%<SignalLabel>"
+	    axes3		    "%<SignalLabel>"
+	    axes4		    "%<SignalLabel>"
+	  }
+	  TimeRange		  "10000"
+	  YMin			  "0~0~0~0"
+	  YMax			  "1~1~10000~6.5e+010"
+	  SaveName		  "ScopeData2"
 	  DataFormat		  "StructureWithTime"
 	  LimitDataPoints	  off
 	}
@@ -1524,7 +1567,7 @@ Model {
 	  Name			  "Scope3"
 	  Ports			  [4]
 	  Position		  [435, 1089, 495, 1251]
-	  Location		  [6, 49, 1436, 863]
+	  Location		  [5, 49, 1435, 863]
 	  Open			  off
 	  NumInputPorts		  "4"
 	  ZoomMode		  "xonly"
@@ -1564,28 +1607,6 @@ Model {
 	  LimitDataPoints	  off
 	}
 	Block {
-	  BlockType		  Scope
-	  Name			  "Scope8"
-	  Ports			  [3]
-	  Position		  [2090, 856, 2155, 974]
-	  Location		  [5, 49, 1445, 873]
-	  Open			  off
-	  NumInputPorts		  "3"
-	  ZoomMode		  "xonly"
-	  List {
-	    ListType		    AxesTitles
-	    axes1		    "%<SignalLabel>"
-	    axes2		    "%<SignalLabel>"
-	    axes3		    "%<SignalLabel>"
-	  }
-	  TimeRange		  "6000            "
-	  YMin			  "0~0~0"
-	  YMax			  "1~1~5250"
-	  SaveName		  "ScopeData2"
-	  DataFormat		  "StructureWithTime"
-	  LimitDataPoints	  off
-	}
-	Block {
 	  BlockType		  Reference
 	  Name			  "Slice"
 	  Ports			  [1, 1]
@@ -1593,7 +1614,7 @@ Model {
 	  SourceBlock		  "xbsIndex_r3/Slice"
 	  SourceType		  "Xilinx Slice Block"
 	  mode			  "Lower Bit Location + Width"
-	  nbits			  "16"
+	  nbits			  "4"
 	  bit1			  "0"
 	  base1			  "MSB of Input"
 	  bit0			  "0"
@@ -1626,11 +1647,11 @@ Model {
 	  BlockType		  Reference
 	  Name			  "Slice2"
 	  Ports			  [1, 1]
-	  Position		  [1880, 941, 1925, 969]
+	  Position		  [1880, 931, 1925, 959]
 	  SourceBlock		  "xbsIndex_r3/Slice"
 	  SourceType		  "Xilinx Slice Block"
-	  mode			  "Upper Bit Location + Width"
-	  nbits			  "8"
+	  mode			  "Lower Bit Location + Width"
+	  nbits			  "4"
 	  bit1			  "0"
 	  base1			  "MSB of Input"
 	  bit0			  "0"
@@ -2101,7 +2122,7 @@ Model {
 	  Name			  "ip_ctr"
 	  Ports			  [3, 4]
 	  Position		  [1480, 956, 1575, 1059]
-	  AttributesFormatString  "IPs=8"
+	  AttributesFormatString  "IPs=16"
 	  UserDataPersistent	  on
 	  UserData		  "DataTag2"
 	  TreatAsAtomicUnit	  off
@@ -2121,10 +2142,10 @@ Model {
 	  MaskIconOpaque	  on
 	  MaskIconRotate	  "none"
 	  MaskIconUnits		  "autoscale"
-	  MaskValueString	  "8"
+	  MaskValueString	  "16"
 	  System {
 	    Name		    "ip_ctr"
-	    Location		    [2, 74, 1430, 854]
+	    Location		    [2, 74, 1414, 854]
 	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
@@ -2165,10 +2186,10 @@ Model {
 	      Position		      [625, 49, 670, 76]
 	      SourceBlock	      "xbsIndex_r3/Counter"
 	      SourceType	      "Xilinx Counter Block"
-	      cnt_type		      "Count Limited"
-	      n_bits		      "2"
+	      cnt_type		      "Free Running"
+	      n_bits		      "3"
 	      bin_pt		      "0"
-	      arith_type	      "Signed  (2's comp)"
+	      arith_type	      "Unsigned"
 	      start_count	      "0"
 	      cnt_to		      "Inf"
 	      cnt_by_val	      "1"
@@ -2192,10 +2213,10 @@ Model {
 	      Position		      [125, 49, 170, 76]
 	      SourceBlock	      "xbsIndex_r3/Counter"
 	      SourceType	      "Xilinx Counter Block"
-	      cnt_type		      "Count Limited"
-	      n_bits		      "2"
+	      cnt_type		      "Free Running"
+	      n_bits		      "3"
 	      bin_pt		      "0"
-	      arith_type	      "Signed  (2's comp)"
+	      arith_type	      "Unsigned"
 	      start_count	      "0"
 	      cnt_to		      "Inf"
 	      cnt_by_val	      "1"
@@ -2215,11 +2236,11 @@ Model {
 	    Block {
 	      BlockType		      Reference
 	      Name		      "IPMux_Even"
-	      Ports		      [5, 1]
-	      Position		      [760, 40, 780, 240]
+	      Ports		      [9, 1]
+	      Position		      [760, 40, 780, 440]
 	      SourceBlock	      "xbsIndex_r3/Mux"
 	      SourceType	      "Xilinx Multiplexer Block"
-	      inputs		      "4"
+	      inputs		      "8"
 	      precision		      "Full"
 	      arith_type	      "Signed  (2's comp)"
 	      n_bits		      "8"
@@ -2241,11 +2262,11 @@ Model {
 	    Block {
 	      BlockType		      Reference
 	      Name		      "IPMux_Odd"
-	      Ports		      [5, 1]
-	      Position		      [260, 40, 280, 240]
+	      Ports		      [9, 1]
+	      Position		      [260, 40, 280, 440]
 	      SourceBlock	      "xbsIndex_r3/Mux"
 	      SourceType	      "Xilinx Multiplexer Block"
-	      inputs		      "4"
+	      inputs		      "8"
 	      precision		      "Full"
 	      arith_type	      "Signed  (2's comp)"
 	      n_bits		      "8"
@@ -2269,6 +2290,48 @@ Model {
 	      Name		      "IP_Constant1"
 	      Position		      [25, 90, 55, 120]
 	      Value		      "4001"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "IP_Constant10"
+	      Position		      [525, 270, 555, 300]
+	      Value		      "4010"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "IP_Constant11"
+	      Position		      [25, 315, 55, 345]
+	      Value		      "4011"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "IP_Constant12"
+	      Position		      [525, 315, 555, 345]
+	      Value		      "4012"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "IP_Constant13"
+	      Position		      [25, 360, 55, 390]
+	      Value		      "4013"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "IP_Constant14"
+	      Position		      [525, 360, 555, 390]
+	      Value		      "4014"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "IP_Constant15"
+	      Position		      [25, 405, 55, 435]
+	      Value		      "4015"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "IP_Constant16"
+	      Position		      [525, 405, 555, 435]
+	      Value		      "4016"
 	    }
 	    Block {
 	      BlockType		      Constant
@@ -2313,13 +2376,19 @@ Model {
 	      Value		      "4008"
 	    }
 	    Block {
+	      BlockType		      Constant
+	      Name		      "IP_Constant9"
+	      Position		      [25, 270, 55, 300]
+	      Value		      "4009"
+	    }
+	    Block {
 	      BlockType		      Reference
 	      Name		      "PortMux_Even"
-	      Ports		      [5, 1]
-	      Position		      [760, 280, 780, 480]
+	      Ports		      [9, 1]
+	      Position		      [760, 520, 780, 920]
 	      SourceBlock	      "xbsIndex_r3/Mux"
 	      SourceType	      "Xilinx Multiplexer Block"
-	      inputs		      "4"
+	      inputs		      "8"
 	      precision		      "Full"
 	      arith_type	      "Signed  (2's comp)"
 	      n_bits		      "8"
@@ -2341,11 +2410,11 @@ Model {
 	    Block {
 	      BlockType		      Reference
 	      Name		      "PortMux_Odd"
-	      Ports		      [5, 1]
-	      Position		      [260, 280, 280, 480]
+	      Ports		      [9, 1]
+	      Position		      [260, 520, 280, 920]
 	      SourceBlock	      "xbsIndex_r3/Mux"
 	      SourceType	      "Xilinx Multiplexer Block"
-	      inputs		      "4"
+	      inputs		      "8"
 	      precision		      "Full"
 	      arith_type	      "Signed  (2's comp)"
 	      n_bits		      "8"
@@ -2367,49 +2436,97 @@ Model {
 	    Block {
 	      BlockType		      Constant
 	      Name		      "Port_Constant1"
-	      Position		      [25, 330, 55, 360]
+	      Position		      [25, 570, 55, 600]
+	      Value		      "4000"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Port_Constant10"
+	      Position		      [525, 750, 555, 780]
+	      Value		      "4000"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Port_Constant11"
+	      Position		      [25, 795, 55, 825]
+	      Value		      "4000"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Port_Constant12"
+	      Position		      [525, 795, 555, 825]
+	      Value		      "4000"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Port_Constant13"
+	      Position		      [25, 840, 55, 870]
+	      Value		      "4000"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Port_Constant14"
+	      Position		      [525, 840, 555, 870]
+	      Value		      "4000"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Port_Constant15"
+	      Position		      [25, 885, 55, 915]
+	      Value		      "4000"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Port_Constant16"
+	      Position		      [525, 885, 555, 915]
 	      Value		      "4000"
 	    }
 	    Block {
 	      BlockType		      Constant
 	      Name		      "Port_Constant2"
-	      Position		      [525, 330, 555, 360]
+	      Position		      [525, 570, 555, 600]
 	      Value		      "4000"
 	    }
 	    Block {
 	      BlockType		      Constant
 	      Name		      "Port_Constant3"
-	      Position		      [25, 375, 55, 405]
+	      Position		      [25, 615, 55, 645]
 	      Value		      "4000"
 	    }
 	    Block {
 	      BlockType		      Constant
 	      Name		      "Port_Constant4"
-	      Position		      [525, 375, 555, 405]
+	      Position		      [525, 615, 555, 645]
 	      Value		      "4000"
 	    }
 	    Block {
 	      BlockType		      Constant
 	      Name		      "Port_Constant5"
-	      Position		      [25, 420, 55, 450]
+	      Position		      [25, 660, 55, 690]
 	      Value		      "4000"
 	    }
 	    Block {
 	      BlockType		      Constant
 	      Name		      "Port_Constant6"
-	      Position		      [525, 420, 555, 450]
+	      Position		      [525, 660, 555, 690]
 	      Value		      "4000"
 	    }
 	    Block {
 	      BlockType		      Constant
 	      Name		      "Port_Constant7"
-	      Position		      [25, 465, 55, 495]
+	      Position		      [25, 705, 55, 735]
 	      Value		      "4000"
 	    }
 	    Block {
 	      BlockType		      Constant
 	      Name		      "Port_Constant8"
-	      Position		      [525, 465, 555, 495]
+	      Position		      [525, 705, 555, 735]
+	      Value		      "4000"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Port_Constant9"
+	      Position		      [25, 750, 55, 780]
 	      Value		      "4000"
 	    }
 	    Block {
@@ -2429,6 +2546,132 @@ Model {
 	      sample_period	      "1"
 	      gw_name		      "counter_16ip_16ch_dist_gbe_ip_ctr_reg_i"
 "p1_user_data_out"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "reg_ip10"
+	      Tag		      "xps:sw_reg"
+	      Ports		      [1, 1]
+	      Position		      [585, 270, 685, 300]
+	      BackgroundColor	      "[1.000000, 1.000000, 0.000000]"
+	      SourceBlock	      "xps_library/software register"
+	      SourceType	      ""
+	      ShowPortLabels	      on
+	      io_dir		      "From Processor"
+	      arith_type	      "Unsigned"
+	      bitwidth		      "32"
+	      bin_pt		      "0"
+	      sample_period	      "1"
+	      gw_name		      "counter_16ip_16ch_dist_gbe_ip_ctr_reg_i"
+"p10_user_data_out"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "reg_ip11"
+	      Tag		      "xps:sw_reg"
+	      Ports		      [1, 1]
+	      Position		      [85, 315, 185, 345]
+	      BackgroundColor	      "[1.000000, 1.000000, 0.000000]"
+	      SourceBlock	      "xps_library/software register"
+	      SourceType	      ""
+	      ShowPortLabels	      on
+	      io_dir		      "From Processor"
+	      arith_type	      "Unsigned"
+	      bitwidth		      "32"
+	      bin_pt		      "0"
+	      sample_period	      "1"
+	      gw_name		      "counter_16ip_16ch_dist_gbe_ip_ctr_reg_i"
+"p11_user_data_out"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "reg_ip12"
+	      Tag		      "xps:sw_reg"
+	      Ports		      [1, 1]
+	      Position		      [585, 315, 685, 345]
+	      BackgroundColor	      "[1.000000, 1.000000, 0.000000]"
+	      SourceBlock	      "xps_library/software register"
+	      SourceType	      ""
+	      ShowPortLabels	      on
+	      io_dir		      "From Processor"
+	      arith_type	      "Unsigned"
+	      bitwidth		      "32"
+	      bin_pt		      "0"
+	      sample_period	      "1"
+	      gw_name		      "counter_16ip_16ch_dist_gbe_ip_ctr_reg_i"
+"p12_user_data_out"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "reg_ip13"
+	      Tag		      "xps:sw_reg"
+	      Ports		      [1, 1]
+	      Position		      [85, 360, 185, 390]
+	      BackgroundColor	      "[1.000000, 1.000000, 0.000000]"
+	      SourceBlock	      "xps_library/software register"
+	      SourceType	      ""
+	      ShowPortLabels	      on
+	      io_dir		      "From Processor"
+	      arith_type	      "Unsigned"
+	      bitwidth		      "32"
+	      bin_pt		      "0"
+	      sample_period	      "1"
+	      gw_name		      "counter_16ip_16ch_dist_gbe_ip_ctr_reg_i"
+"p13_user_data_out"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "reg_ip14"
+	      Tag		      "xps:sw_reg"
+	      Ports		      [1, 1]
+	      Position		      [585, 360, 685, 390]
+	      BackgroundColor	      "[1.000000, 1.000000, 0.000000]"
+	      SourceBlock	      "xps_library/software register"
+	      SourceType	      ""
+	      ShowPortLabels	      on
+	      io_dir		      "From Processor"
+	      arith_type	      "Unsigned"
+	      bitwidth		      "32"
+	      bin_pt		      "0"
+	      sample_period	      "1"
+	      gw_name		      "counter_16ip_16ch_dist_gbe_ip_ctr_reg_i"
+"p14_user_data_out"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "reg_ip15"
+	      Tag		      "xps:sw_reg"
+	      Ports		      [1, 1]
+	      Position		      [85, 405, 185, 435]
+	      BackgroundColor	      "[1.000000, 1.000000, 0.000000]"
+	      SourceBlock	      "xps_library/software register"
+	      SourceType	      ""
+	      ShowPortLabels	      on
+	      io_dir		      "From Processor"
+	      arith_type	      "Unsigned"
+	      bitwidth		      "32"
+	      bin_pt		      "0"
+	      sample_period	      "1"
+	      gw_name		      "counter_16ip_16ch_dist_gbe_ip_ctr_reg_i"
+"p15_user_data_out"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "reg_ip16"
+	      Tag		      "xps:sw_reg"
+	      Ports		      [1, 1]
+	      Position		      [585, 405, 685, 435]
+	      BackgroundColor	      "[1.000000, 1.000000, 0.000000]"
+	      SourceBlock	      "xps_library/software register"
+	      SourceType	      ""
+	      ShowPortLabels	      on
+	      io_dir		      "From Processor"
+	      arith_type	      "Unsigned"
+	      bitwidth		      "32"
+	      bin_pt		      "0"
+	      sample_period	      "1"
+	      gw_name		      "counter_16ip_16ch_dist_gbe_ip_ctr_reg_i"
+"p16_user_data_out"
 	    }
 	    Block {
 	      BlockType		      Reference
@@ -2558,10 +2801,28 @@ Model {
 	    }
 	    Block {
 	      BlockType		      Reference
+	      Name		      "reg_ip9"
+	      Tag		      "xps:sw_reg"
+	      Ports		      [1, 1]
+	      Position		      [85, 270, 185, 300]
+	      BackgroundColor	      "[1.000000, 1.000000, 0.000000]"
+	      SourceBlock	      "xps_library/software register"
+	      SourceType	      ""
+	      ShowPortLabels	      on
+	      io_dir		      "From Processor"
+	      arith_type	      "Unsigned"
+	      bitwidth		      "32"
+	      bin_pt		      "0"
+	      sample_period	      "1"
+	      gw_name		      "counter_16ip_16ch_dist_gbe_ip_ctr_reg_i"
+"p9_user_data_out"
+	    }
+	    Block {
+	      BlockType		      Reference
 	      Name		      "reg_port1"
 	      Tag		      "xps:sw_reg"
 	      Ports		      [1, 1]
-	      Position		      [85, 330, 185, 360]
+	      Position		      [85, 570, 185, 600]
 	      BackgroundColor	      "[1.000000, 1.000000, 0.000000]"
 	      SourceBlock	      "xps_library/software register"
 	      SourceType	      ""
@@ -2576,10 +2837,136 @@ Model {
 	    }
 	    Block {
 	      BlockType		      Reference
+	      Name		      "reg_port10"
+	      Tag		      "xps:sw_reg"
+	      Ports		      [1, 1]
+	      Position		      [585, 750, 685, 780]
+	      BackgroundColor	      "[1.000000, 1.000000, 0.000000]"
+	      SourceBlock	      "xps_library/software register"
+	      SourceType	      ""
+	      ShowPortLabels	      on
+	      io_dir		      "From Processor"
+	      arith_type	      "Unsigned"
+	      bitwidth		      "32"
+	      bin_pt		      "0"
+	      sample_period	      "1"
+	      gw_name		      "counter_16ip_16ch_dist_gbe_ip_ctr_reg_p"
+"ort10_user_data_out"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "reg_port11"
+	      Tag		      "xps:sw_reg"
+	      Ports		      [1, 1]
+	      Position		      [85, 795, 185, 825]
+	      BackgroundColor	      "[1.000000, 1.000000, 0.000000]"
+	      SourceBlock	      "xps_library/software register"
+	      SourceType	      ""
+	      ShowPortLabels	      on
+	      io_dir		      "From Processor"
+	      arith_type	      "Unsigned"
+	      bitwidth		      "32"
+	      bin_pt		      "0"
+	      sample_period	      "1"
+	      gw_name		      "counter_16ip_16ch_dist_gbe_ip_ctr_reg_p"
+"ort11_user_data_out"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "reg_port12"
+	      Tag		      "xps:sw_reg"
+	      Ports		      [1, 1]
+	      Position		      [585, 795, 685, 825]
+	      BackgroundColor	      "[1.000000, 1.000000, 0.000000]"
+	      SourceBlock	      "xps_library/software register"
+	      SourceType	      ""
+	      ShowPortLabels	      on
+	      io_dir		      "From Processor"
+	      arith_type	      "Unsigned"
+	      bitwidth		      "32"
+	      bin_pt		      "0"
+	      sample_period	      "1"
+	      gw_name		      "counter_16ip_16ch_dist_gbe_ip_ctr_reg_p"
+"ort12_user_data_out"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "reg_port13"
+	      Tag		      "xps:sw_reg"
+	      Ports		      [1, 1]
+	      Position		      [85, 840, 185, 870]
+	      BackgroundColor	      "[1.000000, 1.000000, 0.000000]"
+	      SourceBlock	      "xps_library/software register"
+	      SourceType	      ""
+	      ShowPortLabels	      on
+	      io_dir		      "From Processor"
+	      arith_type	      "Unsigned"
+	      bitwidth		      "32"
+	      bin_pt		      "0"
+	      sample_period	      "1"
+	      gw_name		      "counter_16ip_16ch_dist_gbe_ip_ctr_reg_p"
+"ort13_user_data_out"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "reg_port14"
+	      Tag		      "xps:sw_reg"
+	      Ports		      [1, 1]
+	      Position		      [585, 840, 685, 870]
+	      BackgroundColor	      "[1.000000, 1.000000, 0.000000]"
+	      SourceBlock	      "xps_library/software register"
+	      SourceType	      ""
+	      ShowPortLabels	      on
+	      io_dir		      "From Processor"
+	      arith_type	      "Unsigned"
+	      bitwidth		      "32"
+	      bin_pt		      "0"
+	      sample_period	      "1"
+	      gw_name		      "counter_16ip_16ch_dist_gbe_ip_ctr_reg_p"
+"ort14_user_data_out"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "reg_port15"
+	      Tag		      "xps:sw_reg"
+	      Ports		      [1, 1]
+	      Position		      [85, 885, 185, 915]
+	      BackgroundColor	      "[1.000000, 1.000000, 0.000000]"
+	      SourceBlock	      "xps_library/software register"
+	      SourceType	      ""
+	      ShowPortLabels	      on
+	      io_dir		      "From Processor"
+	      arith_type	      "Unsigned"
+	      bitwidth		      "32"
+	      bin_pt		      "0"
+	      sample_period	      "1"
+	      gw_name		      "counter_16ip_16ch_dist_gbe_ip_ctr_reg_p"
+"ort15_user_data_out"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "reg_port16"
+	      Tag		      "xps:sw_reg"
+	      Ports		      [1, 1]
+	      Position		      [585, 885, 685, 915]
+	      BackgroundColor	      "[1.000000, 1.000000, 0.000000]"
+	      SourceBlock	      "xps_library/software register"
+	      SourceType	      ""
+	      ShowPortLabels	      on
+	      io_dir		      "From Processor"
+	      arith_type	      "Unsigned"
+	      bitwidth		      "32"
+	      bin_pt		      "0"
+	      sample_period	      "1"
+	      gw_name		      "counter_16ip_16ch_dist_gbe_ip_ctr_reg_p"
+"ort16_user_data_out"
+	    }
+	    Block {
+	      BlockType		      Reference
 	      Name		      "reg_port2"
 	      Tag		      "xps:sw_reg"
 	      Ports		      [1, 1]
-	      Position		      [585, 330, 685, 360]
+	      Position		      [585, 570, 685, 600]
 	      BackgroundColor	      "[1.000000, 1.000000, 0.000000]"
 	      SourceBlock	      "xps_library/software register"
 	      SourceType	      ""
@@ -2597,7 +2984,7 @@ Model {
 	      Name		      "reg_port3"
 	      Tag		      "xps:sw_reg"
 	      Ports		      [1, 1]
-	      Position		      [85, 375, 185, 405]
+	      Position		      [85, 615, 185, 645]
 	      BackgroundColor	      "[1.000000, 1.000000, 0.000000]"
 	      SourceBlock	      "xps_library/software register"
 	      SourceType	      ""
@@ -2615,7 +3002,7 @@ Model {
 	      Name		      "reg_port4"
 	      Tag		      "xps:sw_reg"
 	      Ports		      [1, 1]
-	      Position		      [585, 375, 685, 405]
+	      Position		      [585, 615, 685, 645]
 	      BackgroundColor	      "[1.000000, 1.000000, 0.000000]"
 	      SourceBlock	      "xps_library/software register"
 	      SourceType	      ""
@@ -2633,7 +3020,7 @@ Model {
 	      Name		      "reg_port5"
 	      Tag		      "xps:sw_reg"
 	      Ports		      [1, 1]
-	      Position		      [85, 420, 185, 450]
+	      Position		      [85, 660, 185, 690]
 	      BackgroundColor	      "[1.000000, 1.000000, 0.000000]"
 	      SourceBlock	      "xps_library/software register"
 	      SourceType	      ""
@@ -2651,7 +3038,7 @@ Model {
 	      Name		      "reg_port6"
 	      Tag		      "xps:sw_reg"
 	      Ports		      [1, 1]
-	      Position		      [585, 420, 685, 450]
+	      Position		      [585, 660, 685, 690]
 	      BackgroundColor	      "[1.000000, 1.000000, 0.000000]"
 	      SourceBlock	      "xps_library/software register"
 	      SourceType	      ""
@@ -2669,7 +3056,7 @@ Model {
 	      Name		      "reg_port7"
 	      Tag		      "xps:sw_reg"
 	      Ports		      [1, 1]
-	      Position		      [85, 465, 185, 495]
+	      Position		      [85, 705, 185, 735]
 	      BackgroundColor	      "[1.000000, 1.000000, 0.000000]"
 	      SourceBlock	      "xps_library/software register"
 	      SourceType	      ""
@@ -2687,7 +3074,7 @@ Model {
 	      Name		      "reg_port8"
 	      Tag		      "xps:sw_reg"
 	      Ports		      [1, 1]
-	      Position		      [585, 465, 685, 495]
+	      Position		      [585, 705, 685, 735]
 	      BackgroundColor	      "[1.000000, 1.000000, 0.000000]"
 	      SourceBlock	      "xps_library/software register"
 	      SourceType	      ""
@@ -2699,6 +3086,24 @@ Model {
 	      sample_period	      "1"
 	      gw_name		      "counter_16ip_16ch_dist_gbe_ip_ctr_reg_p"
 "ort8_user_data_out"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "reg_port9"
+	      Tag		      "xps:sw_reg"
+	      Ports		      [1, 1]
+	      Position		      [85, 750, 185, 780]
+	      BackgroundColor	      "[1.000000, 1.000000, 0.000000]"
+	      SourceBlock	      "xps_library/software register"
+	      SourceType	      ""
+	      ShowPortLabels	      on
+	      io_dir		      "From Processor"
+	      arith_type	      "Unsigned"
+	      bitwidth		      "32"
+	      bin_pt		      "0"
+	      sample_period	      "1"
+	      gw_name		      "counter_16ip_16ch_dist_gbe_ip_ctr_reg_p"
+"ort9_user_data_out"
 	    }
 	    Block {
 	      BlockType		      Outport
@@ -2899,6 +3304,102 @@ Model {
 	      DstPort		      5
 	    }
 	    Line {
+	      SrcBlock		      "IP_Constant9"
+	      SrcPort		      1
+	      DstBlock		      "reg_ip9"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "reg_ip9"
+	      SrcPort		      1
+	      DstBlock		      "IPMux_Odd"
+	      DstPort		      6
+	    }
+	    Line {
+	      SrcBlock		      "Port_Constant9"
+	      SrcPort		      1
+	      DstBlock		      "reg_port9"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "reg_port9"
+	      SrcPort		      1
+	      DstBlock		      "PortMux_Odd"
+	      DstPort		      6
+	    }
+	    Line {
+	      SrcBlock		      "IP_Constant11"
+	      SrcPort		      1
+	      DstBlock		      "reg_ip11"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "reg_ip11"
+	      SrcPort		      1
+	      DstBlock		      "IPMux_Odd"
+	      DstPort		      7
+	    }
+	    Line {
+	      SrcBlock		      "Port_Constant11"
+	      SrcPort		      1
+	      DstBlock		      "reg_port11"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "reg_port11"
+	      SrcPort		      1
+	      DstBlock		      "PortMux_Odd"
+	      DstPort		      7
+	    }
+	    Line {
+	      SrcBlock		      "IP_Constant13"
+	      SrcPort		      1
+	      DstBlock		      "reg_ip13"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "reg_ip13"
+	      SrcPort		      1
+	      DstBlock		      "IPMux_Odd"
+	      DstPort		      8
+	    }
+	    Line {
+	      SrcBlock		      "Port_Constant13"
+	      SrcPort		      1
+	      DstBlock		      "reg_port13"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "reg_port13"
+	      SrcPort		      1
+	      DstBlock		      "PortMux_Odd"
+	      DstPort		      8
+	    }
+	    Line {
+	      SrcBlock		      "IP_Constant15"
+	      SrcPort		      1
+	      DstBlock		      "reg_ip15"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "reg_ip15"
+	      SrcPort		      1
+	      DstBlock		      "IPMux_Odd"
+	      DstPort		      9
+	    }
+	    Line {
+	      SrcBlock		      "Port_Constant15"
+	      SrcPort		      1
+	      DstBlock		      "reg_port15"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "reg_port15"
+	      SrcPort		      1
+	      DstBlock		      "PortMux_Odd"
+	      DstPort		      9
+	    }
+	    Line {
 	      SrcBlock		      "IP_Constant2"
 	      SrcPort		      1
 	      DstBlock		      "reg_ip2"
@@ -2993,6 +3494,102 @@ Model {
 	      SrcPort		      1
 	      DstBlock		      "PortMux_Even"
 	      DstPort		      5
+	    }
+	    Line {
+	      SrcBlock		      "IP_Constant10"
+	      SrcPort		      1
+	      DstBlock		      "reg_ip10"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "reg_ip10"
+	      SrcPort		      1
+	      DstBlock		      "IPMux_Even"
+	      DstPort		      6
+	    }
+	    Line {
+	      SrcBlock		      "Port_Constant10"
+	      SrcPort		      1
+	      DstBlock		      "reg_port10"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "reg_port10"
+	      SrcPort		      1
+	      DstBlock		      "PortMux_Even"
+	      DstPort		      6
+	    }
+	    Line {
+	      SrcBlock		      "IP_Constant12"
+	      SrcPort		      1
+	      DstBlock		      "reg_ip12"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "reg_ip12"
+	      SrcPort		      1
+	      DstBlock		      "IPMux_Even"
+	      DstPort		      7
+	    }
+	    Line {
+	      SrcBlock		      "Port_Constant12"
+	      SrcPort		      1
+	      DstBlock		      "reg_port12"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "reg_port12"
+	      SrcPort		      1
+	      DstBlock		      "PortMux_Even"
+	      DstPort		      7
+	    }
+	    Line {
+	      SrcBlock		      "IP_Constant14"
+	      SrcPort		      1
+	      DstBlock		      "reg_ip14"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "reg_ip14"
+	      SrcPort		      1
+	      DstBlock		      "IPMux_Even"
+	      DstPort		      8
+	    }
+	    Line {
+	      SrcBlock		      "Port_Constant14"
+	      SrcPort		      1
+	      DstBlock		      "reg_port14"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "reg_port14"
+	      SrcPort		      1
+	      DstBlock		      "PortMux_Even"
+	      DstPort		      8
+	    }
+	    Line {
+	      SrcBlock		      "IP_Constant16"
+	      SrcPort		      1
+	      DstBlock		      "reg_ip16"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "reg_ip16"
+	      SrcPort		      1
+	      DstBlock		      "IPMux_Even"
+	      DstPort		      9
+	    }
+	    Line {
+	      SrcBlock		      "Port_Constant16"
+	      SrcPort		      1
+	      DstBlock		      "reg_port16"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "reg_port16"
+	      SrcPort		      1
+	      DstBlock		      "PortMux_Even"
+	      DstPort		      9
 	    }
 	  }
 	}
@@ -3177,7 +3774,7 @@ Model {
 	  Ports			  [3, 3]
 	  Position		  [205, 969, 300, 1041]
 	  BackgroundColor	  "[0.501961, 1.000000, 0.501961]"
-	  AttributesFormatString  "order=8"
+	  AttributesFormatString  "order=5"
 	  AncestorBlock		  "casper_library/Reorder/reorder"
 	  UserDataPersistent	  on
 	  UserData		  "DataTag3"
@@ -3204,32 +3801,59 @@ Model {
 	  MaskIconOpaque	  on
 	  MaskIconRotate	  "none"
 	  MaskIconUnits		  "autoscale"
-	  MaskValueString	  "[0 1 16 17 32 33 48 49 64 65 80 81 96 97 11"
-"2 113 128 129 144 145 160 161 176 177 192 193 208 209 224 225 240 241 256 257"
-" 272 273 288 289 304 305 320 321 336 337 352 353 368 369 384 385 400 401 416 "
-"417 432 433 448 449 464 465 480 481 496 497 2 3 18 19 34 35 50 51 66 67 82 83"
-" 98 99 114 115 130 131 146 147 162 163 178 179 194 195 210 211 226 227 242 24"
-"3 258 259 274 275 290 291 306 307 322 323 338 339 354 355 370 371 386 387 402"
-" 403 418 419 434 435 450 451 466 467 482 483 498 499 4 5 20 21 36 37 52 53 68"
-" 69 84 85 100 101 116 117 132 133 148 149 164 165 180 181 196 197 212 213 228"
-" 229 244 245 260 261 276 277 292 293 308 309 324 325 340 341 356 357 372 373 "
-"388 389 404 405 420 421 436 437 452 453 468 469 484 485 500 501 6 7 22 23 38 "
-"39 54 55 70 71 86 87 102 103 118 119 134 135 150 151 166 167 182 183 198 199 "
-"214 215 230 231 246 247 262 263 278 279 294 295 310 311 326 327 342 343 358 3"
-"59 374 375 390 391 406 407 422 423 438 439 454 455 470 471 486 487 502 503 8 "
-"9 24 25 40 41 56 57 72 73 88 89 104 105 120 121 136 137 152 153 168 169 184 1"
-"85 200 201 216 217 232 233 248 249 264 265 280 281 296 297 312 313 328 329 34"
-"4 345 360 361 376 377 392 393 408 409 424 425 440 441 456 457 472 473 488 489"
-" 504 505 10 11 26 27 42 43 58 59 74 75 90 91 106 107 122 123 138 139 154 155 "
-"170 171 186 187 202 203 218 219 234 235 250 251 266 267 282 283 298 299 314 3"
-"15 330 331 346 347 362 363 378 379 394 395 410 411 426 427 442 443 458 459 47"
-"4 475 490 491 506 507 12 13 28 29 44 45 60 61 76 77 92 93 108 109 124 125 140"
-" 141 156 157 172 173 188 189 204 205 220 221 236 237 252 253 268 269 284 285 "
-"300 301 316 317 332 333 348 349 364 365 380 381 396 397 412 413 428 429 444 4"
-"45 460 461 476 477 492 493 508 509 14 15 30 31 46 47 62 63 78 79 94 95 110 11"
-"1 126 127 142 143 158 159 174 175 190 191 206 207 222 223 238 239 254 255 270"
-" 271 286 287 302 303 318 319 334 335 350 351 366 367 382 383 398 399 414 415 "
-"430 431 446 447 462 463 478 479 494 495 510 511]|1|2|1|0"
+	  MaskValueString	  "[0 16 32 48 64 80 96 112 128 144 160 176 19"
+"2 208 224 240 256 272 288 304 320 336 352 368 384 400 416 432 448 464 480 496"
+" 512 528 544 560 576 592 608 624 640 656 672 688 704 720 736 752 768 784 800 "
+"816 832 848 864 880 896 912 928 944 960 976 992 1008 1 17 33 49 65 81 97 113 "
+"129 145 161 177 193 209 225 241 257 273 289 305 321 337 353 369 385 401 417 4"
+"33 449 465 481 497 513 529 545 561 577 593 609 625 641 657 673 689 705 721 73"
+"7 753 769 785 801 817 833 849 865 881 897 913 929 945 961 977 993 1009 2 18 3"
+"4 50 66 82 98 114 130 146 162 178 194 210 226 242 258 274 290 306 322 338 354"
+" 370 386 402 418 434 450 466 482 498 514 530 546 562 578 594 610 626 642 658 "
+"674 690 706 722 738 754 770 786 802 818 834 850 866 882 898 914 930 946 962 9"
+"78 994 1010 3 19 35 51 67 83 99 115 131 147 163 179 195 211 227 243 259 275 2"
+"91 307 323 339 355 371 387 403 419 435 451 467 483 499 515 531 547 563 579 59"
+"5 611 627 643 659 675 691 707 723 739 755 771 787 803 819 835 851 867 883 899"
+" 915 931 947 963 979 995 1011 4 20 36 52 68 84 100 116 132 148 164 180 196 21"
+"2 228 244 260 276 292 308 324 340 356 372 388 404 420 436 452 468 484 500 516"
+" 532 548 564 580 596 612 628 644 660 676 692 708 724 740 756 772 788 804 820 "
+"836 852 868 884 900 916 932 948 964 980 996 1012 5 21 37 53 69 85 101 117 133"
+" 149 165 181 197 213 229 245 261 277 293 309 325 341 357 373 389 405 421 437 "
+"453 469 485 501 517 533 549 565 581 597 613 629 645 661 677 693 709 725 741 7"
+"57 773 789 805 821 837 853 869 885 901 917 933 949 965 981 997 1013 6 22 38 5"
+"4 70 86 102 118 134 150 166 182 198 214 230 246 262 278 294 310 326 342 358 3"
+"74 390 406 422 438 454 470 486 502 518 534 550 566 582 598 614 630 646 662 67"
+"8 694 710 726 742 758 774 790 806 822 838 854 870 886 902 918 934 950 966 982"
+" 998 1014 7 23 39 55 71 87 103 119 135 151 167 183 199 215 231 247 263 279 29"
+"5 311 327 343 359 375 391 407 423 439 455 471 487 503 519 535 551 567 583 599"
+" 615 631 647 663 679 695 711 727 743 759 775 791 807 823 839 855 871 887 903 "
+"919 935 951 967 983 999 1015 8 24 40 56 72 88 104 120 136 152 168 184 200 216"
+" 232 248 264 280 296 312 328 344 360 376 392 408 424 440 456 472 488 504 520 "
+"536 552 568 584 600 616 632 648 664 680 696 712 728 744 760 776 792 808 824 8"
+"40 856 872 888 904 920 936 952 968 984 1000 1016 9 25 41 57 73 89 105 121 137"
+" 153 169 185 201 217 233 249 265 281 297 313 329 345 361 377 393 409 425 441 "
+"457 473 489 505 521 537 553 569 585 601 617 633 649 665 681 697 713 729 745 7"
+"61 777 793 809 825 841 857 873 889 905 921 937 953 969 985 1001 1017 10 26 42"
+" 58 74 90 106 122 138 154 170 186 202 218 234 250 266 282 298 314 330 346 362"
+" 378 394 410 426 442 458 474 490 506 522 538 554 570 586 602 618 634 650 666 "
+"682 698 714 730 746 762 778 794 810 826 842 858 874 890 906 922 938 954 970 9"
+"86 1002 1018 11 27 43 59 75 91 107 123 139 155 171 187 203 219 235 251 267 28"
+"3 299 315 331 347 363 379 395 411 427 443 459 475 491 507 523 539 555 571 587"
+" 603 619 635 651 667 683 699 715 731 747 763 779 795 811 827 843 859 875 891 "
+"907 923 939 955 971 987 1003 1019 12 28 44 60 76 92 108 124 140 156 172 188 2"
+"04 220 236 252 268 284 300 316 332 348 364 380 396 412 428 444 460 476 492 50"
+"8 524 540 556 572 588 604 620 636 652 668 684 700 716 732 748 764 780 796 812"
+" 828 844 860 876 892 908 924 940 956 972 988 1004 1020 13 29 45 61 77 93 109 "
+"125 141 157 173 189 205 221 237 253 269 285 301 317 333 349 365 381 397 413 4"
+"29 445 461 477 493 509 525 541 557 573 589 605 621 637 653 669 685 701 717 73"
+"3 749 765 781 797 813 829 845 861 877 893 909 925 941 957 973 989 1005 1021 1"
+"4 30 46 62 78 94 110 126 142 158 174 190 206 222 238 254 270 286 302 318 334 "
+"350 366 382 398 414 430 446 462 478 494 510 526 542 558 574 590 606 622 638 6"
+"54 670 686 702 718 734 750 766 782 798 814 830 846 862 878 894 910 926 942 95"
+"8 974 990 1006 1022 15 31 47 63 79 95 111 127 143 159 175 191 207 223 239 255"
+" 271 287 303 319 335 351 367 383 399 415 431 447 463 479 495 511 527 543 559 "
+"575 591 607 623 639 655 671 687 703 719 735 751 767 783 799 815 831 847 863 8"
+"79 895 911 927 943 959 975 991 1007 1023]|1|2|1|0"
 	  MaskTabNameString	  ",,,,"
 	  System {
 	    Name		    "reorder"
@@ -3275,11 +3899,11 @@ Model {
 	      SourceBlock	      "xbsIndex_r3/Counter"
 	      SourceType	      "Xilinx Counter Block"
 	      cnt_type		      "Count Limited"
-	      n_bits		      "12"
+	      n_bits		      "13"
 	      bin_pt		      "0"
 	      arith_type	      "Unsigned"
 	      start_count	      "0"
-	      cnt_to		      "4095"
+	      cnt_to		      "5119"
 	      cnt_by_val	      "1"
 	      operation		      "Up"
 	      explicit_period	      off
@@ -3297,11 +3921,11 @@ Model {
 	    Block {
 	      BlockType		      Reference
 	      Name		      "Mux"
-	      Ports		      [9, 1]
-	      Position		      [415, 36, 440, 224]
+	      Ports		      [6, 1]
+	      Position		      [415, 36, 440, 164]
 	      SourceBlock	      "xbsIndex_r3/Mux"
 	      SourceType	      "Xilinx Multiplexer Block"
-	      inputs		      "8"
+	      inputs		      "5"
 	      precision		      "Full"
 	      arith_type	      "Signed  (2's comp)"
 	      n_bits		      "8"
@@ -3346,7 +3970,7 @@ Model {
 	      SourceBlock	      "xbsIndex_r3/Slice"
 	      SourceType	      "Xilinx Slice Block"
 	      mode		      "Lower Bit Location + Width"
-	      nbits		      "9"
+	      nbits		      "10"
 	      bit1		      "0"
 	      base1		      "MSB of Input"
 	      bit0		      "0"
@@ -3363,7 +3987,7 @@ Model {
 	      Position		      [615, 63, 680, 117]
 	      SourceBlock	      "xbsIndex_r3/Single Port RAM"
 	      SourceType	      "Xilinx Single Port Random Access Memory"
-	      depth		      "512"
+	      depth		      "1024"
 	      initVector	      "sin(pi*(0:15)/16)"
 	      write_mode	      "Read Before Write"
 	      latency		      "2"
@@ -3388,7 +4012,7 @@ Model {
 	      Position		      [305, 77, 345, 93]
 	      SourceBlock	      "xbsIndex_r3/Delay"
 	      SourceType	      "Xilinx Delay Block"
-	      latency		      "7"
+	      latency		      "4"
 	      reg_retiming	      off
 	      explicit_period	      off
 	      period		      "1"
@@ -3407,7 +4031,7 @@ Model {
 	      Position		      [550, 80, 590, 100]
 	      SourceBlock	      "xbsIndex_r3/Delay"
 	      SourceType	      "Xilinx Delay Block"
-	      latency		      "8"
+	      latency		      "5"
 	      reg_retiming	      off
 	      explicit_period	      off
 	      period		      "1"
@@ -3426,7 +4050,7 @@ Model {
 	      Position		      [305, 175, 345, 195]
 	      SourceBlock	      "xbsIndex_r3/Delay"
 	      SourceType	      "Xilinx Delay Block"
-	      latency		      "6*map_latency"
+	      latency		      "3*map_latency"
 	      reg_retiming	      off
 	      explicit_period	      off
 	      period		      "1"
@@ -3445,7 +4069,7 @@ Model {
 	      Position		      [305, 225, 345, 245]
 	      SourceBlock	      "xbsIndex_r3/Delay"
 	      SourceType	      "Xilinx Delay Block"
-	      latency		      "5*map_latency"
+	      latency		      "2*map_latency"
 	      reg_retiming	      off
 	      explicit_period	      off
 	      period		      "1"
@@ -3464,7 +4088,7 @@ Model {
 	      Position		      [305, 275, 345, 295]
 	      SourceBlock	      "xbsIndex_r3/Delay"
 	      SourceType	      "Xilinx Delay Block"
-	      latency		      "4*map_latency"
+	      latency		      "1*map_latency"
 	      reg_retiming	      off
 	      explicit_period	      off
 	      period		      "1"
@@ -3481,63 +4105,6 @@ Model {
 	      Name		      "delay_map4"
 	      Ports		      [1, 1]
 	      Position		      [305, 325, 345, 345]
-	      SourceBlock	      "xbsIndex_r3/Delay"
-	      SourceType	      "Xilinx Delay Block"
-	      latency		      "3*map_latency"
-	      reg_retiming	      off
-	      explicit_period	      off
-	      period		      "1"
-	      en		      off
-	      accept_only_valid	      off
-	      init_zero		      on
-	      dbl_ovrd		      off
-	      show_param	      off
-	      xl_area		      "[0, 0, 0, 0, 0, 0, 0]"
-	      xl_use_area	      off
-	    }
-	    Block {
-	      BlockType		      Reference
-	      Name		      "delay_map5"
-	      Ports		      [1, 1]
-	      Position		      [305, 375, 345, 395]
-	      SourceBlock	      "xbsIndex_r3/Delay"
-	      SourceType	      "Xilinx Delay Block"
-	      latency		      "2*map_latency"
-	      reg_retiming	      off
-	      explicit_period	      off
-	      period		      "1"
-	      en		      off
-	      accept_only_valid	      off
-	      init_zero		      on
-	      dbl_ovrd		      off
-	      show_param	      off
-	      xl_area		      "[0, 0, 0, 0, 0, 0, 0]"
-	      xl_use_area	      off
-	    }
-	    Block {
-	      BlockType		      Reference
-	      Name		      "delay_map6"
-	      Ports		      [1, 1]
-	      Position		      [305, 425, 345, 445]
-	      SourceBlock	      "xbsIndex_r3/Delay"
-	      SourceType	      "Xilinx Delay Block"
-	      latency		      "1*map_latency"
-	      reg_retiming	      off
-	      explicit_period	      off
-	      period		      "1"
-	      en		      off
-	      accept_only_valid	      off
-	      init_zero		      on
-	      dbl_ovrd		      off
-	      show_param	      off
-	      xl_area		      "[0, 0, 0, 0, 0, 0, 0]"
-	      xl_use_area	      off
-	    }
-	    Block {
-	      BlockType		      Reference
-	      Name		      "delay_map7"
-	      Ports		      [1, 1]
-	      Position		      [305, 475, 345, 495]
 	      SourceBlock	      "xbsIndex_r3/Delay"
 	      SourceType	      "Xilinx Delay Block"
 	      latency		      "0*map_latency"
@@ -3559,7 +4126,7 @@ Model {
 	      Position		      [305, 37, 345, 53]
 	      SourceBlock	      "xbsIndex_r3/Delay"
 	      SourceType	      "Xilinx Delay Block"
-	      latency		      "7"
+	      latency		      "4"
 	      reg_retiming	      off
 	      explicit_period	      off
 	      period		      "1"
@@ -3597,7 +4164,7 @@ Model {
 	      Position		      [305, 115, 345, 135]
 	      SourceBlock	      "xbsIndex_r3/Delay"
 	      SourceType	      "Xilinx Delay Block"
-	      latency		      "7"
+	      latency		      "4"
 	      reg_retiming	      off
 	      explicit_period	      off
 	      period		      "1"
@@ -3616,35 +4183,62 @@ Model {
 	      Position		      [230, 175, 270, 195]
 	      SourceBlock	      "xbsIndex_r3/ROM"
 	      SourceType	      "Xilinx Single Port Read-Only Memory"
-	      depth		      "512"
-	      initVector	      "[0 1 16 17 32 33 48 49 64 65 80 81 96 9"
-"7 112 113 128 129 144 145 160 161 176 177 192 193 208 209 224 225 240 241 256"
-" 257 272 273 288 289 304 305 320 321 336 337 352 353 368 369 384 385 400 401 "
-"416 417 432 433 448 449 464 465 480 481 496 497 2 3 18 19 34 35 50 51 66 67 8"
-"2 83 98 99 114 115 130 131 146 147 162 163 178 179 194 195 210 211 226 227 24"
-"2 243 258 259 274 275 290 291 306 307 322 323 338 339 354 355 370 371 386 387"
-" 402 403 418 419 434 435 450 451 466 467 482 483 498 499 4 5 20 21 36 37 52 5"
-"3 68 69 84 85 100 101 116 117 132 133 148 149 164 165 180 181 196 197 212 213"
-" 228 229 244 245 260 261 276 277 292 293 308 309 324 325 340 341 356 357 372 "
-"373 388 389 404 405 420 421 436 437 452 453 468 469 484 485 500 501 6 7 22 23"
-" 38 39 54 55 70 71 86 87 102 103 118 119 134 135 150 151 166 167 182 183 198 "
-"199 214 215 230 231 246 247 262 263 278 279 294 295 310 311 326 327 342 343 3"
-"58 359 374 375 390 391 406 407 422 423 438 439 454 455 470 471 486 487 502 50"
-"3 8 9 24 25 40 41 56 57 72 73 88 89 104 105 120 121 136 137 152 153 168 169 1"
-"84 185 200 201 216 217 232 233 248 249 264 265 280 281 296 297 312 313 328 32"
-"9 344 345 360 361 376 377 392 393 408 409 424 425 440 441 456 457 472 473 488"
-" 489 504 505 10 11 26 27 42 43 58 59 74 75 90 91 106 107 122 123 138 139 154 "
-"155 170 171 186 187 202 203 218 219 234 235 250 251 266 267 282 283 298 299 3"
-"14 315 330 331 346 347 362 363 378 379 394 395 410 411 426 427 442 443 458 45"
-"9 474 475 490 491 506 507 12 13 28 29 44 45 60 61 76 77 92 93 108 109 124 125"
-" 140 141 156 157 172 173 188 189 204 205 220 221 236 237 252 253 268 269 284 "
-"285 300 301 316 317 332 333 348 349 364 365 380 381 396 397 412 413 428 429 4"
-"44 445 460 461 476 477 492 493 508 509 14 15 30 31 46 47 62 63 78 79 94 95 11"
-"0 111 126 127 142 143 158 159 174 175 190 191 206 207 222 223 238 239 254 255"
-" 270 271 286 287 302 303 318 319 334 335 350 351 366 367 382 383 398 399 414 "
-"415 430 431 446 447 462 463 478 479 494 495 510 511]"
+	      depth		      "1024"
+	      initVector	      "[0 16 32 48 64 80 96 112 128 144 160 17"
+"6 192 208 224 240 256 272 288 304 320 336 352 368 384 400 416 432 448 464 480"
+" 496 512 528 544 560 576 592 608 624 640 656 672 688 704 720 736 752 768 784 "
+"800 816 832 848 864 880 896 912 928 944 960 976 992 1008 1 17 33 49 65 81 97 "
+"113 129 145 161 177 193 209 225 241 257 273 289 305 321 337 353 369 385 401 4"
+"17 433 449 465 481 497 513 529 545 561 577 593 609 625 641 657 673 689 705 72"
+"1 737 753 769 785 801 817 833 849 865 881 897 913 929 945 961 977 993 1009 2 "
+"18 34 50 66 82 98 114 130 146 162 178 194 210 226 242 258 274 290 306 322 338"
+" 354 370 386 402 418 434 450 466 482 498 514 530 546 562 578 594 610 626 642 "
+"658 674 690 706 722 738 754 770 786 802 818 834 850 866 882 898 914 930 946 9"
+"62 978 994 1010 3 19 35 51 67 83 99 115 131 147 163 179 195 211 227 243 259 2"
+"75 291 307 323 339 355 371 387 403 419 435 451 467 483 499 515 531 547 563 57"
+"9 595 611 627 643 659 675 691 707 723 739 755 771 787 803 819 835 851 867 883"
+" 899 915 931 947 963 979 995 1011 4 20 36 52 68 84 100 116 132 148 164 180 19"
+"6 212 228 244 260 276 292 308 324 340 356 372 388 404 420 436 452 468 484 500"
+" 516 532 548 564 580 596 612 628 644 660 676 692 708 724 740 756 772 788 804 "
+"820 836 852 868 884 900 916 932 948 964 980 996 1012 5 21 37 53 69 85 101 117"
+" 133 149 165 181 197 213 229 245 261 277 293 309 325 341 357 373 389 405 421 "
+"437 453 469 485 501 517 533 549 565 581 597 613 629 645 661 677 693 709 725 7"
+"41 757 773 789 805 821 837 853 869 885 901 917 933 949 965 981 997 1013 6 22 "
+"38 54 70 86 102 118 134 150 166 182 198 214 230 246 262 278 294 310 326 342 3"
+"58 374 390 406 422 438 454 470 486 502 518 534 550 566 582 598 614 630 646 66"
+"2 678 694 710 726 742 758 774 790 806 822 838 854 870 886 902 918 934 950 966"
+" 982 998 1014 7 23 39 55 71 87 103 119 135 151 167 183 199 215 231 247 263 27"
+"9 295 311 327 343 359 375 391 407 423 439 455 471 487 503 519 535 551 567 583"
+" 599 615 631 647 663 679 695 711 727 743 759 775 791 807 823 839 855 871 887 "
+"903 919 935 951 967 983 999 1015 8 24 40 56 72 88 104 120 136 152 168 184 200"
+" 216 232 248 264 280 296 312 328 344 360 376 392 408 424 440 456 472 488 504 "
+"520 536 552 568 584 600 616 632 648 664 680 696 712 728 744 760 776 792 808 8"
+"24 840 856 872 888 904 920 936 952 968 984 1000 1016 9 25 41 57 73 89 105 121"
+" 137 153 169 185 201 217 233 249 265 281 297 313 329 345 361 377 393 409 425 "
+"441 457 473 489 505 521 537 553 569 585 601 617 633 649 665 681 697 713 729 7"
+"45 761 777 793 809 825 841 857 873 889 905 921 937 953 969 985 1001 1017 10 2"
+"6 42 58 74 90 106 122 138 154 170 186 202 218 234 250 266 282 298 314 330 346"
+" 362 378 394 410 426 442 458 474 490 506 522 538 554 570 586 602 618 634 650 "
+"666 682 698 714 730 746 762 778 794 810 826 842 858 874 890 906 922 938 954 9"
+"70 986 1002 1018 11 27 43 59 75 91 107 123 139 155 171 187 203 219 235 251 26"
+"7 283 299 315 331 347 363 379 395 411 427 443 459 475 491 507 523 539 555 571"
+" 587 603 619 635 651 667 683 699 715 731 747 763 779 795 811 827 843 859 875 "
+"891 907 923 939 955 971 987 1003 1019 12 28 44 60 76 92 108 124 140 156 172 1"
+"88 204 220 236 252 268 284 300 316 332 348 364 380 396 412 428 444 460 476 49"
+"2 508 524 540 556 572 588 604 620 636 652 668 684 700 716 732 748 764 780 796"
+" 812 828 844 860 876 892 908 924 940 956 972 988 1004 1020 13 29 45 61 77 93 "
+"109 125 141 157 173 189 205 221 237 253 269 285 301 317 333 349 365 381 397 4"
+"13 429 445 461 477 493 509 525 541 557 573 589 605 621 637 653 669 685 701 71"
+"7 733 749 765 781 797 813 829 845 861 877 893 909 925 941 957 973 989 1005 10"
+"21 14 30 46 62 78 94 110 126 142 158 174 190 206 222 238 254 270 286 302 318 "
+"334 350 366 382 398 414 430 446 462 478 494 510 526 542 558 574 590 606 622 6"
+"38 654 670 686 702 718 734 750 766 782 798 814 830 846 862 878 894 910 926 94"
+"2 958 974 990 1006 1022 15 31 47 63 79 95 111 127 143 159 175 191 207 223 239"
+" 255 271 287 303 319 335 351 367 383 399 415 431 447 463 479 495 511 527 543 "
+"559 575 591 607 623 639 655 671 687 703 719 735 751 767 783 799 815 831 847 8"
+"63 879 895 911 927 943 959 975 991 1007 1023]"
 	      arith_type	      "Unsigned"
-	      n_bits		      "9"
+	      n_bits		      "10"
 	      bin_pt		      "0"
 	      latency		      "1"
 	      init_zero		      on
@@ -3668,35 +4262,62 @@ Model {
 	      Position		      [230, 225, 270, 245]
 	      SourceBlock	      "xbsIndex_r3/ROM"
 	      SourceType	      "Xilinx Single Port Read-Only Memory"
-	      depth		      "512"
-	      initVector	      "[0 1 16 17 32 33 48 49 64 65 80 81 96 9"
-"7 112 113 128 129 144 145 160 161 176 177 192 193 208 209 224 225 240 241 256"
-" 257 272 273 288 289 304 305 320 321 336 337 352 353 368 369 384 385 400 401 "
-"416 417 432 433 448 449 464 465 480 481 496 497 2 3 18 19 34 35 50 51 66 67 8"
-"2 83 98 99 114 115 130 131 146 147 162 163 178 179 194 195 210 211 226 227 24"
-"2 243 258 259 274 275 290 291 306 307 322 323 338 339 354 355 370 371 386 387"
-" 402 403 418 419 434 435 450 451 466 467 482 483 498 499 4 5 20 21 36 37 52 5"
-"3 68 69 84 85 100 101 116 117 132 133 148 149 164 165 180 181 196 197 212 213"
-" 228 229 244 245 260 261 276 277 292 293 308 309 324 325 340 341 356 357 372 "
-"373 388 389 404 405 420 421 436 437 452 453 468 469 484 485 500 501 6 7 22 23"
-" 38 39 54 55 70 71 86 87 102 103 118 119 134 135 150 151 166 167 182 183 198 "
-"199 214 215 230 231 246 247 262 263 278 279 294 295 310 311 326 327 342 343 3"
-"58 359 374 375 390 391 406 407 422 423 438 439 454 455 470 471 486 487 502 50"
-"3 8 9 24 25 40 41 56 57 72 73 88 89 104 105 120 121 136 137 152 153 168 169 1"
-"84 185 200 201 216 217 232 233 248 249 264 265 280 281 296 297 312 313 328 32"
-"9 344 345 360 361 376 377 392 393 408 409 424 425 440 441 456 457 472 473 488"
-" 489 504 505 10 11 26 27 42 43 58 59 74 75 90 91 106 107 122 123 138 139 154 "
-"155 170 171 186 187 202 203 218 219 234 235 250 251 266 267 282 283 298 299 3"
-"14 315 330 331 346 347 362 363 378 379 394 395 410 411 426 427 442 443 458 45"
-"9 474 475 490 491 506 507 12 13 28 29 44 45 60 61 76 77 92 93 108 109 124 125"
-" 140 141 156 157 172 173 188 189 204 205 220 221 236 237 252 253 268 269 284 "
-"285 300 301 316 317 332 333 348 349 364 365 380 381 396 397 412 413 428 429 4"
-"44 445 460 461 476 477 492 493 508 509 14 15 30 31 46 47 62 63 78 79 94 95 11"
-"0 111 126 127 142 143 158 159 174 175 190 191 206 207 222 223 238 239 254 255"
-" 270 271 286 287 302 303 318 319 334 335 350 351 366 367 382 383 398 399 414 "
-"415 430 431 446 447 462 463 478 479 494 495 510 511]"
+	      depth		      "1024"
+	      initVector	      "[0 16 32 48 64 80 96 112 128 144 160 17"
+"6 192 208 224 240 256 272 288 304 320 336 352 368 384 400 416 432 448 464 480"
+" 496 512 528 544 560 576 592 608 624 640 656 672 688 704 720 736 752 768 784 "
+"800 816 832 848 864 880 896 912 928 944 960 976 992 1008 1 17 33 49 65 81 97 "
+"113 129 145 161 177 193 209 225 241 257 273 289 305 321 337 353 369 385 401 4"
+"17 433 449 465 481 497 513 529 545 561 577 593 609 625 641 657 673 689 705 72"
+"1 737 753 769 785 801 817 833 849 865 881 897 913 929 945 961 977 993 1009 2 "
+"18 34 50 66 82 98 114 130 146 162 178 194 210 226 242 258 274 290 306 322 338"
+" 354 370 386 402 418 434 450 466 482 498 514 530 546 562 578 594 610 626 642 "
+"658 674 690 706 722 738 754 770 786 802 818 834 850 866 882 898 914 930 946 9"
+"62 978 994 1010 3 19 35 51 67 83 99 115 131 147 163 179 195 211 227 243 259 2"
+"75 291 307 323 339 355 371 387 403 419 435 451 467 483 499 515 531 547 563 57"
+"9 595 611 627 643 659 675 691 707 723 739 755 771 787 803 819 835 851 867 883"
+" 899 915 931 947 963 979 995 1011 4 20 36 52 68 84 100 116 132 148 164 180 19"
+"6 212 228 244 260 276 292 308 324 340 356 372 388 404 420 436 452 468 484 500"
+" 516 532 548 564 580 596 612 628 644 660 676 692 708 724 740 756 772 788 804 "
+"820 836 852 868 884 900 916 932 948 964 980 996 1012 5 21 37 53 69 85 101 117"
+" 133 149 165 181 197 213 229 245 261 277 293 309 325 341 357 373 389 405 421 "
+"437 453 469 485 501 517 533 549 565 581 597 613 629 645 661 677 693 709 725 7"
+"41 757 773 789 805 821 837 853 869 885 901 917 933 949 965 981 997 1013 6 22 "
+"38 54 70 86 102 118 134 150 166 182 198 214 230 246 262 278 294 310 326 342 3"
+"58 374 390 406 422 438 454 470 486 502 518 534 550 566 582 598 614 630 646 66"
+"2 678 694 710 726 742 758 774 790 806 822 838 854 870 886 902 918 934 950 966"
+" 982 998 1014 7 23 39 55 71 87 103 119 135 151 167 183 199 215 231 247 263 27"
+"9 295 311 327 343 359 375 391 407 423 439 455 471 487 503 519 535 551 567 583"
+" 599 615 631 647 663 679 695 711 727 743 759 775 791 807 823 839 855 871 887 "
+"903 919 935 951 967 983 999 1015 8 24 40 56 72 88 104 120 136 152 168 184 200"
+" 216 232 248 264 280 296 312 328 344 360 376 392 408 424 440 456 472 488 504 "
+"520 536 552 568 584 600 616 632 648 664 680 696 712 728 744 760 776 792 808 8"
+"24 840 856 872 888 904 920 936 952 968 984 1000 1016 9 25 41 57 73 89 105 121"
+" 137 153 169 185 201 217 233 249 265 281 297 313 329 345 361 377 393 409 425 "
+"441 457 473 489 505 521 537 553 569 585 601 617 633 649 665 681 697 713 729 7"
+"45 761 777 793 809 825 841 857 873 889 905 921 937 953 969 985 1001 1017 10 2"
+"6 42 58 74 90 106 122 138 154 170 186 202 218 234 250 266 282 298 314 330 346"
+" 362 378 394 410 426 442 458 474 490 506 522 538 554 570 586 602 618 634 650 "
+"666 682 698 714 730 746 762 778 794 810 826 842 858 874 890 906 922 938 954 9"
+"70 986 1002 1018 11 27 43 59 75 91 107 123 139 155 171 187 203 219 235 251 26"
+"7 283 299 315 331 347 363 379 395 411 427 443 459 475 491 507 523 539 555 571"
+" 587 603 619 635 651 667 683 699 715 731 747 763 779 795 811 827 843 859 875 "
+"891 907 923 939 955 971 987 1003 1019 12 28 44 60 76 92 108 124 140 156 172 1"
+"88 204 220 236 252 268 284 300 316 332 348 364 380 396 412 428 444 460 476 49"
+"2 508 524 540 556 572 588 604 620 636 652 668 684 700 716 732 748 764 780 796"
+" 812 828 844 860 876 892 908 924 940 956 972 988 1004 1020 13 29 45 61 77 93 "
+"109 125 141 157 173 189 205 221 237 253 269 285 301 317 333 349 365 381 397 4"
+"13 429 445 461 477 493 509 525 541 557 573 589 605 621 637 653 669 685 701 71"
+"7 733 749 765 781 797 813 829 845 861 877 893 909 925 941 957 973 989 1005 10"
+"21 14 30 46 62 78 94 110 126 142 158 174 190 206 222 238 254 270 286 302 318 "
+"334 350 366 382 398 414 430 446 462 478 494 510 526 542 558 574 590 606 622 6"
+"38 654 670 686 702 718 734 750 766 782 798 814 830 846 862 878 894 910 926 94"
+"2 958 974 990 1006 1022 15 31 47 63 79 95 111 127 143 159 175 191 207 223 239"
+" 255 271 287 303 319 335 351 367 383 399 415 431 447 463 479 495 511 527 543 "
+"559 575 591 607 623 639 655 671 687 703 719 735 751 767 783 799 815 831 847 8"
+"63 879 895 911 927 943 959 975 991 1007 1023]"
 	      arith_type	      "Unsigned"
-	      n_bits		      "9"
+	      n_bits		      "10"
 	      bin_pt		      "0"
 	      latency		      "1"
 	      init_zero		      on
@@ -3720,35 +4341,62 @@ Model {
 	      Position		      [230, 275, 270, 295]
 	      SourceBlock	      "xbsIndex_r3/ROM"
 	      SourceType	      "Xilinx Single Port Read-Only Memory"
-	      depth		      "512"
-	      initVector	      "[0 1 16 17 32 33 48 49 64 65 80 81 96 9"
-"7 112 113 128 129 144 145 160 161 176 177 192 193 208 209 224 225 240 241 256"
-" 257 272 273 288 289 304 305 320 321 336 337 352 353 368 369 384 385 400 401 "
-"416 417 432 433 448 449 464 465 480 481 496 497 2 3 18 19 34 35 50 51 66 67 8"
-"2 83 98 99 114 115 130 131 146 147 162 163 178 179 194 195 210 211 226 227 24"
-"2 243 258 259 274 275 290 291 306 307 322 323 338 339 354 355 370 371 386 387"
-" 402 403 418 419 434 435 450 451 466 467 482 483 498 499 4 5 20 21 36 37 52 5"
-"3 68 69 84 85 100 101 116 117 132 133 148 149 164 165 180 181 196 197 212 213"
-" 228 229 244 245 260 261 276 277 292 293 308 309 324 325 340 341 356 357 372 "
-"373 388 389 404 405 420 421 436 437 452 453 468 469 484 485 500 501 6 7 22 23"
-" 38 39 54 55 70 71 86 87 102 103 118 119 134 135 150 151 166 167 182 183 198 "
-"199 214 215 230 231 246 247 262 263 278 279 294 295 310 311 326 327 342 343 3"
-"58 359 374 375 390 391 406 407 422 423 438 439 454 455 470 471 486 487 502 50"
-"3 8 9 24 25 40 41 56 57 72 73 88 89 104 105 120 121 136 137 152 153 168 169 1"
-"84 185 200 201 216 217 232 233 248 249 264 265 280 281 296 297 312 313 328 32"
-"9 344 345 360 361 376 377 392 393 408 409 424 425 440 441 456 457 472 473 488"
-" 489 504 505 10 11 26 27 42 43 58 59 74 75 90 91 106 107 122 123 138 139 154 "
-"155 170 171 186 187 202 203 218 219 234 235 250 251 266 267 282 283 298 299 3"
-"14 315 330 331 346 347 362 363 378 379 394 395 410 411 426 427 442 443 458 45"
-"9 474 475 490 491 506 507 12 13 28 29 44 45 60 61 76 77 92 93 108 109 124 125"
-" 140 141 156 157 172 173 188 189 204 205 220 221 236 237 252 253 268 269 284 "
-"285 300 301 316 317 332 333 348 349 364 365 380 381 396 397 412 413 428 429 4"
-"44 445 460 461 476 477 492 493 508 509 14 15 30 31 46 47 62 63 78 79 94 95 11"
-"0 111 126 127 142 143 158 159 174 175 190 191 206 207 222 223 238 239 254 255"
-" 270 271 286 287 302 303 318 319 334 335 350 351 366 367 382 383 398 399 414 "
-"415 430 431 446 447 462 463 478 479 494 495 510 511]"
+	      depth		      "1024"
+	      initVector	      "[0 16 32 48 64 80 96 112 128 144 160 17"
+"6 192 208 224 240 256 272 288 304 320 336 352 368 384 400 416 432 448 464 480"
+" 496 512 528 544 560 576 592 608 624 640 656 672 688 704 720 736 752 768 784 "
+"800 816 832 848 864 880 896 912 928 944 960 976 992 1008 1 17 33 49 65 81 97 "
+"113 129 145 161 177 193 209 225 241 257 273 289 305 321 337 353 369 385 401 4"
+"17 433 449 465 481 497 513 529 545 561 577 593 609 625 641 657 673 689 705 72"
+"1 737 753 769 785 801 817 833 849 865 881 897 913 929 945 961 977 993 1009 2 "
+"18 34 50 66 82 98 114 130 146 162 178 194 210 226 242 258 274 290 306 322 338"
+" 354 370 386 402 418 434 450 466 482 498 514 530 546 562 578 594 610 626 642 "
+"658 674 690 706 722 738 754 770 786 802 818 834 850 866 882 898 914 930 946 9"
+"62 978 994 1010 3 19 35 51 67 83 99 115 131 147 163 179 195 211 227 243 259 2"
+"75 291 307 323 339 355 371 387 403 419 435 451 467 483 499 515 531 547 563 57"
+"9 595 611 627 643 659 675 691 707 723 739 755 771 787 803 819 835 851 867 883"
+" 899 915 931 947 963 979 995 1011 4 20 36 52 68 84 100 116 132 148 164 180 19"
+"6 212 228 244 260 276 292 308 324 340 356 372 388 404 420 436 452 468 484 500"
+" 516 532 548 564 580 596 612 628 644 660 676 692 708 724 740 756 772 788 804 "
+"820 836 852 868 884 900 916 932 948 964 980 996 1012 5 21 37 53 69 85 101 117"
+" 133 149 165 181 197 213 229 245 261 277 293 309 325 341 357 373 389 405 421 "
+"437 453 469 485 501 517 533 549 565 581 597 613 629 645 661 677 693 709 725 7"
+"41 757 773 789 805 821 837 853 869 885 901 917 933 949 965 981 997 1013 6 22 "
+"38 54 70 86 102 118 134 150 166 182 198 214 230 246 262 278 294 310 326 342 3"
+"58 374 390 406 422 438 454 470 486 502 518 534 550 566 582 598 614 630 646 66"
+"2 678 694 710 726 742 758 774 790 806 822 838 854 870 886 902 918 934 950 966"
+" 982 998 1014 7 23 39 55 71 87 103 119 135 151 167 183 199 215 231 247 263 27"
+"9 295 311 327 343 359 375 391 407 423 439 455 471 487 503 519 535 551 567 583"
+" 599 615 631 647 663 679 695 711 727 743 759 775 791 807 823 839 855 871 887 "
+"903 919 935 951 967 983 999 1015 8 24 40 56 72 88 104 120 136 152 168 184 200"
+" 216 232 248 264 280 296 312 328 344 360 376 392 408 424 440 456 472 488 504 "
+"520 536 552 568 584 600 616 632 648 664 680 696 712 728 744 760 776 792 808 8"
+"24 840 856 872 888 904 920 936 952 968 984 1000 1016 9 25 41 57 73 89 105 121"
+" 137 153 169 185 201 217 233 249 265 281 297 313 329 345 361 377 393 409 425 "
+"441 457 473 489 505 521 537 553 569 585 601 617 633 649 665 681 697 713 729 7"
+"45 761 777 793 809 825 841 857 873 889 905 921 937 953 969 985 1001 1017 10 2"
+"6 42 58 74 90 106 122 138 154 170 186 202 218 234 250 266 282 298 314 330 346"
+" 362 378 394 410 426 442 458 474 490 506 522 538 554 570 586 602 618 634 650 "
+"666 682 698 714 730 746 762 778 794 810 826 842 858 874 890 906 922 938 954 9"
+"70 986 1002 1018 11 27 43 59 75 91 107 123 139 155 171 187 203 219 235 251 26"
+"7 283 299 315 331 347 363 379 395 411 427 443 459 475 491 507 523 539 555 571"
+" 587 603 619 635 651 667 683 699 715 731 747 763 779 795 811 827 843 859 875 "
+"891 907 923 939 955 971 987 1003 1019 12 28 44 60 76 92 108 124 140 156 172 1"
+"88 204 220 236 252 268 284 300 316 332 348 364 380 396 412 428 444 460 476 49"
+"2 508 524 540 556 572 588 604 620 636 652 668 684 700 716 732 748 764 780 796"
+" 812 828 844 860 876 892 908 924 940 956 972 988 1004 1020 13 29 45 61 77 93 "
+"109 125 141 157 173 189 205 221 237 253 269 285 301 317 333 349 365 381 397 4"
+"13 429 445 461 477 493 509 525 541 557 573 589 605 621 637 653 669 685 701 71"
+"7 733 749 765 781 797 813 829 845 861 877 893 909 925 941 957 973 989 1005 10"
+"21 14 30 46 62 78 94 110 126 142 158 174 190 206 222 238 254 270 286 302 318 "
+"334 350 366 382 398 414 430 446 462 478 494 510 526 542 558 574 590 606 622 6"
+"38 654 670 686 702 718 734 750 766 782 798 814 830 846 862 878 894 910 926 94"
+"2 958 974 990 1006 1022 15 31 47 63 79 95 111 127 143 159 175 191 207 223 239"
+" 255 271 287 303 319 335 351 367 383 399 415 431 447 463 479 495 511 527 543 "
+"559 575 591 607 623 639 655 671 687 703 719 735 751 767 783 799 815 831 847 8"
+"63 879 895 911 927 943 959 975 991 1007 1023]"
 	      arith_type	      "Unsigned"
-	      n_bits		      "9"
+	      n_bits		      "10"
 	      bin_pt		      "0"
 	      latency		      "1"
 	      init_zero		      on
@@ -3772,191 +4420,62 @@ Model {
 	      Position		      [230, 325, 270, 345]
 	      SourceBlock	      "xbsIndex_r3/ROM"
 	      SourceType	      "Xilinx Single Port Read-Only Memory"
-	      depth		      "512"
-	      initVector	      "[0 1 16 17 32 33 48 49 64 65 80 81 96 9"
-"7 112 113 128 129 144 145 160 161 176 177 192 193 208 209 224 225 240 241 256"
-" 257 272 273 288 289 304 305 320 321 336 337 352 353 368 369 384 385 400 401 "
-"416 417 432 433 448 449 464 465 480 481 496 497 2 3 18 19 34 35 50 51 66 67 8"
-"2 83 98 99 114 115 130 131 146 147 162 163 178 179 194 195 210 211 226 227 24"
-"2 243 258 259 274 275 290 291 306 307 322 323 338 339 354 355 370 371 386 387"
-" 402 403 418 419 434 435 450 451 466 467 482 483 498 499 4 5 20 21 36 37 52 5"
-"3 68 69 84 85 100 101 116 117 132 133 148 149 164 165 180 181 196 197 212 213"
-" 228 229 244 245 260 261 276 277 292 293 308 309 324 325 340 341 356 357 372 "
-"373 388 389 404 405 420 421 436 437 452 453 468 469 484 485 500 501 6 7 22 23"
-" 38 39 54 55 70 71 86 87 102 103 118 119 134 135 150 151 166 167 182 183 198 "
-"199 214 215 230 231 246 247 262 263 278 279 294 295 310 311 326 327 342 343 3"
-"58 359 374 375 390 391 406 407 422 423 438 439 454 455 470 471 486 487 502 50"
-"3 8 9 24 25 40 41 56 57 72 73 88 89 104 105 120 121 136 137 152 153 168 169 1"
-"84 185 200 201 216 217 232 233 248 249 264 265 280 281 296 297 312 313 328 32"
-"9 344 345 360 361 376 377 392 393 408 409 424 425 440 441 456 457 472 473 488"
-" 489 504 505 10 11 26 27 42 43 58 59 74 75 90 91 106 107 122 123 138 139 154 "
-"155 170 171 186 187 202 203 218 219 234 235 250 251 266 267 282 283 298 299 3"
-"14 315 330 331 346 347 362 363 378 379 394 395 410 411 426 427 442 443 458 45"
-"9 474 475 490 491 506 507 12 13 28 29 44 45 60 61 76 77 92 93 108 109 124 125"
-" 140 141 156 157 172 173 188 189 204 205 220 221 236 237 252 253 268 269 284 "
-"285 300 301 316 317 332 333 348 349 364 365 380 381 396 397 412 413 428 429 4"
-"44 445 460 461 476 477 492 493 508 509 14 15 30 31 46 47 62 63 78 79 94 95 11"
-"0 111 126 127 142 143 158 159 174 175 190 191 206 207 222 223 238 239 254 255"
-" 270 271 286 287 302 303 318 319 334 335 350 351 366 367 382 383 398 399 414 "
-"415 430 431 446 447 462 463 478 479 494 495 510 511]"
+	      depth		      "1024"
+	      initVector	      "[0 16 32 48 64 80 96 112 128 144 160 17"
+"6 192 208 224 240 256 272 288 304 320 336 352 368 384 400 416 432 448 464 480"
+" 496 512 528 544 560 576 592 608 624 640 656 672 688 704 720 736 752 768 784 "
+"800 816 832 848 864 880 896 912 928 944 960 976 992 1008 1 17 33 49 65 81 97 "
+"113 129 145 161 177 193 209 225 241 257 273 289 305 321 337 353 369 385 401 4"
+"17 433 449 465 481 497 513 529 545 561 577 593 609 625 641 657 673 689 705 72"
+"1 737 753 769 785 801 817 833 849 865 881 897 913 929 945 961 977 993 1009 2 "
+"18 34 50 66 82 98 114 130 146 162 178 194 210 226 242 258 274 290 306 322 338"
+" 354 370 386 402 418 434 450 466 482 498 514 530 546 562 578 594 610 626 642 "
+"658 674 690 706 722 738 754 770 786 802 818 834 850 866 882 898 914 930 946 9"
+"62 978 994 1010 3 19 35 51 67 83 99 115 131 147 163 179 195 211 227 243 259 2"
+"75 291 307 323 339 355 371 387 403 419 435 451 467 483 499 515 531 547 563 57"
+"9 595 611 627 643 659 675 691 707 723 739 755 771 787 803 819 835 851 867 883"
+" 899 915 931 947 963 979 995 1011 4 20 36 52 68 84 100 116 132 148 164 180 19"
+"6 212 228 244 260 276 292 308 324 340 356 372 388 404 420 436 452 468 484 500"
+" 516 532 548 564 580 596 612 628 644 660 676 692 708 724 740 756 772 788 804 "
+"820 836 852 868 884 900 916 932 948 964 980 996 1012 5 21 37 53 69 85 101 117"
+" 133 149 165 181 197 213 229 245 261 277 293 309 325 341 357 373 389 405 421 "
+"437 453 469 485 501 517 533 549 565 581 597 613 629 645 661 677 693 709 725 7"
+"41 757 773 789 805 821 837 853 869 885 901 917 933 949 965 981 997 1013 6 22 "
+"38 54 70 86 102 118 134 150 166 182 198 214 230 246 262 278 294 310 326 342 3"
+"58 374 390 406 422 438 454 470 486 502 518 534 550 566 582 598 614 630 646 66"
+"2 678 694 710 726 742 758 774 790 806 822 838 854 870 886 902 918 934 950 966"
+" 982 998 1014 7 23 39 55 71 87 103 119 135 151 167 183 199 215 231 247 263 27"
+"9 295 311 327 343 359 375 391 407 423 439 455 471 487 503 519 535 551 567 583"
+" 599 615 631 647 663 679 695 711 727 743 759 775 791 807 823 839 855 871 887 "
+"903 919 935 951 967 983 999 1015 8 24 40 56 72 88 104 120 136 152 168 184 200"
+" 216 232 248 264 280 296 312 328 344 360 376 392 408 424 440 456 472 488 504 "
+"520 536 552 568 584 600 616 632 648 664 680 696 712 728 744 760 776 792 808 8"
+"24 840 856 872 888 904 920 936 952 968 984 1000 1016 9 25 41 57 73 89 105 121"
+" 137 153 169 185 201 217 233 249 265 281 297 313 329 345 361 377 393 409 425 "
+"441 457 473 489 505 521 537 553 569 585 601 617 633 649 665 681 697 713 729 7"
+"45 761 777 793 809 825 841 857 873 889 905 921 937 953 969 985 1001 1017 10 2"
+"6 42 58 74 90 106 122 138 154 170 186 202 218 234 250 266 282 298 314 330 346"
+" 362 378 394 410 426 442 458 474 490 506 522 538 554 570 586 602 618 634 650 "
+"666 682 698 714 730 746 762 778 794 810 826 842 858 874 890 906 922 938 954 9"
+"70 986 1002 1018 11 27 43 59 75 91 107 123 139 155 171 187 203 219 235 251 26"
+"7 283 299 315 331 347 363 379 395 411 427 443 459 475 491 507 523 539 555 571"
+" 587 603 619 635 651 667 683 699 715 731 747 763 779 795 811 827 843 859 875 "
+"891 907 923 939 955 971 987 1003 1019 12 28 44 60 76 92 108 124 140 156 172 1"
+"88 204 220 236 252 268 284 300 316 332 348 364 380 396 412 428 444 460 476 49"
+"2 508 524 540 556 572 588 604 620 636 652 668 684 700 716 732 748 764 780 796"
+" 812 828 844 860 876 892 908 924 940 956 972 988 1004 1020 13 29 45 61 77 93 "
+"109 125 141 157 173 189 205 221 237 253 269 285 301 317 333 349 365 381 397 4"
+"13 429 445 461 477 493 509 525 541 557 573 589 605 621 637 653 669 685 701 71"
+"7 733 749 765 781 797 813 829 845 861 877 893 909 925 941 957 973 989 1005 10"
+"21 14 30 46 62 78 94 110 126 142 158 174 190 206 222 238 254 270 286 302 318 "
+"334 350 366 382 398 414 430 446 462 478 494 510 526 542 558 574 590 606 622 6"
+"38 654 670 686 702 718 734 750 766 782 798 814 830 846 862 878 894 910 926 94"
+"2 958 974 990 1006 1022 15 31 47 63 79 95 111 127 143 159 175 191 207 223 239"
+" 255 271 287 303 319 335 351 367 383 399 415 431 447 463 479 495 511 527 543 "
+"559 575 591 607 623 639 655 671 687 703 719 735 751 767 783 799 815 831 847 8"
+"63 879 895 911 927 943 959 975 991 1007 1023]"
 	      arith_type	      "Unsigned"
-	      n_bits		      "9"
-	      bin_pt		      "0"
-	      latency		      "1"
-	      init_zero		      on
-	      explicit_period	      off
-	      period		      "1"
-	      rst		      off
-	      init_reg		      "0"
-	      en		      off
-	      dbl_ovrd		      off
-	      show_param	      off
-	      distributed_mem	      on
-	      use_rpm		      off
-	      gen_core		      off
-	      xl_area		      "[0, 0, 0, 0, 0, 0, 0]"
-	      xl_use_area	      off
-	    }
-	    Block {
-	      BlockType		      Reference
-	      Name		      "map5"
-	      Ports		      [1, 1]
-	      Position		      [230, 375, 270, 395]
-	      SourceBlock	      "xbsIndex_r3/ROM"
-	      SourceType	      "Xilinx Single Port Read-Only Memory"
-	      depth		      "512"
-	      initVector	      "[0 1 16 17 32 33 48 49 64 65 80 81 96 9"
-"7 112 113 128 129 144 145 160 161 176 177 192 193 208 209 224 225 240 241 256"
-" 257 272 273 288 289 304 305 320 321 336 337 352 353 368 369 384 385 400 401 "
-"416 417 432 433 448 449 464 465 480 481 496 497 2 3 18 19 34 35 50 51 66 67 8"
-"2 83 98 99 114 115 130 131 146 147 162 163 178 179 194 195 210 211 226 227 24"
-"2 243 258 259 274 275 290 291 306 307 322 323 338 339 354 355 370 371 386 387"
-" 402 403 418 419 434 435 450 451 466 467 482 483 498 499 4 5 20 21 36 37 52 5"
-"3 68 69 84 85 100 101 116 117 132 133 148 149 164 165 180 181 196 197 212 213"
-" 228 229 244 245 260 261 276 277 292 293 308 309 324 325 340 341 356 357 372 "
-"373 388 389 404 405 420 421 436 437 452 453 468 469 484 485 500 501 6 7 22 23"
-" 38 39 54 55 70 71 86 87 102 103 118 119 134 135 150 151 166 167 182 183 198 "
-"199 214 215 230 231 246 247 262 263 278 279 294 295 310 311 326 327 342 343 3"
-"58 359 374 375 390 391 406 407 422 423 438 439 454 455 470 471 486 487 502 50"
-"3 8 9 24 25 40 41 56 57 72 73 88 89 104 105 120 121 136 137 152 153 168 169 1"
-"84 185 200 201 216 217 232 233 248 249 264 265 280 281 296 297 312 313 328 32"
-"9 344 345 360 361 376 377 392 393 408 409 424 425 440 441 456 457 472 473 488"
-" 489 504 505 10 11 26 27 42 43 58 59 74 75 90 91 106 107 122 123 138 139 154 "
-"155 170 171 186 187 202 203 218 219 234 235 250 251 266 267 282 283 298 299 3"
-"14 315 330 331 346 347 362 363 378 379 394 395 410 411 426 427 442 443 458 45"
-"9 474 475 490 491 506 507 12 13 28 29 44 45 60 61 76 77 92 93 108 109 124 125"
-" 140 141 156 157 172 173 188 189 204 205 220 221 236 237 252 253 268 269 284 "
-"285 300 301 316 317 332 333 348 349 364 365 380 381 396 397 412 413 428 429 4"
-"44 445 460 461 476 477 492 493 508 509 14 15 30 31 46 47 62 63 78 79 94 95 11"
-"0 111 126 127 142 143 158 159 174 175 190 191 206 207 222 223 238 239 254 255"
-" 270 271 286 287 302 303 318 319 334 335 350 351 366 367 382 383 398 399 414 "
-"415 430 431 446 447 462 463 478 479 494 495 510 511]"
-	      arith_type	      "Unsigned"
-	      n_bits		      "9"
-	      bin_pt		      "0"
-	      latency		      "1"
-	      init_zero		      on
-	      explicit_period	      off
-	      period		      "1"
-	      rst		      off
-	      init_reg		      "0"
-	      en		      off
-	      dbl_ovrd		      off
-	      show_param	      off
-	      distributed_mem	      on
-	      use_rpm		      off
-	      gen_core		      off
-	      xl_area		      "[0, 0, 0, 0, 0, 0, 0]"
-	      xl_use_area	      off
-	    }
-	    Block {
-	      BlockType		      Reference
-	      Name		      "map6"
-	      Ports		      [1, 1]
-	      Position		      [230, 425, 270, 445]
-	      SourceBlock	      "xbsIndex_r3/ROM"
-	      SourceType	      "Xilinx Single Port Read-Only Memory"
-	      depth		      "512"
-	      initVector	      "[0 1 16 17 32 33 48 49 64 65 80 81 96 9"
-"7 112 113 128 129 144 145 160 161 176 177 192 193 208 209 224 225 240 241 256"
-" 257 272 273 288 289 304 305 320 321 336 337 352 353 368 369 384 385 400 401 "
-"416 417 432 433 448 449 464 465 480 481 496 497 2 3 18 19 34 35 50 51 66 67 8"
-"2 83 98 99 114 115 130 131 146 147 162 163 178 179 194 195 210 211 226 227 24"
-"2 243 258 259 274 275 290 291 306 307 322 323 338 339 354 355 370 371 386 387"
-" 402 403 418 419 434 435 450 451 466 467 482 483 498 499 4 5 20 21 36 37 52 5"
-"3 68 69 84 85 100 101 116 117 132 133 148 149 164 165 180 181 196 197 212 213"
-" 228 229 244 245 260 261 276 277 292 293 308 309 324 325 340 341 356 357 372 "
-"373 388 389 404 405 420 421 436 437 452 453 468 469 484 485 500 501 6 7 22 23"
-" 38 39 54 55 70 71 86 87 102 103 118 119 134 135 150 151 166 167 182 183 198 "
-"199 214 215 230 231 246 247 262 263 278 279 294 295 310 311 326 327 342 343 3"
-"58 359 374 375 390 391 406 407 422 423 438 439 454 455 470 471 486 487 502 50"
-"3 8 9 24 25 40 41 56 57 72 73 88 89 104 105 120 121 136 137 152 153 168 169 1"
-"84 185 200 201 216 217 232 233 248 249 264 265 280 281 296 297 312 313 328 32"
-"9 344 345 360 361 376 377 392 393 408 409 424 425 440 441 456 457 472 473 488"
-" 489 504 505 10 11 26 27 42 43 58 59 74 75 90 91 106 107 122 123 138 139 154 "
-"155 170 171 186 187 202 203 218 219 234 235 250 251 266 267 282 283 298 299 3"
-"14 315 330 331 346 347 362 363 378 379 394 395 410 411 426 427 442 443 458 45"
-"9 474 475 490 491 506 507 12 13 28 29 44 45 60 61 76 77 92 93 108 109 124 125"
-" 140 141 156 157 172 173 188 189 204 205 220 221 236 237 252 253 268 269 284 "
-"285 300 301 316 317 332 333 348 349 364 365 380 381 396 397 412 413 428 429 4"
-"44 445 460 461 476 477 492 493 508 509 14 15 30 31 46 47 62 63 78 79 94 95 11"
-"0 111 126 127 142 143 158 159 174 175 190 191 206 207 222 223 238 239 254 255"
-" 270 271 286 287 302 303 318 319 334 335 350 351 366 367 382 383 398 399 414 "
-"415 430 431 446 447 462 463 478 479 494 495 510 511]"
-	      arith_type	      "Unsigned"
-	      n_bits		      "9"
-	      bin_pt		      "0"
-	      latency		      "1"
-	      init_zero		      on
-	      explicit_period	      off
-	      period		      "1"
-	      rst		      off
-	      init_reg		      "0"
-	      en		      off
-	      dbl_ovrd		      off
-	      show_param	      off
-	      distributed_mem	      on
-	      use_rpm		      off
-	      gen_core		      off
-	      xl_area		      "[0, 0, 0, 0, 0, 0, 0]"
-	      xl_use_area	      off
-	    }
-	    Block {
-	      BlockType		      Reference
-	      Name		      "map7"
-	      Ports		      [1, 1]
-	      Position		      [230, 475, 270, 495]
-	      SourceBlock	      "xbsIndex_r3/ROM"
-	      SourceType	      "Xilinx Single Port Read-Only Memory"
-	      depth		      "512"
-	      initVector	      "[0 1 16 17 32 33 48 49 64 65 80 81 96 9"
-"7 112 113 128 129 144 145 160 161 176 177 192 193 208 209 224 225 240 241 256"
-" 257 272 273 288 289 304 305 320 321 336 337 352 353 368 369 384 385 400 401 "
-"416 417 432 433 448 449 464 465 480 481 496 497 2 3 18 19 34 35 50 51 66 67 8"
-"2 83 98 99 114 115 130 131 146 147 162 163 178 179 194 195 210 211 226 227 24"
-"2 243 258 259 274 275 290 291 306 307 322 323 338 339 354 355 370 371 386 387"
-" 402 403 418 419 434 435 450 451 466 467 482 483 498 499 4 5 20 21 36 37 52 5"
-"3 68 69 84 85 100 101 116 117 132 133 148 149 164 165 180 181 196 197 212 213"
-" 228 229 244 245 260 261 276 277 292 293 308 309 324 325 340 341 356 357 372 "
-"373 388 389 404 405 420 421 436 437 452 453 468 469 484 485 500 501 6 7 22 23"
-" 38 39 54 55 70 71 86 87 102 103 118 119 134 135 150 151 166 167 182 183 198 "
-"199 214 215 230 231 246 247 262 263 278 279 294 295 310 311 326 327 342 343 3"
-"58 359 374 375 390 391 406 407 422 423 438 439 454 455 470 471 486 487 502 50"
-"3 8 9 24 25 40 41 56 57 72 73 88 89 104 105 120 121 136 137 152 153 168 169 1"
-"84 185 200 201 216 217 232 233 248 249 264 265 280 281 296 297 312 313 328 32"
-"9 344 345 360 361 376 377 392 393 408 409 424 425 440 441 456 457 472 473 488"
-" 489 504 505 10 11 26 27 42 43 58 59 74 75 90 91 106 107 122 123 138 139 154 "
-"155 170 171 186 187 202 203 218 219 234 235 250 251 266 267 282 283 298 299 3"
-"14 315 330 331 346 347 362 363 378 379 394 395 410 411 426 427 442 443 458 45"
-"9 474 475 490 491 506 507 12 13 28 29 44 45 60 61 76 77 92 93 108 109 124 125"
-" 140 141 156 157 172 173 188 189 204 205 220 221 236 237 252 253 268 269 284 "
-"285 300 301 316 317 332 333 348 349 364 365 380 381 396 397 412 413 428 429 4"
-"44 445 460 461 476 477 492 493 508 509 14 15 30 31 46 47 62 63 78 79 94 95 11"
-"0 111 126 127 142 143 158 159 174 175 190 191 206 207 222 223 238 239 254 255"
-" 270 271 286 287 302 303 318 319 334 335 350 351 366 367 382 383 398 399 414 "
-"415 430 431 446 447 462 463 478 479 494 495 510 511]"
-	      arith_type	      "Unsigned"
-	      n_bits		      "9"
+	      n_bits		      "10"
 	      bin_pt		      "0"
 	      latency		      "1"
 	      init_zero		      on
@@ -3999,7 +4518,7 @@ Model {
 	      Position		      [55, 159, 75, 201]
 	      SourceBlock	      "xbsIndex_r3/Delay"
 	      SourceType	      "Xilinx Delay Block"
-	      latency		      "7"
+	      latency		      "4"
 	      reg_retiming	      off
 	      explicit_period	      off
 	      period		      "1"
@@ -4037,7 +4556,7 @@ Model {
 	      SourceBlock	      "casper_library/Delays/sync_delay_en"
 	      SourceType	      "sync_delay_en"
 	      ShowPortLabels	      on
-	      DelayLen		      "512"
+	      DelayLen		      "1024"
 	    }
 	    Block {
 	      BlockType		      Outport
@@ -4260,74 +4779,14 @@ Model {
 	    Line {
 	      SrcBlock		      "map4"
 	      SrcPort		      1
-	      Points		      [0, 0]
-	      Branch {
-		DstBlock		"delay_map4"
-		DstPort			1
-	      }
-	      Branch {
-		Points			[0, 35; -60, 0]
-		DstBlock		"map5"
-		DstPort			1
-	      }
+	      DstBlock		      "delay_map4"
+	      DstPort		      1
 	    }
 	    Line {
 	      SrcBlock		      "delay_map4"
 	      SrcPort		      1
 	      DstBlock		      "Mux"
 	      DstPort		      6
-	    }
-	    Line {
-	      SrcBlock		      "map5"
-	      SrcPort		      1
-	      Points		      [0, 0]
-	      Branch {
-		DstBlock		"delay_map5"
-		DstPort			1
-	      }
-	      Branch {
-		Points			[0, 35; -60, 0]
-		DstBlock		"map6"
-		DstPort			1
-	      }
-	    }
-	    Line {
-	      SrcBlock		      "delay_map5"
-	      SrcPort		      1
-	      DstBlock		      "Mux"
-	      DstPort		      7
-	    }
-	    Line {
-	      SrcBlock		      "map6"
-	      SrcPort		      1
-	      Points		      [0, 0]
-	      Branch {
-		DstBlock		"delay_map6"
-		DstPort			1
-	      }
-	      Branch {
-		Points			[0, 35; -60, 0]
-		DstBlock		"map7"
-		DstPort			1
-	      }
-	    }
-	    Line {
-	      SrcBlock		      "delay_map6"
-	      SrcPort		      1
-	      DstBlock		      "Mux"
-	      DstPort		      8
-	    }
-	    Line {
-	      SrcBlock		      "map7"
-	      SrcPort		      1
-	      DstBlock		      "delay_map7"
-	      DstPort		      1
-	    }
-	    Line {
-	      SrcBlock		      "delay_map7"
-	      SrcPort		      1
-	      DstBlock		      "Mux"
-	      DstPort		      9
 	    }
 	  }
 	}
@@ -4664,7 +5123,7 @@ Model {
 	Line {
 	  SrcBlock		  "bs_delay1"
 	  SrcPort		  1
-	  Points		  [305, 0; 0, -65; 95, 0]
+	  Points		  [305, 0; 0, -65; 55, 0]
 	  Branch {
 	    DstBlock		    "ten_GbE0"
 	    DstPort		    3
@@ -4684,17 +5143,9 @@ Model {
 	    DstPort		    2
 	  }
 	  Branch {
-	    Points		    [0, -490]
-	    Branch {
-	      Points		      [0, -35]
-	      DstBlock		      "Slice"
-	      DstPort		      1
-	    }
-	    Branch {
-	      Points		      [0, -5]
-	      DstBlock		      "Gateway Out8"
-	      DstPort		      1
-	    }
+	    Points		    [0, -525]
+	    DstBlock		    "Slice"
+	    DstPort		    1
 	  }
 	}
 	Line {
@@ -4802,7 +5253,7 @@ Model {
 	    DstPort		    3
 	  }
 	  Branch {
-	    Points		    [0, -415]
+	    Points		    [0, -405]
 	    DstBlock		    "Gateway Out7"
 	    DstPort		    1
 	  }
@@ -4810,13 +5261,13 @@ Model {
 	Line {
 	  SrcBlock		  "bs_delay6"
 	  SrcPort		  1
-	  Points		  [0, 0; 370, 0]
+	  Points		  [0, 0; 400, 0]
 	  Branch {
 	    DstBlock		    "ten_GbE1"
 	    DstPort		    2
 	  }
 	  Branch {
-	    Points		    [0, -305]
+	    Points		    [0, -315]
 	    DstBlock		    "Slice2"
 	    DstPort		    1
 	  }
@@ -4842,25 +5293,10 @@ Model {
 	  }
 	}
 	Line {
-	  SrcBlock		  "Gateway Out7"
-	  SrcPort		  1
-	  Points		  [0, 0]
-	  DstBlock		  "Scope8"
-	  DstPort		  1
-	}
-	Line {
 	  SrcBlock		  "Gateway Out9"
 	  SrcPort		  1
-	  Points		  [0, 0]
-	  DstBlock		  "Scope8"
+	  DstBlock		  "Scope2"
 	  DstPort		  2
-	}
-	Line {
-	  SrcBlock		  "Gateway Out5"
-	  SrcPort		  1
-	  Points		  [0, 0]
-	  DstBlock		  "Scope8"
-	  DstPort		  3
 	}
 	Line {
 	  SrcBlock		  "reorder"
@@ -4930,9 +5366,9 @@ Model {
 	    DstPort		    1
 	  }
 	  Branch {
-	    Points		    [0, -180]
+	    Points		    [0, 0]
 	    Branch {
-	      Points		      [0, -485]
+	      Points		      [0, -665]
 	      Branch {
 		DstBlock		"cnt_mux0"
 		DstPort			1
@@ -4944,7 +5380,7 @@ Model {
 	      }
 	    }
 	    Branch {
-	      Points		      [0, 180; 615, 0; 0, 65]
+	      Points		      [0, 0; 615, 0; 0, 65]
 	      DstBlock		      "ip_ctr"
 	      DstPort		      3
 	    }
@@ -5007,7 +5443,7 @@ Model {
 	Line {
 	  SrcBlock		  "Expression"
 	  SrcPort		  1
-	  Points		  [90, 0]
+	  Points		  [60, 0]
 	  Branch {
 	    DstBlock		    "ten_GbE0"
 	    DstPort		    6
@@ -5106,8 +5542,16 @@ Model {
 	    DstPort		    1
 	  }
 	  Branch {
-	    DstBlock		    "ten_GbE1"
-	    DstPort		    4
+	    Points		    [230, 0]
+	    Branch {
+	      DstBlock		      "ten_GbE1"
+	      DstPort		      4
+	    }
+	    Branch {
+	      Points		      [0, -345]
+	      DstBlock		      "Gateway Out10"
+	      DstPort		      1
+	    }
 	  }
 	}
 	Line {
@@ -5125,10 +5569,35 @@ Model {
 	    DstPort		    1
 	  }
 	  Branch {
-	    Points		    [0, -145]
-	    DstBlock		    "ten_GbE0"
-	    DstPort		    4
+	    Points		    [0, -145; 225, 0]
+	    Branch {
+	      DstBlock		      "ten_GbE0"
+	      DstPort		      4
+	    }
+	    Branch {
+	      Points		      [0, -555]
+	      DstBlock		      "Gateway Out8"
+	      DstPort		      1
+	    }
 	  }
+	}
+	Line {
+	  SrcBlock		  "Gateway Out7"
+	  SrcPort		  1
+	  DstBlock		  "Scope2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "Gateway Out5"
+	  SrcPort		  1
+	  DstBlock		  "Scope2"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Gateway Out10"
+	  SrcPort		  1
+	  DstBlock		  "Scope2"
+	  DstPort		  4
 	}
 	Annotation {
 	  Name			  "Delay the valid and data signals so that\ne"
@@ -5381,17 +5850,17 @@ Model {
 	  cnt_to		  "63"
 	  cnt_by_val		  "1"
 	  operation		  "Up"
-	  explicit_period	  "off"
+	  explicit_period	  off
 	  period		  "1"
-	  load_pin		  "off"
-	  rst			  "on"
-	  en			  "on"
-	  dbl_ovrd		  "off"
-	  show_param		  "off"
-	  use_rpm		  "on"
-	  gen_core		  "off"
+	  load_pin		  off
+	  rst			  on
+	  en			  on
+	  dbl_ovrd		  off
+	  show_param		  off
+	  use_rpm		  on
+	  gen_core		  off
 	  xl_area		  "[0, 0, 0, 0, 0, 0, 0]"
-	  xl_use_area		  "off"
+	  xl_use_area		  off
 	}
 	Block {
 	  BlockType		  Reference
@@ -5408,16 +5877,16 @@ Model {
 	  quantization		  "Truncate"
 	  overflow		  "Wrap"
 	  latency		  "1"
-	  explicit_period	  "off"
+	  explicit_period	  off
 	  period		  "1"
-	  en			  "off"
-	  dbl_ovrd		  "off"
-	  show_param		  "off"
-	  mux_type		  "off"
-	  use_rpm		  "off"
-	  gen_core		  "off"
+	  en			  off
+	  dbl_ovrd		  off
+	  show_param		  off
+	  mux_type		  off
+	  use_rpm		  off
+	  gen_core		  off
 	  xl_area		  "[0, 0, 0, 0, 0, 0, 0]"
-	  xl_use_area		  "off"
+	  xl_use_area		  off
 	}
 	Block {
 	  BlockType		  Reference
@@ -5432,10 +5901,10 @@ Model {
 	  base1			  "MSB of Input"
 	  bit0			  "0"
 	  base0			  "LSB of Input"
-	  boolean_output	  "off"
-	  explicit_period	  "off"
+	  boolean_output	  off
+	  explicit_period	  off
 	  period		  "1"
-	  dbl_ovrd		  "off"
+	  dbl_ovrd		  off
 	}
 	Block {
 	  BlockType		  Reference
@@ -5450,10 +5919,10 @@ Model {
 	  base1			  "MSB of Input"
 	  bit0			  "0"
 	  base0			  "LSB of Input"
-	  boolean_output	  "off"
-	  explicit_period	  "off"
+	  boolean_output	  off
+	  explicit_period	  off
 	  period		  "1"
-	  dbl_ovrd		  "off"
+	  dbl_ovrd		  off
 	}
 	Block {
 	  BlockType		  Reference
@@ -5466,19 +5935,19 @@ Model {
 	  initVector		  "sin(pi*(0:15)/16)"
 	  write_mode		  "Read Before Write"
 	  latency		  "2"
-	  init_zero		  "on"
-	  explicit_period	  "off"
+	  init_zero		  on
+	  explicit_period	  off
 	  period		  "1"
-	  rst			  "off"
+	  rst			  off
 	  init_reg		  "0"
-	  en			  "off"
-	  dbl_ovrd		  "off"
-	  show_param		  "off"
-	  distributed_mem	  "off"
-	  use_rpm		  "off"
-	  gen_core		  "off"
+	  en			  off
+	  dbl_ovrd		  off
+	  show_param		  off
+	  distributed_mem	  off
+	  use_rpm		  off
+	  gen_core		  off
 	  xl_area		  "[0, 0, 0, 0, 0, 0, 0]"
-	  xl_use_area		  "off"
+	  xl_use_area		  off
 	}
 	Block {
 	  BlockType		  Reference
@@ -5491,19 +5960,19 @@ Model {
 	  initVector		  "sin(pi*(0:15)/16)"
 	  write_mode		  "Read Before Write"
 	  latency		  "2"
-	  init_zero		  "on"
-	  explicit_period	  "off"
+	  init_zero		  on
+	  explicit_period	  off
 	  period		  "1"
-	  rst			  "off"
+	  rst			  off
 	  init_reg		  "0"
-	  en			  "off"
-	  dbl_ovrd		  "off"
-	  show_param		  "off"
-	  distributed_mem	  "off"
-	  use_rpm		  "off"
-	  gen_core		  "off"
+	  en			  off
+	  dbl_ovrd		  off
+	  show_param		  off
+	  distributed_mem	  off
+	  use_rpm		  off
+	  gen_core		  off
 	  xl_area		  "[0, 0, 0, 0, 0, 0, 0]"
-	  xl_use_area		  "off"
+	  xl_use_area		  off
 	}
 	Block {
 	  BlockType		  Reference
@@ -5513,16 +5982,16 @@ Model {
 	  SourceBlock		  "xbsIndex_r3/Delay"
 	  SourceType		  "Xilinx Delay Block"
 	  latency		  "3"
-	  reg_retiming		  "off"
-	  explicit_period	  "off"
+	  reg_retiming		  off
+	  explicit_period	  off
 	  period		  "1"
-	  en			  "off"
-	  accept_only_valid	  "off"
-	  init_zero		  "on"
-	  dbl_ovrd		  "off"
-	  show_param		  "off"
+	  en			  off
+	  accept_only_valid	  off
+	  init_zero		  on
+	  dbl_ovrd		  off
+	  show_param		  off
 	  xl_area		  "[0, 0, 0, 0, 0, 0, 0]"
-	  xl_use_area		  "off"
+	  xl_use_area		  off
 	}
 	Block {
 	  BlockType		  Reference
@@ -5532,16 +6001,16 @@ Model {
 	  SourceBlock		  "xbsIndex_r3/Delay"
 	  SourceType		  "Xilinx Delay Block"
 	  latency		  "4"
-	  reg_retiming		  "off"
-	  explicit_period	  "off"
+	  reg_retiming		  off
+	  explicit_period	  off
 	  period		  "1"
-	  en			  "off"
-	  accept_only_valid	  "off"
-	  init_zero		  "on"
-	  dbl_ovrd		  "off"
-	  show_param		  "off"
+	  en			  off
+	  accept_only_valid	  off
+	  init_zero		  on
+	  dbl_ovrd		  off
+	  show_param		  off
 	  xl_area		  "[0, 0, 0, 0, 0, 0, 0]"
-	  xl_use_area		  "off"
+	  xl_use_area		  off
 	}
 	Block {
 	  BlockType		  Reference
@@ -5551,16 +6020,16 @@ Model {
 	  SourceBlock		  "xbsIndex_r3/Delay"
 	  SourceType		  "Xilinx Delay Block"
 	  latency		  "4"
-	  reg_retiming		  "off"
-	  explicit_period	  "off"
+	  reg_retiming		  off
+	  explicit_period	  off
 	  period		  "1"
-	  en			  "off"
-	  accept_only_valid	  "off"
-	  init_zero		  "on"
-	  dbl_ovrd		  "off"
-	  show_param		  "off"
+	  en			  off
+	  accept_only_valid	  off
+	  init_zero		  on
+	  dbl_ovrd		  off
+	  show_param		  off
 	  xl_area		  "[0, 0, 0, 0, 0, 0, 0]"
-	  xl_use_area		  "off"
+	  xl_use_area		  off
 	}
 	Block {
 	  BlockType		  Reference
@@ -5570,16 +6039,16 @@ Model {
 	  SourceBlock		  "xbsIndex_r3/Delay"
 	  SourceType		  "Xilinx Delay Block"
 	  latency		  "2*map_latency"
-	  reg_retiming		  "off"
-	  explicit_period	  "off"
+	  reg_retiming		  off
+	  explicit_period	  off
 	  period		  "1"
-	  en			  "off"
-	  accept_only_valid	  "off"
-	  init_zero		  "on"
-	  dbl_ovrd		  "off"
-	  show_param		  "off"
+	  en			  off
+	  accept_only_valid	  off
+	  init_zero		  on
+	  dbl_ovrd		  off
+	  show_param		  off
 	  xl_area		  "[0, 0, 0, 0, 0, 0, 0]"
-	  xl_use_area		  "off"
+	  xl_use_area		  off
 	}
 	Block {
 	  BlockType		  Reference
@@ -5589,16 +6058,16 @@ Model {
 	  SourceBlock		  "xbsIndex_r3/Delay"
 	  SourceType		  "Xilinx Delay Block"
 	  latency		  "1*map_latency"
-	  reg_retiming		  "off"
-	  explicit_period	  "off"
+	  reg_retiming		  off
+	  explicit_period	  off
 	  period		  "1"
-	  en			  "off"
-	  accept_only_valid	  "off"
-	  init_zero		  "on"
-	  dbl_ovrd		  "off"
-	  show_param		  "off"
+	  en			  off
+	  accept_only_valid	  off
+	  init_zero		  on
+	  dbl_ovrd		  off
+	  show_param		  off
 	  xl_area		  "[0, 0, 0, 0, 0, 0, 0]"
-	  xl_use_area		  "off"
+	  xl_use_area		  off
 	}
 	Block {
 	  BlockType		  Reference
@@ -5608,16 +6077,16 @@ Model {
 	  SourceBlock		  "xbsIndex_r3/Delay"
 	  SourceType		  "Xilinx Delay Block"
 	  latency		  "0*map_latency"
-	  reg_retiming		  "off"
-	  explicit_period	  "off"
+	  reg_retiming		  off
+	  explicit_period	  off
 	  period		  "1"
-	  en			  "off"
-	  accept_only_valid	  "off"
-	  init_zero		  "on"
-	  dbl_ovrd		  "off"
-	  show_param		  "off"
+	  en			  off
+	  accept_only_valid	  off
+	  init_zero		  on
+	  dbl_ovrd		  off
+	  show_param		  off
 	  xl_area		  "[0, 0, 0, 0, 0, 0, 0]"
-	  xl_use_area		  "off"
+	  xl_use_area		  off
 	}
 	Block {
 	  BlockType		  Reference
@@ -5627,16 +6096,16 @@ Model {
 	  SourceBlock		  "xbsIndex_r3/Delay"
 	  SourceType		  "Xilinx Delay Block"
 	  latency		  "3"
-	  reg_retiming		  "off"
-	  explicit_period	  "off"
+	  reg_retiming		  off
+	  explicit_period	  off
 	  period		  "1"
-	  en			  "off"
-	  accept_only_valid	  "off"
-	  init_zero		  "on"
-	  dbl_ovrd		  "off"
-	  show_param		  "off"
+	  en			  off
+	  accept_only_valid	  off
+	  init_zero		  on
+	  dbl_ovrd		  off
+	  show_param		  off
 	  xl_area		  "[0, 0, 0, 0, 0, 0, 0]"
-	  xl_use_area		  "off"
+	  xl_use_area		  off
 	}
 	Block {
 	  BlockType		  Reference
@@ -5646,16 +6115,16 @@ Model {
 	  SourceBlock		  "xbsIndex_r3/Delay"
 	  SourceType		  "Xilinx Delay Block"
 	  latency		  "3"
-	  reg_retiming		  "off"
-	  explicit_period	  "off"
+	  reg_retiming		  off
+	  explicit_period	  off
 	  period		  "1"
-	  en			  "off"
-	  accept_only_valid	  "off"
-	  init_zero		  "on"
-	  dbl_ovrd		  "off"
-	  show_param		  "off"
+	  en			  off
+	  accept_only_valid	  off
+	  init_zero		  on
+	  dbl_ovrd		  off
+	  show_param		  off
 	  xl_area		  "[0, 0, 0, 0, 0, 0, 0]"
-	  xl_use_area		  "off"
+	  xl_use_area		  off
 	}
 	Block {
 	  BlockType		  Reference
@@ -5665,16 +6134,16 @@ Model {
 	  SourceBlock		  "xbsIndex_r3/Delay"
 	  SourceType		  "Xilinx Delay Block"
 	  latency		  "3"
-	  reg_retiming		  "off"
-	  explicit_period	  "off"
+	  reg_retiming		  off
+	  explicit_period	  off
 	  period		  "1"
-	  en			  "off"
-	  accept_only_valid	  "off"
-	  init_zero		  "on"
-	  dbl_ovrd		  "off"
-	  show_param		  "off"
+	  en			  off
+	  accept_only_valid	  off
+	  init_zero		  on
+	  dbl_ovrd		  off
+	  show_param		  off
 	  xl_area		  "[0, 0, 0, 0, 0, 0, 0]"
-	  xl_use_area		  "off"
+	  xl_use_area		  off
 	}
 	Block {
 	  BlockType		  Reference
@@ -5689,19 +6158,19 @@ Model {
 	  n_bits		  "4"
 	  bin_pt		  "0"
 	  latency		  "1"
-	  init_zero		  "on"
-	  explicit_period	  "off"
+	  init_zero		  on
+	  explicit_period	  off
 	  period		  "1"
-	  rst			  "off"
+	  rst			  off
 	  init_reg		  "0"
-	  en			  "off"
-	  dbl_ovrd		  "off"
-	  show_param		  "off"
-	  distributed_mem	  "on"
-	  use_rpm		  "off"
-	  gen_core		  "off"
+	  en			  off
+	  dbl_ovrd		  off
+	  show_param		  off
+	  distributed_mem	  on
+	  use_rpm		  off
+	  gen_core		  off
 	  xl_area		  "[0, 0, 0, 0, 0, 0, 0]"
-	  xl_use_area		  "off"
+	  xl_use_area		  off
 	}
 	Block {
 	  BlockType		  Reference
@@ -5716,19 +6185,19 @@ Model {
 	  n_bits		  "4"
 	  bin_pt		  "0"
 	  latency		  "1"
-	  init_zero		  "on"
-	  explicit_period	  "off"
+	  init_zero		  on
+	  explicit_period	  off
 	  period		  "1"
-	  rst			  "off"
+	  rst			  off
 	  init_reg		  "0"
-	  en			  "off"
-	  dbl_ovrd		  "off"
-	  show_param		  "off"
-	  distributed_mem	  "on"
-	  use_rpm		  "off"
-	  gen_core		  "off"
+	  en			  off
+	  dbl_ovrd		  off
+	  show_param		  off
+	  distributed_mem	  on
+	  use_rpm		  off
+	  gen_core		  off
 	  xl_area		  "[0, 0, 0, 0, 0, 0, 0]"
-	  xl_use_area		  "off"
+	  xl_use_area		  off
 	}
 	Block {
 	  BlockType		  Reference
@@ -5743,19 +6212,19 @@ Model {
 	  n_bits		  "4"
 	  bin_pt		  "0"
 	  latency		  "1"
-	  init_zero		  "on"
-	  explicit_period	  "off"
+	  init_zero		  on
+	  explicit_period	  off
 	  period		  "1"
-	  rst			  "off"
+	  rst			  off
 	  init_reg		  "0"
-	  en			  "off"
-	  dbl_ovrd		  "off"
-	  show_param		  "off"
-	  distributed_mem	  "on"
-	  use_rpm		  "off"
-	  gen_core		  "off"
+	  en			  off
+	  dbl_ovrd		  off
+	  show_param		  off
+	  distributed_mem	  on
+	  use_rpm		  off
+	  gen_core		  off
 	  xl_area		  "[0, 0, 0, 0, 0, 0, 0]"
-	  xl_use_area		  "off"
+	  xl_use_area		  off
 	}
 	Block {
 	  BlockType		  Reference
@@ -5765,16 +6234,16 @@ Model {
 	  SourceBlock		  "xbsIndex_r3/Delay"
 	  SourceType		  "Xilinx Delay Block"
 	  latency		  "3"
-	  reg_retiming		  "off"
-	  explicit_period	  "off"
+	  reg_retiming		  off
+	  explicit_period	  off
 	  period		  "1"
-	  en			  "off"
-	  accept_only_valid	  "off"
-	  init_zero		  "on"
-	  dbl_ovrd		  "off"
-	  show_param		  "off"
+	  en			  off
+	  accept_only_valid	  off
+	  init_zero		  on
+	  dbl_ovrd		  off
+	  show_param		  off
 	  xl_area		  "[0, 0, 0, 0, 0, 0, 0]"
-	  xl_use_area		  "off"
+	  xl_use_area		  off
 	}
 	Block {
 	  BlockType		  Reference
@@ -5784,16 +6253,16 @@ Model {
 	  SourceBlock		  "xbsIndex_r3/Delay"
 	  SourceType		  "Xilinx Delay Block"
 	  latency		  "3"
-	  reg_retiming		  "off"
-	  explicit_period	  "off"
+	  reg_retiming		  off
+	  explicit_period	  off
 	  period		  "1"
-	  en			  "off"
-	  accept_only_valid	  "off"
-	  init_zero		  "on"
-	  dbl_ovrd		  "off"
-	  show_param		  "off"
+	  en			  off
+	  accept_only_valid	  off
+	  init_zero		  on
+	  dbl_ovrd		  off
+	  show_param		  off
 	  xl_area		  "[0, 0, 0, 0, 0, 0, 0]"
-	  xl_use_area		  "off"
+	  xl_use_area		  off
 	}
 	Block {
 	  BlockType		  Reference
@@ -5820,7 +6289,7 @@ Model {
 	  }
 	  SourceBlock		  "casper_library/Delays/sync_delay_en"
 	  SourceType		  "sync_delay_en"
-	  ShowPortLabels	  "on"
+	  ShowPortLabels	  on
 	  DelayLen		  "16"
 	}
 	Block {
@@ -6190,14 +6659,14 @@ Model {
 	  quantization		  "Truncate"
 	  overflow		  "Wrap"
 	  latency		  "1"
-	  explicit_period	  "off"
+	  explicit_period	  off
 	  period		  "1"
-	  dbl_ovrd		  "off"
-	  show_param		  "off"
-	  inserted_by_tool	  "off"
-	  pipeline		  "off"
+	  dbl_ovrd		  off
+	  show_param		  off
+	  inserted_by_tool	  off
+	  pipeline		  off
 	  xl_area		  "[0, 0, 0, 0, 0, 0, 0]"
-	  xl_use_area		  "off"
+	  xl_use_area		  off
 	}
 	Block {
 	  BlockType		  Reference
@@ -6214,17 +6683,17 @@ Model {
 	  cnt_to		  "Inf"
 	  cnt_by_val		  "1"
 	  operation		  "Up"
-	  explicit_period	  "on"
+	  explicit_period	  on
 	  period		  "1"
-	  load_pin		  "off"
-	  rst			  "on"
-	  en			  "off"
-	  dbl_ovrd		  "off"
-	  show_param		  "off"
-	  use_rpm		  "on"
-	  gen_core		  "off"
+	  load_pin		  off
+	  rst			  on
+	  en			  off
+	  dbl_ovrd		  off
+	  show_param		  off
+	  use_rpm		  on
+	  gen_core		  off
 	  xl_area		  "[0, 0, 0, 0, 0, 0, 0]"
-	  xl_use_area		  "off"
+	  xl_use_area		  off
 	}
 	Block {
 	  BlockType		  Reference
@@ -6239,15 +6708,15 @@ Model {
 	  arith_type		  "Unsigned"
 	  n_bits		  "8"
 	  bin_pt		  "2"
-	  align_bp		  "on"
+	  align_bp		  on
 	  latency		  "0"
-	  explicit_period	  "off"
+	  explicit_period	  off
 	  period		  "1"
-	  en			  "off"
-	  dbl_ovrd		  "off"
-	  show_param		  "off"
+	  en			  off
+	  dbl_ovrd		  off
+	  show_param		  off
 	  xl_area		  "[0, 0, 0, 0, 0, 0, 0]"
-	  xl_use_area		  "off"
+	  xl_use_area		  off
 	}
 	Block {
 	  BlockType		  Reference
@@ -6258,13 +6727,13 @@ Model {
 	  SourceType		  "Xilinx Relational Block"
 	  mode			  "a>=b"
 	  latency		  "1"
-	  explicit_period	  "off"
+	  explicit_period	  off
 	  period		  "1"
-	  en			  "off"
-	  dbl_ovrd		  "off"
-	  show_param		  "off"
+	  en			  off
+	  dbl_ovrd		  off
+	  show_param		  off
 	  xl_area		  "[0, 0, 0, 0, 0, 0, 0]"
-	  xl_use_area		  "off"
+	  xl_use_area		  off
 	}
 	Block {
 	  BlockType		  Reference
@@ -6284,9 +6753,9 @@ Model {
 	  inp1			  "P"
 	  carry			  "CIN"
 	  iostate		  "0"
-	  explicit_period	  "on"
+	  explicit_period	  on
 	  period		  "1"
-	  dbl_ovrd		  "off"
+	  dbl_ovrd		  off
 	}
 	Block {
 	  BlockType		  Reference
@@ -6303,19 +6772,19 @@ Model {
 	  quantization		  "Truncate"
 	  overflow		  "Wrap"
 	  latency		  "0"
-	  explicit_period	  "off"
+	  explicit_period	  off
 	  period		  "1"
-	  use_carryin		  "off"
-	  use_carryout		  "off"
-	  en			  "off"
-	  dbl_ovrd		  "off"
-	  show_param		  "off"
-	  use_core		  "on"
-	  pipeline		  "off"
-	  use_rpm		  "on"
-	  gen_core		  "off"
+	  use_carryin		  off
+	  use_carryout		  off
+	  en			  off
+	  dbl_ovrd		  off
+	  show_param		  off
+	  use_core		  on
+	  pipeline		  off
+	  use_rpm		  on
+	  gen_core		  off
 	  xl_area		  "[0, 0, 0, 0, 0, 0, 0]"
-	  xl_use_area		  "off"
+	  xl_use_area		  off
 	}
 	Block {
 	  BlockType		  Reference
@@ -6325,7 +6794,7 @@ Model {
 	  Position		  [590, 71, 625, 89]
 	  SourceBlock		  "casper_library/Misc/posedge"
 	  SourceType		  "posedge"
-	  ShowPortLabels	  "on"
+	  ShowPortLabels	  on
 	}
 	Block {
 	  BlockType		  Outport
@@ -6804,17 +7273,17 @@ MatData {
   DataRecord {
     Tag			    DataTag3
     Data		    "  %)30     .    ,     8    (    #0         %    "
-"\"     $    !     0         &  0 92Y7 @"
+"\"     $    !     0         &  0 <6<>! "
   }
   DataRecord {
     Tag			    DataTag2
     Data		    "  %)30     .    ,     8    (    #0         %    "
-"\"     $    !     0         &  0 Y&F\"!P"
+"\"     $    !     0         &  0 ^='*  "
   }
   DataRecord {
     Tag			    DataTag1
     Data		    "  %)30     .    ,     8    (    #0         %    "
-"\"     $    !     0         &  0 :\\EC!@"
+"\"     $    !     0         &  0 %@06!P"
   }
   DataRecord {
     Tag			    DataTag0
