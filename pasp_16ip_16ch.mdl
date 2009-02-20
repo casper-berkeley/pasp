@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.390"
+    ComputedModelVersion    "1.391"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -54,8 +54,8 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "tfiliba"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Feb 17 14:13:42 2009"
-  ModelVersionFormat	  "1.%<AutoIncrement:390>"
+  LastModifiedDate	  "Wed Feb 18 15:07:54 2009"
+  ModelVersionFormat	  "1.%<AutoIncrement:391>"
   ConfigurationManager	  "None"
   LinearizationMsg	  "none"
   Profile		  off
@@ -707,7 +707,7 @@ Model {
       System {
 	Name			"pasp"
 	Location		[2, 74, 1414, 838]
-	Open			on
+	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -32348,7 +32348,7 @@ Model {
 	  System {
 	    Name		    "fft_wideband_real1"
 	    Location		    [62, 128, 911, 677]
-	    Open		    on
+	    Open		    off
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
 	    ScreenColor		    "white"
@@ -32449,7 +32449,7 @@ Model {
 	      System {
 		Name			"fft_biplex_real_4x0"
 		Location		[59, 184, 901, 488]
-		Open			on
+		Open			off
 		ModelBrowserVisibility	off
 		ModelBrowserWidth	200
 		ScreenColor		"white"
@@ -36333,7 +36333,7 @@ Model {
 		  System {
 		    Name		    "biplex_core"
 		    Location		    [40, 173, 882, 476]
-		    Open		    on
+		    Open		    off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -36419,7 +36419,7 @@ Model {
 		    System {
 		    Name		    "fft_stage_1"
 		    Location		    [-22, 74, 849, 744]
-		    Open		    on
+		    Open		    off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"
@@ -36606,7 +36606,7 @@ Model {
 		    System {
 		    Name		    "butterfly"
 		    Location		    [2, 74, 998, 708]
-		    Open		    on
+		    Open		    off
 		    ModelBrowserVisibility  off
 		    ModelBrowserWidth	    200
 		    ScreenColor		    "white"

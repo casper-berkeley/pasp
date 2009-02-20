@@ -36,8 +36,7 @@ set_param([blk,'/pulse_ext_10GbE0'], 'pulse_len', num2str(samplesperpacket+1));
 set_param([blk,'/pulse_ext_10GbE1'], 'pulse_len', num2str(samplesperpacket+1));
 
 %update ip counter (num computers /2 for each)
-set_param([blk,'/ip_ctr'],'numcomputers',num2str(numcomputers/2));
-set_param([blk,'/ip_ctr1'],'numcomputers',num2str(numcomputers/2));
+set_param([blk,'/ip_ctr'],'numcomputers',num2str(numcomputers));
 
 
 clean_blocks(blk);
