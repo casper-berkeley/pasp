@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.35"
+    ComputedModelVersion    "1.50"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -54,8 +54,8 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "tfiliba"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Feb 19 17:13:55 2009"
-  ModelVersionFormat	  "1.%<AutoIncrement:35>"
+  LastModifiedDate	  "Mon Feb 23 15:31:56 2009"
+  ModelVersionFormat	  "1.%<AutoIncrement:50>"
   ConfigurationManager	  "None"
   LinearizationMsg	  "none"
   Profile		  off
@@ -103,7 +103,7 @@ Model {
 	  $ObjectID		  2
 	  Version		  "1.1.0"
 	  StartTime		  "0.0"
-	  StopTime		  "10000"
+	  StopTime		  "20000"
 	  AbsTol		  "auto"
 	  FixedStep		  "auto"
 	  InitialStep		  "auto"
@@ -601,7 +601,7 @@ Model {
   }
   System {
     Name		    "counter_16ip_16ch"
-    Location		    [2, 74, 1414, 838]
+    Location		    [2, 70, 1422, 834]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -610,7 +610,7 @@ Model {
     PaperPositionMode	    "auto"
     PaperType		    "usletter"
     PaperUnits		    "inches"
-    ZoomFactor		    "83"
+    ZoomFactor		    "80"
     ReportName		    "simulink-default.rpt"
     Block {
       BlockType		      Reference
@@ -625,15 +625,15 @@ Model {
       SourceBlock	      "xbsIndex_r3/ System Generator"
       SourceType	      "Xilinx System Generator"
       ShowPortLabels	      on
-      xilinxfamily	      "Virtex2"
-      part		      "xc2v1000"
-      speed		      "-4"
-      package		      "bg575"
+      xilinxfamily	      "Virtex2P"
+      part		      "xc2vp50"
+      speed		      "-7"
+      package		      "ff1152"
       synthesis_tool	      "XST"
-      directory		      "./netlist"
+      directory		      "./counter_16ip_16ch/sysgen"
       testbench		      off
       simulink_period	      "1"
-      sysclk_period	      "100"
+      sysclk_period	      "5"
       incr_netlist	      off
       trim_vbits	      "Everywhere in SubSystem"
       dbl_ovrd		      "According to Block Masks"
@@ -982,7 +982,7 @@ Model {
       Name		      "dist_gbe"
       Ports		      [3, 2]
       Position		      [2025, 968, 2135, 1072]
-      AttributesFormatString  "IPs=16"
+      AttributesFormatString  "IPs=16\norder=5"
       UserDataPersistent      on
       UserData		      "DataTag1"
       TreatAsAtomicUnit	      off
@@ -1012,8 +1012,8 @@ Model {
       MaskTabNameString	      ",,"
       System {
 	Name			"dist_gbe"
-	Location		[6, 74, 1418, 830]
-	Open			on
+	Location		[2, 74, 1414, 838]
+	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -1021,7 +1021,7 @@ Model {
 	PaperPositionMode	"auto"
 	PaperType		"usletter"
 	PaperUnits		"inches"
-	ZoomFactor		"100"
+	ZoomFactor		"80"
 	Block {
 	  BlockType		  Inport
 	  Name			  "sync"
@@ -1144,6 +1144,52 @@ Model {
 	  Name			  "Gateway Out10"
 	  Ports			  [1, 1]
 	  Position		  [2000, 964, 2055, 986]
+	  ShowName		  off
+	  SourceBlock		  "xbsIndex_r3/Gateway Out"
+	  SourceType		  "Xilinx Gateway Out"
+	  output_type		  "Double"
+	  nbits			  "8"
+	  bin_pt		  "6"
+	  arith_type		  "Boolean"
+	  quantization		  "Truncate"
+	  overflow		  "Wrap"
+	  hdl_port		  on
+	  timing_constraint	  "None"
+	  locs_specified	  off
+	  LOCs			  "{}"
+	  needs_fixed_name	  off
+	  show_param		  off
+	  xl_area		  "[0, 0, 0, 0, 0, 0, 0]"
+	  xl_use_area		  off
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Gateway Out13"
+	  Ports			  [1, 1]
+	  Position		  [1570, 1079, 1625, 1101]
+	  ShowName		  off
+	  SourceBlock		  "xbsIndex_r3/Gateway Out"
+	  SourceType		  "Xilinx Gateway Out"
+	  output_type		  "Double"
+	  nbits			  "8"
+	  bin_pt		  "6"
+	  arith_type		  "Boolean"
+	  quantization		  "Truncate"
+	  overflow		  "Wrap"
+	  hdl_port		  on
+	  timing_constraint	  "None"
+	  locs_specified	  off
+	  LOCs			  "{}"
+	  needs_fixed_name	  off
+	  show_param		  off
+	  xl_area		  "[0, 0, 0, 0, 0, 0, 0]"
+	  xl_use_area		  off
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Gateway Out14"
+	  Ports			  [1, 1]
+	  Position		  [1570, 1109, 1625, 1131]
 	  ShowName		  off
 	  SourceBlock		  "xbsIndex_r3/Gateway Out"
 	  SourceType		  "Xilinx Gateway Out"
@@ -1523,7 +1569,7 @@ Model {
 	  Ports			  [4]
 	  Position		  [2155, 30, 2225, 150]
 	  Location		  [5, 49, 1437, 865]
-	  Open			  on
+	  Open			  off
 	  NumInputPorts		  "4"
 	  ZoomMode		  "xonly"
 	  List {
@@ -1534,8 +1580,8 @@ Model {
 	    axes4		    "%<SignalLabel>"
 	  }
 	  TimeRange		  "10000"
-	  YMin			  "0~0~0~0"
-	  YMax			  "1~1~10000~6.5e+010"
+	  YMin			  "0~0~0~4001"
+	  YMax			  "1~1~15~4015"
 	  DataFormat		  "StructureWithTime"
 	  LimitDataPoints	  off
 	}
@@ -1545,7 +1591,7 @@ Model {
 	  Ports			  [4]
 	  Position		  [2090, 870, 2160, 990]
 	  Location		  [5, 49, 1437, 865]
-	  Open			  on
+	  Open			  off
 	  NumInputPorts		  "4"
 	  ZoomMode		  "xonly"
 	  List {
@@ -1587,6 +1633,27 @@ Model {
 	}
 	Block {
 	  BlockType		  Scope
+	  Name			  "Scope4"
+	  Ports			  [2]
+	  Position		  [1660, 1074, 1720, 1141]
+	  Location		  [5, 49, 1437, 865]
+	  Open			  off
+	  NumInputPorts		  "2"
+	  ZoomMode		  "xonly"
+	  List {
+	    ListType		    AxesTitles
+	    axes1		    "%<SignalLabel>"
+	    axes2		    "%<SignalLabel>"
+	  }
+	  TimeRange		  "10000"
+	  YMin			  "0~0"
+	  YMax			  "1~1"
+	  SaveName		  "ScopeData6"
+	  DataFormat		  "StructureWithTime"
+	  LimitDataPoints	  off
+	}
+	Block {
+	  BlockType		  Scope
 	  Name			  "Scope7"
 	  Ports			  [3]
 	  Position		  [945, 139, 995, 261]
@@ -1614,7 +1681,7 @@ Model {
 	  SourceBlock		  "xbsIndex_r3/Slice"
 	  SourceType		  "Xilinx Slice Block"
 	  mode			  "Lower Bit Location + Width"
-	  nbits			  "4"
+	  nbits			  "5"
 	  bit1			  "0"
 	  base1			  "MSB of Input"
 	  bit0			  "0"
@@ -1651,7 +1718,7 @@ Model {
 	  SourceBlock		  "xbsIndex_r3/Slice"
 	  SourceType		  "Xilinx Slice Block"
 	  mode			  "Lower Bit Location + Width"
-	  nbits			  "4"
+	  nbits			  "5"
 	  bit1			  "0"
 	  base1			  "MSB of Input"
 	  bit0			  "0"
@@ -1838,11 +1905,11 @@ Model {
 	  BlockType		  Reference
 	  Name			  "bs_delay3"
 	  Ports			  [1, 1]
-	  Position		  [1385, 619, 1410, 641]
+	  Position		  [1210, 1154, 1235, 1176]
 	  ShowName		  off
 	  SourceBlock		  "xbsIndex_r3/Delay"
 	  SourceType		  "Xilinx Delay Block"
-	  latency		  "1"
+	  latency		  "2"
 	  reg_retiming		  off
 	  explicit_period	  on
 	  period		  "1"
@@ -1898,11 +1965,11 @@ Model {
 	  BlockType		  Reference
 	  Name			  "bs_delay6"
 	  Ports			  [1, 1]
-	  Position		  [1385, 1249, 1410, 1271]
+	  Position		  [1365, 1279, 1390, 1301]
 	  ShowName		  off
 	  SourceBlock		  "xbsIndex_r3/Delay"
 	  SourceType		  "Xilinx Delay Block"
-	  latency		  "1"
+	  latency		  "4"
 	  reg_retiming		  off
 	  explicit_period	  on
 	  period		  "1"
@@ -1925,6 +1992,26 @@ Model {
 	  SourceBlock		  "xbsIndex_r3/Delay"
 	  SourceType		  "Xilinx Delay Block"
 	  latency		  "64"
+	  reg_retiming		  off
+	  explicit_period	  on
+	  period		  "1"
+	  en			  off
+	  accept_only_valid	  off
+	  init_zero		  on
+	  dbl_ovrd		  off
+	  show_param		  off
+	  xl_area		  "[0, 0, 0, 0, 0, 0, 0]"
+	  xl_use_area		  off
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "bs_delay8"
+	  Ports			  [1, 1]
+	  Position		  [1205, 544, 1230, 566]
+	  ShowName		  off
+	  SourceBlock		  "xbsIndex_r3/Delay"
+	  SourceType		  "Xilinx Delay Block"
+	  latency		  "2"
 	  reg_retiming		  off
 	  explicit_period	  on
 	  period		  "1"
@@ -1987,7 +2074,7 @@ Model {
 	  Position		  [565, 342, 610, 358]
 	  SourceBlock		  "xbsIndex_r3/Constant"
 	  SourceType		  "Xilinx Constant Block"
-	  const			  "127"
+	  const			  "126"
 	  equ			  "P=C"
 	  arith_type		  "Unsigned"
 	  n_bits		  "7"
@@ -2118,6 +2205,60 @@ Model {
 	  xl_use_area		  off
 	}
 	Block {
+	  BlockType		  Reference
+	  Name			  "counter_id_even"
+	  Ports			  [2, 1]
+	  Position		  [1470, 1284, 1515, 1311]
+	  SourceBlock		  "xbsIndex_r3/Counter"
+	  SourceType		  "Xilinx Counter Block"
+	  cnt_type		  "Count Limited"
+	  n_bits		  "64"
+	  bin_pt		  "0"
+	  arith_type		  "Unsigned"
+	  start_count		  "2"
+	  cnt_to		  "16"
+	  cnt_by_val		  "2"
+	  operation		  "Up"
+	  explicit_period	  off
+	  period		  "1"
+	  load_pin		  off
+	  rst			  on
+	  en			  on
+	  dbl_ovrd		  off
+	  show_param		  off
+	  use_rpm		  on
+	  gen_core		  off
+	  xl_area		  "[0, 0, 0, 0, 0, 0, 0]"
+	  xl_use_area		  off
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "counter_id_odd"
+	  Ports			  [2, 1]
+	  Position		  [1475, 654, 1520, 681]
+	  SourceBlock		  "xbsIndex_r3/Counter"
+	  SourceType		  "Xilinx Counter Block"
+	  cnt_type		  "Count Limited"
+	  n_bits		  "64"
+	  bin_pt		  "0"
+	  arith_type		  "Unsigned"
+	  start_count		  "1"
+	  cnt_to		  "15"
+	  cnt_by_val		  "2"
+	  operation		  "Up"
+	  explicit_period	  off
+	  period		  "1"
+	  load_pin		  off
+	  rst			  on
+	  en			  on
+	  dbl_ovrd		  off
+	  show_param		  off
+	  use_rpm		  on
+	  gen_core		  off
+	  xl_area		  "[0, 0, 0, 0, 0, 0, 0]"
+	  xl_use_area		  off
+	}
+	Block {
 	  BlockType		  SubSystem
 	  Name			  "ip_ctr"
 	  Ports			  [3, 4]
@@ -2230,6 +2371,25 @@ Model {
 	      show_param	      off
 	      use_rpm		      on
 	      gen_core		      off
+	      xl_area		      "[0, 0, 0, 0, 0, 0, 0]"
+	      xl_use_area	      off
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Delay_Even"
+	      Ports		      [1, 1]
+	      Position		      [410, 43, 435, 67]
+	      SourceBlock	      "xbsIndex_r3/Delay"
+	      SourceType	      "Xilinx Delay Block"
+	      latency		      "4"
+	      reg_retiming	      off
+	      explicit_period	      off
+	      period		      "1"
+	      en		      off
+	      accept_only_valid	      off
+	      init_zero		      on
+	      dbl_ovrd		      off
+	      show_param	      off
 	      xl_area		      "[0, 0, 0, 0, 0, 0, 0]"
 	      xl_use_area	      off
 	    }
@@ -3110,6 +3270,7 @@ Model {
 	      Name		      "IP_Odd"
 	      Position		      [305, 233, 335, 247]
 	      IconDisplay	      "Port number"
+	      BusOutputAsStruct	      off
 	    }
 	    Block {
 	      BlockType		      Outport
@@ -3117,6 +3278,7 @@ Model {
 	      Position		      [305, 283, 335, 297]
 	      Port		      "2"
 	      IconDisplay	      "Port number"
+	      BusOutputAsStruct	      off
 	    }
 	    Block {
 	      BlockType		      Outport
@@ -3124,6 +3286,7 @@ Model {
 	      Position		      [805, 233, 835, 247]
 	      Port		      "3"
 	      IconDisplay	      "Port number"
+	      BusOutputAsStruct	      off
 	    }
 	    Block {
 	      BlockType		      Outport
@@ -3131,6 +3294,7 @@ Model {
 	      Position		      [805, 283, 835, 297]
 	      Port		      "4"
 	      IconDisplay	      "Port number"
+	      BusOutputAsStruct	      off
 	    }
 	    Line {
 	      SrcBlock		      "Reset"
@@ -3141,7 +3305,7 @@ Model {
 		DstPort			1
 	      }
 	      Branch {
-		DstBlock		"Counter_Even"
+		DstBlock		"Delay_Even"
 		DstPort			1
 	      }
 	    }
@@ -3174,6 +3338,12 @@ Model {
 	      SrcBlock		      "PortMux_Odd"
 	      SrcPort		      1
 	      DstBlock		      "Port_Odd"
+	      DstPort		      1
+	    }
+	    Line {
+	      SrcBlock		      "Delay_Even"
+	      SrcPort		      1
+	      DstBlock		      "Counter_Even"
 	      DstPort		      1
 	    }
 	    Line {
@@ -3693,6 +3863,58 @@ Model {
 	}
 	Block {
 	  BlockType		  Reference
+	  Name			  "mux_id_even"
+	  Ports			  [3, 1]
+	  Position		  [1535, 1196, 1585, 1324]
+	  SourceBlock		  "xbsIndex_r3/Mux"
+	  SourceType		  "Xilinx Multiplexer Block"
+	  inputs		  "2"
+	  precision		  "Full"
+	  arith_type		  "Signed  (2's comp)"
+	  n_bits		  "8"
+	  bin_pt		  "2"
+	  quantization		  "Truncate"
+	  overflow		  "Wrap"
+	  latency		  "1"
+	  explicit_period	  off
+	  period		  "1"
+	  en			  off
+	  dbl_ovrd		  off
+	  show_param		  off
+	  mux_type		  off
+	  use_rpm		  off
+	  gen_core		  off
+	  xl_area		  "[0, 0, 0, 0, 0, 0, 0]"
+	  xl_use_area		  off
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "mux_id_odd"
+	  Ports			  [3, 1]
+	  Position		  [1535, 566, 1585, 694]
+	  SourceBlock		  "xbsIndex_r3/Mux"
+	  SourceType		  "Xilinx Multiplexer Block"
+	  inputs		  "2"
+	  precision		  "Full"
+	  arith_type		  "Signed  (2's comp)"
+	  n_bits		  "8"
+	  bin_pt		  "2"
+	  quantization		  "Truncate"
+	  overflow		  "Wrap"
+	  latency		  "1"
+	  explicit_period	  off
+	  period		  "1"
+	  en			  off
+	  dbl_ovrd		  off
+	  show_param		  off
+	  mux_type		  off
+	  use_rpm		  off
+	  gen_core		  off
+	  xl_area		  "[0, 0, 0, 0, 0, 0, 0]"
+	  xl_use_area		  off
+	}
+	Block {
+	  BlockType		  Reference
 	  Name			  "negedge_10GbE0"
 	  Tag			  "Rising Edge Detector"
 	  Ports			  [1, 1]
@@ -3739,7 +3961,7 @@ Model {
 	  SourceBlock		  "casper_library/Misc/pulse_ext"
 	  SourceType		  "pulse_ext"
 	  ShowPortLabels	  on
-	  pulse_len		  "65"
+	  pulse_len		  "66"
 	}
 	Block {
 	  BlockType		  Reference
@@ -3749,7 +3971,7 @@ Model {
 	  SourceBlock		  "casper_library/Misc/pulse_ext"
 	  SourceType		  "pulse_ext"
 	  ShowPortLabels	  on
-	  pulse_len		  "65"
+	  pulse_len		  "66"
 	}
 	Block {
 	  BlockType		  Reference
@@ -5008,8 +5230,8 @@ Model {
 	Line {
 	  SrcBlock		  "mux_counter_data0"
 	  SrcPort		  1
-	  DstBlock		  "bs_delay3"
-	  DstPort		  1
+	  DstBlock		  "mux_id_odd"
+	  DstPort		  2
 	}
 	Line {
 	  SrcBlock		  "cnt_mux0"
@@ -5079,6 +5301,11 @@ Model {
 	    DstBlock		    "ip_ctr"
 	    DstPort		    1
 	  }
+	  Branch {
+	    Points		    [0, -75]
+	    DstBlock		    "counter_id_odd"
+	    DstPort		    2
+	  }
 	}
 	Line {
 	  SrcBlock		  "cns_mux_rel0"
@@ -5091,27 +5318,34 @@ Model {
 	  SrcPort		  1
 	  Points		  [0, 0; 40, 0]
 	  Branch {
-	    Points		    [315, 0; 0, 250]
-	    Branch {
-	      DstBlock		      "mux_counter_data0"
-	      DstPort		      1
-	    }
-	    Branch {
-	      Points		      [0, 135]
-	      Branch {
-		DstBlock		"posedge_10GbE0"
-		DstPort			1
-	      }
-	      Branch {
-		DstBlock		"bs_delay7"
-		DstPort			1
-	      }
-	    }
-	  }
-	  Branch {
 	    Points		    [0, -100]
 	    DstBlock		    "Gateway Out35"
 	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [315, 0; 0, 215]
+	    Branch {
+	      Points		      [0, 35]
+	      Branch {
+		DstBlock		"mux_counter_data0"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[0, 135]
+		Branch {
+		  DstBlock		  "posedge_10GbE0"
+		  DstPort		  1
+		}
+		Branch {
+		  DstBlock		  "bs_delay7"
+		  DstPort		  1
+		}
+	      }
+	    }
+	    Branch {
+	      DstBlock		      "bs_delay8"
+	      DstPort		      1
+	    }
 	  }
 	}
 	Line {
@@ -5135,9 +5369,9 @@ Model {
 	  }
 	}
 	Line {
-	  SrcBlock		  "bs_delay3"
+	  SrcBlock		  "mux_id_odd"
 	  SrcPort		  1
-	  Points		  [0, 0; 380, 0]
+	  Points		  [205, 0]
 	  Branch {
 	    DstBlock		    "ten_GbE0"
 	    DstPort		    2
@@ -5198,8 +5432,8 @@ Model {
 	Line {
 	  SrcBlock		  "mux_counter_data1"
 	  SrcPort		  1
-	  DstBlock		  "bs_delay6"
-	  DstPort		  1
+	  DstBlock		  "mux_id_even"
+	  DstPort		  2
 	}
 	Line {
 	  SrcBlock		  "pulse_ext_10GbE1"
@@ -5233,9 +5467,23 @@ Model {
 	    }
 	  }
 	  Branch {
-	    Points		    [0, -370]
-	    DstBlock		    "ip_ctr"
-	    DstPort		    2
+	    Points		    [0, -75]
+	    Branch {
+	      DstBlock		      "counter_id_even"
+	      DstPort		      2
+	    }
+	    Branch {
+	      Points		      [0, -185]
+	      Branch {
+		Points			[0, -110]
+		DstBlock		"ip_ctr"
+		DstPort			2
+	      }
+	      Branch {
+		DstBlock		"Gateway Out14"
+		DstPort			1
+	      }
+	    }
 	  }
 	}
 	Line {
@@ -5259,9 +5507,9 @@ Model {
 	  }
 	}
 	Line {
-	  SrcBlock		  "bs_delay6"
+	  SrcBlock		  "mux_id_even"
 	  SrcPort		  1
-	  Points		  [0, 0; 400, 0]
+	  Points		  [225, 0]
 	  Branch {
 	    DstBlock		    "ten_GbE1"
 	    DstPort		    2
@@ -5281,14 +5529,21 @@ Model {
 	Line {
 	  SrcBlock		  "bs_delay7"
 	  SrcPort		  1
-	  Points		  [0, 0; 0, 175]
+	  Points		  [0, 0; 0, 120]
 	  Branch {
-	    DstBlock		    "mux_counter_data1"
-	    DstPort		    1
+	    Points		    [0, 55]
+	    Branch {
+	      DstBlock		      "mux_counter_data1"
+	      DstPort		      1
+	    }
+	    Branch {
+	      Points		      [0, 135]
+	      DstBlock		      "posedge_10GbE1"
+	      DstPort		      1
+	    }
 	  }
 	  Branch {
-	    Points		    [0, 135]
-	    DstBlock		    "posedge_10GbE1"
+	    DstBlock		    "bs_delay3"
 	    DstPort		    1
 	  }
 	}
@@ -5301,7 +5556,7 @@ Model {
 	Line {
 	  SrcBlock		  "reorder"
 	  SrcPort		  3
-	  Points		  [0, 0; 15, 0]
+	  Points		  [15, 0]
 	  Branch {
 	    Points		    [205, 0]
 	    Branch {
@@ -5380,9 +5635,29 @@ Model {
 	      }
 	    }
 	    Branch {
-	      Points		      [0, 0; 615, 0; 0, 65]
-	      DstBlock		      "ip_ctr"
-	      DstPort		      3
+	      Points		      [0, 0; 615, 0; 0, 65; 335, 0]
+	      Branch {
+		Points			[0, -385]
+		DstBlock		"counter_id_odd"
+		DstPort			1
+	      }
+	      Branch {
+		Points			[160, 0]
+		Branch {
+		  DstBlock		  "ip_ctr"
+		  DstPort		  3
+		}
+		Branch {
+		  Points		  [0, 45]
+		  DstBlock		  "Gateway Out13"
+		  DstPort		  1
+		}
+	      }
+	      Branch {
+		Points			[0, 245]
+		DstBlock		"bs_delay6"
+		DstPort			1
+	      }
 	    }
 	  }
 	}
@@ -5534,28 +5809,6 @@ Model {
 	}
 	Line {
 	  SrcBlock		  "ip_ctr"
-	  SrcPort		  3
-	  Points		  [15, 0; 0, 300]
-	  Branch {
-	    Points		    [0, 145]
-	    DstBlock		    "Relational1"
-	    DstPort		    1
-	  }
-	  Branch {
-	    Points		    [230, 0]
-	    Branch {
-	      DstBlock		      "ten_GbE1"
-	      DstPort		      4
-	    }
-	    Branch {
-	      Points		      [0, -345]
-	      DstBlock		      "Gateway Out10"
-	      DstPort		      1
-	    }
-	  }
-	}
-	Line {
-	  SrcBlock		  "ip_ctr"
 	  SrcPort		  4
 	  DstBlock		  "Slice6"
 	  DstPort		  1
@@ -5598,6 +5851,72 @@ Model {
 	  SrcPort		  1
 	  DstBlock		  "Scope2"
 	  DstPort		  4
+	}
+	Line {
+	  SrcBlock		  "bs_delay8"
+	  SrcPort		  1
+	  Points		  [245, 0; 0, 35]
+	  DstBlock		  "mux_id_odd"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "counter_id_odd"
+	  SrcPort		  1
+	  DstBlock		  "mux_id_odd"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "bs_delay3"
+	  SrcPort		  1
+	  Points		  [0, 15; 280, 0]
+	  DstBlock		  "mux_id_even"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "counter_id_even"
+	  SrcPort		  1
+	  DstBlock		  "mux_id_even"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "Gateway Out14"
+	  SrcPort		  1
+	  DstBlock		  "Scope4"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "Gateway Out13"
+	  SrcPort		  1
+	  DstBlock		  "Scope4"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "ip_ctr"
+	  SrcPort		  3
+	  Points		  [15, 0; 0, 300]
+	  Branch {
+	    Points		    [0, 145]
+	    DstBlock		    "Relational1"
+	    DstPort		    1
+	  }
+	  Branch {
+	    Points		    [230, 0]
+	    Branch {
+	      DstBlock		      "ten_GbE1"
+	      DstPort		      4
+	    }
+	    Branch {
+	      Points		      [0, -345]
+	      DstBlock		      "Gateway Out10"
+	      DstPort		      1
+	    }
+	  }
+	}
+	Line {
+	  SrcBlock		  "bs_delay6"
+	  SrcPort		  1
+	  DstBlock		  "counter_id_even"
+	  DstPort		  1
 	}
 	Annotation {
 	  Name			  "Delay the valid and data signals so that\ne"
@@ -7287,64 +7606,124 @@ MatData {
   }
   DataRecord {
     Tag			    DataTag0
-    Data		    "  %)30     .      T   8    (     @         %    "
-"\"     $    !     0         %  0 !@    $    &    <V%V960    .    N P   8    ("
-"     @         %    \"     $    !     0         %  0 #     $    8    <VAA<F5D"
-"        8V]M<&EL871I;VX #@    @$   &    \"     (         !0    @    !     0  "
-"  $         !0 $ !,    !    A0   &-O;7!I;&%T:6]N          !C;VUP:6QA=&EO;E]L="
-"70     <VEM=6QI;FM?<&5R:6]D     &EN8W)?;F5T;&ES=         !T<FEM7W9B:71S      "
-"      9&)L7V]V<F0              &1E<')E8V%T961?8V]N=')O;      .    .     8    "
-"(    !          %    \"     $    '     0         0    !P   '1A<F=E=#( #@   +@"
-"!   &    \"     (         !0    @    !     0    $         !0 $  <    !    #@ "
-"  &ME>7,   !V86QU97,    .    N     8    (     0         %    \"     $    \"  "
-"   0         .    0     8    (    !          %    \"     $    +     0        "
-" 0    \"P   $A$3\"!.971L:7-T       .    0     8    (    !          %    \"   "
-"  $    +     0         0    \"P   $Y'0R!.971L:7-T       .    J     8    (    "
-" 0         %    \"     $    \"     0         .    .     8    (    !          "
-"%    \"     $    '     0         0    !P   '1A<F=E=#$ #@   #@    &    \"     "
-"0         !0    @    !    !P    $         $     <   !T87)G970R  X    P    !@ "
-"   @    $          4    (     0    $    !         !   0 Q    #@   #     &    "
-"\"     0         !0    @    !     P    $         $  # &]F9@ .    2     8    ("
-"    !          %    \"     $    7     0         0    %P   $5V97)Y=VAE<F4@:6X@"
-"4W5B4WES=&5M  X   !(    !@    @    $          4    (     0   !@    !         "
-"!     8    06-C;W)D:6YG('1O($)L;V-K($UA<VMS#@   #     &    \"     0         !"
-"0    @    !     P    $         $  # &]F9@ .    4 @   8    (     @         %  "
-"  \"     $    !     0         %  0 \"     $    0    =&%R9V5T,0!T87)G970R  X  "
-" #@ P  !@    @    \"          4    (     0    $    !          4 !  0     0   "
-",    !X:6QI;GAF86UI;'D     <&%R=                '-P965D              !P86-K86"
-"=E            <WEN=&AE<VES7W1O;VP  &1I<F5C=&]R>0        !T97-T8F5N8V@        "
-" <WES8VQK7W!E<FEO9    &-O<F5?9V5N97)A=&EO;@!R=6Y?8V]R96=E;@      979A;%]F:65L"
-"9        &-L;V-K7VQO8P         .    .     8    (    !          %    \"     $ "
-"   (     0         0    \"    %9I<G1E>#)0#@   #@    &    \"     0         !0 "
-"   @    !    !P    $         $     <   !X8S)V<#4P  X    P    !@    @    $    "
-"      4    (     0    (    !         !   @ M-P  #@   #@    &    \"     0     "
-"    !0    @    !    !@    $         $     8   !F9C$Q-3(   X    P    !@    @  "
-"  $          4    (     0    ,    !         !   P!84U0 #@   $@    &    \"    "
-" 0         !0    @    !    $0    $         $    !$    N+W5N=&ET;&5D+W-Y<V=E;@"
-"         .    ,     8    (    !          %    \"     $    #     0         0  "
-", ;V9F  X    P    !@    @    $          4    (     0    $    !         !   0 "
-"U    #@   $@    &    \"     0         !0    @    !    &     $         $    !@"
-"   !!8V-O<F1I;F<@=&\\@0FQO8VL@36%S:W,.    ,     8    (    !          %    \" "
-"    $    #     0         0  , ;V9F  X    P    !@    @    $          4    (   "
-"  0    $    !         !   0 P    #@   #     &    \"     0         !0    @    "
-"           $         $          .    & 0   8    (     @         %    \"     $"
-"    !     0         %  0 $P    $   \"^    ;F=C7V-O;F9I9P           '-Y;G1H97-"
-"I<U]L86YG=6%G90!S>6YT:&5S:7-?=&]O;       >&EL:6YX9F%M:6QY         '!A<G0     "
-"              !S<&5E9                   =&5S=&)E;F-H             '!A8VMA9V4  "
-"             !D:7)E8W1O<GD             <WES8VQK7W!E<FEO9           #@   .@   "
-" &    \"     (         !0    @    !     0    $         !0 $ !4    !    *@   &"
-"EN8VQU9&5?8VQO8VMW<F%P<&5R &EN8VQU9&5?8V8                       X    X    !@ "
-"   @    &          4    (     0    $    !          D    (            \\#\\.  "
-"  .     8    (    !@         %    \"     $    !     0         )    \"        "
-"       #@   #     &    \"     0         !0    @    !    !     $         $  $ "
-"%9(1$P.    ,     8    (    !          %    \"     $    #     0         0  , 6"
-"%-4  X    X    !@    @    $          4    (     0    @    !         !     (  "
-"  5FER=&5X,E .    .     8    (    !          %    \"     $    '     0        "
-" 0    !P   'AC,G9P-3  #@   #     &    \"     0         !0    @    !     @    "
-"$         $  \" \"TW   .    ,     8    (    !          %    \"     $    #    "
-" 0         0  , ;V9F  X    X    !@    @    $          4    (     0    8    ! "
-"        !     &    9F8Q,34R   .    4     8    (    !          %    \"     $  "
-"  :     0         0    &@   \"XO8V]U;G1E<E\\Q-FEP7S$V8V@O<WES9V5N        #@  "
-" #     &    \"     0         !0    @    !     0    $         $  ! #4    "
+    Data		    "  %)30     .    :!H   8    (     @         %    "
+"\"     $    !     0         %  0 !@    $    ,    <V%V960 =V]R:P        X    ("
+"#0  !@    @    \"          4    (     0    $    !          4 !  ,     0   !@ "
+"  !S:&%R960       !C;VUP:6QA=&EO;@ .    \" 0   8    (     @         %    \"  "
+"   $    !     0         %  0 $P    $   \"%    8V]M<&EL871I;VX          &-O;7!"
+"I;&%T:6]N7VQU=     !S:6UU;&EN:U]P97)I;V0     :6YC<E]N971L:7-T         '1R:6U?"
+"=F)I=',           !D8FQ?;W9R9               9&5P<F5C871E9%]C;VYT<F]L      X  "
+"  X    !@    @    $          4    (     0    <    !         !     '    =&%R9V"
+"5T,@ .    N $   8    (     @         %    \"     $    !     0         %  0 !P"
+"    $    .    :V5Y<P   '9A;'5E<P    X   \"X    !@    @    !          4    (  "
+"   0    (    !          X   !     !@    @    $          4    (     0    L    "
+"!         !     +    2$1,($YE=&QI<W0       X   !     !@    @    $          4 "
+"   (     0    L    !         !     +    3D=#($YE=&QI<W0       X   \"H    !@  "
+"  @    !          4    (     0    (    !          X    X    !@    @    $     "
+"     4    (     0    <    !         !     '    =&%R9V5T,0 .    .     8    (  "
+"  !          %    \"     $    '     0         0    !P   '1A<F=E=#( #@   #    "
+" &    \"     0         !0    @    !     0    $         $  ! #$    .    ,     "
+"8    (    !          %    \"     $    #     0         0  , ;V9F  X   !(    !@"
+"    @    $          4    (     0   !<    !         !     7    179E<GEW:&5R92!"
+"I;B!3=6)3>7-T96T #@   $@    &    \"     0         !0    @    !    &     $    "
+"     $    !@   !!8V-O<F1I;F<@=&\\@0FQO8VL@36%S:W,.    ,     8    (    !      "
+"    %    \"     $    #     0         0  , ;V9F  X   \"@\"   !@    @    \"    "
+"      4    (     0    $    !          4 !  (     0   !    !T87)G970Q '1A<F=E="
+"#( #@   . #   &    \"     (         !0    @    !     0    $         !0 $ !   "
+"  !    P    'AI;&EN>&9A;6EL>0    !P87)T                <W!E960              '"
+"!A8VMA9V4           !S>6YT:&5S:7-?=&]O;   9&ER96-T;W)Y         '1E<W1B96YC:  "
+"       !S>7-C;&M?<&5R:6]D    8V]R95]G96YE<F%T:6]N ')U;E]C;W)E9V5N      !E=F%L"
+"7V9I96QD        8VQO8VM?;&]C          X    X    !@    @    $          4    ( "
+"    0    @    !         !     (    5FER=&5X,E .    .     8    (    !         "
+" %    \"     $    '     0         0    !P   'AC,G9P-3  #@   #     &    \"    "
+" 0         !0    @    !     @    $         $  \" \"TW   .    .     8    (    "
+"!          %    \"     $    &     0         0    !@   &9F,3$U,@  #@   #     &"
+"    \"     0         !0    @    !     P    $         $  # %A35  .    2     8 "
+"   (    !          %    \"     $    1     0         0    $0   \"XO=6YT:71L960"
+"O<WES9V5N          X    P    !@    @    $          4    (     0    ,    !    "
+"     !   P!O9F8 #@   #     &    \"     0         !0    @    !     0    $     "
+"    $  ! #4    .    2     8    (    !          %    \"     $    8     0      "
+"   0    &    $%C8V]R9&EN9R!T;R!\";&]C:R!-87-K<PX    P    !@    @    $        "
+"  4    (     0    ,    !         !   P!O9F8 #@   #     &    \"     0         "
+"!0    @    !     0    $         $  ! #     .    ,     8    (    !          % "
+"   \"                0         0          X   !H!   !@    @    \"          4 "
+"   (     0    $    !          4 !  3     0   -$   !N9V-?8V]N9FEG            <"
+"WEN=&AE<VES7VQA;F=U86=E '-Y;G1H97-I<U]T;V]L      !X:6QI;GAF86UI;'D         <&"
+"%R=                    '-P965D                  !T97-T8F5N8V@             <&%"
+"C:V%G90               &1I<F5C=&]R>0            !S>7-C;&M?<&5R:6]D        8VQO"
+"8VM?;&]C                       .    Z     8    (     @         %    \"     $ "
+"   !     0         %  0 %0    $    J    :6YC;'5D95]C;&]C:W=R87!P97( :6YC;'5D9"
+"5]C9@                      #@   #@    &    \"     8         !0    @    !     "
+"0    $         \"0    @           #P/PX    X    !@    @    &          4    ( "
+"    0    $    !          D    (               .    ,     8    (    !         "
+" %    \"     $    $     0         0  0 5DA$3 X    P    !@    @    $          "
+"4    (     0    ,    !         !   P!84U0 #@   #@    &    \"     0         !0"
+"    @    !    \"     $         $     @   !6:7)T97@R4 X    X    !@    @    $  "
+"        4    (     0    <    !         !     '    >&,R=G U,  .    ,     8    "
+"(    !          %    \"     $    \"     0         0  ( +3<   X    P    !@    "
+"@    $          4    (     0    ,    !         !   P!O9F8 #@   #@    &    \" "
+"    0         !0    @    !    !@    $         $     8   !F9C$Q-3(   X   !0   "
+" !@    @    $          4    (     0   !H    !         !     :    +B]C;W5N=&5R"
+"7S$V:7!?,39C:\"]S>7-G96X        .    ,     8    (    !          %    \"     $"
+"    !     0         0  $ -0    X    P    !@    @    $          4    (        "
+"       !         !          #@    @-   &    \"     (         !0    @    !    "
+" 0    $         !0 $  P    !    &    '-H87)E9        &-O;7!I;&%T:6]N  X    (!"
+"   !@    @    \"          4    (     0    $    !          4 !  3     0   (4  "
+" !C;VUP:6QA=&EO;@          8V]M<&EL871I;VY?;'5T     '-I;75L:6YK7W!E<FEO9     "
+"!I;F-R7VYE=&QI<W0         =')I;5]V8FET<P           &1B;%]O=G)D              !"
+"D97!R96-A=&5D7V-O;G1R;VP     #@   #@    &    \"     0         !0    @    !   "
+" !P    $         $     <   !T87)G970R  X   \"X 0  !@    @    \"          4   "
+" (     0    $    !          4 !  '     0    X   !K97ES    =F%L=65S    #@   +@"
+"    &    \"     $         !0    @    !     @    $         #@   $     &    \" "
+"    0         !0    @    !    \"P    $         $     L   !(1$P@3F5T;&ES=     "
+"  #@   $     &    \"     0         !0    @    !    \"P    $         $     L  "
+" !.1T,@3F5T;&ES=       #@   *@    &    \"     $         !0    @    !     @   "
+" $         #@   #@    &    \"     0         !0    @    !    !P    $         $"
+"     <   !T87)G970Q  X    X    !@    @    $          4    (     0    <    !  "
+"       !     '    =&%R9V5T,@ .    ,     8    (    !          %    \"     $   "
+" !     0         0  $ ,0    X    P    !@    @    $          4    (     0    ,"
+"    !         !   P!O9F8 #@   $@    &    \"     0         !0    @    !    %P "
+"   $         $    !<   !%=F5R>7=H97)E(&EN(%-U8E-Y<W1E;0 .    2     8    (    "
+"!          %    \"     $    8     0         0    &    $%C8V]R9&EN9R!T;R!\";&]"
+"C:R!-87-K<PX    P    !@    @    $          4    (     0    ,    !         !  "
+" P!O9F8 #@   * (   &    \"     (         !0    @    !     0    $         !0 $"
+"  @    !    $    '1A<F=E=#$ =&%R9V5T,@ .    X ,   8    (     @         %    "
+"\"     $    !     0         %  0 $     $   #     >&EL:6YX9F%M:6QY     '!A<G0 "
+"              !S<&5E9               <&%C:V%G90           '-Y;G1H97-I<U]T;V]L "
+" !D:7)E8W1O<GD         =&5S=&)E;F-H         '-Y<V-L:U]P97)I;V0   !C;W)E7V=E;F"
+"5R871I;VX <G5N7V-O<F5G96X      &5V86Q?9FEE;&0       !C;&]C:U]L;V,         #@ "
+"  #@    &    \"     0         !0    @    !    \"     $         $     @   !6:7"
+")T97@R4 X    X    !@    @    $          4    (     0    <    !         !     "
+"'    >&,R=G U,  .    ,     8    (    !          %    \"     $    \"     0    "
+"     0  ( +3<   X    X    !@    @    $          4    (     0    8    !       "
+"  !     &    9F8Q,34R   .    ,     8    (    !          %    \"     $    #   "
+"  0         0  , 6%-4  X   !(    !@    @    $          4    (     0   !$    !"
+"         !     1    +B]U;G1I=&QE9\"]S>7-G96X         #@   #     &    \"     0"
+"         !0    @    !     P    $         $  # &]F9@ .    ,     8    (    !   "
+"       %    \"     $    !     0         0  $ -0    X   !(    !@    @    $    "
+"      4    (     0   !@    !         !     8    06-C;W)D:6YG('1O($)L;V-K($UA<"
+"VMS#@   #     &    \"     0         !0    @    !     P    $         $  # &]F9"
+"@ .    ,     8    (    !          %    \"     $    !     0         0  $ ,    "
+" X    P    !@    @    $          4    (               !         !          #@"
+"   &@$   &    \"     (         !0    @    !     0    $         !0 $ !,    !  "
+"  T0   &YG8U]C;VYF:6<           !S>6YT:&5S:7-?;&%N9W5A9V4 <WEN=&AE<VES7W1O;VP"
+"      'AI;&EN>&9A;6EL>0        !P87)T                    <W!E960             "
+"     '1E<W1B96YC:             !P86-K86=E                9&ER96-T;W)Y         "
+"    '-Y<V-L:U]P97)I;V0       !C;&]C:U]L;V,                       X   #H    !@"
+"    @    \"          4    (     0    $    !          4 !  5     0   \"H   !I;"
+"F-L=61E7V-L;V-K=W)A<'!E<@!I;F-L=61E7V-F                       .    .     8   "
+" (    !@         %    \"     $    !     0         )    \"            / _#@   "
+"#@    &    \"     8         !0    @    !     0    $         \"0    @         "
+"      X    P    !@    @    $          4    (     0    0    !         !  ! !62"
+"$1,#@   #     &    \"     0         !0    @    !     P    $         $  # %A35"
+"  .    .     8    (    !          %    \"     $    (     0         0    \"   "
+" %9I<G1E>#)0#@   #@    &    \"     0         !0    @    !    !P    $         "
+"$     <   !X8S)V<#4P  X    P    !@    @    $          4    (     0    (    ! "
+"        !   @ M-P  #@   #     &    \"     0         !0    @    !     P    $  "
+"       $  # &]F9@ .    .     8    (    !          %    \"     $    &     0   "
+"      0    !@   &9F,3$U,@  #@   %     &    \"     0         !0    @    !    &"
+"@    $         $    !H    N+V-O=6YT97)?,39I<%\\Q-F-H+W-Y<V=E;@        X    P "
+"   !@    @    $          4    (     0    $    !         !   0 U    #@   #    "
+" &    \"     0         !0    @               $         $          "
   }
 }

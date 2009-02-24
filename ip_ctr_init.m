@@ -32,6 +32,7 @@ reuse_block(blk, 'Counter_Odd', 'xbsIndex_r3/Counter', 'n_bits',num2str(log2(num
 reuse_block(blk, 'IPMux_Odd', 'xbsIndex_r3/Mux','inputs', num2str(numcomputers), 'Position', [260    40   280   40+50*numcomputers]);
 reuse_block(blk, 'PortMux_Odd', 'xbsIndex_r3/Mux','inputs', num2str(numcomputers), 'Position', [260    40+60*numcomputers   280   40+110*numcomputers]);
 
+reuse_block(blk, 'Delay_Even', 'xbsIndex_r3/Delay', 'latency', '4', 'Position', [410    43   435    67]);
 reuse_block(blk, 'Counter_Even', 'xbsIndex_r3/Counter', 'n_bits',num2str(log2(numcomputers)), 'arith_type', 'Unsigned', ...
     'cnt_type', 'Free Running', 'rst', 'On', 'en', 'On', 'Position', [125+even_x_offset    47   170+even_x_offset    73]);
 reuse_block(blk, 'IPMux_Even', 'xbsIndex_r3/Mux','inputs', num2str(numcomputers), 'Position', [260+even_x_offset    40   280+even_x_offset   40+50*numcomputers]);
@@ -49,7 +50,8 @@ add_line(blk, 'IPMux_Odd/1', 'IP_Odd/1');
 add_line(blk, 'PortMux_Odd/1', 'Port_Odd/1');
 add_line(blk, 'Counter_Odd/1', 'PortMux_Odd/1');
 
-add_line(blk, 'Reset/1', 'Counter_Even/1');
+add_line(blk, 'Reset/1', 'Delay_Even/1')
+add_line(blk, 'Delay_Even/1', 'Counter_Even/1');
 add_line(blk, 'Count_Even/1', 'Counter_Even/2');
 add_line(blk, 'Counter_Even/1', 'IPMux_Even/1');
 add_line(blk, 'IPMux_Even/1', 'IP_Even/1');

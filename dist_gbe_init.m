@@ -29,11 +29,16 @@ set_param([blk,'/reorder'],'map',mat2str(makereorderarray(numcomputers, numsampl
 
 %update the counters when samplesperpacket changes
 set_param([blk,'/cnt_mux0'], 'n_bits', num2str(log2(samplesperpacket)+1));
-set_param([blk,'/cns_mux_rel0'], 'const', num2str(2*samplesperpacket-1), 'n_bits', num2str(log2(samplesperpacket)+1));
+set_param([blk,'/cns_mux_rel0'], 'const', num2str(2*samplesperpacket-1-1), 'n_bits', num2str(log2(samplesperpacket)+1));
 set_param([blk,'/bs_delay7'], 'latency', num2str(samplesperpacket));
 % add an extra sample in the pulse extenders for the system counter value
-set_param([blk,'/pulse_ext_10GbE0'], 'pulse_len', num2str(samplesperpacket+1));
-set_param([blk,'/pulse_ext_10GbE1'], 'pulse_len', num2str(samplesperpacket+1));
+% and packet number
+set_param([blk,'/pulse_ext_10GbE0'], 'pulse_len', num2str(samplesperpacket+1+1));
+set_param([blk,'/pulse_ext_10GbE1'], 'pulse_len', num2str(samplesperpacket+1+1));
+
+% set the id counters
+set_param([blk,'/counter_id_odd'], 'cnt_to', num2str(numcomputers-1));
+set_param([blk,'/counter_id_even'], 'cnt_to', num2str(numcomputers));
 
 %update ip counter (num computers /2 for each)
 set_param([blk,'/ip_ctr'],'numcomputers',num2str(numcomputers));
@@ -41,6 +46,8 @@ set_param([blk,'/ip_ctr'],'numcomputers',num2str(numcomputers));
 
 clean_blocks(blk);
 
-fmtstr = sprintf('IPs=%d', numcomputers);
+
+
+fmtstr = sprintf('IPs=%d\n%s', numcomputers, get_param([blk,'/reorder'], 'AttributesFormatString'));
 set_param(blk, 'AttributesFormatString', fmtstr);
 save_state(blk, 'defaults', defaults, varargin{:});
