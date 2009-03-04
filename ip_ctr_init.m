@@ -29,14 +29,14 @@ reuse_block(blk, 'Count_Even', 'built-in/inport', 'Position', [75+even_x_offset 
 
 reuse_block(blk, 'Counter_Odd', 'xbsIndex_r3/Counter', 'n_bits',num2str(log2(numcomputers)), 'arith_type', 'Unsigned', ...
     'cnt_type', 'Free Running', 'rst', 'On', 'en', 'On', 'Position', [125    47   170    73]);
-reuse_block(blk, 'IPMux_Odd', 'xbsIndex_r3/Mux','inputs', num2str(numcomputers), 'Position', [260    40   280   40+50*numcomputers]);
-reuse_block(blk, 'PortMux_Odd', 'xbsIndex_r3/Mux','inputs', num2str(numcomputers), 'Position', [260    40+60*numcomputers   280   40+110*numcomputers]);
+reuse_block(blk, 'IPMux_Odd', 'xbsIndex_r3/Mux','inputs', num2str(numcomputers), 'Latency', '3', 'Position', [260    40   280   40+50*numcomputers]);
+reuse_block(blk, 'PortMux_Odd', 'xbsIndex_r3/Mux','inputs', num2str(numcomputers), 'Latency', '3', 'Position', [260    40+60*numcomputers   280   40+110*numcomputers]);
 
 reuse_block(blk, 'Delay_Even', 'xbsIndex_r3/Delay', 'latency', '4', 'Position', [410    43   435    67]);
 reuse_block(blk, 'Counter_Even', 'xbsIndex_r3/Counter', 'n_bits',num2str(log2(numcomputers)), 'arith_type', 'Unsigned', ...
     'cnt_type', 'Free Running', 'rst', 'On', 'en', 'On', 'Position', [125+even_x_offset    47   170+even_x_offset    73]);
-reuse_block(blk, 'IPMux_Even', 'xbsIndex_r3/Mux','inputs', num2str(numcomputers), 'Position', [260+even_x_offset    40   280+even_x_offset   40+50*numcomputers]);
-reuse_block(blk, 'PortMux_Even', 'xbsIndex_r3/Mux','inputs', num2str(numcomputers), 'Position', [260+even_x_offset    40+60*numcomputers   280+even_x_offset   40+110*numcomputers]);
+reuse_block(blk, 'IPMux_Even', 'xbsIndex_r3/Mux','inputs', num2str(numcomputers), 'Latency', '3', 'Position', [260+even_x_offset    40   280+even_x_offset   40+50*numcomputers]);
+reuse_block(blk, 'PortMux_Even', 'xbsIndex_r3/Mux','inputs', num2str(numcomputers), 'Latency', '3', 'Position', [260+even_x_offset    40+60*numcomputers   280+even_x_offset   40+110*numcomputers]);
 
 reuse_block(blk, 'IP_Odd', 'built-in/outport', 'Position', [305   233   335   247], 'Port', '1');
 reuse_block(blk, 'Port_Odd', 'built-in/outport', 'Position', [305   283   335   297], 'Port', '2');
