@@ -120,6 +120,7 @@ void receive_packets(int fifo)
             printf("listener: packet is %d bytes long\n", numbytes);
             buf[numbytes] = '\0';
             printf("listener: packet contains \"%s\"\n", buf);
+            //send packets over the fifo
             write(fifo, buf, numbytes);
         }
     }

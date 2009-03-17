@@ -39,7 +39,7 @@ int main()
     debug_fprintf(stderr, "Waiting for data\n");
     while(run_fifo_read==1)
     {
-        numbytes = read(fifo, (void *) data, 50);
+        numbytes = read(fifo, (void *) data, PACKET_SIZE_BITS);
         fprintf(stderr, "Tried to read %d bytes, got %d bytes from fifo\n", DATA_LEN, numbytes);
         fprintf(stderr, "Fifo contains %s\n", (char *) data);
     }
