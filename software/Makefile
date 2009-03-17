@@ -7,7 +7,7 @@ TARGETS := packet_generator pasp_recv pasp_record pasp_process
 
 default: all
 
-all: pasp_test
+all: pasp_rec_test
 
 %.o: %.c %.h
 	$(CC) $(CFLAGS) $(DEBUG) -c $<
@@ -18,6 +18,8 @@ packet_generator: Makefile packet_generator.o
 	$(CC) $(CFLAGS) $(DEBUG) packet_generator.o -o packet_generator
 
 pasp: pasp_recv pasp_process
+
+pasp_rec_test: packet_generator pasp_rec
 
 pasp_rec: pasp_recv pasp_record
 

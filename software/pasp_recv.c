@@ -12,7 +12,6 @@
 #define MYPORT "8887"	// the port users will be connecting to
 #define RX_BUFFER_SIZE 81920
 #define MAX_PAYLOAD_LEN 8192
-#define MAXBUFLEN 100
 
 // get sockaddr, IPv4 or IPv6:
 void *get_in_addr(struct sockaddr *sa)
@@ -79,9 +78,9 @@ void receive_packets(int fifo)
 {
     
 	socket_t sock = setup_network_listener();
-	int numbytes;
+	int numbytes, bytesinfifo;
 	struct sockaddr_storage their_addr;
-	char buf[MAXBUFLEN];
+	char buf[PACKET_SIZE_BYTES];
 	size_t addr_len;
 	char s[INET6_ADDRSTRLEN];
     
@@ -98,7 +97,7 @@ void receive_packets(int fifo)
         printf("listener: waiting to recvfrom...\n");
         
         
-        if ((numbytes = recvfrom(sock, buf, MAXBUFLEN-1 , 0,
+        if ((numbytes = recvfrom(sock, buf, PACKET_SIZE_BYTES , 0,
                                  (struct sockaddr *)&their_addr, (socklen_t *) &addr_len)) == -1) {
             if(errno==EINTR && run_net_thread==0)
             {
@@ -118,10 +117,12 @@ void receive_packets(int fifo)
                              get_in_addr((struct sockaddr *)&their_addr),
                              s, sizeof s));
             printf("listener: packet is %d bytes long\n", numbytes);
-            buf[numbytes] = '\0';
             printf("listener: packet contains \"%s\"\n", buf);
+            
             //send packets over the fifo
-            write(fifo, buf, numbytes);
+            bytesinfifo = write(fifo, buf, numbytes);
+            fprintf(stderr, "wrote %d bytes to fifo\n", bytesinfifo);
+            
         }
     }
     

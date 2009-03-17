@@ -21,6 +21,7 @@
 //64 bit counter and 64 bit channel id
 #define NUM_CHANNELS_PER_IP NUM_CHANNELS/NUM_IPS
 #define PACKET_SIZE_BITS    (SAMPLES_PER_PACKET*64+64+64)
+#define PACKET_SIZE_BYTES   PACKET_SIZE_BITS/8
 
 typedef struct sample{
     uint32_t count[2];

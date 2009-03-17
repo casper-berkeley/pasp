@@ -12,6 +12,7 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <netdb.h>
+#include "pasp_config.h"
 
 #define SERVERPORT "8887"    // the port users will be connecting to
 
@@ -21,8 +22,13 @@ int main(int argc, char *argv[])
     struct addrinfo hints, *servinfo, *p;
     int rv;
     int numbytes;
+    char * buffer;
+    int counter;
+    char strchar='a';
+    FILE *replay;
+    int replaymode;
     
-    if (argc != 3) {
+    if (argc != 3 && argc != 2) {
         fprintf(stderr,"usage: talker hostname message\n");
         exit(1);
     }
@@ -52,15 +58,59 @@ int main(int argc, char *argv[])
         return 2;
     }
     
-    if ((numbytes = sendto(sockfd, argv[2], strlen(argv[2]), 0,
-                           p->ai_addr, p->ai_addrlen)) == -1) {
-        perror("talker: sendto");
-        exit(1);
+    //if we didn't pass a message generate one of length PACKET_SIZE_BYTES
+    if (argc == 2)
+    {
+        buffer = malloc(PACKET_SIZE_BYTES);
+        for(counter = 0; counter < PACKET_SIZE_BYTES-1; counter++)
+        {
+            buffer[counter] = strchar;
+            strchar++;
+            if(strchar > 'z') strchar = 'a';
+        }
+        buffer[PACKET_SIZE_BYTES-1] = '\0';
+        replaymode = 0;
+    }
+    //try to open a file for replay
+    else
+    {
+        replay = fopen(argv[2],"r");
+        if(replay == NULL)
+        {
+            fprintf(stderr, "failed to open file: %s using filename as message\n", argv[2]);
+            buffer = argv[2];
+            replaymode = 0;
+        }
+        else
+        {
+            fprintf(stderr, "opened file %s for reading\n", argv[2]);
+            buffer = malloc(PACKET_SIZE_BYTES);
+            replaymode = 1;
+        }
+    }
+    if (!replaymode)
+    {
+        if ((numbytes = sendto(sockfd, buffer, PACKET_SIZE_BYTES, 0,
+                              p->ai_addr, p->ai_addrlen)) == -1) {
+            perror("talker: sendto");
+            exit(1);
+        }
+        printf("talker: sent %d bytes to %s\n", numbytes, argv[1]);
+    }
+    else
+    {
+        while(fread(buffer, PACKET_SIZE_BYTES, 1, replay) != 0)
+        {
+            if ((numbytes = sendto(sockfd, buffer, PACKET_SIZE_BYTES, 0,
+                                                 p->ai_addr, p->ai_addrlen)) == -1) {
+                perror("talker: sendto");
+                exit(1);
+            }
+            printf("talker: sent %d bytes to %s\n", numbytes, argv[1]);
+        }
     }
     
     freeaddrinfo(servinfo);
-    
-    printf("talker: sent %d bytes to %s\n", numbytes, argv[1]);
     close(sockfd);
     
     return 0;
