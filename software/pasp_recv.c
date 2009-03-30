@@ -9,9 +9,7 @@
 #include "pasp_config.h"
 #include "pasp_recv.h"
 
-#define MYPORT "8887"	// the port users will be connecting to
-#define RX_BUFFER_SIZE 81920
-#define MAX_PAYLOAD_LEN 8192
+#define MYPORT "33107"	// the port users will be connecting to
 
 // get sockaddr, IPv4 or IPv6:
 void *get_in_addr(struct sockaddr *sa)
