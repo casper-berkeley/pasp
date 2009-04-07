@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -g -Wall
+CFLAGS = -g -Wall -O2
 DEBUG = -D DEBUG
 
 TARGETS := packet_generator pasp_recv pasp_record pasp_process
@@ -7,7 +7,7 @@ TARGETS := packet_generator pasp_recv pasp_record pasp_process
 
 default: all
 
-all: pasp_rec_test
+all: pasp_rec
 
 %.o: %.c %.h
 	$(CC) $(CFLAGS) $(DEBUG) -c $<

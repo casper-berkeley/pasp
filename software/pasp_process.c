@@ -13,7 +13,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <string.h>
-//#include <fftw3.h>
+#include <fftw3.h>
 #include "pasp_config.h"
 #include "pasp_process.h"
 
@@ -21,7 +21,7 @@
 int main()
 {
     int fifo;
-    char *data = malloc(DATA_LEN);
+    void *data = malloc(PACKET_SIZE_BYTES);
     int numbytes=0;
     struct sigaction newact;
     
@@ -31,7 +31,7 @@ int main()
     newact.sa_flags = 0;
     
     //start listening for Ctrl-C
-	sigaction(SIGINT, &newact, NULL);
+    sigaction(SIGINT, &newact, NULL);
     
     debug_fprintf(stderr, "Opening fifo\n");
     fifo = open(FILE_NAME,O_RDONLY);
@@ -39,9 +39,9 @@ int main()
     debug_fprintf(stderr, "Waiting for data\n");
     while(run_fifo_read==1)
     {
-        numbytes = read(fifo, (void *) data, PACKET_SIZE_BYTES);
-        fprintf(stderr, "Tried to read %d bytes, got %d bytes from fifo\n", DATA_LEN, numbytes);
-        fprintf(stderr, "Fifo contains %s\n", (char *) data);
+        numbytes = read(fifo, data, PACKET_SIZE_BYTES);
+        fprintf(stderr, "Tried to read %d bytes, got %d bytes from fifo\n", PACKET_SIZE_BYTES, numbytes);
+        //fprintf(stderr, "Fifo contains %s\n", (char *) data);
     }
     
     debug_fprintf(stderr, "Closing fifo\n");

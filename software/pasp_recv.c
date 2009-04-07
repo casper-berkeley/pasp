@@ -80,8 +80,9 @@ void receive_packets(int fifo)
 	struct sockaddr_storage their_addr;
 	char buf[PACKET_SIZE_BYTES];
 	size_t addr_len;
-	char s[INET6_ADDRSTRLEN];
-    
+	//char s[INET6_ADDRSTRLEN];
+    int numpackets=0;
+    long long totalbytes=0;
     
     
 	debug_fprintf(stderr, "Entering network thread loop.\n");
@@ -92,7 +93,7 @@ void receive_packets(int fifo)
 	 */
     while(run_net_thread)
     {
-        printf("listener: waiting to recvfrom...\n");
+        //printf("listener: waiting to recvfrom...\n");
         
         
         if ((numbytes = recvfrom(sock, buf, PACKET_SIZE_BYTES , 0,
@@ -109,22 +110,27 @@ void receive_packets(int fifo)
         }
         else
         {
+            /*
             debug_fprintf(stderr, "[net thread] Received %d bytes.\n", numbytes);
-            printf("listener: got packet from %s\n",
+            debug_fprintf(stderr, "listener: got packet from %s\n",
                    inet_ntop(their_addr.ss_family,
                              get_in_addr((struct sockaddr *)&their_addr),
                              s, sizeof s));
-            printf("listener: packet is %d bytes long\n", numbytes);
-            printf("listener: packet contains \"%s\"\n", buf);
+            debug_fprintf(stderr,"listener: packet is %d bytes long\n", numbytes);
+            debug_fprintf(stderr,"listener: packet contains \"%s\"\n", buf);
+            */
             
             //send packets over the fifo
             bytesinfifo = write(fifo, buf, numbytes);
-            fprintf(stderr, "wrote %d bytes to fifo\n", bytesinfifo);
+            //debug_fprintf(stderr, "wrote %d bytes to fifo\n", bytesinfifo);
+            numpackets++;
+            totalbytes+=numbytes;
             
         }
     }
     
 	debug_fprintf(stderr, "Exiting network thread loop.\n");
+    debug_fprintf(stderr, "Received %d packets, %lld bytes\n", numpackets, totalbytes);
     
 	close(sock);
     
