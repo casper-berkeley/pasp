@@ -37,6 +37,8 @@ set_param([blk,'/pfb_fir_real1'],'PFBSize',num2str(logcomchannels));
 set_param([blk,'/fft_wideband_real'],'FFTSize',num2str(logcomchannels));
 set_param([blk,'/fft_wideband_real1'],'FFTSize',num2str(logcomchannels));
 
+set_param([blk,'/scale_ctr'],'numchannels',num2str(numchannels));
+
 % if the number of channels is the same as the number of computers
 % need to initialize a reorder block and square transposer
 if numcomputers==numchannels,
