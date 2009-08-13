@@ -1,0 +1,16 @@
+regwrite ip_ctr/reg_ip1 0x0
+regwrite ip_ctr/reg_ip2 0x0
+regwrite ip_ctr/reg_ip3 0x0
+regwrite ip_ctr/reg_ip4 0x0
+regwrite ip_ctr/reg_ip5 0x0
+regwrite ip_ctr/reg_ip6 0x0
+regwrite ip_ctr/reg_ip7  0x0
+regwrite ip_ctr/reg_ip8 0x0
+regwrite ip_ctr/reg_ip9 0x0
+regwrite ip_ctr/reg_ip10 0x0
+regwrite ip_ctr/reg_ip11 0x0
+regwrite ip_ctr/reg_ip12 0x0
+regwrite ip_ctr/reg_ip13 0x0
+regwrite ip_ctr/reg_ip14 0x0
+regwrite ip_ctr/reg_ip15 0x0
+regwrite ip_ctr/reg_ip16 0x0

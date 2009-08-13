@@ -1,0 +1,3 @@
+regwrite ip_ctr/reg_ip8 0x0A000001
+regwrite ip_ctr/reg_port8 33108
+

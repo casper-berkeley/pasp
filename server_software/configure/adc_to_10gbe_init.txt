@@ -1,0 +1,30 @@
+regwrite ip_ctr/reg_num_ips 32
+regwrite reg_sync_period 327680
+
+write l xd0000000 xffffffff
+
+setb x40000000
+writeb l 0  x00000060
+writeb l 4  xdd47e309
+writeb l 8  x00000000
+writeb l 12 x0a0000c8
+writeb b x16 x0f
+writeb b x17 xa0
+writeb l x3130 x00000060
+writeb l x3134 xdd47e34d
+writeb b x15 xff
+write l xd0000000 x0
+
+setb x40004000
+writeb l 0  x00000060
+writeb l 4  xdd47e30a
+writeb l 8  x00000000
+writeb l 12 x0a0000c9
+writeb b x16 x0f
+writeb b x17 xa0
+writeb l x3130 x00000060
+writeb l x3134 xdd47e34d
+writeb b x15 xff
+write l xd0000000 x0
+
+
