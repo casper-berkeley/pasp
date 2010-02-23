@@ -26,6 +26,8 @@ numsamples = get_var('numsamples', 'defaults', defaults, varargin{:});
 samplesperpacket = get_var('samplesperpacket', 'defaults', defaults, varargin{:});
 numtengbe = get_var('numtengbe', 'defaults', defaults, varargin{:});
 
+load_system('pasp_lib.mdl');
+
 reuse_block(blk, 'sync', 'built-in/inport', 'Position', [75   402   105   418], 'Port', '1');
 reuse_block(blk, 'data_in', 'built-in/inport', 'Position', [75   442   105   458], 'Port', '2');
 reuse_block(blk, 'sys_ctr', 'built-in/inport', 'Position', [75   492   105   508], 'Port', '3');
@@ -33,13 +35,14 @@ reuse_block(blk, 'sys_ctr', 'built-in/inport', 'Position', [75   492   105   508
 reuse_block(blk,'reorder_en','xbsIndex_r4/Constant',...
     'const','1',...
     'arith_type','Boolean',...
+    'explicit_period','on',...
     'ShowName','off',...
     'Position',[140   422   170   438]);
 
 % update the reorder ordering
 reuse_block(blk,'reorder','casper_library/Reorder/reorder',...
     'n_inputs','1',...
-    'map',mat2str(makereorderarray(numcomputers, numsamples, samplesperpacket)),...
+    'map',['makereorderarray(',num2str(numcomputers),', ', num2str(numsamples), ', ', num2str(samplesperpacket), ')'],...
     'Position',[195   404   290   476]);
 
 add_line(blk,'sync/1','reorder/1');
@@ -71,6 +74,13 @@ for i=0:numtengbe-1,
         ',''numtengbe'',',num2str(numtengbe),...
         ',''tengbe_id'',',num2str(i),'}']);
     
+    reuse_block(blk,['delay_dout_',num2str(i)],'xbsIndex_r4/Delay',...
+        'Position',[1225         300*i+386        1285         300*i+434]);
+    reuse_block(blk,['delay_valid_',num2str(i)],'xbsIndex_r4/Delay',...
+        'Position',[1225         300*i+461        1285         300*i+509]);
+    reuse_block(blk,['delay_eof_',num2str(i)],'xbsIndex_r4/Delay',...
+        'Position',[1225         300*i+536        1285         300*i+584]);
+    
     reuse_block(blk,['ten_GbE',num2str(i),'_rst'],'xbsIndex_r4/Constant',...
         'const','0',...
         'arith_type','Boolean',...
@@ -88,23 +98,28 @@ for i=0:numtengbe-1,
         'Position',[1695 300*i+576 1740 300*i+604]);
     
     reuse_block(blk,['ten_GbE',num2str(i)],'xps_library/ten_GbE',...
+        'port',['ROACH:',num2str(i)],...
         'Position',[1800 300*i+370 2100 300*i+600]);
+    
+    add_line(blk,['packetizer',num2str(i),'/1'],['delay_dout_',num2str(i),'/1']);
+    add_line(blk,['packetizer',num2str(i),'/2'],['delay_valid_',num2str(i),'/1']);
+    add_line(blk,['packetizer',num2str(i),'/3'],['delay_eof_',num2str(i),'/1']);
     
     add_line(blk,'reorder/1',['packetizer',num2str(i),'/1']);
     add_line(blk,'reorder/3',['packetizer',num2str(i),'/2']);
     add_line(blk,'sys_ctr/1',['packetizer',num2str(i),'/3']);
     
-    add_line(blk,['packetizer',num2str(i),'/3'],['next_packet/',num2str(i+1)]);
+    add_line(blk,['delay_eof_',num2str(i),'/1'],['next_packet/',num2str(i+1)]);
     
     add_line(blk,'ip_ctr/3',['discard_and_',num2str(i),'/1']);
-    add_line(blk,['packetizer',num2str(i),'/3'],['discard_and_',num2str(i),'/2']);
+    add_line(blk,['delay_eof_',num2str(i),'/1'],['discard_and_',num2str(i),'/2']);
     
     add_line(blk,['ten_GbE',num2str(i),'_rst/1'],['ten_GbE',num2str(i),'/1']);
-    add_line(blk,['packetizer',num2str(i),'/1'],['ten_GbE',num2str(i),'/2']);
-    add_line(blk,['packetizer',num2str(i),'/2'],['ten_GbE',num2str(i),'/3']);
+    add_line(blk,['delay_dout_',num2str(i),'/1'],['ten_GbE',num2str(i),'/2']);
+    add_line(blk,['delay_valid_',num2str(i),'/1'],['ten_GbE',num2str(i),'/3']);
     add_line(blk,'ip_ctr/1',['ten_GbE',num2str(i),'/4']);
     add_line(blk,'ip_ctr/2',['ten_GbE',num2str(i),'/5']);
-    add_line(blk,['packetizer',num2str(i),'/3'],['ten_GbE',num2str(i),'/6']);
+    add_line(blk,['delay_eof_',num2str(i),'/1'],['ten_GbE',num2str(i),'/6']);
     add_line(blk,['discard_and_',num2str(i),'/1'],['ten_GbE',num2str(i),'/7']);
     add_line(blk,['ten_GbE',num2str(i),'_ack/1'],['ten_GbE',num2str(i),'/8']);
     

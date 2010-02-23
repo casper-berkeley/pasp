@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.15"
+    ComputedModelVersion    "1.16"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -24,9 +24,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "tfiliba"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Feb 18 22:57:03 2010"
+  LastModifiedDate	  "Fri Feb 19 13:55:35 2010"
   RTWModifiedTimeStamp	  0
-  ModelVersionFormat	  "1.%<AutoIncrement:15>"
+  ModelVersionFormat	  "1.%<AutoIncrement:16>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -649,7 +649,7 @@ Model {
   }
   System {
     Name		    "dist_gbe_test"
-    Location		    [726, 136, 1306, 396]
+    Location		    [710, 132, 1290, 392]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
