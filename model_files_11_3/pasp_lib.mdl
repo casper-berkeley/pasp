@@ -14,9 +14,9 @@ Library {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "tfiliba"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Feb 19 14:18:12 2010"
+  LastModifiedDate	  "Mon Feb 22 22:28:54 2010"
   RTWModifiedTimeStamp	  0
-  ModelVersionFormat	  "1.%<AutoIncrement:6>"
+  ModelVersionFormat	  "1.%<AutoIncrement:7>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -627,7 +627,7 @@ Library {
   }
   System {
     Name		    "pasp_lib"
-    Location		    [543, 392, 1123, 783]
+    Location		    [372, 187, 952, 703]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -674,7 +674,7 @@ Library {
       MaskIconRotate	      "none"
       MaskPortRotate	      "default"
       MaskIconUnits	      "autoscale"
-      MaskValueString	      "4|16|1024|2"
+      MaskValueString	      "4|16|1024|4"
       MaskTabNameString	      ",,,"
       System {
 	Name			"dist_gbe"
@@ -713,6 +713,318 @@ Library {
 	}
 	Block {
 	  BlockType		  Reference
+	  Name			  "delay_dout_0"
+	  Ports			  [1, 1]
+	  Position		  [1225, 386, 1285, 434]
+	  SourceBlock		  "xbsIndex_r4/Delay"
+	  SourceType		  "Xilinx Delay Block"
+	  infoedit		  "Hardware notes: A delay line is a chain, each link of which is an SRL16 followed by a flip-flop."
+	  en			  off
+	  latency		  "1"
+	  dbl_ovrd		  off
+	  reg_retiming		  off
+	  xl_use_area		  off
+	  xl_area		  "[0,0,0,0,0,0,0]"
+	  has_advanced_control	  "0"
+	  sggui_pos		  "-1,-1,-1,-1"
+	  block_type		  "delay"
+	  block_version		  "11.4"
+	  sg_icon_stat		  "60,48,1,1,white,blue,0,07b98262,right,"
+	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 1 1 0 ],[0 0 1 1 ],[0.77 0.82 0.91]);\npat"
+	  "ch([0.283333 0.15 0.333333 0.15 0.283333 0.5 0.55 0.6 0.833333 0.65 0.483333 0.366667 0.55 0.366667 0.483333 0.65 0"
+	  ".833333 0.6 0.55 0.5 0.283333 ],[0.104167 0.270833 0.5 0.729167 0.895833 0.895833 0.833333 0.895833 0.895833 0.6666"
+	  "67 0.875 0.729167 0.5 0.270833 0.125 0.333333 0.104167 0.104167 0.166667 0.104167 0.104167 ],[0.98 0.96 0.92]);\npl"
+	  "ot([0 1 1 0 0 ],[0 0 1 1 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: begin icon text');\n"
+	  "color('black');disp('z^{-1}','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "delay_dout_1"
+	  Ports			  [1, 1]
+	  Position		  [1225, 686, 1285, 734]
+	  SourceBlock		  "xbsIndex_r4/Delay"
+	  SourceType		  "Xilinx Delay Block"
+	  infoedit		  "Hardware notes: A delay line is a chain, each link of which is an SRL16 followed by a flip-flop."
+	  en			  off
+	  latency		  "1"
+	  dbl_ovrd		  off
+	  reg_retiming		  off
+	  xl_use_area		  off
+	  xl_area		  "[0,0,0,0,0,0,0]"
+	  has_advanced_control	  "0"
+	  sggui_pos		  "-1,-1,-1,-1"
+	  block_type		  "delay"
+	  block_version		  "11.4"
+	  sg_icon_stat		  "60,48,1,1,white,blue,0,07b98262,right,"
+	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 1 1 0 ],[0 0 1 1 ],[0.77 0.82 0.91]);\npat"
+	  "ch([0.283333 0.15 0.333333 0.15 0.283333 0.5 0.55 0.6 0.833333 0.65 0.483333 0.366667 0.55 0.366667 0.483333 0.65 0"
+	  ".833333 0.6 0.55 0.5 0.283333 ],[0.104167 0.270833 0.5 0.729167 0.895833 0.895833 0.833333 0.895833 0.895833 0.6666"
+	  "67 0.875 0.729167 0.5 0.270833 0.125 0.333333 0.104167 0.104167 0.166667 0.104167 0.104167 ],[0.98 0.96 0.92]);\npl"
+	  "ot([0 1 1 0 0 ],[0 0 1 1 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: begin icon text');\n"
+	  "color('black');disp('z^{-1}','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "delay_dout_2"
+	  Ports			  [1, 1]
+	  Position		  [1225, 986, 1285, 1034]
+	  SourceBlock		  "xbsIndex_r4/Delay"
+	  SourceType		  "Xilinx Delay Block"
+	  infoedit		  "Hardware notes: A delay line is a chain, each link of which is an SRL16 followed by a flip-flop."
+	  en			  off
+	  latency		  "1"
+	  dbl_ovrd		  off
+	  reg_retiming		  off
+	  xl_use_area		  off
+	  xl_area		  "[0,0,0,0,0,0,0]"
+	  has_advanced_control	  "0"
+	  sggui_pos		  "-1,-1,-1,-1"
+	  block_type		  "delay"
+	  block_version		  "11.4"
+	  sg_icon_stat		  "60,48,1,1,white,blue,0,07b98262,right,"
+	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 1 1 0 ],[0 0 1 1 ],[0.77 0.82 0.91]);\npat"
+	  "ch([0.283333 0.15 0.333333 0.15 0.283333 0.5 0.55 0.6 0.833333 0.65 0.483333 0.366667 0.55 0.366667 0.483333 0.65 0"
+	  ".833333 0.6 0.55 0.5 0.283333 ],[0.104167 0.270833 0.5 0.729167 0.895833 0.895833 0.833333 0.895833 0.895833 0.6666"
+	  "67 0.875 0.729167 0.5 0.270833 0.125 0.333333 0.104167 0.104167 0.166667 0.104167 0.104167 ],[0.98 0.96 0.92]);\npl"
+	  "ot([0 1 1 0 0 ],[0 0 1 1 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: begin icon text');\n"
+	  "color('black');disp('z^{-1}','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "delay_dout_3"
+	  Ports			  [1, 1]
+	  Position		  [1225, 1286, 1285, 1334]
+	  SourceBlock		  "xbsIndex_r4/Delay"
+	  SourceType		  "Xilinx Delay Block"
+	  infoedit		  "Hardware notes: A delay line is a chain, each link of which is an SRL16 followed by a flip-flop."
+	  en			  off
+	  latency		  "1"
+	  dbl_ovrd		  off
+	  reg_retiming		  off
+	  xl_use_area		  off
+	  xl_area		  "[0,0,0,0,0,0,0]"
+	  has_advanced_control	  "0"
+	  sggui_pos		  "-1,-1,-1,-1"
+	  block_type		  "delay"
+	  block_version		  "11.4"
+	  sg_icon_stat		  "60,48,1,1,white,blue,0,07b98262,right,"
+	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 1 1 0 ],[0 0 1 1 ],[0.77 0.82 0.91]);\npat"
+	  "ch([0.283333 0.15 0.333333 0.15 0.283333 0.5 0.55 0.6 0.833333 0.65 0.483333 0.366667 0.55 0.366667 0.483333 0.65 0"
+	  ".833333 0.6 0.55 0.5 0.283333 ],[0.104167 0.270833 0.5 0.729167 0.895833 0.895833 0.833333 0.895833 0.895833 0.6666"
+	  "67 0.875 0.729167 0.5 0.270833 0.125 0.333333 0.104167 0.104167 0.166667 0.104167 0.104167 ],[0.98 0.96 0.92]);\npl"
+	  "ot([0 1 1 0 0 ],[0 0 1 1 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: begin icon text');\n"
+	  "color('black');disp('z^{-1}','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "delay_eof_0"
+	  Ports			  [1, 1]
+	  Position		  [1225, 536, 1285, 584]
+	  SourceBlock		  "xbsIndex_r4/Delay"
+	  SourceType		  "Xilinx Delay Block"
+	  infoedit		  "Hardware notes: A delay line is a chain, each link of which is an SRL16 followed by a flip-flop."
+	  en			  off
+	  latency		  "1"
+	  dbl_ovrd		  off
+	  reg_retiming		  off
+	  xl_use_area		  off
+	  xl_area		  "[0,0,0,0,0,0,0]"
+	  has_advanced_control	  "0"
+	  sggui_pos		  "-1,-1,-1,-1"
+	  block_type		  "delay"
+	  block_version		  "11.4"
+	  sg_icon_stat		  "60,48,1,1,white,blue,0,07b98262,right,"
+	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 1 1 0 ],[0 0 1 1 ],[0.77 0.82 0.91]);\npat"
+	  "ch([0.283333 0.15 0.333333 0.15 0.283333 0.5 0.55 0.6 0.833333 0.65 0.483333 0.366667 0.55 0.366667 0.483333 0.65 0"
+	  ".833333 0.6 0.55 0.5 0.283333 ],[0.104167 0.270833 0.5 0.729167 0.895833 0.895833 0.833333 0.895833 0.895833 0.6666"
+	  "67 0.875 0.729167 0.5 0.270833 0.125 0.333333 0.104167 0.104167 0.166667 0.104167 0.104167 ],[0.98 0.96 0.92]);\npl"
+	  "ot([0 1 1 0 0 ],[0 0 1 1 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: begin icon text');\n"
+	  "color('black');disp('z^{-1}','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "delay_eof_1"
+	  Ports			  [1, 1]
+	  Position		  [1225, 836, 1285, 884]
+	  SourceBlock		  "xbsIndex_r4/Delay"
+	  SourceType		  "Xilinx Delay Block"
+	  infoedit		  "Hardware notes: A delay line is a chain, each link of which is an SRL16 followed by a flip-flop."
+	  en			  off
+	  latency		  "1"
+	  dbl_ovrd		  off
+	  reg_retiming		  off
+	  xl_use_area		  off
+	  xl_area		  "[0,0,0,0,0,0,0]"
+	  has_advanced_control	  "0"
+	  sggui_pos		  "-1,-1,-1,-1"
+	  block_type		  "delay"
+	  block_version		  "11.4"
+	  sg_icon_stat		  "60,48,1,1,white,blue,0,07b98262,right,"
+	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 1 1 0 ],[0 0 1 1 ],[0.77 0.82 0.91]);\npat"
+	  "ch([0.283333 0.15 0.333333 0.15 0.283333 0.5 0.55 0.6 0.833333 0.65 0.483333 0.366667 0.55 0.366667 0.483333 0.65 0"
+	  ".833333 0.6 0.55 0.5 0.283333 ],[0.104167 0.270833 0.5 0.729167 0.895833 0.895833 0.833333 0.895833 0.895833 0.6666"
+	  "67 0.875 0.729167 0.5 0.270833 0.125 0.333333 0.104167 0.104167 0.166667 0.104167 0.104167 ],[0.98 0.96 0.92]);\npl"
+	  "ot([0 1 1 0 0 ],[0 0 1 1 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: begin icon text');\n"
+	  "color('black');disp('z^{-1}','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "delay_eof_2"
+	  Ports			  [1, 1]
+	  Position		  [1225, 1136, 1285, 1184]
+	  SourceBlock		  "xbsIndex_r4/Delay"
+	  SourceType		  "Xilinx Delay Block"
+	  infoedit		  "Hardware notes: A delay line is a chain, each link of which is an SRL16 followed by a flip-flop."
+	  en			  off
+	  latency		  "1"
+	  dbl_ovrd		  off
+	  reg_retiming		  off
+	  xl_use_area		  off
+	  xl_area		  "[0,0,0,0,0,0,0]"
+	  has_advanced_control	  "0"
+	  sggui_pos		  "-1,-1,-1,-1"
+	  block_type		  "delay"
+	  block_version		  "11.4"
+	  sg_icon_stat		  "60,48,1,1,white,blue,0,07b98262,right,"
+	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 1 1 0 ],[0 0 1 1 ],[0.77 0.82 0.91]);\npat"
+	  "ch([0.283333 0.15 0.333333 0.15 0.283333 0.5 0.55 0.6 0.833333 0.65 0.483333 0.366667 0.55 0.366667 0.483333 0.65 0"
+	  ".833333 0.6 0.55 0.5 0.283333 ],[0.104167 0.270833 0.5 0.729167 0.895833 0.895833 0.833333 0.895833 0.895833 0.6666"
+	  "67 0.875 0.729167 0.5 0.270833 0.125 0.333333 0.104167 0.104167 0.166667 0.104167 0.104167 ],[0.98 0.96 0.92]);\npl"
+	  "ot([0 1 1 0 0 ],[0 0 1 1 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: begin icon text');\n"
+	  "color('black');disp('z^{-1}','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "delay_eof_3"
+	  Ports			  [1, 1]
+	  Position		  [1225, 1436, 1285, 1484]
+	  SourceBlock		  "xbsIndex_r4/Delay"
+	  SourceType		  "Xilinx Delay Block"
+	  infoedit		  "Hardware notes: A delay line is a chain, each link of which is an SRL16 followed by a flip-flop."
+	  en			  off
+	  latency		  "1"
+	  dbl_ovrd		  off
+	  reg_retiming		  off
+	  xl_use_area		  off
+	  xl_area		  "[0,0,0,0,0,0,0]"
+	  has_advanced_control	  "0"
+	  sggui_pos		  "-1,-1,-1,-1"
+	  block_type		  "delay"
+	  block_version		  "11.4"
+	  sg_icon_stat		  "60,48,1,1,white,blue,0,07b98262,right,"
+	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 1 1 0 ],[0 0 1 1 ],[0.77 0.82 0.91]);\npat"
+	  "ch([0.283333 0.15 0.333333 0.15 0.283333 0.5 0.55 0.6 0.833333 0.65 0.483333 0.366667 0.55 0.366667 0.483333 0.65 0"
+	  ".833333 0.6 0.55 0.5 0.283333 ],[0.104167 0.270833 0.5 0.729167 0.895833 0.895833 0.833333 0.895833 0.895833 0.6666"
+	  "67 0.875 0.729167 0.5 0.270833 0.125 0.333333 0.104167 0.104167 0.166667 0.104167 0.104167 ],[0.98 0.96 0.92]);\npl"
+	  "ot([0 1 1 0 0 ],[0 0 1 1 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: begin icon text');\n"
+	  "color('black');disp('z^{-1}','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "delay_valid_0"
+	  Ports			  [1, 1]
+	  Position		  [1225, 461, 1285, 509]
+	  SourceBlock		  "xbsIndex_r4/Delay"
+	  SourceType		  "Xilinx Delay Block"
+	  infoedit		  "Hardware notes: A delay line is a chain, each link of which is an SRL16 followed by a flip-flop."
+	  en			  off
+	  latency		  "1"
+	  dbl_ovrd		  off
+	  reg_retiming		  off
+	  xl_use_area		  off
+	  xl_area		  "[0,0,0,0,0,0,0]"
+	  has_advanced_control	  "0"
+	  sggui_pos		  "-1,-1,-1,-1"
+	  block_type		  "delay"
+	  block_version		  "11.4"
+	  sg_icon_stat		  "60,48,1,1,white,blue,0,07b98262,right,"
+	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 1 1 0 ],[0 0 1 1 ],[0.77 0.82 0.91]);\npat"
+	  "ch([0.283333 0.15 0.333333 0.15 0.283333 0.5 0.55 0.6 0.833333 0.65 0.483333 0.366667 0.55 0.366667 0.483333 0.65 0"
+	  ".833333 0.6 0.55 0.5 0.283333 ],[0.104167 0.270833 0.5 0.729167 0.895833 0.895833 0.833333 0.895833 0.895833 0.6666"
+	  "67 0.875 0.729167 0.5 0.270833 0.125 0.333333 0.104167 0.104167 0.166667 0.104167 0.104167 ],[0.98 0.96 0.92]);\npl"
+	  "ot([0 1 1 0 0 ],[0 0 1 1 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: begin icon text');\n"
+	  "color('black');disp('z^{-1}','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "delay_valid_1"
+	  Ports			  [1, 1]
+	  Position		  [1225, 761, 1285, 809]
+	  SourceBlock		  "xbsIndex_r4/Delay"
+	  SourceType		  "Xilinx Delay Block"
+	  infoedit		  "Hardware notes: A delay line is a chain, each link of which is an SRL16 followed by a flip-flop."
+	  en			  off
+	  latency		  "1"
+	  dbl_ovrd		  off
+	  reg_retiming		  off
+	  xl_use_area		  off
+	  xl_area		  "[0,0,0,0,0,0,0]"
+	  has_advanced_control	  "0"
+	  sggui_pos		  "-1,-1,-1,-1"
+	  block_type		  "delay"
+	  block_version		  "11.4"
+	  sg_icon_stat		  "60,48,1,1,white,blue,0,07b98262,right,"
+	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 1 1 0 ],[0 0 1 1 ],[0.77 0.82 0.91]);\npat"
+	  "ch([0.283333 0.15 0.333333 0.15 0.283333 0.5 0.55 0.6 0.833333 0.65 0.483333 0.366667 0.55 0.366667 0.483333 0.65 0"
+	  ".833333 0.6 0.55 0.5 0.283333 ],[0.104167 0.270833 0.5 0.729167 0.895833 0.895833 0.833333 0.895833 0.895833 0.6666"
+	  "67 0.875 0.729167 0.5 0.270833 0.125 0.333333 0.104167 0.104167 0.166667 0.104167 0.104167 ],[0.98 0.96 0.92]);\npl"
+	  "ot([0 1 1 0 0 ],[0 0 1 1 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: begin icon text');\n"
+	  "color('black');disp('z^{-1}','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "delay_valid_2"
+	  Ports			  [1, 1]
+	  Position		  [1225, 1061, 1285, 1109]
+	  SourceBlock		  "xbsIndex_r4/Delay"
+	  SourceType		  "Xilinx Delay Block"
+	  infoedit		  "Hardware notes: A delay line is a chain, each link of which is an SRL16 followed by a flip-flop."
+	  en			  off
+	  latency		  "1"
+	  dbl_ovrd		  off
+	  reg_retiming		  off
+	  xl_use_area		  off
+	  xl_area		  "[0,0,0,0,0,0,0]"
+	  has_advanced_control	  "0"
+	  sggui_pos		  "-1,-1,-1,-1"
+	  block_type		  "delay"
+	  block_version		  "11.4"
+	  sg_icon_stat		  "60,48,1,1,white,blue,0,07b98262,right,"
+	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 1 1 0 ],[0 0 1 1 ],[0.77 0.82 0.91]);\npat"
+	  "ch([0.283333 0.15 0.333333 0.15 0.283333 0.5 0.55 0.6 0.833333 0.65 0.483333 0.366667 0.55 0.366667 0.483333 0.65 0"
+	  ".833333 0.6 0.55 0.5 0.283333 ],[0.104167 0.270833 0.5 0.729167 0.895833 0.895833 0.833333 0.895833 0.895833 0.6666"
+	  "67 0.875 0.729167 0.5 0.270833 0.125 0.333333 0.104167 0.104167 0.166667 0.104167 0.104167 ],[0.98 0.96 0.92]);\npl"
+	  "ot([0 1 1 0 0 ],[0 0 1 1 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: begin icon text');\n"
+	  "color('black');disp('z^{-1}','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "delay_valid_3"
+	  Ports			  [1, 1]
+	  Position		  [1225, 1361, 1285, 1409]
+	  SourceBlock		  "xbsIndex_r4/Delay"
+	  SourceType		  "Xilinx Delay Block"
+	  infoedit		  "Hardware notes: A delay line is a chain, each link of which is an SRL16 followed by a flip-flop."
+	  en			  off
+	  latency		  "1"
+	  dbl_ovrd		  off
+	  reg_retiming		  off
+	  xl_use_area		  off
+	  xl_area		  "[0,0,0,0,0,0,0]"
+	  has_advanced_control	  "0"
+	  sggui_pos		  "-1,-1,-1,-1"
+	  block_type		  "delay"
+	  block_version		  "11.4"
+	  sg_icon_stat		  "60,48,1,1,white,blue,0,07b98262,right,"
+	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 1 1 0 ],[0 0 1 1 ],[0.77 0.82 0.91]);\npat"
+	  "ch([0.283333 0.15 0.333333 0.15 0.283333 0.5 0.55 0.6 0.833333 0.65 0.483333 0.366667 0.55 0.366667 0.483333 0.65 0"
+	  ".833333 0.6 0.55 0.5 0.283333 ],[0.104167 0.270833 0.5 0.729167 0.895833 0.895833 0.833333 0.895833 0.895833 0.6666"
+	  "67 0.875 0.729167 0.5 0.270833 0.125 0.333333 0.104167 0.104167 0.166667 0.104167 0.104167 ],[0.98 0.96 0.92]);\npl"
+	  "ot([0 1 1 0 0 ],[0 0 1 1 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: begin icon text');\n"
+	  "color('black');disp('z^{-1}','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
+	}
+	Block {
+	  BlockType		  Reference
 	  Name			  "discard_and_0"
 	  Ports			  [2, 1]
 	  Position		  [1695, 450, 1740, 490]
@@ -747,6 +1059,68 @@ Library {
 	  Name			  "discard_and_1"
 	  Ports			  [2, 1]
 	  Position		  [1695, 750, 1740, 790]
+	  SourceBlock		  "xbsIndex_r4/Logical"
+	  SourceType		  "Xilinx Logical Block Block"
+	  logical_function	  "AND"
+	  inputs		  "2"
+	  en			  off
+	  latency		  "0"
+	  precision		  "Full"
+	  arith_type		  "Unsigned"
+	  n_bits		  "16"
+	  bin_pt		  "0"
+	  align_bp		  on
+	  dbl_ovrd		  off
+	  xl_use_area		  off
+	  xl_area		  "[0,0,0,0,0,0,0]"
+	  has_advanced_control	  "0"
+	  sggui_pos		  "-1,-1,-1,-1"
+	  block_type		  "logical"
+	  block_version		  "11.4"
+	  sg_icon_stat		  "45,40,2,1,white,blue,0,0a851f85,right,"
+	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 1 1 0 ],[0 0 1 1 ],[0.77 0.82 0.91]);\npat"
+	  "ch([0.266667 0.111111 0.311111 0.111111 0.266667 0.511111 0.577778 0.644444 0.888889 0.688889 0.488889 0.355556 0.5"
+	  "77778 0.355556 0.488889 0.688889 0.888889 0.644444 0.577778 0.511111 0.266667 ],[0.1 0.275 0.5 0.725 0.9 0.9 0.825 "
+	  "0.9 0.9 0.675 0.9 0.75 0.5 0.25 0.1 0.325 0.1 0.1 0.175 0.1 0.1 ],[0.98 0.96 0.92]);\nplot([0 1 1 0 0 ],[0 0 1 1 0 "
+	  "]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: begin icon text');\ncolor('black');disp('\\new"
+	  "lineand\\newlinez^{-0}','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "discard_and_2"
+	  Ports			  [2, 1]
+	  Position		  [1695, 1050, 1740, 1090]
+	  SourceBlock		  "xbsIndex_r4/Logical"
+	  SourceType		  "Xilinx Logical Block Block"
+	  logical_function	  "AND"
+	  inputs		  "2"
+	  en			  off
+	  latency		  "0"
+	  precision		  "Full"
+	  arith_type		  "Unsigned"
+	  n_bits		  "16"
+	  bin_pt		  "0"
+	  align_bp		  on
+	  dbl_ovrd		  off
+	  xl_use_area		  off
+	  xl_area		  "[0,0,0,0,0,0,0]"
+	  has_advanced_control	  "0"
+	  sggui_pos		  "-1,-1,-1,-1"
+	  block_type		  "logical"
+	  block_version		  "11.4"
+	  sg_icon_stat		  "45,40,2,1,white,blue,0,0a851f85,right,"
+	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 1 1 0 ],[0 0 1 1 ],[0.77 0.82 0.91]);\npat"
+	  "ch([0.266667 0.111111 0.311111 0.111111 0.266667 0.511111 0.577778 0.644444 0.888889 0.688889 0.488889 0.355556 0.5"
+	  "77778 0.355556 0.488889 0.688889 0.888889 0.644444 0.577778 0.511111 0.266667 ],[0.1 0.275 0.5 0.725 0.9 0.9 0.825 "
+	  "0.9 0.9 0.675 0.9 0.75 0.5 0.25 0.1 0.325 0.1 0.1 0.175 0.1 0.1 ],[0.98 0.96 0.92]);\nplot([0 1 1 0 0 ],[0 0 1 1 0 "
+	  "]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: begin icon text');\ncolor('black');disp('\\new"
+	  "lineand\\newlinez^{-0}','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "discard_and_3"
+	  Ports			  [2, 1]
+	  Position		  [1695, 1350, 1740, 1390]
 	  SourceBlock		  "xbsIndex_r4/Logical"
 	  SourceType		  "Xilinx Logical Block Block"
 	  logical_function	  "AND"
@@ -842,10 +1216,10 @@ Library {
 	      SourceBlock	      "xbsIndex_r4/Relational"
 	      SourceType	      "Xilinx Arithmetic Relational Operator Block"
 	      mode		      "a=b"
-	      en		      off
+	      en		      "off"
 	      latency		      "1"
-	      dbl_ovrd		      off
-	      xl_use_area	      off
+	      dbl_ovrd		      "off"
+	      xl_use_area	      "off"
 	      xl_area		      "[0,0,0,0,0,0,0]"
 	      has_advanced_control    "0"
 	      sggui_pos		      "-1,-1,-1,-1"
@@ -877,15 +1251,15 @@ Library {
 	      arith_type	      "Unsigned"
 	      n_bits		      "2"
 	      bin_pt		      "0"
-	      load_pin		      off
-	      rst		      on
-	      en		      on
+	      load_pin		      "off"
+	      rst		      "on"
+	      en		      "on"
 	      explicit_period	      "on"
 	      period		      "1"
-	      dbl_ovrd		      off
-	      use_behavioral_HDL      off
+	      dbl_ovrd		      "off"
+	      use_behavioral_HDL      "off"
 	      implementation	      "Fabric"
-	      xl_use_area	      off
+	      xl_use_area	      "off"
 	      xl_area		      "[0,0,0,0,0,0,0]"
 	      has_advanced_control    "0"
 	      sggui_pos		      "-1,-1,-1,-1"
@@ -909,7 +1283,7 @@ Library {
 	      SourceBlock	      "xbsIndex_r4/Mux"
 	      SourceType	      "Xilinx Bus Multiplexer Block"
 	      inputs		      "4"
-	      en		      off
+	      en		      "off"
 	      latency		      "3"
 	      precision		      "Full"
 	      arith_type	      "Unsigned"
@@ -917,8 +1291,8 @@ Library {
 	      bin_pt		      "14"
 	      quantization	      "Truncate"
 	      overflow		      "Wrap"
-	      dbl_ovrd		      off
-	      xl_use_area	      off
+	      dbl_ovrd		      "off"
+	      xl_use_area	      "off"
 	      xl_area		      "[0,0,0,0,0,0,0]"
 	      has_advanced_control    "0"
 	      sggui_pos		      "-1,-1,-1,-1"
@@ -974,7 +1348,7 @@ Library {
 	      SourceBlock	      "xbsIndex_r4/Mux"
 	      SourceType	      "Xilinx Bus Multiplexer Block"
 	      inputs		      "4"
-	      en		      off
+	      en		      "off"
 	      latency		      "3"
 	      precision		      "Full"
 	      arith_type	      "Unsigned"
@@ -982,8 +1356,8 @@ Library {
 	      bin_pt		      "14"
 	      quantization	      "Truncate"
 	      overflow		      "Wrap"
-	      dbl_ovrd		      off
-	      xl_use_area	      off
+	      dbl_ovrd		      "off"
+	      xl_use_area	      "off"
 	      xl_area		      "[0,0,0,0,0,0,0]"
 	      has_advanced_control    "0"
 	      sggui_pos		      "-1,-1,-1,-1"
@@ -1010,13 +1384,13 @@ Library {
 	      "ut type is ordinarily unsigned with binary point at zero, but can be Boolean when the slice is one bit wide.<br"
 	      "><br>Hardware notes: In hardware this block costs nothing."
 	      nbits		      "16"
-	      boolean_output	      off
+	      boolean_output	      "off"
 	      mode		      "Lower Bit Location + Width"
 	      bit1		      "0"
 	      base1		      "MSB of Input"
 	      bit0		      "0"
 	      base0		      "LSB of Input"
-	      dbl_ovrd		      off
+	      dbl_ovrd		      "off"
 	      has_advanced_control    "0"
 	      sggui_pos		      "-1,-1,-1,-1"
 	      block_type	      "slice"
@@ -1073,7 +1447,7 @@ Library {
 	      const		      "0"
 	      n_bits		      "32"
 	      bin_pt		      "0"
-	      explicit_period	      off
+	      explicit_period	      "off"
 	      period		      "1"
 	      dsp48_infoedit	      "The use of this block for DSP48 instructions is deprecated.  Please use the Opmode block."
 	      equ		      "P=C"
@@ -1082,7 +1456,7 @@ Library {
 	      opr		      "+"
 	      inp1		      "P"
 	      carry		      "CIN"
-	      dbl_ovrd		      off
+	      dbl_ovrd		      "off"
 	      has_advanced_control    "0"
 	      sggui_pos		      "-1,-1,-1,-1"
 	      block_type	      "constant"
@@ -1118,10 +1492,10 @@ Library {
 		}
 	      }
 	      SourceBlock	      "xps_library/software register"
-	      SourceType	      ""
+	      SourceType	      "Unknown"
 	      ShowPortLabels	      "FromPortIcon"
 	      SystemSampleTime	      "-1"
-	      FunctionWithSeparateData off
+	      FunctionWithSeparateData "off"
 	      RTWMemSecFuncInitTerm   "Inherit from model"
 	      RTWMemSecFuncExecute    "Inherit from model"
 	      RTWMemSecDataConstants  "Inherit from model"
@@ -1157,10 +1531,10 @@ Library {
 		}
 	      }
 	      SourceBlock	      "xps_library/software register"
-	      SourceType	      ""
+	      SourceType	      "Unknown"
 	      ShowPortLabels	      "FromPortIcon"
 	      SystemSampleTime	      "-1"
-	      FunctionWithSeparateData off
+	      FunctionWithSeparateData "off"
 	      RTWMemSecFuncInitTerm   "Inherit from model"
 	      RTWMemSecFuncExecute    "Inherit from model"
 	      RTWMemSecDataConstants  "Inherit from model"
@@ -1196,10 +1570,10 @@ Library {
 		}
 	      }
 	      SourceBlock	      "xps_library/software register"
-	      SourceType	      ""
+	      SourceType	      "Unknown"
 	      ShowPortLabels	      "FromPortIcon"
 	      SystemSampleTime	      "-1"
-	      FunctionWithSeparateData off
+	      FunctionWithSeparateData "off"
 	      RTWMemSecFuncInitTerm   "Inherit from model"
 	      RTWMemSecFuncExecute    "Inherit from model"
 	      RTWMemSecDataConstants  "Inherit from model"
@@ -1220,10 +1594,10 @@ Library {
 	      Position		      [85, 229, 185, 261]
 	      BackgroundColor	      "[1.000000, 1.000000, 0.000000]"
 	      SourceBlock	      "xps_library/software register"
-	      SourceType	      ""
+	      SourceType	      "Unknown"
 	      ShowPortLabels	      "FromPortIcon"
 	      SystemSampleTime	      "-1"
-	      FunctionWithSeparateData off
+	      FunctionWithSeparateData "off"
 	      RTWMemSecFuncInitTerm   "Inherit from model"
 	      RTWMemSecFuncExecute    "Inherit from model"
 	      RTWMemSecDataConstants  "Inherit from model"
@@ -1259,10 +1633,10 @@ Library {
 		}
 	      }
 	      SourceBlock	      "xps_library/software register"
-	      SourceType	      ""
+	      SourceType	      "Unknown"
 	      ShowPortLabels	      "FromPortIcon"
 	      SystemSampleTime	      "-1"
-	      FunctionWithSeparateData off
+	      FunctionWithSeparateData "off"
 	      RTWMemSecFuncInitTerm   "Inherit from model"
 	      RTWMemSecFuncExecute    "Inherit from model"
 	      RTWMemSecDataConstants  "Inherit from model"
@@ -1298,10 +1672,10 @@ Library {
 		}
 	      }
 	      SourceBlock	      "xps_library/software register"
-	      SourceType	      ""
+	      SourceType	      "Unknown"
 	      ShowPortLabels	      "FromPortIcon"
 	      SystemSampleTime	      "-1"
-	      FunctionWithSeparateData off
+	      FunctionWithSeparateData "off"
 	      RTWMemSecFuncInitTerm   "Inherit from model"
 	      RTWMemSecFuncExecute    "Inherit from model"
 	      RTWMemSecDataConstants  "Inherit from model"
@@ -1337,10 +1711,10 @@ Library {
 		}
 	      }
 	      SourceBlock	      "xps_library/software register"
-	      SourceType	      ""
+	      SourceType	      "Unknown"
 	      ShowPortLabels	      "FromPortIcon"
 	      SystemSampleTime	      "-1"
-	      FunctionWithSeparateData off
+	      FunctionWithSeparateData "off"
 	      RTWMemSecFuncInitTerm   "Inherit from model"
 	      RTWMemSecFuncExecute    "Inherit from model"
 	      RTWMemSecDataConstants  "Inherit from model"
@@ -1361,10 +1735,10 @@ Library {
 	      Position		      [85, 469, 185, 501]
 	      BackgroundColor	      "[1.000000, 1.000000, 0.000000]"
 	      SourceBlock	      "xps_library/software register"
-	      SourceType	      ""
+	      SourceType	      "Unknown"
 	      ShowPortLabels	      "FromPortIcon"
 	      SystemSampleTime	      "-1"
-	      FunctionWithSeparateData off
+	      FunctionWithSeparateData "off"
 	      RTWMemSecFuncInitTerm   "Inherit from model"
 	      RTWMemSecFuncExecute    "Inherit from model"
 	      RTWMemSecDataConstants  "Inherit from model"
@@ -1560,12 +1934,12 @@ Library {
 	Block {
 	  BlockType		  Reference
 	  Name			  "next_packet"
-	  Ports			  [2, 1]
-	  Position		  [1340, 109, 1395, 171]
+	  Ports			  [4, 1]
+	  Position		  [1340, 111, 1395, 174]
 	  SourceBlock		  "xbsIndex_r4/Logical"
 	  SourceType		  "Xilinx Logical Block Block"
 	  logical_function	  "OR"
-	  inputs		  "2"
+	  inputs		  "4"
 	  en			  off
 	  latency		  "0"
 	  precision		  "Full"
@@ -1580,14 +1954,14 @@ Library {
 	  sggui_pos		  "-1,-1,-1,-1"
 	  block_type		  "logical"
 	  block_version		  "11.4"
-	  sg_icon_stat		  "55,62,2,1,white,blue,0,fc354646,right,"
+	  sg_icon_stat		  "55,63,4,1,white,blue,0,96d3e8c1,right,"
 	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 1 1 0 ],[0 0 1 1 ],[0.77 0.82 0.91]);\npat"
 	  "ch([0.236364 0.0727273 0.309091 0.0727273 0.236364 0.509091 0.581818 0.654545 0.945455 0.727273 0.509091 0.345455 0"
-	  ".581818 0.345455 0.509091 0.727273 0.945455 0.654545 0.581818 0.509091 0.236364 ],[0.145161 0.290323 0.5 0.709677 0"
-	  ".854839 0.854839 0.790323 0.854839 0.854839 0.66129 0.854839 0.709677 0.5 0.290323 0.145161 0.33871 0.145161 0.1451"
-	  "61 0.209677 0.145161 0.145161 ],[0.98 0.96 0.92]);\nplot([0 1 1 0 0 ],[0 0 1 1 0 ]);\nfprintf('','COMMENT: end icon"
-	  " graphics');\nfprintf('','COMMENT: begin icon text');\ncolor('black');disp('\\newlineor\\newlinez^{-0}','texmode','"
-	  "on');\nfprintf('','COMMENT: end icon text');\n"
+	  ".581818 0.345455 0.509091 0.727273 0.945455 0.654545 0.581818 0.509091 0.236364 ],[0.15873 0.301587 0.507937 0.7142"
+	  "86 0.857143 0.857143 0.793651 0.857143 0.857143 0.666667 0.857143 0.714286 0.507937 0.301587 0.15873 0.349206 0.158"
+	  "73 0.15873 0.222222 0.15873 0.15873 ],[0.98 0.96 0.92]);\nplot([0 1 1 0 0 ],[0 0 1 1 0 ]);\nfprintf('','COMMENT: en"
+	  "d icon graphics');\nfprintf('','COMMENT: begin icon text');\ncolor('black');disp('\\newlineor\\newlinez^{-0}','texm"
+	  "ode','on');\nfprintf('','COMMENT: end icon text');\n"
 	}
 	Block {
 	  BlockType		  Reference
@@ -1610,7 +1984,7 @@ Library {
 	  xl_use_area		  off
 	  xl_area		  "[0,0,0,0,0,0,0]"
 	  suppress_output	  "on"
-	  defparams		  "{'packet_size',1024,'numcomputers',4,'numtengbe',2,'tengbe_id',0}"
+	  defparams		  "{'packet_size',1024,'numcomputers',4,'numtengbe',4,'tengbe_id',0}"
 	  hide_port_list	  "{'st'}"
 	  has_advanced_control	  "0"
 	  sggui_pos		  "0,0,419,574"
@@ -1648,7 +2022,83 @@ Library {
 	  xl_use_area		  off
 	  xl_area		  "[0,0,0,0,0,0,0]"
 	  suppress_output	  "on"
-	  defparams		  "{'packet_size',1024,'numcomputers',4,'numtengbe',2,'tengbe_id',1}"
+	  defparams		  "{'packet_size',1024,'numcomputers',4,'numtengbe',4,'tengbe_id',1}"
+	  hide_port_list	  "{'st'}"
+	  has_advanced_control	  "0"
+	  sggui_pos		  "0,0,419,574"
+	  block_type		  "mcode"
+	  block_version		  "11.4"
+	  sg_icon_stat		  "450,230,3,3,white,blue,0,f7e8a567,right,"
+	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 1 1 0 ],[0 0 1 1 ],[0.77 0.82 0.91]);\npat"
+	  "ch([0.364444 0.28 0.4 0.28 0.364444 0.5 0.535556 0.571111 0.715556 0.602222 0.493333 0.413333 0.533333 0.413333 0.4"
+	  "93333 0.602222 0.715556 0.571111 0.535556 0.5 0.364444 ],[0.108696 0.273913 0.508696 0.743478 0.908696 0.908696 0.8"
+	  "3913 0.908696 0.908696 0.686957 0.9 0.743478 0.508696 0.273913 0.117391 0.330435 0.108696 0.108696 0.178261 0.10869"
+	  "6 0.108696 ],[0.98 0.96 0.92]);\nplot([0 1 1 0 0 ],[0 0 1 1 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprin"
+	  "tf('','COMMENT: begin icon text');\ncolor('black');port_label('input',1,'sync');\ncolor('black');port_label('input'"
+	  ",2,'din');\ncolor('black');port_label('input',3,'sys_counter');\ncolor('black');port_label('output',1,'dout');\ncol"
+	  "or('black');port_label('output',2,'valid');\ncolor('black');port_label('output',3,'end_of_frame');\ncolor('black');"
+	  "disp('\\bf{packetizer}','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "packetizer2"
+	  Ports			  [3, 3]
+	  Position		  [700, 970, 1150, 1200]
+	  SourceBlock		  "xbsIndex_r4/MCode"
+	  SourceType		  "Xilinx MCode Block Block"
+	  infoedit		  "Pass input values to a MATLAB function for evaluation in Xilinx fixed-point type. The input ports of t"
+	  "he block are input arguments of the function. The output ports of the block are output arguments of the function."
+	  mfname		  "packetizer"
+	  explicit_period	  off
+	  period		  "1"
+	  inputsTable		  "{'boundInpExpr'=>['','','','','','',''],'inputs'=>['sync','din','sys_counter','packet_size','numcom"
+	  "puters','numtengbe','tengbe_id']}"
+	  outputsTable		  "{'outputs'=>['dout','valid','end_of_frame','st'],'suppressOut'=>['off','off','off','on']}"
+	  dbl_ovrd		  off
+	  enable_stdout		  off
+	  enable_debug		  off
+	  xl_use_area		  off
+	  xl_area		  "[0,0,0,0,0,0,0]"
+	  suppress_output	  "on"
+	  defparams		  "{'packet_size',1024,'numcomputers',4,'numtengbe',4,'tengbe_id',2}"
+	  hide_port_list	  "{'st'}"
+	  has_advanced_control	  "0"
+	  sggui_pos		  "0,0,419,574"
+	  block_type		  "mcode"
+	  block_version		  "11.4"
+	  sg_icon_stat		  "450,230,3,3,white,blue,0,f7e8a567,right,"
+	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 1 1 0 ],[0 0 1 1 ],[0.77 0.82 0.91]);\npat"
+	  "ch([0.364444 0.28 0.4 0.28 0.364444 0.5 0.535556 0.571111 0.715556 0.602222 0.493333 0.413333 0.533333 0.413333 0.4"
+	  "93333 0.602222 0.715556 0.571111 0.535556 0.5 0.364444 ],[0.108696 0.273913 0.508696 0.743478 0.908696 0.908696 0.8"
+	  "3913 0.908696 0.908696 0.686957 0.9 0.743478 0.508696 0.273913 0.117391 0.330435 0.108696 0.108696 0.178261 0.10869"
+	  "6 0.108696 ],[0.98 0.96 0.92]);\nplot([0 1 1 0 0 ],[0 0 1 1 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprin"
+	  "tf('','COMMENT: begin icon text');\ncolor('black');port_label('input',1,'sync');\ncolor('black');port_label('input'"
+	  ",2,'din');\ncolor('black');port_label('input',3,'sys_counter');\ncolor('black');port_label('output',1,'dout');\ncol"
+	  "or('black');port_label('output',2,'valid');\ncolor('black');port_label('output',3,'end_of_frame');\ncolor('black');"
+	  "disp('\\bf{packetizer}','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "packetizer3"
+	  Ports			  [3, 3]
+	  Position		  [700, 1270, 1150, 1500]
+	  SourceBlock		  "xbsIndex_r4/MCode"
+	  SourceType		  "Xilinx MCode Block Block"
+	  infoedit		  "Pass input values to a MATLAB function for evaluation in Xilinx fixed-point type. The input ports of t"
+	  "he block are input arguments of the function. The output ports of the block are output arguments of the function."
+	  mfname		  "packetizer"
+	  explicit_period	  off
+	  period		  "1"
+	  inputsTable		  "{'boundInpExpr'=>['','','','','','',''],'inputs'=>['sync','din','sys_counter','packet_size','numcom"
+	  "puters','numtengbe','tengbe_id']}"
+	  outputsTable		  "{'outputs'=>['dout','valid','end_of_frame','st'],'suppressOut'=>['off','off','off','on']}"
+	  dbl_ovrd		  off
+	  enable_stdout		  off
+	  enable_debug		  off
+	  xl_use_area		  off
+	  xl_area		  "[0,0,0,0,0,0,0]"
+	  suppress_output	  "on"
+	  defparams		  "{'packet_size',1024,'numcomputers',4,'numtengbe',4,'tengbe_id',3}"
 	  hide_port_list	  "{'st'}"
 	  has_advanced_control	  "0"
 	  sggui_pos		  "0,0,419,574"
@@ -1702,7 +2152,7 @@ Library {
 	  MaskIconRotate	  "none"
 	  MaskPortRotate	  "default"
 	  MaskIconUnits		  "autoscale"
-	  MaskValueString	  "getfield( getfield( get_param( gcb,'UserData' ), 'parameters'),'map')|1|2|3|0|off"
+	  MaskValueString	  "makereorderarray(4, 16, 1024)|1|2|3|0|off"
 	  MaskTabNameString	  ",,,,,"
 	  System {
 	    Name		    "reorder"
@@ -1762,15 +2212,15 @@ Library {
 	      arith_type	      "Unsigned"
 	      n_bits		      "15"
 	      bin_pt		      "0"
-	      load_pin		      off
-	      rst		      on
-	      en		      on
+	      load_pin		      "off"
+	      rst		      "on"
+	      en		      "on"
 	      explicit_period	      "on"
 	      period		      "1"
-	      dbl_ovrd		      off
-	      use_behavioral_HDL      off
+	      dbl_ovrd		      "off"
+	      use_behavioral_HDL      "off"
 	      implementation	      "Fabric"
-	      xl_use_area	      off
+	      xl_use_area	      "off"
 	      xl_area		      "[0,0,0,0,0,0,0]"
 	      has_advanced_control    "0"
 	      sggui_pos		      "-1,-1,-1,-1"
@@ -1793,7 +2243,7 @@ Library {
 	      SourceBlock	      "xbsIndex_r4/Mux"
 	      SourceType	      "Xilinx Bus Multiplexer Block"
 	      inputs		      "5"
-	      en		      off
+	      en		      "off"
 	      latency		      "1"
 	      precision		      "Full"
 	      arith_type	      "Unsigned"
@@ -1801,8 +2251,8 @@ Library {
 	      bin_pt		      "14"
 	      quantization	      "Truncate"
 	      overflow		      "Wrap"
-	      dbl_ovrd		      off
-	      xl_use_area	      off
+	      dbl_ovrd		      "off"
+	      xl_use_area	      "off"
 	      xl_area		      "[0,0,0,0,0,0,0]"
 	      has_advanced_control    "0"
 	      sggui_pos		      "-1,-1,-1,-1"
@@ -1830,13 +2280,13 @@ Library {
 	      "ut type is ordinarily unsigned with binary point at zero, but can be Boolean when the slice is one bit wide.<br"
 	      "><br>Hardware notes: In hardware this block costs nothing."
 	      nbits		      "3"
-	      boolean_output	      off
+	      boolean_output	      "off"
 	      mode		      "Upper Bit Location + Width"
 	      bit1		      "0"
 	      base1		      "MSB of Input"
 	      bit0		      "0"
 	      base0		      "LSB of Input"
-	      dbl_ovrd		      off
+	      dbl_ovrd		      "off"
 	      has_advanced_control    "0"
 	      sggui_pos		      "-1,-1,-1,-1"
 	      block_type	      "slice"
@@ -1860,13 +2310,13 @@ Library {
 	      "ut type is ordinarily unsigned with binary point at zero, but can be Boolean when the slice is one bit wide.<br"
 	      "><br>Hardware notes: In hardware this block costs nothing."
 	      nbits		      "12"
-	      boolean_output	      off
+	      boolean_output	      "off"
 	      mode		      "Lower Bit Location + Width"
 	      bit1		      "0"
 	      base1		      "MSB of Input"
 	      bit0		      "0"
 	      base0		      "LSB of Input"
-	      dbl_ovrd		      off
+	      dbl_ovrd		      "off"
 	      has_advanced_control    "0"
 	      sggui_pos		      "-1,-1,-1,-1"
 	      block_type	      "slice"
@@ -1890,14 +2340,14 @@ Library {
 	      initVector	      "sin(pi*(0:15)/16)"
 	      distributed_mem	      "Block RAM"
 	      write_mode	      "Read Before Write"
-	      rst		      off
+	      rst		      "off"
 	      init_reg		      "0"
-	      en		      off
+	      en		      "off"
 	      latency		      "2"
-	      dbl_ovrd		      off
+	      dbl_ovrd		      "off"
 	      optimize		      "Area"
-	      use_rpm		      on
-	      xl_use_area	      off
+	      use_rpm		      "on"
+	      xl_use_area	      "off"
 	      xl_area		      "[0,0,0,0,0,0,0]"
 	      has_advanced_control    "0"
 	      sggui_pos		      "-1,-1,-1,-1"
@@ -1922,11 +2372,11 @@ Library {
 	      SourceType	      "Xilinx Delay Block"
 	      infoedit		      "Hardware notes: A delay line is a chain, each link of which is an SRL16 followed by a flip-flo"
 	      "p."
-	      en		      off
+	      en		      "off"
 	      latency		      "12"
-	      dbl_ovrd		      off
-	      reg_retiming	      off
-	      xl_use_area	      off
+	      dbl_ovrd		      "off"
+	      reg_retiming	      "off"
+	      xl_use_area	      "off"
 	      xl_area		      "[0,0,0,0,0,0,0]"
 	      has_advanced_control    "0"
 	      sggui_pos		      "-1,-1,-1,-1"
@@ -1949,11 +2399,11 @@ Library {
 	      SourceType	      "Xilinx Delay Block"
 	      infoedit		      "Hardware notes: A delay line is a chain, each link of which is an SRL16 followed by a flip-flo"
 	      "p."
-	      en		      off
+	      en		      "off"
 	      latency		      "13"
-	      dbl_ovrd		      off
-	      reg_retiming	      off
-	      xl_use_area	      off
+	      dbl_ovrd		      "off"
+	      reg_retiming	      "off"
+	      xl_use_area	      "off"
 	      xl_area		      "[0, 0, 0, 0, 0, 0, 0]"
 	      has_advanced_control    "0"
 	      sggui_pos		      "-1,-1,-1,-1"
@@ -1975,11 +2425,11 @@ Library {
 	      SourceType	      "Xilinx Delay Block"
 	      infoedit		      "Hardware notes: A delay line is a chain, each link of which is an SRL16 followed by a flip-flo"
 	      "p."
-	      en		      off
+	      en		      "off"
 	      latency		      "3*map_latency"
-	      dbl_ovrd		      off
-	      reg_retiming	      off
-	      xl_use_area	      off
+	      dbl_ovrd		      "off"
+	      reg_retiming	      "off"
+	      xl_use_area	      "off"
 	      xl_area		      "[0,0,0,0,0,0,0]"
 	      has_advanced_control    "0"
 	      sggui_pos		      "-1,-1,-1,-1"
@@ -2001,11 +2451,11 @@ Library {
 	      SourceType	      "Xilinx Delay Block"
 	      infoedit		      "Hardware notes: A delay line is a chain, each link of which is an SRL16 followed by a flip-flo"
 	      "p."
-	      en		      off
+	      en		      "off"
 	      latency		      "2*map_latency"
-	      dbl_ovrd		      off
-	      reg_retiming	      off
-	      xl_use_area	      off
+	      dbl_ovrd		      "off"
+	      reg_retiming	      "off"
+	      xl_use_area	      "off"
 	      xl_area		      "[0,0,0,0,0,0,0]"
 	      has_advanced_control    "0"
 	      sggui_pos		      "-1,-1,-1,-1"
@@ -2027,11 +2477,11 @@ Library {
 	      SourceType	      "Xilinx Delay Block"
 	      infoedit		      "Hardware notes: A delay line is a chain, each link of which is an SRL16 followed by a flip-flo"
 	      "p."
-	      en		      off
+	      en		      "off"
 	      latency		      "1*map_latency"
-	      dbl_ovrd		      off
-	      reg_retiming	      off
-	      xl_use_area	      off
+	      dbl_ovrd		      "off"
+	      reg_retiming	      "off"
+	      xl_use_area	      "off"
 	      xl_area		      "[0,0,0,0,0,0,0]"
 	      has_advanced_control    "0"
 	      sggui_pos		      "-1,-1,-1,-1"
@@ -2053,11 +2503,11 @@ Library {
 	      SourceType	      "Xilinx Delay Block"
 	      infoedit		      "Hardware notes: A delay line is a chain, each link of which is an SRL16 followed by a flip-flo"
 	      "p."
-	      en		      off
+	      en		      "off"
 	      latency		      "0*map_latency"
-	      dbl_ovrd		      off
-	      reg_retiming	      off
-	      xl_use_area	      off
+	      dbl_ovrd		      "off"
+	      reg_retiming	      "off"
+	      xl_use_area	      "off"
 	      xl_area		      "[0,0,0,0,0,0,0]"
 	      has_advanced_control    "0"
 	      sggui_pos		      "-1,-1,-1,-1"
@@ -2079,11 +2529,11 @@ Library {
 	      SourceType	      "Xilinx Delay Block"
 	      infoedit		      "Hardware notes: A delay line is a chain, each link of which is an SRL16 followed by a flip-flo"
 	      "p."
-	      en		      off
+	      en		      "off"
 	      latency		      "12"
-	      dbl_ovrd		      off
-	      reg_retiming	      off
-	      xl_use_area	      off
+	      dbl_ovrd		      "off"
+	      reg_retiming	      "off"
+	      xl_use_area	      "off"
 	      xl_area		      "[0,0,0,0,0,0,0]"
 	      has_advanced_control    "0"
 	      sggui_pos		      "-1,-1,-1,-1"
@@ -2106,11 +2556,11 @@ Library {
 	      SourceType	      "Xilinx Delay Block"
 	      infoedit		      "Hardware notes: A delay line is a chain, each link of which is an SRL16 followed by a flip-flo"
 	      "p."
-	      en		      off
+	      en		      "off"
 	      latency		      "3"
-	      dbl_ovrd		      off
-	      reg_retiming	      off
-	      xl_use_area	      off
+	      dbl_ovrd		      "off"
+	      reg_retiming	      "off"
+	      xl_use_area	      "off"
 	      xl_area		      "[0, 0, 0, 0, 0, 0, 0]"
 	      has_advanced_control    "0"
 	      sggui_pos		      "-1,-1,-1,-1"
@@ -2133,11 +2583,11 @@ Library {
 	      SourceType	      "Xilinx Delay Block"
 	      infoedit		      "Hardware notes: A delay line is a chain, each link of which is an SRL16 followed by a flip-flo"
 	      "p."
-	      en		      off
+	      en		      "off"
 	      latency		      "12"
-	      dbl_ovrd		      off
-	      reg_retiming	      off
-	      xl_use_area	      off
+	      dbl_ovrd		      "off"
+	      reg_retiming	      "off"
+	      xl_use_area	      "off"
 	      xl_area		      "[0, 0, 0, 0, 0, 0, 0]"
 	      has_advanced_control    "0"
 	      sggui_pos		      "-1,-1,-1,-1"
@@ -2160,17 +2610,17 @@ Library {
 	      depth		      "4096"
 	      initVector	      "map"
 	      distributed_mem	      "Distributed memory"
-	      rst		      off
+	      rst		      "off"
 	      init_reg		      "0"
-	      en		      off
+	      en		      "off"
 	      latency		      "3"
 	      arith_type	      "Unsigned"
 	      n_bits		      "12"
 	      bin_pt		      "0"
-	      dbl_ovrd		      off
+	      dbl_ovrd		      "off"
 	      optimize		      "Area"
-	      use_rpm		      on
-	      xl_use_area	      off
+	      use_rpm		      "on"
+	      xl_use_area	      "off"
 	      xl_area		      "[0,0,0,0,0,0,0]"
 	      has_advanced_control    "0"
 	      sggui_pos		      "-1,-1,-1,-1"
@@ -2194,17 +2644,17 @@ Library {
 	      depth		      "4096"
 	      initVector	      "map"
 	      distributed_mem	      "Distributed memory"
-	      rst		      off
+	      rst		      "off"
 	      init_reg		      "0"
-	      en		      off
+	      en		      "off"
 	      latency		      "3"
 	      arith_type	      "Unsigned"
 	      n_bits		      "12"
 	      bin_pt		      "0"
-	      dbl_ovrd		      off
+	      dbl_ovrd		      "off"
 	      optimize		      "Area"
-	      use_rpm		      on
-	      xl_use_area	      off
+	      use_rpm		      "on"
+	      xl_use_area	      "off"
 	      xl_area		      "[0,0,0,0,0,0,0]"
 	      has_advanced_control    "0"
 	      sggui_pos		      "-1,-1,-1,-1"
@@ -2228,17 +2678,17 @@ Library {
 	      depth		      "4096"
 	      initVector	      "map"
 	      distributed_mem	      "Distributed memory"
-	      rst		      off
+	      rst		      "off"
 	      init_reg		      "0"
-	      en		      off
+	      en		      "off"
 	      latency		      "3"
 	      arith_type	      "Unsigned"
 	      n_bits		      "12"
 	      bin_pt		      "0"
-	      dbl_ovrd		      off
+	      dbl_ovrd		      "off"
 	      optimize		      "Area"
-	      use_rpm		      on
-	      xl_use_area	      off
+	      use_rpm		      "on"
+	      xl_use_area	      "off"
 	      xl_area		      "[0,0,0,0,0,0,0]"
 	      has_advanced_control    "0"
 	      sggui_pos		      "-1,-1,-1,-1"
@@ -2262,17 +2712,17 @@ Library {
 	      depth		      "4096"
 	      initVector	      "map"
 	      distributed_mem	      "Distributed memory"
-	      rst		      off
+	      rst		      "off"
 	      init_reg		      "0"
-	      en		      off
+	      en		      "off"
 	      latency		      "3"
 	      arith_type	      "Unsigned"
 	      n_bits		      "12"
 	      bin_pt		      "0"
-	      dbl_ovrd		      off
+	      dbl_ovrd		      "off"
 	      optimize		      "Area"
-	      use_rpm		      on
-	      xl_use_area	      off
+	      use_rpm		      "on"
+	      xl_use_area	      "off"
 	      xl_area		      "[0,0,0,0,0,0,0]"
 	      has_advanced_control    "0"
 	      sggui_pos		      "-1,-1,-1,-1"
@@ -2295,11 +2745,11 @@ Library {
 	      SourceType	      "Xilinx Delay Block"
 	      infoedit		      "Hardware notes: A delay line is a chain, each link of which is an SRL16 followed by a flip-flo"
 	      "p."
-	      en		      off
+	      en		      "off"
 	      latency		      "3"
-	      dbl_ovrd		      off
-	      reg_retiming	      off
-	      xl_use_area	      off
+	      dbl_ovrd		      "off"
+	      reg_retiming	      "off"
+	      xl_use_area	      "off"
 	      xl_area		      "[0, 0, 0, 0, 0, 0, 0]"
 	      has_advanced_control    "0"
 	      sggui_pos		      "-1,-1,-1,-1"
@@ -2322,11 +2772,11 @@ Library {
 	      SourceType	      "Xilinx Delay Block"
 	      infoedit		      "Hardware notes: A delay line is a chain, each link of which is an SRL16 followed by a flip-flo"
 	      "p."
-	      en		      off
+	      en		      "off"
 	      latency		      "12"
-	      dbl_ovrd		      off
-	      reg_retiming	      off
-	      xl_use_area	      off
+	      dbl_ovrd		      "off"
+	      reg_retiming	      "off"
+	      xl_use_area	      "off"
 	      xl_area		      "[0, 0, 0, 0, 0, 0, 0]"
 	      has_advanced_control    "0"
 	      sggui_pos		      "-1,-1,-1,-1"
@@ -2453,7 +2903,7 @@ Library {
 	      SourceType	      "sync_delay_en"
 	      ShowPortLabels	      "FromPortIcon"
 	      SystemSampleTime	      "-1"
-	      FunctionWithSeparateData off
+	      FunctionWithSeparateData "off"
 	      RTWMemSecFuncInitTerm   "Inherit from model"
 	      RTWMemSecFuncExecute    "Inherit from model"
 	      RTWMemSecDataConstants  "Inherit from model"
@@ -2708,7 +3158,7 @@ Library {
 	  const			  "1"
 	  n_bits		  "16"
 	  bin_pt		  "14"
-	  explicit_period	  off
+	  explicit_period	  on
 	  period		  "1"
 	  dsp48_infoedit	  "The use of this block for DSP48 instructions is deprecated.  Please use the Opmode block."
 	  equ			  "P=C"
@@ -2747,7 +3197,7 @@ Library {
 	  RTWMemSecDataConstants  "Inherit from model"
 	  RTWMemSecDataInternal	  "Inherit from model"
 	  RTWMemSecDataParameters "Inherit from model"
-	  port			  "BEE2_ctrl:0"
+	  port			  "ROACH:0"
 	  mac_lite		  off
 	  open_phy		  off
 	  show_param		  off
@@ -2846,7 +3296,7 @@ Library {
 	  RTWMemSecDataConstants  "Inherit from model"
 	  RTWMemSecDataInternal	  "Inherit from model"
 	  RTWMemSecDataParameters "Inherit from model"
-	  port			  "BEE2_ctrl:0"
+	  port			  "ROACH:1"
 	  mac_lite		  off
 	  open_phy		  off
 	  show_param		  off
@@ -2928,6 +3378,204 @@ Library {
 	  "s');\nfprintf('','COMMENT: begin icon text');\ncolor('black');port_label('output',1,'0');\nfprintf('','COMMENT: end"
 	  " icon text');\n"
 	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "ten_GbE2"
+	  Tag			  "xps:tengbe"
+	  Ports			  [8, 10]
+	  Position		  [1800, 972, 2100, 1203]
+	  BackgroundColor	  "[1.000000, 1.000000, 0.000000]"
+	  SourceBlock		  "xps_library/ten_GbE"
+	  SourceType		  "ten_GbE"
+	  ShowPortLabels	  "FromPortIcon"
+	  SystemSampleTime	  "-1"
+	  FunctionWithSeparateData off
+	  RTWMemSecFuncInitTerm	  "Inherit from model"
+	  RTWMemSecFuncExecute	  "Inherit from model"
+	  RTWMemSecDataConstants  "Inherit from model"
+	  RTWMemSecDataInternal	  "Inherit from model"
+	  RTWMemSecDataParameters "Inherit from model"
+	  port			  "ROACH:2"
+	  mac_lite		  off
+	  open_phy		  off
+	  show_param		  off
+	  pre_emph		  "3"
+	  swing			  "800"
+	  fab_en		  off
+	  fab_mac		  "0"
+	  fab_ip		  "0"
+	  fab_udp		  "0"
+	  fab_gate		  "0"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "ten_GbE2_ack"
+	  Ports			  [0, 1]
+	  Position		  [1695, 1176, 1740, 1204]
+	  ShowName		  off
+	  SourceBlock		  "xbsIndex_r4/Constant"
+	  SourceType		  "Xilinx Constant Block Block"
+	  arith_type		  "Boolean"
+	  const			  "0"
+	  n_bits		  "16"
+	  bin_pt		  "14"
+	  explicit_period	  off
+	  period		  "1"
+	  dsp48_infoedit	  "The use of this block for DSP48 instructions is deprecated.  Please use the Opmode block."
+	  equ			  "P=C"
+	  opselect		  "C"
+	  inp2			  "PCIN>>17"
+	  opr			  "+"
+	  inp1			  "P"
+	  carry			  "CIN"
+	  dbl_ovrd		  off
+	  has_advanced_control	  "0"
+	  sggui_pos		  "-1,-1,-1,-1"
+	  block_type		  "constant"
+	  block_version		  "11.4"
+	  sg_icon_stat		  "45,28,0,1,white,blue,0,bf4ddd8b,right,"
+	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 1 1 0 ],[0 0 1 1 ],[0.77 0.82 0.91]);\npat"
+	  "ch([0.333333 0.222222 0.377778 0.222222 0.333333 0.488889 0.533333 0.577778 0.755556 0.622222 0.488889 0.4 0.577778"
+	  " 0.4 0.488889 0.622222 0.755556 0.577778 0.533333 0.488889 0.333333 ],[0.107143 0.285714 0.535714 0.785714 0.964286"
+	  " 0.964286 0.892857 0.964286 0.964286 0.75 0.964286 0.821429 0.535714 0.25 0.107143 0.321429 0.107143 0.107143 0.178"
+	  "571 0.107143 0.107143 ],[0.98 0.96 0.92]);\nplot([0 1 1 0 0 ],[0 0 1 1 0 ]);\nfprintf('','COMMENT: end icon graphic"
+	  "s');\nfprintf('','COMMENT: begin icon text');\ncolor('black');port_label('output',1,'0');\nfprintf('','COMMENT: end"
+	  " icon text');\n"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "ten_GbE2_rst"
+	  Ports			  [0, 1]
+	  Position		  [1695, 966, 1740, 994]
+	  ShowName		  off
+	  SourceBlock		  "xbsIndex_r4/Constant"
+	  SourceType		  "Xilinx Constant Block Block"
+	  arith_type		  "Boolean"
+	  const			  "0"
+	  n_bits		  "16"
+	  bin_pt		  "14"
+	  explicit_period	  off
+	  period		  "1"
+	  dsp48_infoedit	  "The use of this block for DSP48 instructions is deprecated.  Please use the Opmode block."
+	  equ			  "P=C"
+	  opselect		  "C"
+	  inp2			  "PCIN>>17"
+	  opr			  "+"
+	  inp1			  "P"
+	  carry			  "CIN"
+	  dbl_ovrd		  off
+	  has_advanced_control	  "0"
+	  sggui_pos		  "-1,-1,-1,-1"
+	  block_type		  "constant"
+	  block_version		  "11.4"
+	  sg_icon_stat		  "45,28,0,1,white,blue,0,bf4ddd8b,right,"
+	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 1 1 0 ],[0 0 1 1 ],[0.77 0.82 0.91]);\npat"
+	  "ch([0.333333 0.222222 0.377778 0.222222 0.333333 0.488889 0.533333 0.577778 0.755556 0.622222 0.488889 0.4 0.577778"
+	  " 0.4 0.488889 0.622222 0.755556 0.577778 0.533333 0.488889 0.333333 ],[0.107143 0.285714 0.535714 0.785714 0.964286"
+	  " 0.964286 0.892857 0.964286 0.964286 0.75 0.964286 0.821429 0.535714 0.25 0.107143 0.321429 0.107143 0.107143 0.178"
+	  "571 0.107143 0.107143 ],[0.98 0.96 0.92]);\nplot([0 1 1 0 0 ],[0 0 1 1 0 ]);\nfprintf('','COMMENT: end icon graphic"
+	  "s');\nfprintf('','COMMENT: begin icon text');\ncolor('black');port_label('output',1,'0');\nfprintf('','COMMENT: end"
+	  " icon text');\n"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "ten_GbE3"
+	  Tag			  "xps:tengbe"
+	  Ports			  [8, 10]
+	  Position		  [1800, 1272, 2100, 1503]
+	  BackgroundColor	  "[1.000000, 1.000000, 0.000000]"
+	  SourceBlock		  "xps_library/ten_GbE"
+	  SourceType		  "ten_GbE"
+	  ShowPortLabels	  "FromPortIcon"
+	  SystemSampleTime	  "-1"
+	  FunctionWithSeparateData off
+	  RTWMemSecFuncInitTerm	  "Inherit from model"
+	  RTWMemSecFuncExecute	  "Inherit from model"
+	  RTWMemSecDataConstants  "Inherit from model"
+	  RTWMemSecDataInternal	  "Inherit from model"
+	  RTWMemSecDataParameters "Inherit from model"
+	  port			  "ROACH:3"
+	  mac_lite		  off
+	  open_phy		  off
+	  show_param		  off
+	  pre_emph		  "3"
+	  swing			  "800"
+	  fab_en		  off
+	  fab_mac		  "0"
+	  fab_ip		  "0"
+	  fab_udp		  "0"
+	  fab_gate		  "0"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "ten_GbE3_ack"
+	  Ports			  [0, 1]
+	  Position		  [1695, 1476, 1740, 1504]
+	  ShowName		  off
+	  SourceBlock		  "xbsIndex_r4/Constant"
+	  SourceType		  "Xilinx Constant Block Block"
+	  arith_type		  "Boolean"
+	  const			  "0"
+	  n_bits		  "16"
+	  bin_pt		  "14"
+	  explicit_period	  off
+	  period		  "1"
+	  dsp48_infoedit	  "The use of this block for DSP48 instructions is deprecated.  Please use the Opmode block."
+	  equ			  "P=C"
+	  opselect		  "C"
+	  inp2			  "PCIN>>17"
+	  opr			  "+"
+	  inp1			  "P"
+	  carry			  "CIN"
+	  dbl_ovrd		  off
+	  has_advanced_control	  "0"
+	  sggui_pos		  "-1,-1,-1,-1"
+	  block_type		  "constant"
+	  block_version		  "11.4"
+	  sg_icon_stat		  "45,28,0,1,white,blue,0,bf4ddd8b,right,"
+	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 1 1 0 ],[0 0 1 1 ],[0.77 0.82 0.91]);\npat"
+	  "ch([0.333333 0.222222 0.377778 0.222222 0.333333 0.488889 0.533333 0.577778 0.755556 0.622222 0.488889 0.4 0.577778"
+	  " 0.4 0.488889 0.622222 0.755556 0.577778 0.533333 0.488889 0.333333 ],[0.107143 0.285714 0.535714 0.785714 0.964286"
+	  " 0.964286 0.892857 0.964286 0.964286 0.75 0.964286 0.821429 0.535714 0.25 0.107143 0.321429 0.107143 0.107143 0.178"
+	  "571 0.107143 0.107143 ],[0.98 0.96 0.92]);\nplot([0 1 1 0 0 ],[0 0 1 1 0 ]);\nfprintf('','COMMENT: end icon graphic"
+	  "s');\nfprintf('','COMMENT: begin icon text');\ncolor('black');port_label('output',1,'0');\nfprintf('','COMMENT: end"
+	  " icon text');\n"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "ten_GbE3_rst"
+	  Ports			  [0, 1]
+	  Position		  [1695, 1266, 1740, 1294]
+	  ShowName		  off
+	  SourceBlock		  "xbsIndex_r4/Constant"
+	  SourceType		  "Xilinx Constant Block Block"
+	  arith_type		  "Boolean"
+	  const			  "0"
+	  n_bits		  "16"
+	  bin_pt		  "14"
+	  explicit_period	  off
+	  period		  "1"
+	  dsp48_infoedit	  "The use of this block for DSP48 instructions is deprecated.  Please use the Opmode block."
+	  equ			  "P=C"
+	  opselect		  "C"
+	  inp2			  "PCIN>>17"
+	  opr			  "+"
+	  inp1			  "P"
+	  carry			  "CIN"
+	  dbl_ovrd		  off
+	  has_advanced_control	  "0"
+	  sggui_pos		  "-1,-1,-1,-1"
+	  block_type		  "constant"
+	  block_version		  "11.4"
+	  sg_icon_stat		  "45,28,0,1,white,blue,0,bf4ddd8b,right,"
+	  sg_mask_display	  "fprintf('','COMMENT: begin icon graphics');\npatch([0 1 1 0 ],[0 0 1 1 ],[0.77 0.82 0.91]);\npat"
+	  "ch([0.333333 0.222222 0.377778 0.222222 0.333333 0.488889 0.533333 0.577778 0.755556 0.622222 0.488889 0.4 0.577778"
+	  " 0.4 0.488889 0.622222 0.755556 0.577778 0.533333 0.488889 0.333333 ],[0.107143 0.285714 0.535714 0.785714 0.964286"
+	  " 0.964286 0.892857 0.964286 0.964286 0.75 0.964286 0.821429 0.535714 0.25 0.107143 0.321429 0.107143 0.107143 0.178"
+	  "571 0.107143 0.107143 ],[0.98 0.96 0.92]);\nplot([0 1 1 0 0 ],[0 0 1 1 0 ]);\nfprintf('','COMMENT: end icon graphic"
+	  "s');\nfprintf('','COMMENT: begin icon text');\ncolor('black');port_label('output',1,'0');\nfprintf('','COMMENT: end"
+	  " icon text');\n"
+	}
 	Line {
 	  SrcBlock		  "sync"
 	  SrcPort		  1
@@ -2968,6 +3616,32 @@ Library {
 	    DstBlock		    "packetizer1"
 	    DstPort		    1
 	  }
+	  Branch {
+	    DstBlock		    "packetizer2"
+	    DstPort		    1
+	  }
+	  Branch {
+	    DstBlock		    "packetizer3"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  SrcBlock		  "packetizer0"
+	  SrcPort		  1
+	  DstBlock		  "delay_dout_0"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "packetizer0"
+	  SrcPort		  2
+	  DstBlock		  "delay_valid_0"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "packetizer0"
+	  SrcPort		  3
+	  DstBlock		  "delay_eof_0"
+	  DstPort		  1
 	}
 	Line {
 	  SrcBlock		  "reorder"
@@ -2979,6 +3653,14 @@ Library {
 	  }
 	  Branch {
 	    DstBlock		    "packetizer1"
+	    DstPort		    2
+	  }
+	  Branch {
+	    DstBlock		    "packetizer2"
+	    DstPort		    2
+	  }
+	  Branch {
+	    DstBlock		    "packetizer3"
 	    DstPort		    2
 	  }
 	}
@@ -2994,10 +3676,18 @@ Library {
 	    DstBlock		    "packetizer1"
 	    DstPort		    3
 	  }
+	  Branch {
+	    DstBlock		    "packetizer2"
+	    DstPort		    3
+	  }
+	  Branch {
+	    DstBlock		    "packetizer3"
+	    DstPort		    3
+	  }
 	}
 	Line {
-	  SrcBlock		  "packetizer0"
-	  SrcPort		  3
+	  SrcBlock		  "delay_eof_0"
+	  SrcPort		  1
 	  Points		  [0, 0]
 	  Branch {
 	    DstBlock		    "next_packet"
@@ -3024,6 +3714,14 @@ Library {
 	    DstBlock		    "discard_and_1"
 	    DstPort		    1
 	  }
+	  Branch {
+	    DstBlock		    "discard_and_2"
+	    DstPort		    1
+	  }
+	  Branch {
+	    DstBlock		    "discard_and_3"
+	    DstPort		    1
+	  }
 	}
 	Line {
 	  SrcBlock		  "ten_GbE0_rst"
@@ -3032,14 +3730,14 @@ Library {
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "packetizer0"
+	  SrcBlock		  "delay_dout_0"
 	  SrcPort		  1
 	  DstBlock		  "ten_GbE0"
 	  DstPort		  2
 	}
 	Line {
-	  SrcBlock		  "packetizer0"
-	  SrcPort		  2
+	  SrcBlock		  "delay_valid_0"
+	  SrcPort		  1
 	  DstBlock		  "ten_GbE0"
 	  DstPort		  3
 	}
@@ -3055,6 +3753,14 @@ Library {
 	    DstBlock		    "ten_GbE1"
 	    DstPort		    4
 	  }
+	  Branch {
+	    DstBlock		    "ten_GbE2"
+	    DstPort		    4
+	  }
+	  Branch {
+	    DstBlock		    "ten_GbE3"
+	    DstPort		    4
+	  }
 	}
 	Line {
 	  SrcBlock		  "ip_ctr"
@@ -3066,6 +3772,14 @@ Library {
 	  }
 	  Branch {
 	    DstBlock		    "ten_GbE1"
+	    DstPort		    5
+	  }
+	  Branch {
+	    DstBlock		    "ten_GbE2"
+	    DstPort		    5
+	  }
+	  Branch {
+	    DstBlock		    "ten_GbE3"
 	    DstPort		    5
 	  }
 	}
@@ -3083,7 +3797,25 @@ Library {
 	}
 	Line {
 	  SrcBlock		  "packetizer1"
+	  SrcPort		  1
+	  DstBlock		  "delay_dout_1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "packetizer1"
+	  SrcPort		  2
+	  DstBlock		  "delay_valid_1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "packetizer1"
 	  SrcPort		  3
+	  DstBlock		  "delay_eof_1"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "delay_eof_1"
+	  SrcPort		  1
 	  Points		  [0, 0]
 	  Branch {
 	    DstBlock		    "next_packet"
@@ -3105,14 +3837,14 @@ Library {
 	  DstPort		  1
 	}
 	Line {
-	  SrcBlock		  "packetizer1"
+	  SrcBlock		  "delay_dout_1"
 	  SrcPort		  1
 	  DstBlock		  "ten_GbE1"
 	  DstPort		  2
 	}
 	Line {
-	  SrcBlock		  "packetizer1"
-	  SrcPort		  2
+	  SrcBlock		  "delay_valid_1"
+	  SrcPort		  1
 	  DstBlock		  "ten_GbE1"
 	  DstPort		  3
 	}
@@ -3126,6 +3858,136 @@ Library {
 	  SrcBlock		  "ten_GbE1_ack"
 	  SrcPort		  1
 	  DstBlock		  "ten_GbE1"
+	  DstPort		  8
+	}
+	Line {
+	  SrcBlock		  "packetizer2"
+	  SrcPort		  1
+	  DstBlock		  "delay_dout_2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "packetizer2"
+	  SrcPort		  2
+	  DstBlock		  "delay_valid_2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "packetizer2"
+	  SrcPort		  3
+	  DstBlock		  "delay_eof_2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "delay_eof_2"
+	  SrcPort		  1
+	  Points		  [0, 0]
+	  Branch {
+	    DstBlock		    "next_packet"
+	    DstPort		    3
+	  }
+	  Branch {
+	    DstBlock		    "discard_and_2"
+	    DstPort		    2
+	  }
+	  Branch {
+	    DstBlock		    "ten_GbE2"
+	    DstPort		    6
+	  }
+	}
+	Line {
+	  SrcBlock		  "ten_GbE2_rst"
+	  SrcPort		  1
+	  DstBlock		  "ten_GbE2"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "delay_dout_2"
+	  SrcPort		  1
+	  DstBlock		  "ten_GbE2"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "delay_valid_2"
+	  SrcPort		  1
+	  DstBlock		  "ten_GbE2"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "discard_and_2"
+	  SrcPort		  1
+	  DstBlock		  "ten_GbE2"
+	  DstPort		  7
+	}
+	Line {
+	  SrcBlock		  "ten_GbE2_ack"
+	  SrcPort		  1
+	  DstBlock		  "ten_GbE2"
+	  DstPort		  8
+	}
+	Line {
+	  SrcBlock		  "packetizer3"
+	  SrcPort		  1
+	  DstBlock		  "delay_dout_3"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "packetizer3"
+	  SrcPort		  2
+	  DstBlock		  "delay_valid_3"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "packetizer3"
+	  SrcPort		  3
+	  DstBlock		  "delay_eof_3"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "delay_eof_3"
+	  SrcPort		  1
+	  Points		  [0, 0]
+	  Branch {
+	    DstBlock		    "next_packet"
+	    DstPort		    4
+	  }
+	  Branch {
+	    DstBlock		    "discard_and_3"
+	    DstPort		    2
+	  }
+	  Branch {
+	    DstBlock		    "ten_GbE3"
+	    DstPort		    6
+	  }
+	}
+	Line {
+	  SrcBlock		  "ten_GbE3_rst"
+	  SrcPort		  1
+	  DstBlock		  "ten_GbE3"
+	  DstPort		  1
+	}
+	Line {
+	  SrcBlock		  "delay_dout_3"
+	  SrcPort		  1
+	  DstBlock		  "ten_GbE3"
+	  DstPort		  2
+	}
+	Line {
+	  SrcBlock		  "delay_valid_3"
+	  SrcPort		  1
+	  DstBlock		  "ten_GbE3"
+	  DstPort		  3
+	}
+	Line {
+	  SrcBlock		  "discard_and_3"
+	  SrcPort		  1
+	  DstBlock		  "ten_GbE3"
+	  DstPort		  7
+	}
+	Line {
+	  SrcBlock		  "ten_GbE3_ack"
+	  SrcPort		  1
+	  DstBlock		  "ten_GbE3"
 	  DstPort		  8
 	}
       }
@@ -4774,7 +5636,7 @@ MatData {
   DataRecord {
     Tag			    DataTag0
     Data		    "  %)30     .    < 0   8    (     @         %    \"     $    !     0         %  0 \"P    $    6    <W1A="
-    "&4       !P87)A;65T97)S    #@   #     &    \"     T         !0    @    !     0    $         !@ $ .J >@(.    X ,   "
+    "&4       !P87)A;65T97)S    #@   #     &    \"     T         !0    @    !     0    $         !@ $ .R >@(.    X ,   "
     "8    (     @         %    \"     $    !     0         %  0 $0    $   !5    9&5F875L=',           !N=6UC;VUP=71E<G,"
     "      &YU;7-A;7!L97,         <V%M<&QE<W!E<G!A8VME= !N=6UT96YG8F4               X   !( @  !@    @    !          4  "
     "  (     0    @    !          X   !     !@    @    $          4    (     0    P    !         !     ,    ;G5M8V]M<'5"
@@ -4786,6 +5648,6 @@ MatData {
     "  !@    @    &          4    (     0    $    !          D    (             $ .    .     8    (    !@         %    "
     "\"     $    !     0         )    \"            !! #@   #@    &    \"     8         !0    @    !     0    $        "
     " \"0    @            P0 X    X    !@    @    &          4    (     0    $    !          D    (            D$ .    "
-    ".     8    (    !@         %    \"     $    !     0         )    \"             ! "
+    ".     8    (    !@         %    \"     $    !     0         )    \"            !! "
   }
 }
