@@ -25,3 +25,4 @@
 static void cleanup(int signal);
 
 static uint32_t run_fifo_read = 1;
+
