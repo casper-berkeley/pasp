@@ -50,26 +50,24 @@ switch state
         
         packet_count = 0;
     
-    % Send previous packet
-    % Begin putting data into new packet
+    % Begin put data into new packet
     case 3
-        packet_count = packet_count+1;
-        dout = dout_delay2;
-        valid = true;
-        state = 4;
-        
-    case 4
-        if packet_count < packet_size
+        if packet_count < packet_size-1
             packet_count = packet_count+1;
             dout = dout_delay2;
             valid = true;
-            state=4;
+            state=3;
         else
             end_of_frame = true;
-            packetizer_delay = (numtengbe-1)*packet_size-1-2;
-            packetizer_delay = packetizer_delay-1;
-            state=0;
+            dout = dout_delay2;
+            valid = true;
+            state=4;
         end
+    case 4
+        packetizer_delay = (numtengbe-1)*packet_size-1-2;
+        packetizer_delay = packetizer_delay-1;
+        state=0;
+        
 end
     
     
