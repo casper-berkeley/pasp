@@ -27,6 +27,7 @@ samplesperpacket = get_var('samplesperpacket', 'defaults', defaults, varargin{:}
 numtengbe = get_var('numtengbe', 'defaults', defaults, varargin{:});
 
 load_system('pasp_lib.mdl');
+load_system('casper_library.mdl');
 
 reuse_block(blk, 'sync', 'built-in/inport', 'Position', [75   402   105   418], 'Port', '1');
 reuse_block(blk, 'data_in', 'built-in/inport', 'Position', [75   442   105   458], 'Port', '2');
