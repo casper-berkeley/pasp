@@ -3,15 +3,33 @@
 import corr, time, struct, sys, logging, socket, re
 
 
+# fft configuration
+# shifting schedule
+fft_shift=0xfffffffe
+
 # fft scaling configuration
-fft_coeffs=[1,1,1,1,1,1,1,1]
+# interpreted as 18.12 ufix
+fft_coeffs=[4096,4096,4096,4096,4096,4096,4096,4096]    # no scaling (multiply by 1)
+
+
+# bit select configuration from 8 bits from scaled 18 bit fft data
+# 0-select bottom 8 bits
+# 1-
+# 2-
+# 3-select top 8 bits
+bitselect_pol1=0 # select bottom bits
+bitselect_pol2=0 # select bottom bits
 
 # ip table configuration
 ip_table=['10.0.0.14','10.0.0.14','10.0.0.14','10.0.0.14']
 port_table=[6000,6000,6000,6000]
 
+
+
+
+
 # default boffile
-defaultbof='pasp_4i16c1024s4g_2010_Mar_10_0117.bof'
+defaultbof='pasp_4i16c1024s4g.bof'
 
 ip_reg_base='pasp_dist_gbe_ip_ctr_reg_ip'
 port_reg_base='pasp_dist_gbe_ip_ctr_reg_port'
@@ -57,10 +75,10 @@ def dump_adc_brams():
 
 
 def dump_fft_brams():
-    fftscope1 = struct.unpack('>2048b',fpga.read('pasp_scope_output1_bram',2048))
-    fftscope2 = struct.unpack('>2048b',fpga.read('pasp_scope_output2_bram',2048))
-    fftscope3 = struct.unpack('>2048b',fpga.read('pasp_scope_output3_bram',2048))
-    fftscope4 = struct.unpack('>2048b',fpga.read('pasp_scope_output3_bram',2048))
+    fftscope1 = struct.unpack('>2048l',fpga.read('pasp_scope_output1_bram',2048*4))
+    fftscope2 = struct.unpack('>2048l',fpga.read('pasp_scope_output2_bram',2048*4))
+    fftscope3 = struct.unpack('>2048l',fpga.read('pasp_scope_output3_bram',2048*4))
+    fftscope4 = struct.unpack('>2048l',fpga.read('pasp_scope_output4_bram',2048*4))
     
     print fftscope1
     print fftscope2
@@ -73,17 +91,19 @@ def configure_parameters():
     fpga.write_int('pasp_reg_sync_period',sync_period)
     
     # initialize the fft shift schedule
-    #fpga.write_int('pasp_reg_fft_shift',0xffffffff)
-    fpga.write_int('pasp_reg_fft_shift',0x0)
+    fpga.write_int('pasp_reg_fft_shift',fft_shift)
+    #fpga.write_int('pasp_reg_fft_shift',0x0)
     
     # initialize the scaling parameters
     fft_coeffs_string = struct.pack('>8L',*fft_coeffs)
     fpga.write('pasp_scale_ctr_pol0_even_bram',fft_coeffs_string)
     fpga.write('pasp_scale_ctr_pol0_odd_bram',fft_coeffs_string)
+    fpga.write('pasp_scale_ctr_pol1_even_bram',fft_coeffs_string)
+    fpga.write('pasp_scale_ctr_pol1_odd_bram',fft_coeffs_string)
 
     # initialize the scaling bit selection
-    fpga.write_int('pasp_reg_output_bitselect_pol1',2)
-    fpga.write_int('pasp_reg_output_bitselect_pol2',2)
+    fpga.write_int('pasp_reg_output_bitselect_pol1',bitselect_pol1)
+    fpga.write_int('pasp_reg_output_bitselect_pol2',bitselect_pol2)
 
       
 def init_10gbe_blocks():
