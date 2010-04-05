@@ -110,7 +110,7 @@ def init_10gbe_blocks():
     # initialize the 10gbe ports
     for i in range(0,numtengbe):
         logger.debug('Initializing '+gbe_base+str(i))
-        fpga.tap_start(gbe_base+str(i),mac_base+fabric_ip+i,fabric_ip+i,fabric_port)
+        fpga.tap_start('gbe'+str(i),gbe_base+str(i),mac_base+fabric_ip+i,fabric_ip+i,fabric_port)
     
 def init_ip_table():
     # initialize the ip table
@@ -142,7 +142,7 @@ if __name__ == '__main__':
 
     if args==[]:
         print 'No ROACH board specified. Defaulting to ROACH01'
-        roach = 'ROACH01'
+        roach = 'roach01'
     else:
         roach = args[0]
 
