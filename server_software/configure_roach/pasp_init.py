@@ -22,7 +22,7 @@ bitselect_pol2=0 # select bottom bits
 
 # ip table configuration
 ip_table=['10.0.0.14','10.0.0.14','10.0.0.14','10.0.0.14']
-port_table=[6000,6000,6000,6000]
+port_table=[33107,33107,33107,33107]
 
 
 
@@ -39,7 +39,7 @@ gbe_base='pasp_dist_gbe_ten_GbE'
 
 mac_base=(2<<40) + (2<<32)
 fabric_ip=struct.unpack('!L',socket.inet_aton('10.0.0.30'))[0] #convert ip to long
-fabric_port=6000
+fabric_port=33107
 
 
 katcp_port=7147
@@ -113,6 +113,9 @@ def init_10gbe_blocks():
         fpga.tap_start('gbe'+str(i),gbe_base+str(i),mac_base+fabric_ip+i,fabric_ip+i,fabric_port)
     
 def init_ip_table():
+    # reset the packet counter
+    fpga.write_int('pasp_dist_gbe_rst_packet_count',1)
+    fpga.write_int('pasp_dist_gbe_rst_packet_count',0)
     # initialize the ip table
     logger.debug('Initializing ip table')
     for i in range(0,numips):
@@ -122,9 +125,11 @@ def init_ip_table():
         
 def clear_ip_table():
     # zero the ip table
-    print 'Zeroing ip table'
+    print('Zeroing ip table')
     for i in range(0,numips):
         fpga.write_int(ip_reg_base+str(i),0)
+    # read the packet count
+    print('Sent %d packets'%(fpga.read_int('pasp_dist_gbe_reg_packet_count')))
     
     
 if __name__ == '__main__':

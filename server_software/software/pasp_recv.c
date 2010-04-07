@@ -58,8 +58,8 @@ int main()
     newact.sa_flags = 0;
     
     //start listening for Ctrl-C
-	sigaction(SIGINT, &newact, NULL);
-    
+    sigaction(SIGINT, &newact, NULL);
+
     //receive packets and write into the fifos
     receive_packets(fifo);
     
@@ -94,7 +94,6 @@ void receive_packets(int fifo)
     while(run_net_thread)
     {
         //printf("listener: waiting to recvfrom...\n");
-        
         
         if ((numbytes = recvfrom(sock, buf, PACKET_SIZE_BYTES , 0,
                                  (struct sockaddr *)&their_addr, (socklen_t *) &addr_len)) == -1) {

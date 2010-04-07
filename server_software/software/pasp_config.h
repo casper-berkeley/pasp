@@ -12,9 +12,9 @@
 #define FILE_NAME           "pol0"
 
 //parameters from the simulink design
-#define NUM_IPS             16
+#define NUM_IPS             4
 #define NUM_CHANNELS        16
-#define SAMPLES_PER_PACKET  128
+#define SAMPLES_PER_PACKET  1024
 
 //the packet size will be 64 bits for ever sample plus a 
 //64 bit counter and 64 bit channel id

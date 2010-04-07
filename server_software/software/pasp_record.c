@@ -55,14 +55,19 @@ int main(int argc, char *argv[])
     
     debug_fprintf(stderr, "Opening fifo\n");
     fifo = open(FILE_NAME,O_RDONLY);
+        
 
     debug_fprintf(stderr, "Waiting for data\n");
     while(run_fifo_read==1)
     {
         numbytes = read(fifo, (void *) data, PACKET_SIZE_BYTES);
+        if(numbytes==-1 && run_fifo_read==1)
+        {
+            perror("Error reading from fifo");
+            exit(0);
+        }
         numpackets++;
         totalbytes+=numbytes;
-        //fprintf(stderr, "Tried to read %d bytes, got %d bytes from fifo\n", PACKET_SIZE_BYTES, numbytes);
         
         if(run_fifo_read==1 && numbytes!=0)
         {

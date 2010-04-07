@@ -38,4 +38,6 @@ clean:
 realclean: clean
 	@rm -vf $(TARGETS)
 	@rm -vf pol0
+	
+new: realclean all
 
