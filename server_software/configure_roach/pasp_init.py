@@ -21,7 +21,7 @@ bitselect_pol1=0 # select bottom bits
 bitselect_pol2=0 # select bottom bits
 
 # ip table configuration
-ip_table=['10.0.0.14','10.0.0.14','10.0.0.14','10.0.0.14']
+ip_table=['10.0.0.2','10.0.0.2','10.0.0.2','10.0.0.2']
 port_table=[33107,33107,33107,33107]
 
 
@@ -115,12 +115,15 @@ def init_10gbe_blocks():
 def init_ip_table():
     # reset the packet counter
     fpga.write_int('pasp_dist_gbe_rst_packet_count',1)
+    time.sleep(1)
     fpga.write_int('pasp_dist_gbe_rst_packet_count',0)
     # initialize the ip table
     logger.debug('Initializing ip table')
+    # initialize port first so packets don't get sent to port 0
     for i in range(0,numips):
-        fpga.write_int(ip_reg_base+str(i),struct.unpack('!L',socket.inet_aton(ip_table[i]))[0])
         fpga.write_int(port_reg_base+str(i),port_table[i])
+        fpga.write_int(ip_reg_base+str(i),struct.unpack('!L',socket.inet_aton(ip_table[i]))[0])
+
 
         
 def clear_ip_table():
@@ -129,7 +132,8 @@ def clear_ip_table():
     for i in range(0,numips):
         fpga.write_int(ip_reg_base+str(i),0)
     # read the packet count
-    print('Sent %d packets'%(fpga.read_int('pasp_dist_gbe_reg_packet_count')))
+    for i in range(0,numtengbe):
+        print('Sent %d packets on gbe%d'%(fpga.read_int('pasp_dist_gbe_reg_packet_count%d'%(i)),i))
     
     
 if __name__ == '__main__':

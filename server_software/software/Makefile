@@ -1,15 +1,16 @@
 CC = gcc
-CFLAGS = -g -Wall -O2
+CFLAGS = -g -Wall -O2 -I/usr/local/cuda/include -L/usr/local/cuda/lib64 
 DEBUG = -D DEBUG
+CUDA_INCLUDE_LIB = -lcufft
 
 TARGETS := packet_generator pasp_recv pasp_record pasp_process
 .PHONY: pasp_test pasp pasp_rec clean realclean
 
 default: all
 
-all: pasp_rec
+all: pasp_proc
 
-%.o: %.c %.h
+%.o: %.c %.h pasp_config.h
 	$(CC) $(CFLAGS) $(DEBUG) -c $<
 
 pasp_test: packet_generator pasp
@@ -23,11 +24,13 @@ pasp_rec_test: packet_generator pasp_rec
 
 pasp_rec: pasp_recv pasp_record
 
+pasp_proc: pasp_recv pasp_process
+
 pasp_recv: Makefile pasp_recv.o
 	$(CC) $(CFLAGS) $(DEBUG) pasp_recv.o -o pasp_recv
 
 pasp_process: Makefile pasp_process.o
-	$(CC) $(CFLAGS) $(DEBUG) pasp_process.o -o pasp_process
+	$(CC) $(CFLAGS) $(DEBUG) $(CUDA_INCLUDE_LIB) pasp_process.o -o pasp_process
 
 pasp_record: Makefile pasp_record.o
 	$(CC) $(CFLAGS) $(DEBUG) pasp_record.o -o pasp_record

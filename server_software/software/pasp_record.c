@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
     int fifo;
     char *data = malloc(PACKET_SIZE_BYTES);
     int numbytes=0;
-    //int byteswritten=0;
+    int byteswritten=0;
     struct sigaction newact;
     FILE *pasp_recording;
     int numpackets=0;
@@ -73,15 +73,15 @@ int main(int argc, char *argv[])
         {
             //debug_fprintf(stderr, "Fifo contains %s\n", (char *) data);
             
-//            byteswritten = fwrite(data, numbytes, 1, pasp_recording);
-//            if(byteswritten==0)
-//            {
-//                debug_fprintf(stderr, "Tried to write %d bytes, wrote 0\n", numbytes);
-//            }
+            //byteswritten = fwrite(data, numbytes, 1, pasp_recording);
+            //if(byteswritten==0)
+            //{
+            //    debug_fprintf(stderr, "Tried to write %d bytes, wrote 0\n", numbytes);
+            //}
         }
     }
     
-    debug_fprintf(stderr, "Received %d packets, %llx bytes\n", numpackets, totalbytes);
+    debug_fprintf(stderr, "Received %d packets, %lld bytes\n", numpackets, totalbytes);
     debug_fprintf(stderr, "Closing fifo\n");
     close(fifo);
     fclose(pasp_recording);

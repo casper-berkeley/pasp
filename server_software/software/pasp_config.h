@@ -22,8 +22,19 @@
 #define PACKET_SIZE_BITS    (SAMPLES_PER_PACKET*64+64+64)
 #define PACKET_SIZE_BYTES   PACKET_SIZE_BITS/8
 
+//4 ips 16 channels
+//each sample has 2 pols
 typedef struct sample{
-    uint32_t count[2];
+    int8_t pol0_ch0_re;
+    int8_t pol0_ch0_im;
+    int8_t pol0_ch1_re;
+    int8_t pol0_ch1_im;
+    int8_t pol1_ch0_re;
+    int8_t pol1_ch0_im;
+    int8_t pol1_ch1_re;
+    int8_t pol1_ch1_im;
+    
+    //uint32_t count[2];
 }sample;
 
 typedef struct pasp_packet{
