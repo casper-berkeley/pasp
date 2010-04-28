@@ -59,6 +59,33 @@ void callGPUFFT(cufftComplex *data)
     cudaFree(data);
 }
 
+void accumulate_packet(pasp_packet *newpacket,int numchannels)
+{
+    int i,j;
+    // allocate space for accumulated data
+    accumulated_channel *accumulated_channels = (accumulated_channel *) calloc(numchannels,sizeof(accumulated_channel));
+    
+    for(i=0;i<SAMPLES_PER_CHANNEL;i++)
+    {
+        for(j=0;j<numchannels;j++)
+        {
+            accumulated_channels[j].pol0_re += newpacket->samples[i][j].pol0_re;
+            accumulated_channels[j].pol0_im += newpacket->samples[i][j].pol0_im;
+            accumulated_channels[j].pol1_re += newpacket->samples[i][j].pol1_re;
+            accumulated_channels[j].pol1_im += newpacket->samples[i][j].pol1_im;
+        }
+    }
+    
+    for(i=0;i<numchannels;i++)
+    {
+        fprintf(stderr,"%d %d %d %d\n", 
+                accumulated_channels[i].pol0_re,
+                accumulated_channels[i].pol0_im,
+                accumulated_channels[i].pol1_re,
+                accumulated_channels[i].pol1_im);
+    }
+}
+
 void process_packet(pasp_packet *newpacket)
 {
     int i;
@@ -67,12 +94,14 @@ void process_packet(pasp_packet *newpacket)
     //copy a single channel into the buffer
     for(i=0;i<NX*BATCH;i++)
     {
-        data[i].x=newpacket->samples[i*2].pol0_ch0_re;
-        data[i].y=newpacket->samples[i*2].pol0_ch0_im;
+        data[i].x=newpacket->samples[i][0].pol0_re;
+        data[i].y=newpacket->samples[i][0].pol0_im;
     }
     
+    accumulate_packet(newpacket,CHANNELS_PER_PACKET);
+    
     //call fft on the buffer
-    callGPUFFT(data);
+    //callGPUFFT(data);
 }
 
 
@@ -116,7 +145,7 @@ int main(int argc, char *argv[])
             totalbytes+=numbytes;
             
             fprintf(stderr,"%ld %ld\n",ntohll(nextpacket->seq_no),ntohll(nextpacket->id_no));
-            fprintf(stderr,"%d\n",nextpacket->samples[0].pol0_ch0_re);
+            //fprintf(stderr,"%d\n",nextpacket->samples[0][0].pol0_re);
             process_packet(nextpacket);
         }
     }
