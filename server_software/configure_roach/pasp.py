@@ -16,8 +16,8 @@ fft_coeffs=[4096,4096,4096,4096,4096,4096,4096,4096]    # no scaling (multiply b
 # 1-
 # 2-
 # 3-select top 8 bits
-bitselect_pol1=2 # select bottom bits
-bitselect_pol2=2 # select bottom bits
+bitselect_pol1=1 # select bottom bits
+bitselect_pol2=1 # select bottom bits
 
 # ip table configuration
 ip_table=['10.0.0.2','10.0.0.2','10.0.0.2','10.0.0.2']
@@ -97,43 +97,48 @@ class pasp:
     
     # functions for dumping data    
     def dump_adc_brams(self):
+        adcscope_pol1, adcscope_pol2 = self.get_adc_brams()
+        print adcscope_pol1
+        print adcscope_pol2
+        
+    def get_adc_brams(self,bramlen):
         #trigger the adcscope
-        fpga.write_int('pasp_reg_adcscope_trigger',1)
+        self.fpga.write_int('pasp_reg_adcscope_trigger',1)
         time.sleep(1)
-        fpga.write_int('pasp_reg_adcscope_trigger',0)
+        self.fpga.write_int('pasp_reg_adcscope_trigger',0)
         
         #read the bram data
-        adcscope1 = struct.unpack('>2048b',fpga.read('pasp_bram_adcscope_1',2048))
-        adcscope2 = struct.unpack('>2048b',fpga.read('pasp_bram_adcscope_2',2048))
-        print adcscope1
-        print adcscope2
+        adcscope_pol1 = struct.unpack('>'+`bramlen`+'b',self.fpga.read('pasp_bram_adcscope_1',bramlen))
+        adcscope_pol2 = struct.unpack('>'+`bramlen`+'b',self.fpga.read('pasp_bram_adcscope_2',bramlen))
+    
+        return adcscope_pol1, adcscope_pol2
         
     def get_fft_brams_power(self):
         retlist_pol0=[]
-        fftscope_re_pol0, fftscope_im_pol0, fftscope_re_pol1, fftscope_im_pol1 = self.get_fft_brams()
+        fftscope_re_pol0, fftscope_im_pol0, fftscope_re_pol1, fftscope_im_pol1 = self.get_fft_brams(self.numchannels/2)
         for i in range(0,self.numchannels):
             retlist_pol0.append(math.pow(fftscope_re_pol0[i],2) + math.pow(fftscope_im_pol0[i],2))
         return retlist_pol0
         
     def dump_fft_brams(self):
-        fftscope_re_pol0, fftscope_im_pol0, fftscope_re_pol1, fftscope_im_pol1 = self.get_fft_brams()
+        fftscope_re_pol0, fftscope_im_pol0, fftscope_re_pol1, fftscope_im_pol1 = self.get_fft_brams(16)
         print fftscope_re_pol0
         print fftscope_im_pol0
         print fftscope_re_pol1
         print fftscope_im_pol1
         
-    def get_fft_brams(self):
-        fftscope_even_re_pol0 = struct.unpack('>8l',self.fpga.read('pasp_scope_output1_bram',8*4))
-        fftscope_even_im_pol0 = struct.unpack('>8l',self.fpga.read('pasp_scope_output2_bram',8*4))
-        fftscope_odd_re_pol0 = struct.unpack('>8l',self.fpga.read('pasp_scope_output3_bram',8*4))
-        fftscope_odd_im_pol0 = struct.unpack('>8l',self.fpga.read('pasp_scope_output4_bram',8*4))
+    def get_fft_brams(self,bramlen):
+        fftscope_even_re_pol0 = struct.unpack('>'+`bramlen`+'l',self.fpga.read('pasp_scope_output1_bram',bramlen*4))
+        fftscope_even_im_pol0 = struct.unpack('>'+`bramlen`+'l',self.fpga.read('pasp_scope_output2_bram',bramlen*4))
+        fftscope_odd_re_pol0 = struct.unpack('>'+`bramlen`+'l',self.fpga.read('pasp_scope_output3_bram',bramlen*4))
+        fftscope_odd_im_pol0 = struct.unpack('>'+`bramlen`+'l',self.fpga.read('pasp_scope_output4_bram',bramlen*4))
         fftscope_re_pol0 = self.interleave(fftscope_even_re_pol0,fftscope_odd_re_pol0)
         fftscope_im_pol0 = self.interleave(fftscope_even_im_pol0,fftscope_odd_im_pol0)
         
-        fftscope_even_re_pol1 = struct.unpack('>8l',self.fpga.read('pasp_scope_output5_bram',8*4))
-        fftscope_even_im_pol1 = struct.unpack('>8l',self.fpga.read('pasp_scope_output6_bram',8*4))
-        fftscope_odd_re_pol1 = struct.unpack('>8l',self.fpga.read('pasp_scope_output7_bram',8*4))
-        fftscope_odd_im_pol1 = struct.unpack('>8l',self.fpga.read('pasp_scope_output8_bram',8*4))
+        fftscope_even_re_pol1 = struct.unpack('>'+`bramlen`+'l',self.fpga.read('pasp_scope_output5_bram',bramlen*4))
+        fftscope_even_im_pol1 = struct.unpack('>'+`bramlen`+'l',self.fpga.read('pasp_scope_output6_bram',bramlen*4))
+        fftscope_odd_re_pol1 = struct.unpack('>'+`bramlen`+'l',self.fpga.read('pasp_scope_output7_bram',bramlen*4))
+        fftscope_odd_im_pol1 = struct.unpack('>'+`bramlen`+'l',self.fpga.read('pasp_scope_output8_bram',bramlen*4))
         fftscope_re_pol1 = self.interleave(fftscope_even_re_pol1,fftscope_odd_re_pol1)
         fftscope_im_pol1 = self.interleave(fftscope_even_im_pol1,fftscope_odd_im_pol1)
 

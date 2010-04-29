@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2.6
 
 import struct, socket, sys, corr, logging, time, re
 import pasp

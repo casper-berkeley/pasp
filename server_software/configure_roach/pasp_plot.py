@@ -1,7 +1,8 @@
+import pylab
 
 # plot fft data until interrupt received   
 def plot_fft_brams(new_pasp):
-    import pylab
+
     run = True
     
     pylab.ion()
@@ -41,7 +42,38 @@ def plot_fft_brams(new_pasp):
         except KeyboardInterrupt:
             run = False
     """
-            
-    pylab.cla()
     
     raw_input('Press enter to quit: ')
+            
+    pylab.cla()    
+    
+    
+
+# plot adc data
+def plot_adc_brams(new_pasp):
+
+    run = True
+    
+    pylab.ion()
+    #pylab.yscale('log')
+
+    adcscope_pol1, adcscope_pol2 = new_pasp.get_adc_brams(100)
+    print adcscope_pol1
+    adcscope_power_line, = pylab.plot(adcscope_pol1)
+    
+    #while(run):
+    '''
+    for i in range(1,10):
+        try:
+            fftscope_power = get_fft_brams_power()
+            fftscope_power_line.set_ydata(fftscope_power)
+            pylab.draw()
+
+        except KeyboardInterrupt:
+            run = False
+    '''
+    
+    raw_input('Press enter to quit: ')
+            
+    pylab.cla()  
+    
