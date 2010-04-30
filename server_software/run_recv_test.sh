@@ -10,7 +10,7 @@ taskset 08 nice -n -20 software/pasp_process >out/process_out 2>out/process_err 
 
 echo configure_${platform}
 cd configure_${platform}
-./pasp_init.py
+./pasp_main.py
 
 cd ..
 

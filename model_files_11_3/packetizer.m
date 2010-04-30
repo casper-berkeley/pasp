@@ -2,19 +2,17 @@ function [dout, valid, end_of_frame, st] = packetizer(sync, din, sys_counter, pa
 
 persistent state, state = xl_state(0, {xlUnsigned, 8, 0});
 persistent channel_id, channel_id = xl_state(tengbe_id, {xlUnsigned,64,0});
-persistent packet_count, packet_count = xl_state(0,{xlUnsigned,64,0});
-persistent dout_delay1, dout_delay1 = xl_state(0, {xlUnsigned,64,0});
-persistent dout_delay2, dout_delay2 = xl_state(0, {xlUnsigned,64,0});
+persistent packet_count, packet_count = xl_state(0, {xlUnsigned,64,0});
+persistent dout_delay, dout_delay = xl_state(zeros(1,2), {xlUnsigned,64,0}, 2);
 persistent packetizer_delay, packetizer_delay = xl_state(packet_size*tengbe_id,{xlUnsigned,64,0});
 
 st=state;
 
 % Delay the data by the header size
-dout_delay2 = dout_delay1;
-dout_delay1 = din;
+dout = dout_delay.back;
+dout_delay.push_front_pop_back(din);
 valid = false;
 end_of_frame = false;
-dout=0;
 
 % Reset on sync
 if sync==true
@@ -55,12 +53,10 @@ switch state
     case 3
         if packet_count < packet_size-1
             packet_count = packet_count+1;
-            dout = dout_delay2;
             valid = true;
             state=3;
         else
             end_of_frame = true;
-            dout = dout_delay2;
             valid = true;
             state=4;
         end
