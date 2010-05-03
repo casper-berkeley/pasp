@@ -24,10 +24,13 @@ pasp_rec_test: packet_generator pasp_rec
 
 pasp_rec: pasp_recv pasp_record
 
-pasp_proc: pasp_recv pasp_process
+pasp_proc: pasp_recv pasp_distribute pasp_process 
 
 pasp_recv: Makefile pasp_recv.o
 	$(CC) $(CFLAGS) $(DEBUG) pasp_recv.o -o pasp_recv
+	
+pasp_distribute: Makefile pasp_distribute.o
+	$(CC) $(CFLAGS) $(DEBUG) pasp_distribute.o -o pasp_distribute
 
 pasp_process: Makefile pasp_process.o
 	$(CC) $(CFLAGS) $(DEBUG) $(CUDA_INCLUDE_LIB) pasp_process.o -o pasp_process

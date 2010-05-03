@@ -25,19 +25,19 @@
 #define NX      256
 #define BATCH   1
 
-void callGPUFFT(cufftComplex *data)
+static void callGPUFFT(cufftComplex *data)
 {
-    int i;
+    //int i;
     cufftHandle plan;
     // cufftComplex data[NX*BATCH];
     cufftComplex *gpudata;
     
     // generate some random data
-//    for(i=0; i<NX*BATCH; i++)
-//    {
-//        data[i].x=1.0f;
-//        data[i].y=1.0f;
-//    }
+    //    for(i=0; i<NX*BATCH; i++)
+    //    {
+    //        data[i].x=1.0f;
+    //        data[i].y=1.0f;
+    //    }
     
     // allocate device memory and copy over data
     cudaMalloc((void**)&gpudata,sizeof(cufftComplex)*NX*BATCH);
@@ -50,70 +50,33 @@ void callGPUFFT(cufftComplex *data)
     // copy the result back
     cudaMemcpy(data, gpudata, sizeof(cufftComplex)*NX*BATCH, cudaMemcpyDeviceToHost);
     
-    for(i=0; i<NX*BATCH; i++)
-    {
-        fprintf(stderr,"%d %f %f\n", i, data[i].x, data[i].y);
-    }
+    //    for(i=0; i<NX*BATCH; i++)
+    //    {
+    //        fprintf(stderr,"%d %f %f\n", i, data[i].x, data[i].y);
+    //    }
     
     cufftDestroy(plan);
     cudaFree(data);
 }
 
-void accumulate_packet(pasp_packet *newpacket,int numchannels)
-{
-    int i,j;
-    // allocate space for accumulated data
-    accumulated_channel *accumulated_channels = (accumulated_channel *) calloc(numchannels,sizeof(accumulated_channel));
-    
-    for(i=0;i<SAMPLES_PER_CHANNEL;i++)
-    {
-        for(j=0;j<numchannels;j++)
-        {
-            accumulated_channels[j].pol0_re += newpacket->samples[i][j].pol0_re;
-            accumulated_channels[j].pol0_im += newpacket->samples[i][j].pol0_im;
-            accumulated_channels[j].pol1_re += newpacket->samples[i][j].pol1_re;
-            accumulated_channels[j].pol1_im += newpacket->samples[i][j].pol1_im;
-        }
-    }
-    
-    for(i=0;i<numchannels;i++)
-    {
-        fprintf(stderr,"%d %d %d %d\n", 
-                accumulated_channels[i].pol0_re,
-                accumulated_channels[i].pol0_im,
-                accumulated_channels[i].pol1_re,
-                accumulated_channels[i].pol1_im);
-    }
-}
-
-void process_packet(pasp_packet *newpacket)
-{
-    int i;
-    cufftComplex data[NX*BATCH];
-    
-    //copy a single channel into the buffer
-    for(i=0;i<NX*BATCH;i++)
-    {
-        data[i].x=newpacket->samples[i][0].pol0_re;
-        data[i].y=newpacket->samples[i][0].pol0_im;
-    }
-    
-    accumulate_packet(newpacket,CHANNELS_PER_PACKET);
-    
-    //call fft on the buffer
-    //callGPUFFT(data);
-}
-
-
 int main(int argc, char *argv[])
 {
-    int fifo;
-    pasp_packet *nextpacket = malloc(PACKET_SIZE_BYTES);
+    // input fifo file info
+    int input_fifo;
+    
+    // buffer for the next packet
+    cufftComplex *newdata = malloc(CHANNEL_BUFFER_SIZE);
     int numbytes=0;
-    //int byteswritten=0;
     struct sigaction newact;
     int numpackets=0;
     long long totalbytes=0;
+    char input_file_name[CHANNEL_FILE_NAME_SIZE];
+    
+    // this should really be a command line opt
+    int channelid=8;
+    int polid=0;
+    
+    
     
     //set up the signal handler
     newact.sa_handler = cleanup;
@@ -123,15 +86,17 @@ int main(int argc, char *argv[])
     //start listening for Ctrl-C
 	sigaction(SIGINT, &newact, NULL);
     
-    debug_fprintf(stderr, "Opening fifo\n");
-    fifo = open(FILE_NAME,O_RDONLY);
+    // open the fifo with complex data for a single channel/pol
+    snprintf(input_file_name,CHANNEL_FILE_NAME_SIZE, CHANNEL_FILE_BASE, channelid, polid);
+    debug_fprintf(stderr, "Opening fifo %s\n", input_file_name);
+    input_fifo = open(input_file_name,O_RDONLY);
     
     
     debug_fprintf(stderr, "Waiting for data\n");
     while(run_fifo_read==1)
     {
         // read packet from fifo
-        numbytes = read(fifo, (void *) nextpacket, PACKET_SIZE_BYTES);
+        numbytes = read(input_fifo, (void *) newdata, CHANNEL_BUFFER_SIZE);
         if(numbytes==-1 && run_fifo_read==1)
         {
             perror("Error reading from fifo");
@@ -144,16 +109,14 @@ int main(int argc, char *argv[])
             numpackets++;
             totalbytes+=numbytes;
             
-            fprintf(stderr,"%ld %ld\n",ntohll(nextpacket->seq_no),ntohll(nextpacket->id_no));
-            //fprintf(stderr,"%d\n",nextpacket->samples[0][0].pol0_re);
-            process_packet(nextpacket);
+            //process_packet(nextpacket);
         }
     }
     
     debug_fprintf(stderr, "Received %d packets, %lld bytes\n", numpackets, totalbytes);
     debug_fprintf(stderr, "Closing fifo\n");
-    close(fifo);
-    free(nextpacket);
+    close(input_fifo);
+    free(newdata);
     return 0;
 }
 

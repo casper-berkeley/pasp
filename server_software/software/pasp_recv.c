@@ -28,8 +28,8 @@ int main()
     struct sigaction newact;
     
     //create the fifo
-    debug_fprintf(stderr, "Creating fifo\n");
-    ret = mkfifo(FILE_NAME,0666);
+    debug_fprintf(stderr, "Creating fifo %s\n", RAW_UDP_FILE_NAME);
+    ret = mkfifo(RAW_UDP_FILE_NAME,0666);
     if(ret == -1)
     {
         if(errno == EEXIST)
@@ -44,8 +44,8 @@ int main()
     }
     
     //open the fifo
-    debug_fprintf(stderr, "Opening fifo\n");
-    fifo = open(FILE_NAME, O_WRONLY);
+    debug_fprintf(stderr, "Opening fifo %s\n", RAW_UDP_FILE_NAME);
+    fifo = open(RAW_UDP_FILE_NAME, O_WRONLY);
     if(fifo == -1)
     {
         perror("Error opening fifo");
