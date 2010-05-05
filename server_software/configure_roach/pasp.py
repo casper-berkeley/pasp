@@ -20,8 +20,8 @@ bitselect_pol1=1 # select bottom bits
 bitselect_pol2=1 # select bottom bits
 
 # ip table configuration
-ip_table=['10.0.0.2','10.0.0.2','10.0.0.2','10.0.0.2']
-port_table=[33107,33107,33107,33107]
+ip_table=['10.0.0.2','10.0.0.2','10.0.0.2','10.0.0.2','10.0.0.2','10.0.0.2','10.0.0.2','10.0.0.2']
+port_table=[33107,33107,33107,33107,33108,33108,33108,33108]
 
 
 ip_reg_base='pasp_dist_gbe_ip_ctr_reg_ip'
@@ -55,7 +55,7 @@ class pasp:
         
         # calculate the sync period
         # LCM(reorder orders)*(FFTSize/simultaneousinputs)*numtengbe*packetsize
-        self.sync_period=self.reorder_order*self.numchannels*self.numtengbe*self.packetsize
+        self.sync_period=self.reorder_order*self.numchannels*self.numips*self.packetsize
         
     
     # reprogram the fpga with the boffile
