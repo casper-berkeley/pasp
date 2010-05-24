@@ -15,57 +15,21 @@
 #include <string.h>
 //#include <fftw3.h>
 
-#include <cuda.h>
-#include <cufft.h>
-#include <cuda_runtime_api.h>
-
 #include "pasp_config.h"
 #include "pasp_process.h"
+#include "fft_library.h"
 
-#define NX      256
-#define BATCH   1
 
-static void callGPUFFT(cufftComplex *data)
-{
-    //int i;
-    cufftHandle plan;
-    // cufftComplex data[NX*BATCH];
-    cufftComplex *gpudata;
-    
-    // generate some random data
-    //    for(i=0; i<NX*BATCH; i++)
-    //    {
-    //        data[i].x=1.0f;
-    //        data[i].y=1.0f;
-    //    }
-    
-    // allocate device memory and copy over data
-    cudaMalloc((void**)&gpudata,sizeof(cufftComplex)*NX*BATCH);
-    cudaMemcpy(gpudata, data, sizeof(cufftComplex)*NX*BATCH, cudaMemcpyHostToDevice);
-    
-    // run the fft
-    cufftPlan1d(&plan,NX,CUFFT_C2C, BATCH);
-    cufftExecC2C(plan,gpudata,gpudata,CUFFT_FORWARD);
-    
-    // copy the result back
-    cudaMemcpy(data, gpudata, sizeof(cufftComplex)*NX*BATCH, cudaMemcpyDeviceToHost);
-    
-    //    for(i=0; i<NX*BATCH; i++)
-    //    {
-    //        fprintf(stderr,"%d %f %f\n", i, data[i].x, data[i].y);
-    //    }
-    
-    cufftDestroy(plan);
-    cudaFree(data);
-}
 
 int main(int argc, char *argv[])
 {
     // input fifo file info
     int input_fifo;
     
+    int i=0;
+    
     // buffer for the next packet
-    cufftComplex *newdata = malloc(CHANNEL_BUFFER_SIZE);
+    cufftComplex newdata[NX*BATCH][SAMPLES_PER_CHANNEL];
     int numbytes=0;
     struct sigaction newact;
     int numpackets=0;
@@ -74,8 +38,7 @@ int main(int argc, char *argv[])
     
     // this should really be a command line opt
     int channelid=8;
-    int polid=0;
-    
+    int polid=0;    
     
     
     //set up the signal handler
@@ -87,16 +50,18 @@ int main(int argc, char *argv[])
 	sigaction(SIGINT, &newact, NULL);
     
     // open the fifo with complex data for a single channel/pol
-    snprintf(input_file_name,CHANNEL_FILE_NAME_SIZE, CHANNEL_FILE_BASE, channelid, polid);
+    snprintf(input_file_name, CHANNEL_FILE_NAME_SIZE, CHANNEL_FILE_BASE, channelid, polid);
     debug_fprintf(stderr, "Opening fifo %s\n", input_file_name);
     input_fifo = open(input_file_name,O_RDONLY);
     
+    initializeFFT();
     
     debug_fprintf(stderr, "Waiting for data\n");
     while(run_fifo_read==1)
     {
         // read packet from fifo
-        numbytes = read(input_fifo, (void *) newdata, CHANNEL_BUFFER_SIZE);
+        numbytes = read(input_fifo, (void *) &(newdata[i][0]), CHANNEL_BUFFER_SIZE);
+        //fprintf(stderr,"tried to read %d got %d at %x\n", CHANNEL_BUFFER_SIZE, numbytes, (void *) &(newdata[i][0]));
         if(numbytes==-1 && run_fifo_read==1)
         {
             perror("Error reading from fifo");
@@ -108,15 +73,24 @@ int main(int argc, char *argv[])
         {
             numpackets++;
             totalbytes+=numbytes;
-            
-            //process_packet(nextpacket);
+            if(i==NX*BATCH-1)
+            {
+                callFFT((cufftComplex *) newdata);
+                i=0;
+            }
+            else 
+            {
+                i++;
+            }
+
         }
     }
     
     debug_fprintf(stderr, "Received %d packets, %lld bytes\n", numpackets, totalbytes);
     debug_fprintf(stderr, "Closing fifo\n");
     close(input_fifo);
-    free(newdata);
+    destroyFFT();
+    //free(newdata);
     return 0;
 }
 

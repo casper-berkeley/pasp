@@ -1,24 +1,29 @@
-CC = gcc
-CFLAGS = -g -Wall -O2 -I/usr/local/cuda/include -L/usr/local/cuda/lib64 
+CC = nvcc
+CFLAGS = -g -O2 -I/usr/local/cuda/include -L/usr/local/cuda/lib64 -I/home/tfiliba/NVIDIA_GPU_Computing_SDK/C/common/inc -L/home/tfiliba/NVIDIA_GPU_Computing_SDK/C/lib
 DEBUG = -D DEBUG
-CUDA_INCLUDE_LIB = -lcufft
+CUDA_INCLUDE_LIB = -lcufft -lrt /home/tfiliba/NVIDIA_GPU_Computing_SDK/C/lib/libcutil_x86_64.a
+NVCCFLAGS = -g -O2 -I/usr/local/cuda/include -L/usr/local/cuda/lib64 -I/home/tfiliba/NVIDIA_GPU_Computing_SDK/C/common/inc -L/home/tfiliba/NVIDIA_GPU_Computing_SDK/C/lib
 
-TARGETS := packet_generator pasp_recv pasp_record pasp_process
-.PHONY: pasp_test pasp pasp_rec clean realclean
 
-default: all
+PASP_TARGETS := packet_generator pasp_recv pasp_record pasp_process
+TEST_TARGETS := pasp_process_test
+TARGETS := $(PASP_TARGETS) $(TEST_TARGETS)
+.PHONY: pasp_test pasp_rec clean realclean new
 
-all: pasp_proc
+default: pasp_proc
 
-%.o: %.c %.h pasp_config.h
+all: $(TARGETS)
+
+%.o: %.c %.h Makefile pasp_config.h
+	$(CC) $(CFLAGS) $(DEBUG) -c $<
+	
+%.o: %.cu Makefile pasp_config.h
+	$(CC) $(CFLAGS) $(DEBUG) -c $<
+	
+%.o: %.c Makefile pasp_config.h
 	$(CC) $(CFLAGS) $(DEBUG) -c $<
 
 pasp_test: packet_generator pasp
-
-packet_generator: Makefile packet_generator.o
-	$(CC) $(CFLAGS) $(DEBUG) packet_generator.o -o packet_generator
-
-pasp: pasp_recv pasp_process
 
 pasp_rec_test: packet_generator pasp_rec
 
@@ -26,24 +31,20 @@ pasp_rec: pasp_recv pasp_record
 
 pasp_proc: pasp_recv pasp_distribute pasp_process 
 
-pasp_recv: Makefile pasp_recv.o
-	$(CC) $(CFLAGS) $(DEBUG) pasp_recv.o -o pasp_recv
+$(PASP_TARGETS): %: Makefile %.o
+	$(CC) $(CFLAGS) $(DEBUG) $*.o -o $*
+
+pasp_process: Makefile pasp_process.o cuda_fft_library.o fft_library.h
+	$(CC) $(CFLAGS) $(DEBUG) $(CUDA_INCLUDE_LIB) pasp_process.o cuda_fft_library.o -o pasp_process
 	
-pasp_distribute: Makefile pasp_distribute.o
-	$(CC) $(CFLAGS) $(DEBUG) pasp_distribute.o -o pasp_distribute
-
-pasp_process: Makefile pasp_process.o
-	$(CC) $(CFLAGS) $(DEBUG) $(CUDA_INCLUDE_LIB) pasp_process.o -o pasp_process
-
-pasp_record: Makefile pasp_record.o
-	$(CC) $(CFLAGS) $(DEBUG) pasp_record.o -o pasp_record
-
+pasp_process_test: Makefile pasp_process_test.o cuda_fft_library.o fft_library.h
+	$(CC) $(NVCCFLAGS) $(DEBUG) $(CUDA_INCLUDE_LIB) pasp_process_test.o cuda_fft_library.o -o pasp_process_test
+	
 clean:
 	@rm -vf *.o
 
 realclean: clean
 	@rm -vf $(TARGETS)
-	@rm -vf pol0
 	
 new: realclean all
 

@@ -10,8 +10,8 @@
 #include "debug_macros.h"
 #include <cufft.h>
 
-#define RAW_UDP_FILE_NAME           "out/raw_udp_pipe"
-#define CHANNEL_FILE_BASE   "out/channel%d_pol%d_pipe"
+#define RAW_UDP_FILE_NAME           "pipes/raw_udp_pipe"
+#define CHANNEL_FILE_BASE   "pipes/channel%d_pol%d_pipe"
 #define CHANNEL_FILE_NAME_SIZE  100
 
 //parameters from the simulink design
@@ -21,11 +21,15 @@
 
 //the packet size will be 64 bits for ever sample plus a 
 //64 bit counter and 64 bit channel id
-#define CHANNELS_PER_PACKET NUM_CHANNELS/NUM_IPS
-#define SAMPLES_PER_CHANNEL SAMPLES_PER_PACKET/CHANNELS_PER_PACKET
 #define PACKET_SIZE_BITS    (SAMPLES_PER_PACKET*64+64+64)
-#define PACKET_SIZE_BYTES   PACKET_SIZE_BITS/8
-#define CHANNEL_BUFFER_SIZE SAMPLES_PER_CHANNEL*sizeof(cufftComplex)
+#define PACKET_SIZE_BYTES   (PACKET_SIZE_BITS/8)
+
+#define CHANNELS_PER_PACKET (NUM_CHANNELS/NUM_IPS)
+#define SAMPLES_PER_CHANNEL (SAMPLES_PER_PACKET/CHANNELS_PER_PACKET)
+#define CHANNEL_BUFFER_SIZE (SAMPLES_PER_CHANNEL*sizeof(cufftComplex))
+
+
+
 
 //4 ips 16 channels
 //each sample has 2 pols
