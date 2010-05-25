@@ -25,6 +25,7 @@
 #define NX      256
 #define BATCH   1
 
+int pasp_channel_enable[NUM_CHANNELS][2];
 // output fifo file info
 static int channeldata[CHANNELS_PER_PACKET][2];
 
@@ -105,7 +106,7 @@ static int create_output_fifos(int packet_id)
                     return -1;
                 }
             }
-            if(channel_enable[i+packet_id*CHANNELS_PER_PACKET][j])
+            if(pasp_channel_enable[i+packet_id*CHANNELS_PER_PACKET][j])
             {
                 //open the fifo
                 debug_fprintf(stderr, "Opening fifo\n");
@@ -137,7 +138,7 @@ int main(int argc, char *argv[])
     long long packet_index;
     long long packet_id;
     
-    channel_enable[8][0]=1;
+    pasp_channel_enable[8][0]=1;
     
     //set up the signal handler
     newact.sa_handler = cleanup;

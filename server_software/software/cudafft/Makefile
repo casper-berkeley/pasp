@@ -6,7 +6,7 @@ NVCCFLAGS = -g -O2 -I/usr/local/cuda/include -L/usr/local/cuda/lib64 -I/home/tfi
 
 .PHONY: clean
 
-%.o: %.c Makefile pasp_config.h Makefile
+%.o: %.cu Makefile pasp_config.h Makefile
 	$(CC) $(CFLAGS) $(DEBUG) -c $<
 	
 clean:

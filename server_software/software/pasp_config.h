@@ -1,3 +1,6 @@
+#ifndef PASP_CONFIG_H
+#define PASP_CONFIG_H
+
 /*
  *  pasp_config.h
  *  
@@ -5,6 +8,8 @@
  *  Created by Terry E. Filiba on 2/24/09.
  *
  */
+
+
 
 #include <stdint.h>
 #include "debug_macros.h"
@@ -55,8 +60,9 @@ typedef struct pasp_packet{
     sample samples[SAMPLES_PER_CHANNEL][CHANNELS_PER_PACKET];
 } pasp_packet;
 
-int channel_enable[NUM_CHANNELS][2];
+extern int pasp_channel_enable[NUM_CHANNELS][2];
 
 
 
 
+#endif /*PASP_CONFIG_H*/

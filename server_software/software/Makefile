@@ -24,7 +24,7 @@ pasp_rec: pasp_recv pasp_record
 
 pasp_proc: pasp_recv pasp_distribute pasp_process 
 
-
+VPATH = cudafft/
 
 
 %.o: %.c %.h Makefile pasp_config.h Makefile
@@ -36,7 +36,7 @@ pasp_proc: pasp_recv pasp_distribute pasp_process
 %.o: %.c Makefile pasp_config.h Makefile
 	$(CC) $(CFLAGS) $(DEBUG) -c $<
 	
-pasp_process.o: pasp_process.c pasp_process.h fft_library.h Makefile
+pasp_process.o: pasp_process.cu pasp_process.h fft_library.h Makefile
 	$(CC) $(CFLAGS) $(DEBUG) -c $<
 	
 pasp_process_test.o: pasp_process_test.cu fft_library.h Makefile
@@ -48,20 +48,20 @@ pasp_process_test.o: pasp_process_test.cu fft_library.h Makefile
 $(PASP_TARGETS): %: %.o
 	$(CC) $(CFLAGS) $(DEBUG) $*.o -o $*
 
-pasp_process: pasp_process.o cudafft/cuda_fft_library.o
+pasp_process: pasp_process.o cuda_fft_library.o
 	$(CC) $(CFLAGS) $(DEBUG) $(CUDA_INCLUDE_LIB) pasp_process.o cuda_fft_library.o -o pasp_process
 	
 pasp_process_test:  pasp_process_test.o cuda_fft_library.o
 	$(CC) $(NVCCFLAGS) $(DEBUG) $(CUDA_INCLUDE_LIB) pasp_process_test.o cuda_fft_library.o -o pasp_process_test
 	
+# delete all object files
 clean: 
-	for dir in $(SUBDIRS); do \
-		$(MAKE) -C $$dir; \
-	done
 	@rm -vf *.o
 
+# delete all object and binary files
 realclean: clean
 	@rm -vf $(TARGETS)
 	
+# recompile everything
 new: realclean default
 
