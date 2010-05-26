@@ -6,8 +6,16 @@ NVCCFLAGS = -g -O2 -I/usr/local/cuda/include -L/usr/local/cuda/lib64 -I/home/tfi
 
 .PHONY: clean
 
-%.o: %.cu Makefile pasp_config.h Makefile
+default: cuffttest
+
+%.o: %.cu Makefile
 	$(CC) $(CFLAGS) $(DEBUG) -c $<
 	
+%.o: %.c Makefile
+	$(CC) $(CFLAGS) $(DEBUG) -c $<
+
+cuffttest: cuffttest.o
+	$(CC) $(CFLAGS) $(CUDA_INCLUDE_LIB) $(DEBUG) cuffttest.o -o cuffttest
+
 clean:
 	@rm -vf *.o

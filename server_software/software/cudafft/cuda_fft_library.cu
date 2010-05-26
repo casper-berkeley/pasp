@@ -22,7 +22,7 @@ void initializeFFT()
 
 void callFFT(cufftComplex *data)
 {
-    int i;
+    //int i;
     // allocate device memory and copy over data
     cudaMemcpy(gpudata, data, CHANNEL_BUFFER_SIZE*NX*BATCH, cudaMemcpyHostToDevice);
     
