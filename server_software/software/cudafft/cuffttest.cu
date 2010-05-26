@@ -95,10 +95,11 @@ int main ()
                 CUDA_SAFE_CALL(cudaFree(fftgpudata));
             
             
-                fprintf(stderr, "%d, %d, %f, %f, %f, %f\n",
+                fprintf(stderr, "%lld\t%lld\t%f\t%f\t%f\t%f\t%f\n",
                     nx, batch, 
                     cutGetTimerValue(complete_fft_timer), cutGetTimerValue(copy_to_gpu_timer), 
-                    cutGetTimerValue(fft_only_timer), cutGetTimerValue(copy_from_gpu_timer));
+                    cutGetTimerValue(fft_only_timer), cutGetTimerValue(copy_from_gpu_timer),
+                    cutGetTimerValue(complete_fft_timer)/(nx*batch));
             }
         }
     }
