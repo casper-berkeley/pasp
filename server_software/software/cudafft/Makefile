@@ -8,7 +8,7 @@ TARGETS = cuffttest
 LIB_TARGETS = cuda_fft_library.a
 .PHONY: clean
 
-default: cuda_fft_library.a
+default: cuffttest
 
 %.o: %.cu Makefile
 	$(CC) $(CFLAGS) $(DEBUG) -c $<

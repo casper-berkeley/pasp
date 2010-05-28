@@ -17,17 +17,17 @@ REMOVE
 #define BATCH 10
 #define SAMPLES_PER_CHANNEL 5
 
-void initializeFFT()
+void initializeFFT(nx, batch)
 {
     // allocate device memory for the fft
-    cudaMalloc((void**)&gpudata,CHANNEL_BUFFER_SIZE*NX*BATCH);
-    cudaMalloc((void**)&fftgpudata,CHANNEL_BUFFER_SIZE*NX*BATCH);
+    cudaMalloc((void**)&gpudata,nx*batch);
+    cudaMalloc((void**)&fftgpudata,nx*batch);
     
     cufftPlan1d(&plan,SAMPLES_PER_CHANNEL*NX,CUFFT_C2C, BATCH);
 }
 
 
-void callFFT(cufftComplex *data)
+void callFFT(cufftComplex *data, nx, batch)
 {
     //int i;
     // allocate device memory and copy over data
@@ -36,6 +36,7 @@ void callFFT(cufftComplex *data)
     // run the fft
     
     cufftExecC2C(plan,gpudata,fftgpudata,CUFFT_FORWARD);
+    cudaThreadSynchronize();
     
     // copy the result back
     cudaMemcpy(data, fftgpudata, CHANNEL_BUFFER_SIZE*NX*BATCH, cudaMemcpyDeviceToHost);

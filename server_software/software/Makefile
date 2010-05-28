@@ -47,11 +47,11 @@ $(PASP_TARGETS): %: %.o
 	$(CC) $(CFLAGS) $(DEBUG) $*.o -o $*
 	
 japan_pasp_process_test: pasp_process_test.o
-	make -C test_FFT
+	make -C test_FFT libgpufft.a
 	$(CC) $(NVCCFLAGS) $(DEBUG) $(CUDA_INCLUDE_LIB) pasp_process_test.o test_FFT/libgpufft.a -o japan_pasp_process_test
 
 pasp_process: pasp_process.o
-	make -C cudafft
+	make -C cudafft cuda_fft_library.a
 	$(CC) $(CFLAGS) $(DEBUG) $(CUDA_INCLUDE_LIB) cudafft/cuda_fft_library.a cuda_fft_library.o -o pasp_process
 	
 pasp_process_test:  pasp_process_test.o

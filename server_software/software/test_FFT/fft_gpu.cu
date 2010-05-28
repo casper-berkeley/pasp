@@ -232,10 +232,10 @@ void callFFT(cufftComplex *data)
 
 		// Do Cuda FFT
 		cutStartTimer(timerB);
-		if(0) {
-			// CUFFT_SAFE_CALL(cufftExecC2C(plan, devFFTData, devCuFFTData, CUFFT_FORWARD));
+		if(1) {
+			CUFFT_SAFE_CALL(cufftExecC2C(plan, devFFTData, devCuFFTData, CUFFT_FORWARD));
 			// CUFFT_SAFE_CALL(cufftExecC2R(plan, devFFTData, devCuFFTRData));
-			CUFFT_SAFE_CALL(cufftExecC2R(plan, devFFTData, (cufftReal*)devFFTData));
+			//CUFFT_SAFE_CALL(cufftExecC2R(plan, devFFTData, (cufftReal*)devFFTData));
 			cudaThreadSynchronize();
 		}
 		cutStopTimer(timerB);
@@ -291,8 +291,8 @@ void destroyFFT()
 }
 
 extern "C"
-int do_analyze_on_gpu(int signalLength)  {
-    //signalLength=sl;
+int do_analyze_on_gpu(int sl)  {
+    signalLength=sl;
     initializeFFT();
 
 

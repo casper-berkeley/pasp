@@ -73,21 +73,25 @@ int main ()
                 cufftExecC2C(plan,gpudata,fftgpudata,CUFFT_FORWARD);
                 // copy the result back
                 cudaMemcpy(result, fftgpudata, sizeof(cufftComplex)*nx*batch, cudaMemcpyDeviceToHost);
+                cudaThreadSynchronize();
                 cutStopTimer(complete_fft_timer);
                 
                 cutResetTimer(copy_to_gpu_timer);
                 cutStartTimer(copy_to_gpu_timer);
                 cudaMemcpy(gpudata, data, sizeof(cufftComplex)*nx*batch, cudaMemcpyHostToDevice);
+                cudaThreadSynchronize();
                 cutStopTimer(copy_to_gpu_timer);
                 
                 cutResetTimer(fft_only_timer);
                 cutStartTimer(fft_only_timer);
                 cufftExecC2C(plan,gpudata,fftgpudata,CUFFT_FORWARD);
+                cudaThreadSynchronize();
                 cutStopTimer(fft_only_timer);
                 
                 cutResetTimer(copy_from_gpu_timer);
                 cutStartTimer(copy_from_gpu_timer);
                 cudaMemcpy(result, fftgpudata, sizeof(cufftComplex)*nx*batch, cudaMemcpyDeviceToHost);
+                cudaThreadSynchronize();
                 cutStopTimer(copy_from_gpu_timer);
                 
                 cufftDestroy(plan);
