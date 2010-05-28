@@ -34,9 +34,12 @@ int main ()
     unsigned int copy_from_gpu_timer;
     
     //cufftHandle plan;
-    cufftComplex *data = (cufftComplex *) malloc(sizeof(cufftComplex)*MAX_DIM);
-    cufftComplex *result = (cufftComplex *) malloc(sizeof(cufftComplex)*MAX_DIM);
+    cufftComplex *data;
+    cufftComplex *result;
     //cufftComplex *gpudata;
+    
+    cudaMallocHost(&data, sizeof(cufftComplex)*MAX_DIM);
+    cudaMallocHost(&result, sizeof(cufftComplex)*MAX_DIM);
     
     //fprintf(stderr, "Initializing data... ");
     // generate some random data
