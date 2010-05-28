@@ -2,13 +2,20 @@
 #include <cufft.h>
 #include <cuda_runtime_api.h>
 
-#include "fft_library.h"
-#include "pasp_config.h"
+//#include "fft_library.h"
+//#include "pasp_config.h"
 
 static cufftHandle plan;
 cufftComplex *gpudata;
 cufftComplex *fftgpudata;
 
+/*******************
+REMOVE
+*******************/
+#define CHANNEL_BUFFER_SIZE 11
+#define NX  16
+#define BATCH 10
+#define SAMPLES_PER_CHANNEL 5
 
 void initializeFFT()
 {
