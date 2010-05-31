@@ -54,8 +54,9 @@ int main ()
     cutCreateTimer(&fft_only_timer);
     cutCreateTimer(&copy_from_gpu_timer);
     
-    fprintf(stderr, "nx, batch, time, copy_to_gpu, actual_fft, copy_from_gpu\n");
+    //fprintf(stderr, "nx\tbatch\ttime\tcopy_to_gpu\tactual_fft\tcopy_from_gpu\tavg\n");
     for(nx=2; nx<=MAX_NX; nx=nx*2)
+    //for(nx=4096; nx<=MAX_NX; nx+=4096)
     {
         for(batch=1;batch<=MAX_BATCH;batch=batch*2)
         {
