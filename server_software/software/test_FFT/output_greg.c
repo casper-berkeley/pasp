@@ -10,12 +10,13 @@ void output_spectrum_to_file(FILE *outputFilePointer, int signalLength, char *ho
 }
 
 
-void output_spectrum_to_file_float(FILE *outputFilePointer, int signalLength, cufftComplex* hostcuFFTData, float *hostPowerData, cufftReal *hostFFTData){
-//void output_spectrum_to_file_float(FILE *outputFilePointer, int signalLength, cufftComplex* hostcuFFTData, float *hostPowerData, float *hostcuFFTRData){
+//void output_spectrum_to_file_float(FILE *outputFilePointer, int signalLength, cufftComplex* hostcuFFTData, float *hostPowerData, cufftReal *hostFFTData){
+void output_spectrum_to_file_float(FILE *outputFilePointer, int signalLength, cufftComplex* hostcuFFTData, float *hostPowerData){
 	int i;
 	for(i=0; i<signalLength; i++){
         	// fprintf(outputFilePointer,"%d %d %f %f %f\n", i, hostSignalData[i], hostPowerData[i], hostcuFFTData[i].x,hostcuFFTData[i].y); 
-        	fprintf(outputFilePointer,"%d %f %f %f %f\n", i, hostcuFFTData[i].x, hostcuFFTData[i].y, hostPowerData[i], hostFFTData[i]); 
+        	//fprintf(outputFilePointer,"%d %f %f %f %f\n", i, hostcuFFTData[i].x, hostcuFFTData[i].y, hostPowerData[i], hostFFTData[i]); 
+        fprintf(outputFilePointer,"%d %f %f %f\n", i, hostcuFFTData[i].x, hostcuFFTData[i].y, hostPowerData[i]); 
 	}
 }
 

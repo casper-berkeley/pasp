@@ -14,8 +14,8 @@ typedef struct {
         float         mean;
 } outputStruct; 
 
-/*int output_spectrum(outputStruct *,int,int);
-int init_output_file();
+int output_spectrum(outputStruct *,int,int);
+/*int init_output_file();
 void terminate_output_file();
 void output_spectrum_to_file(outputStruct *);
 
