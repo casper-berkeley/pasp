@@ -38,12 +38,17 @@
 
 //4 ips 16 channels
 //each sample has 2 pols
-typedef struct sample{
+typedef struct single_pol_sample{
+    int8_t re;
+    int8_t im;
+}single_pol_sample;
+
+typedef struct dual_pol_sample{
     int8_t pol0_re;
     int8_t pol0_im;
     int8_t pol1_re;
     int8_t pol1_im;
-}sample;
+}dual_pol_sample;
 
 //4 ips 16 channels
 //each sample has 2 pols
@@ -57,7 +62,7 @@ typedef struct accumulated_channel{
 typedef struct pasp_packet{
     uint64_t seq_no;
     uint64_t id_no;
-    sample samples[SAMPLES_PER_CHANNEL][CHANNELS_PER_PACKET];
+    dual_pol_sample samples[SAMPLES_PER_CHANNEL][CHANNELS_PER_PACKET];
 } pasp_packet;
 
 extern int pasp_channel_enable[NUM_CHANNELS][2];

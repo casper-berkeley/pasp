@@ -1,37 +1,50 @@
 #include <cuda.h>
 #include <cufft.h>
 #include <cuda_runtime_api.h>
+#include <cutil_inline.h>
 
-//#include "fft_library.h"
-//#include "pasp_config.h"
 
 static cufftHandle plan;
+cufftComplex *hostSignalData;
+float *hostPowerData;
 cufftComplex *gpudata;
 cufftComplex *fftgpudata;
+
+int signalLength;
 
 /*******************
 REMOVE
 *******************/
-#define CHANNEL_BUFFER_SIZE 11
-#define NX  16
-#define BATCH 10
-#define SAMPLES_PER_CHANNEL 5
+#define BATCH 1
 
-void initializeFFT(nx, batch)
+void initializeFFT(int initializedSignalLength)
 {
-    // allocate device memory for the fft
-    cudaMalloc((void**)&gpudata,nx*batch);
-    cudaMalloc((void**)&fftgpudata,nx*batch);
+    signalLength = initializedSignalLength;
+
+    cutilSafeCall( cudaMallocHost( (void**)&hostSignalData, sizeof(cufftComplex)*signalLength) );
+    cutilSafeCall( cudaMallocHost((void**)&hostPowerData, sizeof(float)*signalLength) );
     
-    cufftPlan1d(&plan,SAMPLES_PER_CHANNEL*NX,CUFFT_C2C, BATCH);
+    // allocate device memory for the fft
+    cudaMalloc((void**)&gpudata,sizeof(cufftComplex)*signalLength);
+    cudaMalloc((void**)&fftgpudata,sizeof(cufftComplex)*signalLength);
+    
+    
+    
+    cufftPlan1d(&plan,signalLength,CUFFT_C2C, BATCH);
 }
 
 
-void callFFT(cufftComplex *data, nx, batch)
+float * callFFT(char *data)
 {
-    //int i;
-    // allocate device memory and copy over data
-    cudaMemcpy(gpudata, data, CHANNEL_BUFFER_SIZE*NX*BATCH, cudaMemcpyHostToDevice);
+    //convert the data to float
+    for(int i=0; i<signalLength; i++)
+    {
+        hostSignalData[i].x = data[2*i];
+        hostSignalData[i].y = data[2*i+1];
+    }
+    
+    // copy data to the gpu
+    cudaMemcpy(gpudata, hostSignalData, sizeof(cufftComplex)*signalLength, cudaMemcpyHostToDevice);
     
     // run the fft
     
@@ -39,18 +52,26 @@ void callFFT(cufftComplex *data, nx, batch)
     cudaThreadSynchronize();
     
     // copy the result back
-    cudaMemcpy(data, fftgpudata, CHANNEL_BUFFER_SIZE*NX*BATCH, cudaMemcpyDeviceToHost);
+    cudaMemcpy(hostSignalData, fftgpudata, sizeof(cufftComplex)*signalLength, cudaMemcpyDeviceToHost);
     
-//    for(i=0; i<SAMPLES_PER_CHANNEL*NX*BATCH; i++)
+    for(int i=0;i<signalLength;i++)
+    {
+        hostPowerData[i] = hostSignalData[i].x*hostSignalData[i].x + hostSignalData[i].y*hostSignalData[i].y;
+    }
+    
+//    for(int i=0; i<signalLength; i++)
 //    {
-//        fprintf(stderr,"%d %f %f\n", i, data[i].x, data[i].y);
+//        fprintf(stderr,"%d %f %f\n", i, hostSignalData[i].x, hostSignalData[i].y);
 //    }
     
-
+    return hostPowerData;
 }
 
 void destroyFFT()
 {
     cufftDestroy(plan);
+    cudaFreeHost(hostSignalData);
+    cudaFreeHost(hostPowerData);
     cudaFree(gpudata);
+    cudaFree(fftgpudata);
 }

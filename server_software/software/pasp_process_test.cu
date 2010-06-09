@@ -1,5 +1,5 @@
 /*
- *  pasp_process.c
+ *  pasp_process_test.cu
  *  
  *
  *  Created by Terry E. Filiba on 2/24/09.
@@ -13,7 +13,6 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <string.h>
-//#include <fftw3.h>
 #include <cutil_inline.h>
 
 #include "pasp_config.h"
@@ -21,41 +20,62 @@
 #include "fft_library.h"
 #include "debug_macros.h"
 
-static cufftComplex * generateData()
+static const unsigned int signalLength = 1024*1024;
+
+static char * generateData(int signalLength)
 {
     int i;
-    cufftComplex *data = (cufftComplex *) malloc(sizeof(cufftComplex)*NX*BATCH*SAMPLES_PER_CHANNEL);
+    char *hostSignalData;
+    unsigned int hostSignalDataMemSize = sizeof(char) * signalLength * 2;
+    cutilSafeCall( cudaMallocHost( (void**)&hostSignalData, hostSignalDataMemSize));
+	if(hostSignalData==NULL){
+		fprintf(stderr,"Error : cudaMallocHost failed\n");
+		exit(-1);
+	}
     
-    //generate some random data
-    for(i=0; i<NX*BATCH*SAMPLES_PER_CHANNEL; i++)
-    {
-        data[i].x=1.0f;
-        data[i].y=1.0f;
-    }
+    //generate some data
+     for(i=0; i<signalLength; i++){
+        hostSignalData[2*i] = 10;
+        hostSignalData[2*i+1] = 10;
+        //sine wave at 1/2 nyquist
+//        if(i%4==0)
+//        {
+//            hostSignalData[2*i] = -10;
+//            hostSignalData[2*i+1] = 10*(i%2);
+//        }
+//        else if(i%4==1)
+//        {
+//            hostSignalData[2*i] = 0;
+//            hostSignalData[2*i+1] = 10*(i%2);
+//        }
+//        else if(i%4==2)
+//        {
+//            hostSignalData[2*i] = 10;
+//            hostSignalData[2*i+1] = 10*(i%2);
+//        }
+//        else if(i%4==3)
+//        {
+//            hostSignalData[2*i] = 0;
+//            hostSignalData[2*i+1] = 10*(i%2);
+//        }
+        //sine wave a nyquist
+//        hostSignalData[2*i] = 10*(i%2);
+//        hostSignalData[2*i+1] = 10*(i%2);
+	}
     
-    //    for(i=0; i<SAMPLES_PER_CHANNEL*BATCH; i++)
-    //    {
-    //        fprintf(stderr,"%d %f %f\n", i, data[i].x, data[i].y);
-    //    }
-    
-    return data;
+    return hostSignalData;
 }
 
 int main(int argc, char *argv[])
-{
-    // input fifo file info
-    //int input_fifo;
-    
-    //int i=0;
-    
+{     
     // buffer for the next packet
-    cufftComplex *newdata=generateData();
+    char *newdata=generateData(signalLength);
     //int numbytes=0;
     struct sigaction newact;
     int numpackets=0;
     long long totalbytes=0;
-    
     unsigned int timer;
+    float *hostPower;
     
     cutCreateTimer(&timer);
     
@@ -72,24 +92,30 @@ int main(int argc, char *argv[])
     //start listening for Ctrl-C
 	sigaction(SIGINT, &newact, NULL);
     
-    initializeFFT();
-    while(run_fifo_read==1)
-    {
+    initializeFFT(signalLength);
+//    while(run_fifo_read==1)
+//    {
 
         numpackets++;
-        totalbytes+=sizeof(cufftComplex)*NX*BATCH*SAMPLES_PER_CHANNEL;
+        totalbytes+=sizeof(char)*signalLength*2;
 		cutResetTimer(timer);
 		cutStartTimer(timer);
-        callFFT((cufftComplex *) newdata);
+        hostPower = callFFT((char *) newdata);
         cutStopTimer(timer);
         printf("time = %f done...\n",cutGetTimerValue(timer));
-    }
-    debug_fprintf(stderr, "Received %d packets, %lld bytes\n", numpackets, totalbytes);
-    //debug_fprintf(stderr, "Closing fifo\n");
-    //close(input_fifo);
+        for(int i=0;i<signalLength;i++)
+        {
+            if(hostPower[i] != 0)
+            {
+                fprintf(stdout, "%d %f\n", i, hostPower[i]);
+            }
+        }
+//    }
+    debug_fprintf(stderr, "Processed %d ffts, %lld bytes\n", numpackets, totalbytes);
+
     fprintf(stderr,"destroying fft\n");
     destroyFFT();
-    //free(newdata);
+    cudaFreeHost(newdata);
     return 0;
 }
 

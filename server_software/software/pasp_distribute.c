@@ -27,7 +27,7 @@
 
 int pasp_channel_enable[NUM_CHANNELS][2];
 // output fifo file info
-static int channeldata[CHANNELS_PER_PACKET][2];
+static int channeldata_fifo[CHANNELS_PER_PACKET][2];
 
 static void accumulate_packet(pasp_packet *newpacket,int numchannels)
 {
@@ -59,18 +59,18 @@ static void accumulate_packet(pasp_packet *newpacket,int numchannels)
 static void process_packet(pasp_packet *newpacket)
 {
     int i;
-    cufftComplex data[CHANNELS_PER_PACKET][2][SAMPLES_PER_CHANNEL];
+    single_pol_sample data[CHANNELS_PER_PACKET][2][SAMPLES_PER_CHANNEL];
     
     //cufftComplex data[NX*BATCH];
     
     //copy a single channel into the buffer
     for(i=0;i<SAMPLES_PER_CHANNEL;i++)
     {
-        data[0][0][i].x=newpacket->samples[i][0].pol0_re;
-        data[0][0][i].y=newpacket->samples[i][0].pol0_im;
+        data[0][0][i].re=newpacket->samples[i][0].pol0_re;
+        data[0][0][i].im=newpacket->samples[i][0].pol0_im;
     }
     
-    write(channeldata[0][0],data[0][0],SAMPLES_PER_CHANNEL*sizeof(cufftComplex));
+    write(channeldata_fifo[0][0],data[0][0],SAMPLES_PER_CHANNEL*sizeof(single_pol_sample));
     
     //accumulate_packet(newpacket,CHANNELS_PER_PACKET);
     
@@ -110,8 +110,8 @@ static int create_output_fifos(int packet_id)
             {
                 //open the fifo
                 debug_fprintf(stderr, "Opening fifo\n");
-                channeldata[i][j] = open(output_file_name, O_WRONLY);
-                if(channeldata[i][j] == -1)
+                channeldata_fifo[i][j] = open(output_file_name, O_WRONLY);
+                if(channeldata_fifo[i][j] == -1)
                 {
                     perror("Error opening fifo");
                     return -1;

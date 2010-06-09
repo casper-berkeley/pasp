@@ -13,32 +13,49 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <string.h>
-//#include <fftw3.h>
+#include <cutil_inline.h>
 
 #include "pasp_config.h"
 #include "pasp_process.h"
 #include "fft_library.h"
+#include "debug_macros.h"
 
-
+// size of the fft
+static const unsigned int signalLength = 1024*1024;
 
 int main(int argc, char *argv[])
 {
-    // input fifo file info
-    int input_fifo;
-    
     int i=0;
     
     // buffer for the next packet
-    cufftComplex newdata[NX*BATCH][SAMPLES_PER_CHANNEL];
-    int numbytes=0;
+    char *hostSignalData;
+    
+    unsigned int hostSignalDataMemSize = sizeof(char) * signalLength * 2;
+    cutilSafeCall( cudaMallocHost( (void**)&hostSignalData, hostSignalDataMemSize));
+	if(hostSignalData==NULL){
+		fprintf(stderr,"Error : cudaMallocHost failed\n");
+		exit(-1);
+	}
+    
     struct sigaction newact;
+    
+    int numbytes=0;
     int numpackets=0;
     long long totalbytes=0;
+    
+    // input fifo file info
+    int input_fifo;
     char input_file_name[CHANNEL_FILE_NAME_SIZE];
     
     // this should really be a command line opt
     int channelid=8;
-    int polid=0;    
+    int polid=0;  
+    
+    float *hostPower;
+    
+    unsigned int timer;
+    cutCreateTimer(&timer);
+    
     
     
     //set up the signal handler
@@ -54,14 +71,14 @@ int main(int argc, char *argv[])
     debug_fprintf(stderr, "Opening fifo %s\n", input_file_name);
     input_fifo = open(input_file_name,O_RDONLY);
     
-    initializeFFT();
+    initializeFFT(signalLength);
     
     debug_fprintf(stderr, "Waiting for data\n");
     while(run_fifo_read==1)
     {
         // read packet from fifo
-        numbytes = read(input_fifo, (void *) &(newdata[i][0]), CHANNEL_BUFFER_SIZE);
-        //fprintf(stderr,"tried to read %d got %d at %x\n", CHANNEL_BUFFER_SIZE, numbytes, (void *) &(newdata[i][0]));
+        numbytes = read(input_fifo, (void *) &(hostSignalData[i]), hostSignalDataMemSize);
+        //fprintf(stderr,"tried to read %d got %d at %x\n", hostSignalDataMemSize, numbytes, (void *) hostSignalData);
         if(numbytes==-1 && run_fifo_read==1)
         {
             perror("Error reading from fifo");
@@ -73,14 +90,23 @@ int main(int argc, char *argv[])
         {
             numpackets++;
             totalbytes+=numbytes;
-            if(i==NX*BATCH-1)
+            i+=numbytes;
+            if(i>=hostSignalDataMemSize)
             {
-                callFFT((cufftComplex *) newdata);
+                cutResetTimer(timer);
+		        cutStartTimer(timer);
+                hostPower=callFFT(hostSignalData);
+                cutStopTimer(timer);
+                
+                printf("time = %f done...\n",cutGetTimerValue(timer));
+                for(int j=0;j<signalLength;j++)
+                {
+                    if(hostPower[j] != 0)
+                    {
+                        fprintf(stdout, "%d\t%f\n", j, hostPower[j]);
+                    }
+                }
                 i=0;
-            }
-            else 
-            {
-                i++;
             }
 
         }

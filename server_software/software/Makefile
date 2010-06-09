@@ -5,14 +5,15 @@ CUDA_INCLUDE_LIB = -lcufft -lrt /home/tfiliba/NVIDIA_GPU_Computing_SDK/C/lib/lib
 NVCCFLAGS = -g -O2 -I/usr/local/cuda/include -L/usr/local/cuda/lib64 -I/home/tfiliba/NVIDIA_GPU_Computing_SDK/C/common/inc -L/home/tfiliba/NVIDIA_GPU_Computing_SDK/C/lib
 
 
-PASP_TARGETS := packet_generator pasp_recv pasp_record pasp_process pasp_distribute
-TEST_TARGETS := pasp_process_test
-TARGETS := $(PASP_TARGETS) $(TEST_TARGETS)
+PASP_TARGETS := packet_generator pasp_recv pasp_record  pasp_distribute
+PROCESSING_TARGETS := pasp_process japan_pasp_process
+TEST_TARGETS := pasp_process_test japan_pasp_process_test
+TARGETS := $(PASP_TARGETS) $(PROCESSING_TARGETS) $(TEST_TARGETS)
 .PHONY: pasp_test pasp_rec clean realclean new
 
 SUBDIRS = cudafft test_FFT
 
-default: pasp_process_test
+default: cuda_pasp_processor japan_pasp_processor
 
 all: $(TARGETS)
 
@@ -22,7 +23,9 @@ pasp_rec_test: packet_generator pasp_rec
 
 pasp_rec: pasp_recv pasp_record
 
-pasp_proc: pasp_recv pasp_distribute pasp_process 
+cuda_pasp_processor: pasp_recv pasp_distribute cuda_pasp_process 
+
+japan_pasp_processor: pasp_recv pasp_distribute japan_pasp_process 
 
 
 %.o: %.c %.h pasp_config.h Makefile
@@ -46,17 +49,23 @@ pasp_process_test.o: pasp_process_test.cu fft_library.h Makefile
 $(PASP_TARGETS): %: %.o
 	$(CC) $(CFLAGS) $(DEBUG) $*.o -o $*
 	
-japan_pasp_process_test: pasp_process_test.o
+japanfftlib:
 	make -C test_FFT libgpufft.a
+	
+japan_pasp_process: pasp_process.o japanfftlib
+	$(CC) $(NVCCFLAGS) $(DEBUG) $(CUDA_INCLUDE_LIB) pasp_process.o test_FFT/libgpufft.a -o japan_pasp_process
+	
+japan_pasp_process_test: pasp_process_test.o japanfftlib
 	$(CC) $(NVCCFLAGS) $(DEBUG) $(CUDA_INCLUDE_LIB) pasp_process_test.o test_FFT/libgpufft.a -o japan_pasp_process_test
 
-pasp_process: pasp_process.o
-	make -C cudafft cuda_fft_library.a
-	$(CC) $(CFLAGS) $(DEBUG) $(CUDA_INCLUDE_LIB) cudafft/cuda_fft_library.a cuda_fft_library.o -o pasp_process
+cudafftlib:
+		make -C cudafft cuda_fft_library.a
+
+cuda_pasp_process: pasp_process.o cudafftlib
+	$(CC) $(CFLAGS) $(DEBUG) $(CUDA_INCLUDE_LIB) pasp_process.o cudafft/cuda_fft_library.a -o cuda_pasp_process
 	
-pasp_process_test:  pasp_process_test.o
-	make -C cudafft
-	$(CC) $(NVCCFLAGS) $(DEBUG) $(CUDA_INCLUDE_LIB) pasp_process_test.o cudafft/cuda_fft_library.a -o pasp_process_test
+cuda_pasp_process_test:  pasp_process_test.o cudafftlib
+	$(CC) $(NVCCFLAGS) $(DEBUG) $(CUDA_INCLUDE_LIB) pasp_process_test.o cudafft/cuda_fft_library.a -o cuda_pasp_process_test
 	
 # delete all object files
 clean: 

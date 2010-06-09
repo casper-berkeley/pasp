@@ -83,6 +83,7 @@ void receive_packets(int fifo)
 	//char s[INET6_ADDRSTRLEN];
     int numpackets=0;
     long long totalbytes=0;
+    long long databytes=0;
     
     
 	debug_fprintf(stderr, "Entering network thread loop.\n");
@@ -124,12 +125,13 @@ void receive_packets(int fifo)
             //debug_fprintf(stderr, "wrote %d bytes to fifo\n", bytesinfifo);
             numpackets++;
             totalbytes+=numbytes;
+            databytes+=numbytes-16;
             
         }
     }
     
 	debug_fprintf(stderr, "Exiting network thread loop.\n");
-    debug_fprintf(stderr, "Received %d packets, %lld bytes\n", numpackets, totalbytes);
+    debug_fprintf(stderr, "Received %d packets, %lld bytes %lld data bytes\n", numpackets, totalbytes, databytes);
     
 	close(sock);
     
