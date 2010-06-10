@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.18"
+    ComputedModelVersion    "1.26"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -24,9 +24,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "tfiliba"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Feb 16 22:00:02 2010"
+  LastModifiedDate	  "Wed May  5 15:14:33 2010"
   RTWModifiedTimeStamp	  0
-  ModelVersionFormat	  "1.%<AutoIncrement:18>"
+  ModelVersionFormat	  "1.%<AutoIncrement:26>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -108,7 +108,7 @@ Model {
 	  $ObjectID		  2
 	  Version		  "1.6.0"
 	  StartTime		  "0.0"
-	  StopTime		  "100"
+	  StopTime		  "2000"
 	  AbsTol		  "auto"
 	  FixedStep		  "auto"
 	  InitialStep		  "auto"
@@ -527,7 +527,7 @@ Model {
       }
       Name		      "Configuration"
       CurrentDlgPage	      "Solver"
-      ConfigPrmDlgPosition    " [ 217, 92, 1117, 780 ] "
+      ConfigPrmDlgPosition    " [ 217, 92, 1137, 838 ] "
     }
     PropName		    "ConfigurationSets"
   }
@@ -605,7 +605,7 @@ Model {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "47"
+    ZoomFactor		    "51"
     ReportName		    "simulink-default.rpt"
     Block {
       BlockType		      Reference
@@ -706,8 +706,8 @@ Model {
       SourceType	      "Xilinx Counter Block"
       infoedit		      "Hardware notes: Free running counters are the least expensive in hardware.  A count limited cou"
       "nter is implemented by combining a counter with a comparator."
-      cnt_type		      "Free Running"
-      cnt_to		      "5"
+      cnt_type		      "Count Limited"
+      cnt_to		      "1"
       operation		      "Up"
       start_count	      "0"
       cnt_by_val	      "1"
@@ -775,7 +775,231 @@ Model {
       BlockType		      Reference
       Name		      "Gateway Out1"
       Ports		      [1, 1]
-      Position		      [825, 215, 885, 235]
+      Position		      [825, 245, 885, 265]
+      SourceBlock	      "xbsIndex_r4/Gateway Out"
+      SourceType	      "Xilinx Gateway Out Block"
+      infoedit		      "Gateway out block.  Converts Xilinx fixed point inputs into ouputs of type Simulink integer, do"
+      "uble, or fixed point.<br><br>Hardware notes:  In hardware these blocks become top level output ports or are disc"
+      "arded, depending on how they are configured."
+      hdl_port		      off
+      timing_constraint	      "None"
+      locs_specified	      off
+      LOCs		      "{}"
+      xl_use_area	      off
+      xl_area		      "[0,0,0,0,0,0,0]"
+      has_advanced_control    "0"
+      sggui_pos		      "-1,-1,-1,-1"
+      block_type	      "gatewayout"
+      block_version	      "11.4"
+      sg_icon_stat	      "60,20,1,1,white,grey,0,632ec840,right,"
+      sg_mask_display	      "fprintf('','COMMENT: begin icon graphics');\npatch([0 1 1 0 ],[0 0 1 1 ],[0.88 0.88 0.88]"
+      ");\npatch([0.4 0.35 0.433333 0.35 0.4 0.483333 0.5 0.516667 0.616667 0.55 0.483333 0.433333 0.516667 0.433333 0."
+      "483333 0.55 0.616667 0.516667 0.5 0.483333 0.4 ],[0.1 0.25 0.5 0.75 0.9 0.9 0.85 0.9 0.9 0.7 0.9 0.75 0.5 0.25 0"
+      ".1 0.3 0.1 0.1 0.15 0.1 0.1 ],[0.98 0.96 0.92]);\nplot([0 1 1 0 0 ],[0 0 1 1 0 ]);\nfprintf('','COMMENT: end ico"
+      "n graphics');\nfprintf('','COMMENT: begin icon text');\ncolor('black');port_label('input',1,' ');\ncolor('black'"
+      ");port_label('output',1,'\\fontsize{11pt} Out ','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Gateway Out10"
+      Ports		      [1, 1]
+      Position		      [825, 800, 885, 820]
+      SourceBlock	      "xbsIndex_r4/Gateway Out"
+      SourceType	      "Xilinx Gateway Out Block"
+      infoedit		      "Gateway out block.  Converts Xilinx fixed point inputs into ouputs of type Simulink integer, do"
+      "uble, or fixed point.<br><br>Hardware notes:  In hardware these blocks become top level output ports or are disc"
+      "arded, depending on how they are configured."
+      hdl_port		      off
+      timing_constraint	      "None"
+      locs_specified	      off
+      LOCs		      "{}"
+      xl_use_area	      off
+      xl_area		      "[0,0,0,0,0,0,0]"
+      has_advanced_control    "0"
+      sggui_pos		      "-1,-1,-1,-1"
+      block_type	      "gatewayout"
+      block_version	      "11.4"
+      sg_icon_stat	      "60,20,1,1,white,grey,0,632ec840,right,"
+      sg_mask_display	      "fprintf('','COMMENT: begin icon graphics');\npatch([0 1 1 0 ],[0 0 1 1 ],[0.88 0.88 0.88]"
+      ");\npatch([0.4 0.35 0.433333 0.35 0.4 0.483333 0.5 0.516667 0.616667 0.55 0.483333 0.433333 0.516667 0.433333 0."
+      "483333 0.55 0.616667 0.516667 0.5 0.483333 0.4 ],[0.1 0.25 0.5 0.75 0.9 0.9 0.85 0.9 0.9 0.7 0.9 0.75 0.5 0.25 0"
+      ".1 0.3 0.1 0.1 0.15 0.1 0.1 ],[0.98 0.96 0.92]);\nplot([0 1 1 0 0 ],[0 0 1 1 0 ]);\nfprintf('','COMMENT: end ico"
+      "n graphics');\nfprintf('','COMMENT: begin icon text');\ncolor('black');port_label('input',1,' ');\ncolor('black'"
+      ");port_label('output',1,'\\fontsize{11pt} Out ','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Gateway Out11"
+      Ports		      [1, 1]
+      Position		      [830, 970, 890, 990]
+      SourceBlock	      "xbsIndex_r4/Gateway Out"
+      SourceType	      "Xilinx Gateway Out Block"
+      infoedit		      "Gateway out block.  Converts Xilinx fixed point inputs into ouputs of type Simulink integer, do"
+      "uble, or fixed point.<br><br>Hardware notes:  In hardware these blocks become top level output ports or are disc"
+      "arded, depending on how they are configured."
+      hdl_port		      off
+      timing_constraint	      "None"
+      locs_specified	      off
+      LOCs		      "{}"
+      xl_use_area	      off
+      xl_area		      "[0,0,0,0,0,0,0]"
+      has_advanced_control    "0"
+      sggui_pos		      "-1,-1,-1,-1"
+      block_type	      "gatewayout"
+      block_version	      "11.4"
+      sg_icon_stat	      "60,20,1,1,white,grey,0,632ec840,right,"
+      sg_mask_display	      "fprintf('','COMMENT: begin icon graphics');\npatch([0 1 1 0 ],[0 0 1 1 ],[0.88 0.88 0.88]"
+      ");\npatch([0.4 0.35 0.433333 0.35 0.4 0.483333 0.5 0.516667 0.616667 0.55 0.483333 0.433333 0.516667 0.433333 0."
+      "483333 0.55 0.616667 0.516667 0.5 0.483333 0.4 ],[0.1 0.25 0.5 0.75 0.9 0.9 0.85 0.9 0.9 0.7 0.9 0.75 0.5 0.25 0"
+      ".1 0.3 0.1 0.1 0.15 0.1 0.1 ],[0.98 0.96 0.92]);\nplot([0 1 1 0 0 ],[0 0 1 1 0 ]);\nfprintf('','COMMENT: end ico"
+      "n graphics');\nfprintf('','COMMENT: begin icon text');\ncolor('black');port_label('input',1,' ');\ncolor('black'"
+      ");port_label('output',1,'\\fontsize{11pt} Out ','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Gateway Out12"
+      Ports		      [1, 1]
+      Position		      [820, 1130, 880, 1150]
+      SourceBlock	      "xbsIndex_r4/Gateway Out"
+      SourceType	      "Xilinx Gateway Out Block"
+      infoedit		      "Gateway out block.  Converts Xilinx fixed point inputs into ouputs of type Simulink integer, do"
+      "uble, or fixed point.<br><br>Hardware notes:  In hardware these blocks become top level output ports or are disc"
+      "arded, depending on how they are configured."
+      hdl_port		      off
+      timing_constraint	      "None"
+      locs_specified	      off
+      LOCs		      "{}"
+      xl_use_area	      off
+      xl_area		      "[0,0,0,0,0,0,0]"
+      has_advanced_control    "0"
+      sggui_pos		      "-1,-1,-1,-1"
+      block_type	      "gatewayout"
+      block_version	      "11.4"
+      sg_icon_stat	      "60,20,1,1,white,grey,0,632ec840,right,"
+      sg_mask_display	      "fprintf('','COMMENT: begin icon graphics');\npatch([0 1 1 0 ],[0 0 1 1 ],[0.88 0.88 0.88]"
+      ");\npatch([0.4 0.35 0.433333 0.35 0.4 0.483333 0.5 0.516667 0.616667 0.55 0.483333 0.433333 0.516667 0.433333 0."
+      "483333 0.55 0.616667 0.516667 0.5 0.483333 0.4 ],[0.1 0.25 0.5 0.75 0.9 0.9 0.85 0.9 0.9 0.7 0.9 0.75 0.5 0.25 0"
+      ".1 0.3 0.1 0.1 0.15 0.1 0.1 ],[0.98 0.96 0.92]);\nplot([0 1 1 0 0 ],[0 0 1 1 0 ]);\nfprintf('','COMMENT: end ico"
+      "n graphics');\nfprintf('','COMMENT: begin icon text');\ncolor('black');port_label('input',1,' ');\ncolor('black'"
+      ");port_label('output',1,'\\fontsize{11pt} Out ','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Gateway Out13"
+      Ports		      [1, 1]
+      Position		      [825, 1300, 885, 1320]
+      SourceBlock	      "xbsIndex_r4/Gateway Out"
+      SourceType	      "Xilinx Gateway Out Block"
+      infoedit		      "Gateway out block.  Converts Xilinx fixed point inputs into ouputs of type Simulink integer, do"
+      "uble, or fixed point.<br><br>Hardware notes:  In hardware these blocks become top level output ports or are disc"
+      "arded, depending on how they are configured."
+      hdl_port		      off
+      timing_constraint	      "None"
+      locs_specified	      off
+      LOCs		      "{}"
+      xl_use_area	      off
+      xl_area		      "[0,0,0,0,0,0,0]"
+      has_advanced_control    "0"
+      sggui_pos		      "-1,-1,-1,-1"
+      block_type	      "gatewayout"
+      block_version	      "11.4"
+      sg_icon_stat	      "60,20,1,1,white,grey,0,632ec840,right,"
+      sg_mask_display	      "fprintf('','COMMENT: begin icon graphics');\npatch([0 1 1 0 ],[0 0 1 1 ],[0.88 0.88 0.88]"
+      ");\npatch([0.4 0.35 0.433333 0.35 0.4 0.483333 0.5 0.516667 0.616667 0.55 0.483333 0.433333 0.516667 0.433333 0."
+      "483333 0.55 0.616667 0.516667 0.5 0.483333 0.4 ],[0.1 0.25 0.5 0.75 0.9 0.9 0.85 0.9 0.9 0.7 0.9 0.75 0.5 0.25 0"
+      ".1 0.3 0.1 0.1 0.15 0.1 0.1 ],[0.98 0.96 0.92]);\nplot([0 1 1 0 0 ],[0 0 1 1 0 ]);\nfprintf('','COMMENT: end ico"
+      "n graphics');\nfprintf('','COMMENT: begin icon text');\ncolor('black');port_label('input',1,' ');\ncolor('black'"
+      ");port_label('output',1,'\\fontsize{11pt} Out ','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Gateway Out14"
+      Ports		      [1, 1]
+      Position		      [1310, 420, 1370, 440]
+      SourceBlock	      "xbsIndex_r4/Gateway Out"
+      SourceType	      "Xilinx Gateway Out Block"
+      infoedit		      "Gateway out block.  Converts Xilinx fixed point inputs into ouputs of type Simulink integer, do"
+      "uble, or fixed point.<br><br>Hardware notes:  In hardware these blocks become top level output ports or are disc"
+      "arded, depending on how they are configured."
+      hdl_port		      off
+      timing_constraint	      "None"
+      locs_specified	      off
+      LOCs		      "{}"
+      xl_use_area	      off
+      xl_area		      "[0,0,0,0,0,0,0]"
+      has_advanced_control    "0"
+      sggui_pos		      "-1,-1,-1,-1"
+      block_type	      "gatewayout"
+      block_version	      "11.4"
+      sg_icon_stat	      "60,20,1,1,white,grey,0,632ec840,right,"
+      sg_mask_display	      "fprintf('','COMMENT: begin icon graphics');\npatch([0 1 1 0 ],[0 0 1 1 ],[0.88 0.88 0.88]"
+      ");\npatch([0.4 0.35 0.433333 0.35 0.4 0.483333 0.5 0.516667 0.616667 0.55 0.483333 0.433333 0.516667 0.433333 0."
+      "483333 0.55 0.616667 0.516667 0.5 0.483333 0.4 ],[0.1 0.25 0.5 0.75 0.9 0.9 0.85 0.9 0.9 0.7 0.9 0.75 0.5 0.25 0"
+      ".1 0.3 0.1 0.1 0.15 0.1 0.1 ],[0.98 0.96 0.92]);\nplot([0 1 1 0 0 ],[0 0 1 1 0 ]);\nfprintf('','COMMENT: end ico"
+      "n graphics');\nfprintf('','COMMENT: begin icon text');\ncolor('black');port_label('input',1,' ');\ncolor('black'"
+      ");port_label('output',1,'\\fontsize{11pt} Out ','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Gateway Out15"
+      Ports		      [1, 1]
+      Position		      [1310, 500, 1370, 520]
+      SourceBlock	      "xbsIndex_r4/Gateway Out"
+      SourceType	      "Xilinx Gateway Out Block"
+      infoedit		      "Gateway out block.  Converts Xilinx fixed point inputs into ouputs of type Simulink integer, do"
+      "uble, or fixed point.<br><br>Hardware notes:  In hardware these blocks become top level output ports or are disc"
+      "arded, depending on how they are configured."
+      hdl_port		      off
+      timing_constraint	      "None"
+      locs_specified	      off
+      LOCs		      "{}"
+      xl_use_area	      off
+      xl_area		      "[0,0,0,0,0,0,0]"
+      has_advanced_control    "0"
+      sggui_pos		      "-1,-1,-1,-1"
+      block_type	      "gatewayout"
+      block_version	      "11.4"
+      sg_icon_stat	      "60,20,1,1,white,grey,0,632ec840,right,"
+      sg_mask_display	      "fprintf('','COMMENT: begin icon graphics');\npatch([0 1 1 0 ],[0 0 1 1 ],[0.88 0.88 0.88]"
+      ");\npatch([0.4 0.35 0.433333 0.35 0.4 0.483333 0.5 0.516667 0.616667 0.55 0.483333 0.433333 0.516667 0.433333 0."
+      "483333 0.55 0.616667 0.516667 0.5 0.483333 0.4 ],[0.1 0.25 0.5 0.75 0.9 0.9 0.85 0.9 0.9 0.7 0.9 0.75 0.5 0.25 0"
+      ".1 0.3 0.1 0.1 0.15 0.1 0.1 ],[0.98 0.96 0.92]);\nplot([0 1 1 0 0 ],[0 0 1 1 0 ]);\nfprintf('','COMMENT: end ico"
+      "n graphics');\nfprintf('','COMMENT: begin icon text');\ncolor('black');port_label('input',1,' ');\ncolor('black'"
+      ");port_label('output',1,'\\fontsize{11pt} Out ','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Gateway Out16"
+      Ports		      [1, 1]
+      Position		      [1310, 580, 1370, 600]
+      SourceBlock	      "xbsIndex_r4/Gateway Out"
+      SourceType	      "Xilinx Gateway Out Block"
+      infoedit		      "Gateway out block.  Converts Xilinx fixed point inputs into ouputs of type Simulink integer, do"
+      "uble, or fixed point.<br><br>Hardware notes:  In hardware these blocks become top level output ports or are disc"
+      "arded, depending on how they are configured."
+      hdl_port		      off
+      timing_constraint	      "None"
+      locs_specified	      off
+      LOCs		      "{}"
+      xl_use_area	      off
+      xl_area		      "[0,0,0,0,0,0,0]"
+      has_advanced_control    "0"
+      sggui_pos		      "-1,-1,-1,-1"
+      block_type	      "gatewayout"
+      block_version	      "11.4"
+      sg_icon_stat	      "60,20,1,1,white,grey,0,632ec840,right,"
+      sg_mask_display	      "fprintf('','COMMENT: begin icon graphics');\npatch([0 1 1 0 ],[0 0 1 1 ],[0.88 0.88 0.88]"
+      ");\npatch([0.4 0.35 0.433333 0.35 0.4 0.483333 0.5 0.516667 0.616667 0.55 0.483333 0.433333 0.516667 0.433333 0."
+      "483333 0.55 0.616667 0.516667 0.5 0.483333 0.4 ],[0.1 0.25 0.5 0.75 0.9 0.9 0.85 0.9 0.9 0.7 0.9 0.75 0.5 0.25 0"
+      ".1 0.3 0.1 0.1 0.15 0.1 0.1 ],[0.98 0.96 0.92]);\nplot([0 1 1 0 0 ],[0 0 1 1 0 ]);\nfprintf('','COMMENT: end ico"
+      "n graphics');\nfprintf('','COMMENT: begin icon text');\ncolor('black');port_label('input',1,' ');\ncolor('black'"
+      ");port_label('output',1,'\\fontsize{11pt} Out ','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Gateway Out17"
+      Ports		      [1, 1]
+      Position		      [1315, 660, 1375, 680]
       SourceBlock	      "xbsIndex_r4/Gateway Out"
       SourceType	      "Xilinx Gateway Out Block"
       infoedit		      "Gateway out block.  Converts Xilinx fixed point inputs into ouputs of type Simulink integer, do"
@@ -803,7 +1027,7 @@ Model {
       BlockType		      Reference
       Name		      "Gateway Out2"
       Ports		      [1, 1]
-      Position		      [825, 545, 885, 565]
+      Position		      [825, 575, 885, 595]
       SourceBlock	      "xbsIndex_r4/Gateway Out"
       SourceType	      "Xilinx Gateway Out Block"
       infoedit		      "Gateway out block.  Converts Xilinx fixed point inputs into ouputs of type Simulink integer, do"
@@ -831,7 +1055,7 @@ Model {
       BlockType		      Reference
       Name		      "Gateway Out3"
       Ports		      [1, 1]
-      Position		      [825, 855, 885, 875]
+      Position		      [825, 885, 885, 905]
       SourceBlock	      "xbsIndex_r4/Gateway Out"
       SourceType	      "Xilinx Gateway Out Block"
       infoedit		      "Gateway out block.  Converts Xilinx fixed point inputs into ouputs of type Simulink integer, do"
@@ -859,7 +1083,7 @@ Model {
       BlockType		      Reference
       Name		      "Gateway Out4"
       Ports		      [1, 1]
-      Position		      [825, 1185, 885, 1205]
+      Position		      [820, 1215, 880, 1235]
       SourceBlock	      "xbsIndex_r4/Gateway Out"
       SourceType	      "Xilinx Gateway Out Block"
       infoedit		      "Gateway out block.  Converts Xilinx fixed point inputs into ouputs of type Simulink integer, do"
@@ -912,12 +1136,124 @@ Model {
       ");port_label('output',1,'\\fontsize{11pt} Out ','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
     }
     Block {
+      BlockType		      Reference
+      Name		      "Gateway Out6"
+      Ports		      [1, 1]
+      Position		      [825, 160, 885, 180]
+      SourceBlock	      "xbsIndex_r4/Gateway Out"
+      SourceType	      "Xilinx Gateway Out Block"
+      infoedit		      "Gateway out block.  Converts Xilinx fixed point inputs into ouputs of type Simulink integer, do"
+      "uble, or fixed point.<br><br>Hardware notes:  In hardware these blocks become top level output ports or are disc"
+      "arded, depending on how they are configured."
+      hdl_port		      off
+      timing_constraint	      "None"
+      locs_specified	      off
+      LOCs		      "{}"
+      xl_use_area	      off
+      xl_area		      "[0,0,0,0,0,0,0]"
+      has_advanced_control    "0"
+      sggui_pos		      "-1,-1,-1,-1"
+      block_type	      "gatewayout"
+      block_version	      "11.4"
+      sg_icon_stat	      "60,20,1,1,white,grey,0,632ec840,right,"
+      sg_mask_display	      "fprintf('','COMMENT: begin icon graphics');\npatch([0 1 1 0 ],[0 0 1 1 ],[0.88 0.88 0.88]"
+      ");\npatch([0.4 0.35 0.433333 0.35 0.4 0.483333 0.5 0.516667 0.616667 0.55 0.483333 0.433333 0.516667 0.433333 0."
+      "483333 0.55 0.616667 0.516667 0.5 0.483333 0.4 ],[0.1 0.25 0.5 0.75 0.9 0.9 0.85 0.9 0.9 0.7 0.9 0.75 0.5 0.25 0"
+      ".1 0.3 0.1 0.1 0.15 0.1 0.1 ],[0.98 0.96 0.92]);\nplot([0 1 1 0 0 ],[0 0 1 1 0 ]);\nfprintf('','COMMENT: end ico"
+      "n graphics');\nfprintf('','COMMENT: begin icon text');\ncolor('black');port_label('input',1,' ');\ncolor('black'"
+      ");port_label('output',1,'\\fontsize{11pt} Out ','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Gateway Out7"
+      Ports		      [1, 1]
+      Position		      [835, 295, 895, 315]
+      SourceBlock	      "xbsIndex_r4/Gateway Out"
+      SourceType	      "Xilinx Gateway Out Block"
+      infoedit		      "Gateway out block.  Converts Xilinx fixed point inputs into ouputs of type Simulink integer, do"
+      "uble, or fixed point.<br><br>Hardware notes:  In hardware these blocks become top level output ports or are disc"
+      "arded, depending on how they are configured."
+      hdl_port		      off
+      timing_constraint	      "None"
+      locs_specified	      off
+      LOCs		      "{}"
+      xl_use_area	      off
+      xl_area		      "[0,0,0,0,0,0,0]"
+      has_advanced_control    "0"
+      sggui_pos		      "-1,-1,-1,-1"
+      block_type	      "gatewayout"
+      block_version	      "11.4"
+      sg_icon_stat	      "60,20,1,1,white,grey,0,632ec840,right,"
+      sg_mask_display	      "fprintf('','COMMENT: begin icon graphics');\npatch([0 1 1 0 ],[0 0 1 1 ],[0.88 0.88 0.88]"
+      ");\npatch([0.4 0.35 0.433333 0.35 0.4 0.483333 0.5 0.516667 0.616667 0.55 0.483333 0.433333 0.516667 0.433333 0."
+      "483333 0.55 0.616667 0.516667 0.5 0.483333 0.4 ],[0.1 0.25 0.5 0.75 0.9 0.9 0.85 0.9 0.9 0.7 0.9 0.75 0.5 0.25 0"
+      ".1 0.3 0.1 0.1 0.15 0.1 0.1 ],[0.98 0.96 0.92]);\nplot([0 1 1 0 0 ],[0 0 1 1 0 ]);\nfprintf('','COMMENT: end ico"
+      "n graphics');\nfprintf('','COMMENT: begin icon text');\ncolor('black');port_label('input',1,' ');\ncolor('black'"
+      ");port_label('output',1,'\\fontsize{11pt} Out ','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Gateway Out8"
+      Ports		      [1, 1]
+      Position		      [825, 490, 885, 510]
+      SourceBlock	      "xbsIndex_r4/Gateway Out"
+      SourceType	      "Xilinx Gateway Out Block"
+      infoedit		      "Gateway out block.  Converts Xilinx fixed point inputs into ouputs of type Simulink integer, do"
+      "uble, or fixed point.<br><br>Hardware notes:  In hardware these blocks become top level output ports or are disc"
+      "arded, depending on how they are configured."
+      hdl_port		      off
+      timing_constraint	      "None"
+      locs_specified	      off
+      LOCs		      "{}"
+      xl_use_area	      off
+      xl_area		      "[0,0,0,0,0,0,0]"
+      has_advanced_control    "0"
+      sggui_pos		      "-1,-1,-1,-1"
+      block_type	      "gatewayout"
+      block_version	      "11.4"
+      sg_icon_stat	      "60,20,1,1,white,grey,0,632ec840,right,"
+      sg_mask_display	      "fprintf('','COMMENT: begin icon graphics');\npatch([0 1 1 0 ],[0 0 1 1 ],[0.88 0.88 0.88]"
+      ");\npatch([0.4 0.35 0.433333 0.35 0.4 0.483333 0.5 0.516667 0.616667 0.55 0.483333 0.433333 0.516667 0.433333 0."
+      "483333 0.55 0.616667 0.516667 0.5 0.483333 0.4 ],[0.1 0.25 0.5 0.75 0.9 0.9 0.85 0.9 0.9 0.7 0.9 0.75 0.5 0.25 0"
+      ".1 0.3 0.1 0.1 0.15 0.1 0.1 ],[0.98 0.96 0.92]);\nplot([0 1 1 0 0 ],[0 0 1 1 0 ]);\nfprintf('','COMMENT: end ico"
+      "n graphics');\nfprintf('','COMMENT: begin icon text');\ncolor('black');port_label('input',1,' ');\ncolor('black'"
+      ");port_label('output',1,'\\fontsize{11pt} Out ','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Gateway Out9"
+      Ports		      [1, 1]
+      Position		      [830, 660, 890, 680]
+      SourceBlock	      "xbsIndex_r4/Gateway Out"
+      SourceType	      "Xilinx Gateway Out Block"
+      infoedit		      "Gateway out block.  Converts Xilinx fixed point inputs into ouputs of type Simulink integer, do"
+      "uble, or fixed point.<br><br>Hardware notes:  In hardware these blocks become top level output ports or are disc"
+      "arded, depending on how they are configured."
+      hdl_port		      off
+      timing_constraint	      "None"
+      locs_specified	      off
+      LOCs		      "{}"
+      xl_use_area	      off
+      xl_area		      "[0,0,0,0,0,0,0]"
+      has_advanced_control    "0"
+      sggui_pos		      "-1,-1,-1,-1"
+      block_type	      "gatewayout"
+      block_version	      "11.4"
+      sg_icon_stat	      "60,20,1,1,white,grey,0,632ec840,right,"
+      sg_mask_display	      "fprintf('','COMMENT: begin icon graphics');\npatch([0 1 1 0 ],[0 0 1 1 ],[0.88 0.88 0.88]"
+      ");\npatch([0.4 0.35 0.433333 0.35 0.4 0.483333 0.5 0.516667 0.616667 0.55 0.483333 0.433333 0.516667 0.433333 0."
+      "483333 0.55 0.616667 0.516667 0.5 0.483333 0.4 ],[0.1 0.25 0.5 0.75 0.9 0.9 0.85 0.9 0.9 0.7 0.9 0.75 0.5 0.25 0"
+      ".1 0.3 0.1 0.1 0.15 0.1 0.1 ],[0.98 0.96 0.92]);\nplot([0 1 1 0 0 ],[0 0 1 1 0 ]);\nfprintf('','COMMENT: end ico"
+      "n graphics');\nfprintf('','COMMENT: begin icon text');\ncolor('black');port_label('input',1,' ');\ncolor('black'"
+      ");port_label('output',1,'\\fontsize{11pt} Out ','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
+    }
+    Block {
       BlockType		      DiscretePulseGenerator
       Name		      "Pulse\nGenerator"
       Ports		      [0, 1]
       Position		      [100, 153, 145, 187]
       Amplitude		      "1"
-      Period		      "128"
+      Period		      "256"
       PulseWidth	      "1"
       PhaseDelay	      "5"
       SampleTime	      "1"
@@ -925,22 +1261,21 @@ Model {
     Block {
       BlockType		      Scope
       Name		      "Scope"
-      Ports		      [4]
-      Position		      [1050, 286, 1080, 414]
+      Ports		      [3]
+      Position		      [1105, 146, 1135, 274]
       Floating		      off
-      Location		      [291, 78, 1259, 809]
+      Location		      [1, 78, 1345, 813]
       Open		      off
-      NumInputPorts	      "4"
+      NumInputPorts	      "3"
       ZoomMode		      "xonly"
       List {
 	ListType		AxesTitles
 	axes1			"%<SignalLabel>"
 	axes2			"%<SignalLabel>"
 	axes3			"%<SignalLabel>"
-	axes4			"%<SignalLabel>"
       }
-      YMin		      "-5~-5~-5~-5"
-      YMax		      "5~5~5~5"
+      YMin		      "-5~-5~-5"
+      YMax		      "5~5~5"
       DataFormat	      "StructureWithTime"
       SampleTime	      "0"
     }
@@ -963,9 +1298,98 @@ Model {
       SampleTime	      "0"
     }
     Block {
+      BlockType		      Scope
+      Name		      "Scope2"
+      Ports		      [3]
+      Position		      [1105, 476, 1135, 604]
+      Floating		      off
+      Location		      [291, 78, 1259, 809]
+      Open		      off
+      NumInputPorts	      "3"
+      ZoomMode		      "xonly"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+	axes2			"%<SignalLabel>"
+	axes3			"%<SignalLabel>"
+      }
+      YMin		      "-5~-5~-5"
+      YMax		      "5~5~5"
+      SaveName		      "ScopeData2"
+      DataFormat	      "StructureWithTime"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "Scope3"
+      Ports		      [3]
+      Position		      [1105, 786, 1135, 914]
+      Floating		      off
+      Location		      [291, 78, 1259, 809]
+      Open		      off
+      NumInputPorts	      "3"
+      ZoomMode		      "xonly"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+	axes2			"%<SignalLabel>"
+	axes3			"%<SignalLabel>"
+      }
+      YMin		      "-5~-5~-5"
+      YMax		      "5~5~5"
+      SaveName		      "ScopeData3"
+      DataFormat	      "StructureWithTime"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "Scope4"
+      Ports		      [3]
+      Position		      [1100, 1116, 1130, 1244]
+      Floating		      off
+      Location		      [291, 78, 1259, 809]
+      Open		      off
+      NumInputPorts	      "3"
+      ZoomMode		      "xonly"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+	axes2			"%<SignalLabel>"
+	axes3			"%<SignalLabel>"
+      }
+      YMin		      "-5~-5~-5"
+      YMax		      "5~5~5"
+      SaveName		      "ScopeData4"
+      DataFormat	      "StructureWithTime"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "Scope5"
+      Ports		      [4]
+      Position		      [1415, 388, 1470, 712]
+      Floating		      off
+      Location		      [6, 78, 1340, 809]
+      Open		      on
+      NumInputPorts	      "4"
+      ZoomMode		      "xonly"
+      List {
+	ListType		AxesTitles
+	axes1			"%<SignalLabel>"
+	axes2			"%<SignalLabel>"
+	axes3			"%<SignalLabel>"
+	axes4			"%<SignalLabel>"
+      }
+      YMin		      "-5~-5~-5~-5"
+      YMax		      "5~5~5~5"
+      SaveName		      "ScopeData5"
+      DataFormat	      "StructureWithTime"
+      SampleTime	      "0"
+    }
+    Block {
       BlockType		      Reference
       Name		      "packetizer0"
-      Ports		      [3, 3]
+      Ports		      [3, 4]
       Position		      [450, 130, 745, 380]
       SourceBlock	      "xbsIndex_r4/MCode"
       SourceType	      "Xilinx MCode Block Block"
@@ -976,22 +1400,21 @@ Model {
       explicit_period	      off
       period		      "1"
       inputsTable	      "{'boundInpExpr'=>['','','','16','16','4','0'],'inputs'=>['sync','din','sys_counter','packet_s"
-      "ize','numcomputers','num_tengbe','tengbe_id']}"
-      outputsTable	      "{'outputs'=>['dout','valid','end_of_frame','st','pkt_delay'],'suppressOut'=>['off','off','of"
-      "f','on','off']}"
+      "ize','numcomputers','numtengbe','tengbe_id']}"
+      outputsTable	      "{'outputs'=>['dout','valid','end_of_frame','st'],'suppressOut'=>['off','off','off','on']}"
       dbl_ovrd		      off
       enable_stdout	      off
       enable_debug	      off
       xl_use_area	      off
       xl_area		      "[0,0,0,0,0,0,0]"
       suppress_output	      "on"
-      defparams		      "{'packet_size',16,'numcomputers',16,'num_tengbe',4,'tengbe_id',0}"
+      defparams		      "{'packet_size',16,'numcomputers',16,'numtengbe',4,'tengbe_id',0}"
       hide_port_list	      "{'st'}"
       has_advanced_control    "0"
-      sggui_pos		      "0,0,419,574"
+      sggui_pos		      "28,72,419,574"
       block_type	      "mcode"
       block_version	      "11.4"
-      sg_icon_stat	      "295,250,3,3,white,blue,0,f7e8a567,right,"
+      sg_icon_stat	      "295,250,3,4,white,blue,0,0c5a7ffa,right,"
       sg_mask_display	      "fprintf('','COMMENT: begin icon graphics');\npatch([0 1 1 0 ],[0 0 1 1 ],[0.77 0.82 0.91]"
       ");\npatch([0.277966 0.135593 0.332203 0.135593 0.277966 0.501695 0.562712 0.623729 0.864407 0.674576 0.494915 0."
       "362712 0.559322 0.362712 0.494915 0.674576 0.864407 0.623729 0.562712 0.501695 0.277966 ],[0.108 0.276 0.508 0.7"
@@ -999,13 +1422,14 @@ Model {
       "6 0.92]);\nplot([0 1 1 0 0 ],[0 0 1 1 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: beg"
       "in icon text');\ncolor('black');port_label('input',1,'sync');\ncolor('black');port_label('input',2,'din');\ncolo"
       "r('black');port_label('input',3,'sys_counter');\ncolor('black');port_label('output',1,'dout');\ncolor('black');p"
-      "ort_label('output',2,'valid');\ncolor('black');port_label('output',3,'end_of_frame');\ncolor('black');disp('\\bf"
-      "{packetizer}','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
+      "ort_label('output',2,'valid');\ncolor('black');port_label('output',3,'end_of_frame');\ncolor('black');port_label"
+      "('output',4,'cidout');\ncolor('black');disp('\\bf{packetizer}','texmode','on');\nfprintf('','COMMENT: end icon t"
+      "ext');\n"
     }
     Block {
       BlockType		      Reference
       Name		      "packetizer1"
-      Ports		      [3, 3]
+      Ports		      [3, 4]
       Position		      [450, 460, 745, 710]
       SourceBlock	      "xbsIndex_r4/MCode"
       SourceType	      "Xilinx MCode Block Block"
@@ -1016,22 +1440,21 @@ Model {
       explicit_period	      off
       period		      "1"
       inputsTable	      "{'boundInpExpr'=>['','','','16','16','4','1'],'inputs'=>['sync','din','sys_counter','packet_s"
-      "ize','numcomputers','num_tengbe','tengbe_id']}"
-      outputsTable	      "{'outputs'=>['dout','valid','end_of_frame','st','pkt_delay'],'suppressOut'=>['off','off','of"
-      "f','on','off']}"
+      "ize','numcomputers','numtengbe','tengbe_id']}"
+      outputsTable	      "{'outputs'=>['dout','valid','end_of_frame','st'],'suppressOut'=>['off','off','off','on']}"
       dbl_ovrd		      off
       enable_stdout	      off
       enable_debug	      off
       xl_use_area	      off
       xl_area		      "[0,0,0,0,0,0,0]"
       suppress_output	      "on"
-      defparams		      "{'packet_size',16,'numcomputers',16,'num_tengbe',4,'tengbe_id',1}"
+      defparams		      "{'packet_size',16,'numcomputers',16,'numtengbe',4,'tengbe_id',1}"
       hide_port_list	      "{'st'}"
       has_advanced_control    "0"
       sggui_pos		      "0,0,419,574"
       block_type	      "mcode"
       block_version	      "11.4"
-      sg_icon_stat	      "295,250,3,3,white,blue,0,f7e8a567,right,"
+      sg_icon_stat	      "295,250,3,4,white,blue,0,0c5a7ffa,right,"
       sg_mask_display	      "fprintf('','COMMENT: begin icon graphics');\npatch([0 1 1 0 ],[0 0 1 1 ],[0.77 0.82 0.91]"
       ");\npatch([0.277966 0.135593 0.332203 0.135593 0.277966 0.501695 0.562712 0.623729 0.864407 0.674576 0.494915 0."
       "362712 0.559322 0.362712 0.494915 0.674576 0.864407 0.623729 0.562712 0.501695 0.277966 ],[0.108 0.276 0.508 0.7"
@@ -1039,13 +1462,14 @@ Model {
       "6 0.92]);\nplot([0 1 1 0 0 ],[0 0 1 1 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: beg"
       "in icon text');\ncolor('black');port_label('input',1,'sync');\ncolor('black');port_label('input',2,'din');\ncolo"
       "r('black');port_label('input',3,'sys_counter');\ncolor('black');port_label('output',1,'dout');\ncolor('black');p"
-      "ort_label('output',2,'valid');\ncolor('black');port_label('output',3,'end_of_frame');\ncolor('black');disp('\\bf"
-      "{packetizer}','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
+      "ort_label('output',2,'valid');\ncolor('black');port_label('output',3,'end_of_frame');\ncolor('black');port_label"
+      "('output',4,'cidout');\ncolor('black');disp('\\bf{packetizer}','texmode','on');\nfprintf('','COMMENT: end icon t"
+      "ext');\n"
     }
     Block {
       BlockType		      Reference
       Name		      "packetizer2"
-      Ports		      [3, 3]
+      Ports		      [3, 4]
       Position		      [450, 770, 745, 1020]
       SourceBlock	      "xbsIndex_r4/MCode"
       SourceType	      "Xilinx MCode Block Block"
@@ -1056,22 +1480,21 @@ Model {
       explicit_period	      off
       period		      "1"
       inputsTable	      "{'boundInpExpr'=>['','','','16','16','4','2'],'inputs'=>['sync','din','sys_counter','packet_s"
-      "ize','numcomputers','num_tengbe','tengbe_id']}"
-      outputsTable	      "{'outputs'=>['dout','valid','end_of_frame','st','pkt_delay'],'suppressOut'=>['off','off','of"
-      "f','on','off']}"
+      "ize','numcomputers','numtengbe','tengbe_id']}"
+      outputsTable	      "{'outputs'=>['dout','valid','end_of_frame','st'],'suppressOut'=>['off','off','off','on']}"
       dbl_ovrd		      off
       enable_stdout	      off
       enable_debug	      off
       xl_use_area	      off
       xl_area		      "[0,0,0,0,0,0,0]"
       suppress_output	      "on"
-      defparams		      "{'packet_size',16,'numcomputers',16,'num_tengbe',4,'tengbe_id',2}"
+      defparams		      "{'packet_size',16,'numcomputers',16,'numtengbe',4,'tengbe_id',2}"
       hide_port_list	      "{'st'}"
       has_advanced_control    "0"
       sggui_pos		      "0,0,419,574"
       block_type	      "mcode"
       block_version	      "11.4"
-      sg_icon_stat	      "295,250,3,3,white,blue,0,f7e8a567,right,"
+      sg_icon_stat	      "295,250,3,4,white,blue,0,0c5a7ffa,right,"
       sg_mask_display	      "fprintf('','COMMENT: begin icon graphics');\npatch([0 1 1 0 ],[0 0 1 1 ],[0.77 0.82 0.91]"
       ");\npatch([0.277966 0.135593 0.332203 0.135593 0.277966 0.501695 0.562712 0.623729 0.864407 0.674576 0.494915 0."
       "362712 0.559322 0.362712 0.494915 0.674576 0.864407 0.623729 0.562712 0.501695 0.277966 ],[0.108 0.276 0.508 0.7"
@@ -1079,13 +1502,14 @@ Model {
       "6 0.92]);\nplot([0 1 1 0 0 ],[0 0 1 1 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: beg"
       "in icon text');\ncolor('black');port_label('input',1,'sync');\ncolor('black');port_label('input',2,'din');\ncolo"
       "r('black');port_label('input',3,'sys_counter');\ncolor('black');port_label('output',1,'dout');\ncolor('black');p"
-      "ort_label('output',2,'valid');\ncolor('black');port_label('output',3,'end_of_frame');\ncolor('black');disp('\\bf"
-      "{packetizer}','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
+      "ort_label('output',2,'valid');\ncolor('black');port_label('output',3,'end_of_frame');\ncolor('black');port_label"
+      "('output',4,'cidout');\ncolor('black');disp('\\bf{packetizer}','texmode','on');\nfprintf('','COMMENT: end icon t"
+      "ext');\n"
     }
     Block {
       BlockType		      Reference
       Name		      "packetizer3"
-      Ports		      [3, 3]
+      Ports		      [3, 4]
       Position		      [450, 1100, 745, 1350]
       SourceBlock	      "xbsIndex_r4/MCode"
       SourceType	      "Xilinx MCode Block Block"
@@ -1096,22 +1520,21 @@ Model {
       explicit_period	      off
       period		      "1"
       inputsTable	      "{'boundInpExpr'=>['','','','16','16','4','3'],'inputs'=>['sync','din','sys_counter','packet_s"
-      "ize','numcomputers','num_tengbe','tengbe_id']}"
-      outputsTable	      "{'outputs'=>['dout','valid','end_of_frame','st','pkt_delay'],'suppressOut'=>['off','off','of"
-      "f','on','off']}"
+      "ize','numcomputers','numtengbe','tengbe_id']}"
+      outputsTable	      "{'outputs'=>['dout','valid','end_of_frame','st'],'suppressOut'=>['off','off','off','on']}"
       dbl_ovrd		      off
       enable_stdout	      off
       enable_debug	      off
       xl_use_area	      off
       xl_area		      "[0,0,0,0,0,0,0]"
       suppress_output	      "on"
-      defparams		      "{'packet_size',16,'numcomputers',16,'num_tengbe',4,'tengbe_id',3}"
+      defparams		      "{'packet_size',16,'numcomputers',16,'numtengbe',4,'tengbe_id',3}"
       hide_port_list	      "{'st'}"
       has_advanced_control    "0"
       sggui_pos		      "0,0,419,574"
       block_type	      "mcode"
       block_version	      "11.4"
-      sg_icon_stat	      "295,250,3,3,white,blue,0,f7e8a567,right,"
+      sg_icon_stat	      "295,250,3,4,white,blue,0,0c5a7ffa,right,"
       sg_mask_display	      "fprintf('','COMMENT: begin icon graphics');\npatch([0 1 1 0 ],[0 0 1 1 ],[0.77 0.82 0.91]"
       ");\npatch([0.277966 0.135593 0.332203 0.135593 0.277966 0.501695 0.562712 0.623729 0.864407 0.674576 0.494915 0."
       "362712 0.559322 0.362712 0.494915 0.674576 0.864407 0.623729 0.562712 0.501695 0.277966 ],[0.108 0.276 0.508 0.7"
@@ -1119,8 +1542,9 @@ Model {
       "6 0.92]);\nplot([0 1 1 0 0 ],[0 0 1 1 0 ]);\nfprintf('','COMMENT: end icon graphics');\nfprintf('','COMMENT: beg"
       "in icon text');\ncolor('black');port_label('input',1,'sync');\ncolor('black');port_label('input',2,'din');\ncolo"
       "r('black');port_label('input',3,'sys_counter');\ncolor('black');port_label('output',1,'dout');\ncolor('black');p"
-      "ort_label('output',2,'valid');\ncolor('black');port_label('output',3,'end_of_frame');\ncolor('black');disp('\\bf"
-      "{packetizer}','texmode','on');\nfprintf('','COMMENT: end icon text');\n"
+      "ort_label('output',2,'valid');\ncolor('black');port_label('output',3,'end_of_frame');\ncolor('black');port_label"
+      "('output',4,'cidout');\ncolor('black');disp('\\bf{packetizer}','texmode','on');\nfprintf('','COMMENT: end icon t"
+      "ext');\n"
     }
     Line {
       SrcBlock		      "Gateway In"
@@ -1217,58 +1641,9 @@ Model {
     Line {
       SrcBlock		      "packetizer0"
       SrcPort		      2
-      Points		      [0, -30]
+      Points		      [0, 30]
       DstBlock		      "Gateway Out1"
       DstPort		      1
-    }
-    Line {
-      SrcBlock		      "packetizer1"
-      SrcPort		      2
-      Points		      [0, -30]
-      DstBlock		      "Gateway Out2"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "packetizer2"
-      SrcPort		      2
-      Points		      [0, -30]
-      DstBlock		      "Gateway Out3"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "packetizer3"
-      SrcPort		      2
-      Points		      [0, -30]
-      DstBlock		      "Gateway Out4"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Gateway Out1"
-      SrcPort		      1
-      Points		      [70, 0; 0, 80]
-      DstBlock		      "Scope"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Gateway Out2"
-      SrcPort		      1
-      Points		      [70, 0; 0, -220]
-      DstBlock		      "Scope"
-      DstPort		      2
-    }
-    Line {
-      SrcBlock		      "Gateway Out3"
-      SrcPort		      1
-      Points		      [89, 1; 0, -500]
-      DstBlock		      "Scope"
-      DstPort		      3
-    }
-    Line {
-      SrcBlock		      "Gateway Out4"
-      SrcPort		      1
-      Points		      [145, 0]
-      DstBlock		      "Scope"
-      DstPort		      4
     }
     Line {
       SrcBlock		      "Pulse\nGenerator"
@@ -1280,6 +1655,215 @@ Model {
       SrcBlock		      "Gateway Out5"
       SrcPort		      1
       DstBlock		      "Scope1"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "packetizer0"
+      SrcPort		      1
+      Points		      [0, 5]
+      DstBlock		      "Gateway Out6"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "packetizer0"
+      SrcPort		      3
+      Points		      [0, 20]
+      DstBlock		      "Gateway Out7"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Gateway Out6"
+      SrcPort		      1
+      DstBlock		      "Scope"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Gateway Out1"
+      SrcPort		      1
+      Points		      [100, 0; 0, -45]
+      DstBlock		      "Scope"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Gateway Out7"
+      SrcPort		      1
+      Points		      [190, 0]
+      DstBlock		      "Scope"
+      DstPort		      3
+    }
+    Line {
+      SrcBlock		      "packetizer1"
+      SrcPort		      2
+      Points		      [0, 30]
+      DstBlock		      "Gateway Out2"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "packetizer1"
+      SrcPort		      1
+      Points		      [0, 5]
+      DstBlock		      "Gateway Out8"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "packetizer1"
+      SrcPort		      3
+      Points		      [0, 55]
+      DstBlock		      "Gateway Out9"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Gateway Out8"
+      SrcPort		      1
+      DstBlock		      "Scope2"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Gateway Out2"
+      SrcPort		      1
+      Points		      [100, 0; 0, -45]
+      DstBlock		      "Scope2"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Gateway Out9"
+      SrcPort		      1
+      Points		      [195, 0]
+      DstBlock		      "Scope2"
+      DstPort		      3
+    }
+    Line {
+      SrcBlock		      "packetizer2"
+      SrcPort		      2
+      Points		      [0, 30]
+      DstBlock		      "Gateway Out3"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "packetizer2"
+      SrcPort		      1
+      Points		      [0, 5]
+      DstBlock		      "Gateway Out10"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "packetizer2"
+      SrcPort		      3
+      Points		      [0, 55]
+      DstBlock		      "Gateway Out11"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Gateway Out10"
+      SrcPort		      1
+      DstBlock		      "Scope3"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Gateway Out3"
+      SrcPort		      1
+      Points		      [100, 0; 0, -45]
+      DstBlock		      "Scope3"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Gateway Out11"
+      SrcPort		      1
+      Points		      [195, 0]
+      DstBlock		      "Scope3"
+      DstPort		      3
+    }
+    Line {
+      SrcBlock		      "packetizer3"
+      SrcPort		      2
+      Points		      [0, 30]
+      DstBlock		      "Gateway Out4"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "packetizer3"
+      SrcPort		      1
+      Points		      [0, 5]
+      DstBlock		      "Gateway Out12"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "packetizer3"
+      SrcPort		      3
+      Points		      [0, 55]
+      DstBlock		      "Gateway Out13"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Gateway Out12"
+      SrcPort		      1
+      DstBlock		      "Scope4"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Gateway Out4"
+      SrcPort		      1
+      Points		      [100, 0; 0, -45]
+      DstBlock		      "Scope4"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Gateway Out13"
+      SrcPort		      1
+      Points		      [195, 0]
+      DstBlock		      "Scope4"
+      DstPort		      3
+    }
+    Line {
+      SrcBlock		      "packetizer3"
+      SrcPort		      4
+      Points		      [0, 30; 540, 0; 0, -675]
+      DstBlock		      "Gateway Out17"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Gateway Out17"
+      SrcPort		      1
+      DstBlock		      "Scope5"
+      DstPort		      4
+    }
+    Line {
+      SrcBlock		      "packetizer2"
+      SrcPort		      4
+      Points		      [0, 30; 530, 0; 0, -425]
+      DstBlock		      "Gateway Out16"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "packetizer1"
+      SrcPort		      4
+      Points		      [0, 30; 520, 0; 0, -195]
+      DstBlock		      "Gateway Out15"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Gateway Out15"
+      SrcPort		      1
+      DstBlock		      "Scope5"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Gateway Out16"
+      SrcPort		      1
+      DstBlock		      "Scope5"
+      DstPort		      3
+    }
+    Line {
+      SrcBlock		      "Gateway Out14"
+      SrcPort		      1
+      DstBlock		      "Scope5"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "packetizer0"
+      SrcPort		      4
+      Points		      [270, 0; 0, 85]
+      DstBlock		      "Gateway Out14"
       DstPort		      1
     }
   }
