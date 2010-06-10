@@ -1,8 +1,9 @@
 CC = nvcc
-CFLAGS = -g -O2 -I/usr/local/cuda/include -L/usr/local/cuda/lib64 -I/home/tfiliba/NVIDIA_GPU_Computing_SDK/C/common/inc -L/home/tfiliba/NVIDIA_GPU_Computing_SDK/C/lib
+NVIDIA_SDK_DIR = /opt/CUDA/NVIDIA_GPU_Computing_SDK
+CFLAGS = -g -O2 -I/usr/local/cuda/include -L/usr/local/cuda/lib64 -I$(NVIDIA_SDK_DIR)/C/common/inc -L$(NVIDIA_SDK_DIR)/C/lib
 DEBUG = -D DEBUG
-CUDA_INCLUDE_LIB = -lcufft -lrt /home/tfiliba/NVIDIA_GPU_Computing_SDK/C/lib/libcutil_x86_64.a
-NVCCFLAGS = -g -O2 -I/usr/local/cuda/include -L/usr/local/cuda/lib64 -I/home/tfiliba/NVIDIA_GPU_Computing_SDK/C/common/inc -L/home/tfiliba/NVIDIA_GPU_Computing_SDK/C/lib
+CUDA_INCLUDE_LIB = -lcufft -lrt $(NVIDIA_SDK_DIR)/C/lib/libcutil_x86_64.a
+NVCCFLAGS = -g -O2 -I/usr/local/cuda/include -L/usr/local/cuda/lib64 -I$(NVIDIA_SDK_DIR)/C/common/inc -L$(NVIDIA_SDK_DIR)/C/lib
 
 
 PASP_TARGETS := packet_generator pasp_recv pasp_record  pasp_distribute
@@ -50,7 +51,7 @@ $(PASP_TARGETS): %: %.o
 	$(CC) $(CFLAGS) $(DEBUG) $*.o -o $*
 	
 japanfftlib:
-	make -C test_FFT libgpufft.a
+	make -Ctest_FFT NVIDIA_SDK_DIR='$(NVIDIA_SDK_DIR)' libgpufft.a
 	
 japan_pasp_process: pasp_process.o japanfftlib
 	$(CC) $(NVCCFLAGS) $(DEBUG) $(CUDA_INCLUDE_LIB) pasp_process.o test_FFT/libgpufft.a -o japan_pasp_process
@@ -59,7 +60,7 @@ japan_pasp_process_test: pasp_process_test.o japanfftlib
 	$(CC) $(NVCCFLAGS) $(DEBUG) $(CUDA_INCLUDE_LIB) pasp_process_test.o test_FFT/libgpufft.a -o japan_pasp_process_test
 
 cudafftlib:
-		make -C cudafft cuda_fft_library.a
+	make -Ccudafft NVIDIA_SDK_DIR='$(NVIDIA_SDK_DIR)' cuda_fft_library.a
 
 cuda_pasp_process: pasp_process.o cudafftlib
 	$(CC) $(CFLAGS) $(DEBUG) $(CUDA_INCLUDE_LIB) pasp_process.o cudafft/cuda_fft_library.a -o cuda_pasp_process
