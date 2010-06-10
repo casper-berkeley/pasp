@@ -7,8 +7,8 @@ NVCCFLAGS = -g -O2 -I/usr/local/cuda/include -L/usr/local/cuda/lib64 -I$(NVIDIA_
 
 
 PASP_TARGETS := packet_generator pasp_recv pasp_record  pasp_distribute
-PROCESSING_TARGETS := pasp_process japan_pasp_process
-TEST_TARGETS := pasp_process_test japan_pasp_process_test
+PROCESSING_TARGETS := cuda_pasp_process japan_pasp_process
+TEST_TARGETS :=cuda_pasp_process_test japan_pasp_process_test
 TARGETS := $(PASP_TARGETS) $(PROCESSING_TARGETS) $(TEST_TARGETS)
 .PHONY: pasp_test pasp_rec clean realclean new
 
