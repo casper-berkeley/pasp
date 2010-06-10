@@ -21,11 +21,8 @@
 #include <sys/param.h>
 #include <sys/stat.h>
 #include <signal.h>
-#include <byteswap.h>
 
 static void cleanup(int signal);
 
 static uint32_t run_fifo_read = 1;
-
-#define ntohll(x) bswap_64(x)
 

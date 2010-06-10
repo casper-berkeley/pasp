@@ -20,7 +20,7 @@
 #include <cuda_runtime_api.h>
 
 #include "pasp_config.h"
-#include "pasp_process.h"
+#include "pasp_distribute.h"
 
 int pasp_channel_enable[NUM_CHANNELS][2];
 // output fifo file info

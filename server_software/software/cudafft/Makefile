@@ -1,8 +1,9 @@
 CC = nvcc
 NVIDIA_SDK_DIR = /opt/CUDA/NVIDIA_GPU_Computing_SDK
+CUTIL_LIB_NAME = libcutil_x86_64.a
 CFLAGS = -g -O2 -I/usr/local/cuda/include -L/usr/local/cuda/lib64 -I$(NVIDIA_SDK_DIR)/C/common/inc -L$(NVIDIA_SDK_DIR)/C/lib
 DEBUG = -D DEBUG
-CUDA_INCLUDE_LIB = -lcufft -lrt $(NVIDIA_SDK_DIR)/C/lib/libcutil_x86_64.a
+CUDA_INCLUDE_LIB = -lcufft -lrt $(NVIDIA_SDK_DIR)/C/lib/$(CUTIL_LIB_NAME)
 
 TARGETS = cuffttest
 LIB_TARGETS = cuda_fft_library.a
