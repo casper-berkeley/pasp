@@ -22,16 +22,18 @@
 //parameters from the simulink design
 #define NUM_IPS             4
 #define NUM_CHANNELS        16
-#define SAMPLES_PER_PACKET  1024
+#define TENGBE_SAMPLES_PER_PACKET  1024
 
 //the packet size will be 64 bits for ever sample plus a 
 //64 bit counter and 64 bit channel id
-#define PACKET_SIZE_BITS    (SAMPLES_PER_PACKET*64+64+64)
-#define PACKET_SIZE_BYTES   (PACKET_SIZE_BITS/8)
+#define DATA_SIZE_BYTES     (TENGBE_SAMPLES_PER_PACKET*8)
+#define HEADER_SIZE_BYTES   (8+8)
+#define PACKET_SIZE_BYTES   (DATA_SIZE_BYTES+HEADER_SIZE_BYTES)
+#define DUAL_POL_SAMPLES    (DATA_SIZE_BYTES)/sizeof(dual_pol_sample)
 
 #define CHANNELS_PER_PACKET (NUM_CHANNELS/NUM_IPS)
-#define SAMPLES_PER_CHANNEL (SAMPLES_PER_PACKET/CHANNELS_PER_PACKET)
-#define CHANNEL_BUFFER_SIZE (SAMPLES_PER_CHANNEL*sizeof(cufftComplex))
+#define SAMPLES_PER_CHANNEL (DUAL_POL_SAMPLES/CHANNELS_PER_PACKET)
+
 
 
 

@@ -6,9 +6,9 @@ fftlib=japan
 
 taskset 02 nice -n -20 ${software_dir}/pasp_recv >out/recv_out 2>out/recv_err &
 taskset 04 nice -n -20 ${software_dir}/pasp_distribute >out/distribute_out 2>out/distribute_err &
-taskset 08 nice -n -20 ${software_dir}/${fftlib}_pasp_process >out/process_out 2>out/process_err &
-#nice -n -20 ${software_dir}/pasp_recv >out/recv_out 2>out/recv_err &
-#nice -n -20 ${software_dir}/pasp_process >out/process_out 2>out/process_err &
+taskset 08 nice -n -20 ${software_dir}/${fftlib}_pasp_process -c8 -p0 >out/process_out80 2>out/process_err80 &
+taskset 08 nice -n -20 ${software_dir}/${fftlib}_pasp_process -c8 -p1 >out/process_out81 2>out/process_err81 &
+
 
 
 echo configure_${platform}

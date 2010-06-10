@@ -22,9 +22,6 @@
 #include "pasp_config.h"
 #include "pasp_process.h"
 
-#define NX      256
-#define BATCH   1
-
 int pasp_channel_enable[NUM_CHANNELS][2];
 // output fifo file info
 static int channeldata_fifo[CHANNELS_PER_PACKET][2];
@@ -58,19 +55,28 @@ static void accumulate_packet(pasp_packet *newpacket,int numchannels)
 
 static void process_packet(pasp_packet *newpacket)
 {
-    int i;
+    int sampleindex,channelindex,polindex;
     single_pol_sample data[CHANNELS_PER_PACKET][2][SAMPLES_PER_CHANNEL];
     
-    //cufftComplex data[NX*BATCH];
-    
     //copy a single channel into the buffer
-    for(i=0;i<SAMPLES_PER_CHANNEL;i++)
+    for(channelindex=0;channelindex<CHANNELS_PER_PACKET;channelindex++)
     {
-        data[0][0][i].re=newpacket->samples[i][0].pol0_re;
-        data[0][0][i].im=newpacket->samples[i][0].pol0_im;
+        for(sampleindex=0;sampleindex<SAMPLES_PER_CHANNEL;sampleindex++)
+        {
+            data[channelindex][0][sampleindex].re=newpacket->samples[sampleindex][channelindex].pol0_re;
+            data[channelindex][0][sampleindex].im=newpacket->samples[sampleindex][channelindex].pol0_im;
+            data[channelindex][1][sampleindex].re=newpacket->samples[sampleindex][channelindex].pol1_re;
+            data[channelindex][1][sampleindex].im=newpacket->samples[sampleindex][channelindex].pol1_im;
+        }
     }
     
-    write(channeldata_fifo[0][0],data[0][0],SAMPLES_PER_CHANNEL*sizeof(single_pol_sample));
+    for(channelindex=0;channelindex<CHANNELS_PER_PACKET;channelindex++)
+    {
+        for(polindex=0;polindex<2;polindex++)
+        {
+            write(channeldata_fifo[channelindex][polindex],data[channelindex][polindex],SAMPLES_PER_CHANNEL*sizeof(single_pol_sample));
+        }
+    }
     
     //accumulate_packet(newpacket,CHANNELS_PER_PACKET);
     
@@ -139,6 +145,7 @@ int main(int argc, char *argv[])
     long long packet_id;
     
     pasp_channel_enable[8][0]=1;
+    pasp_channel_enable[8][1]=1;
     
     //set up the signal handler
     newact.sa_handler = cleanup;

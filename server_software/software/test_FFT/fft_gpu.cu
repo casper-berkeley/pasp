@@ -9,10 +9,6 @@
 #include <cufft.h>
 
 #include "fft_gpu.h"
-#include "fft_library.h"
-
-
-
 
 
 #define FILENAME_BUFSIZE 200
@@ -66,23 +62,22 @@ FILE *outputFilePointer = NULL;
 //cufftHandle plan;
 
 // -- Device memory pointer
-char         *devSignalData = NULL;
-cufftComplex *devFFTData    = NULL;
+static char         *devSignalData = NULL;
+static cufftComplex *devFFTData    = NULL;
 //cufftComplex *devCuFFTData  = NULL;
 //float        *devCuFFTRData  = NULL;
-float        *devPowerData  = NULL;
-float        *devAvgRe      = NULL;
-float        *devAvgIm      = NULL;
-float        *devPartSumRe  = NULL;
-float        *devPartSumIm  = NULL;
-outputStruct *devOutputData = NULL;
+static float        *devPowerData  = NULL;
+static float        *devAvgRe      = NULL;
+static float        *devAvgIm      = NULL;
+static float        *devPartSumRe  = NULL;
+static float        *devPartSumIm  = NULL;
+static outputStruct *devOutputData = NULL;
 
 // Memory size for device
-unsigned int devSignalDataMemSize = 0;
-unsigned int devFFTDataMemSize    = 0;
-unsigned int devPowerDataMemSize  = 0;
-unsigned int devPartSumMemSize    = 0;
-unsigned int devOutputDataMemSize = 0;
+static unsigned int devSignalDataMemSize = 0;
+static unsigned int devFFTDataMemSize    = 0;
+static unsigned int devPowerDataMemSize  = 0;
+static unsigned int devOutputDataMemSize = 0;
 
 int matrixX, matrixY;
 
@@ -92,6 +87,8 @@ int signalLength;
 
 void initializeFFT(int initializedSignalLength)
 {
+    unsigned int devPartSumMemSize    = 0;
+    
     signalLength=initializedSignalLength;
     // initialize signal data on the host (cpu)
 	hostOutputDataMemSize = sizeof(outputStruct) * maximumDetectPointInBoxcar * (signalLength / boxcar);
