@@ -15,7 +15,7 @@ function pasp_init(blk, varargin)
 %                 doing it in-place).
 
 % Declare any default values for arguments you might like.
-defaults = {'numcomputers', 16, 'numchannels', 16, 'samplesperpacket', 64};
+defaults = {'numcomputers', 16, 'numchannels', 16, 'samplesperpacket', 64, 'qdr_reorder', 'off'};
 if same_state(blk, 'defaults', defaults, varargin{:}), return, end
 check_mask_type(blk, 'pasp');
 munge_block(blk, varargin{:});
@@ -23,6 +23,7 @@ munge_block(blk, varargin{:});
 numcomputers = get_var('numcomputers', 'defaults', defaults, varargin{:});
 numchannels = get_var('numchannels', 'defaults', defaults, varargin{:});
 samplesperpacket = get_var('samplesperpacket', 'defaults', defaults, varargin{:});
+qdr_reorder = get_var('qdr_reorder', 'defaults', defaults, varargin{:});
 
 if numcomputers>numchannels,
     error('The number of IPs cannot be greater than the number of real channels');
@@ -39,9 +40,10 @@ set_param([blk,'/fft_wideband_real1'],'FFTSize',num2str(logcomchannels));
 
 set_param([blk,'/scale_ctr'],'numchannels',num2str(numchannels));
 
+
 % if the number of channels is the same as the number of computers
 % need to initialize a reorder block and square transposer
-if numcomputers==numchannels,
+if numcomputers==numchannels | strcmp(qdr_reorder,'on'),
     numsamples=numchannels;
  
     %calculate the reorder function so each data chunk has 1 channel
@@ -117,7 +119,7 @@ end
     
     
 
-set_param([blk,'/dist_gbe'],'numcomputers',num2str(numcomputers),'numsamples',num2str(numsamples),'samplesperpacket',num2str(samplesperpacket));
+set_param([blk,'/dist_gbe'],'numcomputers',num2str(numcomputers),'numsamples',num2str(numsamples),'samplesperpacket',num2str(samplesperpacket),'qdr_reorder',qdr_reorder);
 
 clean_blocks(blk);
 

@@ -15,7 +15,7 @@ function dist_gbe_init(blk, varargin)
 %                 doing it in-place).
 
 % Declare any default values for arguments you might like.
-defaults = {'numcomputers', 16, 'numsamples', 16, 'samplesperpacket', 64, 'numtengbe',2};
+defaults = {'numcomputers', 16, 'numsamples', 16, 'samplesperpacket', 64, 'numtengbe',2, 'qdr_reorder','off'};
 if same_state(blk, 'defaults', defaults, varargin{:}), return, end
 check_mask_type(blk, 'dist_gbe');
 munge_block(blk, varargin{:});
@@ -25,6 +25,7 @@ numcomputers = get_var('numcomputers', 'defaults', defaults, varargin{:});
 numsamples = get_var('numsamples', 'defaults', defaults, varargin{:});
 samplesperpacket = get_var('samplesperpacket', 'defaults', defaults, varargin{:});
 numtengbe = get_var('numtengbe', 'defaults', defaults, varargin{:});
+qdr_reorder = get_var('qdr_reorder', 'defaults', defaults, varargin{:});
 
 load_system('pasp_lib.mdl');
 load_system('casper_library.mdl');
@@ -40,38 +41,59 @@ reuse_block(blk,'reorder_en','xbsIndex_r4/Constant',...
     'ShowName','off',...
     'Position',[140   422   170   438]);
 
-% update the reorder ordering
-reuse_block(blk,'reorder','casper_library/Reorder/reorder',...
-    'n_inputs','1',...
-    'map',['makereorderarray(',num2str(numcomputers),', ', num2str(numsamples), ', ', num2str(samplesperpacket), ')'],...
-    'Position',[195   404   290   476]);
-reuse_block(blk,['reorder_sync'],'xbsIndex_r4/Delay',...
-    'reg_retiming','on',...
-    'latency','2',...
-	'Position',[330   399   370   431]);
-reuse_block(blk,['reorder_dout'],'xbsIndex_r4/Delay',...
-    'reg_retiming','on',...
-    'latency','2',...
-	'Position',[330   449   370   481]);
 
-add_line(blk,'sync/1','reorder/1');
-add_line(blk,'reorder_en/1','reorder/2');
-add_line(blk,'data_in/1','reorder/3');
+reuse_block(blk,['reorder_sync'],'xbsIndex_r4/Delay',...
+            'reg_retiming','on',...
+            'latency','2',...
+            'Position',[330   399   370   431]);
+reuse_block(blk,['reorder_dout'],'xbsIndex_r4/Delay',...
+            'reg_retiming','on',...
+            'latency','2',...
+            'Position',[330   449   370   481]);
+
+
 
 reuse_block(blk,'ip_ctr','pasp_lib/ip_ctr',...
-    'numcomputers',num2str(numcomputers),...
-    'Position',[1440         105        1565         245]);
+            'numcomputers',num2str(numcomputers),...
+            'Position',[1440         105        1565         245]);
 
 % or together send packet signals to increment ip counter
 reuse_block(blk,'next_packet','xbsIndex_r4/Logical',...
-    'logical_function','OR',...
-    'inputs',num2str(numtengbe),...
-    'Position',[1340         109        1395         171]);
+            'logical_function','OR',...
+            'inputs',num2str(numtengbe),...
+            'Position',[1340         109        1395         171]);
 add_line(blk,'next_packet/1','ip_ctr/1');
 
-% add delay to the reorder block
-add_line(blk,'reorder/1','reorder_sync/1');
-add_line(blk,'reorder/3','reorder_dout/1');
+if strcmp(qdr_reorder,'on'),
+    reuse_block(blk,'qdr_transpose','casper_library/Reorder/qdr_transpose','idepth',num2str(log2(numsamples)),'odepth',num2str(log2(samplesperpacket)),'which_qdr','qdr0',...
+                'Position',[195   404   290   476]);
+    reorder_block='qdr_transpose';
+
+    add_line(blk,'sync/1',[reorder_block,'/1']);
+    add_line(blk,'data_in/1',[reorder_block,'/2' ]);
+
+    % add delay to the reorder block
+    add_line(blk,[reorder_block,'/1' ],'reorder_sync/1');
+    add_line(blk,[reorder_block,'/2' ],'reorder_dout/1');
+else
+    % update the reorder ordering
+    reuse_block(blk,'reorder','casper_library/Reorder/reorder',...
+        'n_inputs','1',...
+        'map',['makereorderarray(',num2str(numcomputers),', ', num2str(numsamples), ', ', num2str(samplesperpacket), ')'],...
+        'Position',[195   404   290   476]);
+    reorder_block='reorder';
+
+    add_line(blk,'sync/1',[reorder_block,'/1']);
+    add_line(blk,'reorder_en/1',[reorder_block,'/2' ]);
+    add_line(blk,'data_in/1',[reorder_block,'/3' ]);
+
+    % add delay to the reorder block
+    add_line(blk,[reorder_block,'/1' ],'reorder_sync/1');
+    add_line(blk,[reorder_block,'/3' ],'reorder_dout/1');
+end
+
+
+
 
 % reset the ip counter on sync
 add_line(blk,'reorder_sync/1','ip_ctr/2');
@@ -218,7 +240,10 @@ end
 
 
 clean_blocks(blk);
-
-fmtstr = sprintf('IPs=%d\n%s', numcomputers, get_param([blk,'/reorder'], 'AttributesFormatString'));
+if strcmp(qdr_reorder,'on'),
+    fmtstr = sprintf('IPs=%d\n%s', numcomputers);
+else
+    fmtstr = sprintf('IPs=%d\n%s', numcomputers, get_param([blk,'/reorder'], 'AttributesFormatString'));
+end
 set_param(blk, 'AttributesFormatString', fmtstr);
 save_state(blk, 'defaults', defaults, varargin{:});

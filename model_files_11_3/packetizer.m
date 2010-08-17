@@ -40,9 +40,7 @@ switch state
     case 2
         dout=channel_id;
         channel_id=channel_id+numtengbe;
-        if channel_id >= numcomputers
-            channel_id=tengbe_id;
-        end
+
         
         valid = true;
         
@@ -64,6 +62,10 @@ switch state
     case 4
         packetizer_delay = (numtengbe-1)*packet_size-1-2;
         packetizer_delay = packetizer_delay-1;
+        % originally in state 2 but trying to add some latency for timing
+        if channel_id >= numcomputers
+            channel_id=tengbe_id;
+        end
         state=0;
         
 end
