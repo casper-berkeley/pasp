@@ -93,8 +93,6 @@ else
 end
 
 
-
-
 % reset the ip counter on sync
 add_line(blk,'reorder_sync/1','ip_ctr/2');
 
