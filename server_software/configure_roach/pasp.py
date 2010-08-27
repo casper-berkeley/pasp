@@ -8,7 +8,8 @@ fft_shift=0xfffffffe
 
 # fft scaling configuration
 # interpreted as 18.12 ufix
-fft_coeffs=[4096,4096,4096,4096,4096,4096,4096,4096]    # no scaling (multiply by 1)
+fft_coeffs_even=[4096,4096,4096,4096,4096,4096,4096,4096]    # no scaling (multiply by 1)
+fft_coeffs_odd=[4096,4096,4096,4096,4096,4096,4096,4096]    # no scaling (multiply by 1)
 
 
 # bit select configuration from 8 bits from scaled 18 bit fft data
@@ -20,18 +21,19 @@ bitselect_pol1=1 # select bottom bits
 bitselect_pol2=1 # select bottom bits
 
 # ip table configuration
-ip_table=['10.0.0.2','10.0.0.2','10.0.0.2','10.0.0.2','10.0.0.2','10.0.0.2','10.0.0.2','10.0.0.2']
-port_table=[33107,33107,33107,33107,33108,33108,33108,33108]
+ip_table=['10.0.0.2','10.0.0.2','10.0.0.2','10.0.0.2','10.0.0.2','10.0.0.2','10.0.0.2','10.0.0.2','10.0.0.2','10.0.0.2','10.0.0.2','10.0.0.2','10.0.0.2','10.0.0.2','10.0.0.2','10.0.0.2']
+port_table=[33107,33107,33107,33107,33108,33108,33108,33108,33107,33107,33107,33107,33108,33108,33108,33108]
+
+fabric_ip_string='10.0.0.30'
 
 
+
+# 
 ip_reg_base='pasp_dist_gbe_ip_ctr_reg_ip'
 port_reg_base='pasp_dist_gbe_ip_ctr_reg_port'
-
-
 gbe_base='pasp_dist_gbe_ten_GbE'
-
 mac_base=(2<<40) + (2<<32)
-fabric_ip=struct.unpack('!L',socket.inet_aton('10.0.0.30'))[0] #convert ip to long
+fabric_ip=struct.unpack('!L',socket.inet_aton(fabric_ip_string))[0] #convert ip to long
 fabric_port=33107
 
 class pasp:
@@ -68,13 +70,6 @@ class pasp:
         print 'Programming complete'
         
         self.configure_parameters()
-        
-        #print fpga.listdev()
-        #print sorted(fpga.listdev())
-        #sys.stdout.flush()
-        
-        #dump_fft_brams()
-
         self.init_10gbe_blocks()
         self.init_ip_table()
         
@@ -157,11 +152,12 @@ class pasp:
         #fpga.write_int('pasp_reg_fft_shift',0x0)
         
         # initialize the scaling parameters
-        fft_coeffs_string = struct.pack('>8L',*fft_coeffs)
-        self.fpga.write('pasp_scale_ctr_pol0_even_bram',fft_coeffs_string)
-        self.fpga.write('pasp_scale_ctr_pol0_odd_bram',fft_coeffs_string)
-        self.fpga.write('pasp_scale_ctr_pol1_even_bram',fft_coeffs_string)
-        self.fpga.write('pasp_scale_ctr_pol1_odd_bram',fft_coeffs_string)
+        fft_coeffs_even_string = struct.pack('>'+`self.numchannels/2`+'L',*fft_coeffs_even)
+        fft_coeffs_odd_string = struct.pack('>'+`self.numchannels/2`+'L',*fft_coeffs_odd)
+        self.fpga.write('pasp_scale_ctr_pol0_even_bram',fft_coeffs_even_string)
+        self.fpga.write('pasp_scale_ctr_pol0_odd_bram',fft_coeffs_odd_string)
+        self.fpga.write('pasp_scale_ctr_pol1_even_bram',fft_coeffs_even_string)
+        self.fpga.write('pasp_scale_ctr_pol1_odd_bram',fft_coeffs_odd_string)
 
         # initialize the scaling bit selection
         self.fpga.write_int('pasp_reg_output_bitselect_pol1',bitselect_pol1)
