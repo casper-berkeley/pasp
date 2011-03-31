@@ -35,11 +35,11 @@ end
 
 % add the constant
 cns_reorder=xSignal;
-xBlock('Constant',struct('const',1,'arith_type','Boolean'),{},{cns_reorder});
+xBlock('Constant',struct('const',1,'arith_type','Boolean','explicit_period','on'),{},{cns_reorder});
 reorder_sync=xSignal;
 reordered_channels0=xSignal;
 reordered_channels1=xSignal;
-xBlock(struct('source','casper_library_reorder/reorder'),struct('Map',map,'n_inputs',2),{sync_in,cns_reorder,ch0concat,ch1concat},{reorder_sync,reordered_channels0,reordered_channels1});
+xBlock(struct('source','casper_library_reorder/reorder'),struct('Map',map,'n_inputs',2),{sync_in,cns_reorder,ch0concat,ch1concat},{reorder_sync,[],reordered_channels0,reordered_channels1});
 alignedchannel_sync = xSignal;
 alignedchannels0 = xSignal;
 alignedchannels1 = xSignal;
@@ -64,7 +64,7 @@ if strcmp(qdr_reorder,'on'),
            {alignedchannel_sync,alignedchannels},{reorder_sync_out,reorder_data_out});
 else
     reorder_en = xSignal;
-    xBlock('Constant',struct('const',1,'arith_type','Boolean','ShowName','off'),{},{reorder_en});
+    xBlock('Constant',struct('const',1,'arith_type','Boolean','ShowName','off','explicit_period','on'),{},{reorder_en});
     xBlock(struct('source','casper_library_reorder/reorder'),...
            struct('n_inputs',1,'map',makereorderarray(numcomputers,numchannels,samplesperchannel)),...
            {alignedchannel_sync, reorder_en, alignedchannels},{reorder_sync_out,[],reorder_data_out});

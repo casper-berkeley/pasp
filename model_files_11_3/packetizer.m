@@ -1,10 +1,10 @@
 function [dout, valid, end_of_frame, st, cidout] = packetizer(sync, din, sys_counter, packet_size, numcomputers, numtengbe, tengbe_id)
 
 persistent state, state = xl_state(0, {xlUnsigned, 8, 0});
-persistent channel_id, channel_id = xl_state(tengbe_id, {xlUnsigned,64,0});
+persistent channel_id, channel_id = xl_state(0, {xlUnsigned,64,0});
 persistent packet_count, packet_count = xl_state(0, {xlUnsigned,64,0});
 persistent dout_delay, dout_delay = xl_state(zeros(1,2), {xlUnsigned,64,0}, 2);
-persistent packetizer_delay, packetizer_delay = xl_state(packet_size*tengbe_id,{xlUnsigned,64,0});
+persistent packetizer_delay, packetizer_delay = xl_state(0,{xlUnsigned,64,0});
 
 st=state;
 

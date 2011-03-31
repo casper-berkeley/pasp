@@ -73,7 +73,7 @@ xBlock(ip_ctr_config,{numcomputers,'off'},{next_packet,sync_delay},{dest_ip,dest
 
 
 const_0=xSignal;
-xBlock('Constant',struct('const',0,'ShowName','off'),{},{const_0});
+xBlock('Constant',struct('const',0,'ShowName','off','explicit_period','on'),{},{const_0});
 rst_packet_count=xSignal;
 xBlock(struct('source','xps_library/software register','name','rst_pkt_count'),struct('io_dir','From Processor'),{const_0},{rst_packet_count});
 rst_slice=xSignal;
@@ -82,9 +82,9 @@ xBlock('Slice',struct('nbits',1,'boolean_output','On','ShowName','off'),{rst_pac
 numcomputers_const=xSignal;
 samplesperpacket_const=xSignal;
 numtengbe_const=xSignal;
-xBlock('Constant',struct('const',numcomputers,'n_bits',32,'bin_pt',0,'ShowName','off'),{},{numcomputers_const});
-xBlock('Constant',struct('const',samplesperpacket,'n_bits',32,'bin_pt',0,'ShowName','off'),{},{samplesperpacket_const});
-xBlock('Constant',struct('const',numtengbe,'n_bits',32,'bin_pt',0,'ShowName','off'),{},{numtengbe_const});
+xBlock('Constant',struct('const',numcomputers,'n_bits',32,'bin_pt',0,'ShowName','off','explicit_period','on'),{},{numcomputers_const});
+xBlock('Constant',struct('const',samplesperpacket,'n_bits',32,'bin_pt',0,'ShowName','off','explicit_period','on'),{},{samplesperpacket_const});
+xBlock('Constant',struct('const',numtengbe,'n_bits',32,'bin_pt',0,'ShowName','off','explicit_period','on'),{},{numtengbe_const});
 
 next_packet_inputs=cell(1,numtengbe);
 
@@ -94,7 +94,7 @@ for i=0:numtengbe-1,
     packetizer_valid=xSignal;
     packetizer_eof=xSignal;
     tengbe_id=xSignal;
-    xBlock('Constant',struct('const',i,'ShowName','off'),{},{tengbe_id});
+    xBlock('Constant',struct('const',i,'n_bits',32,'bin_pt',0,'ShowName','off','explicit_period','on'),{},{tengbe_id});
     xBlock('MCode',struct('mfname','packetizer.m'),...
            {sync_delay,data_delay,sys_ctr,samplesperpacket_const,numcomputers_const,numtengbe_const,tengbe_id},...
            {packetizer_dout,packetizer_valid,packetizer_eof});
@@ -108,14 +108,14 @@ for i=0:numtengbe-1,
     xBlock('Delay',struct('reg_retiming','on','latency',2),{packetizer_eof},{delay_eof});
 
     ten_GbE_rst=xSignal;
-    xBlock('Constant',struct('const',0,'arith_type','Boolean','ShowName','off'),{},{ten_GbE_rst});
+    xBlock('Constant',struct('const',0,'arith_type','Boolean','ShowName','off','explicit_period','on'),{},{ten_GbE_rst});
     eof_andnot=xSignal;
     xBlock('Expression',struct('expression','a&~b'),{delay_eof,discard_pkt},{eof_andnot});
     discard_and=xSignal;
     xBlock('Logical',struct('logical_function','AND'),{discard_pkt,delay_eof},{discard_and});
 
     ten_GbE_ack=xSignal;
-    xBlock('Constant',struct('const',0,'arith_type','Boolean','ShowName','off'),{},{ten_GbE_ack});
+    xBlock('Constant',struct('const',0,'arith_type','Boolean','ShowName','off','explicit_period','on'),{},{ten_GbE_ack});
 
     xBlock(struct('source','xps_library/ten_GbE','name',['ten_GbE',num2str(i)]),...
            struct('port',['ROACH:',num2str(i)]),{ten_GbE_rst,delay_dout,delay_valid,dest_ip,dest_port,eof_andnot, discard_and,ten_GbE_ack},{});
