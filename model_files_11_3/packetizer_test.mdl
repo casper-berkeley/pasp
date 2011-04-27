@@ -1,12 +1,12 @@
 Model {
   Name			  "packetizer_test"
-  Version		  7.3
+  Version		  7.4
   MdlSubVersion		  0
   GraphicalInterface {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.26"
+    ComputedModelVersion    "1.28"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -18,15 +18,16 @@ Model {
   DataTypeOverride	  "UseLocalSettings"
   MinMaxOverflowLogging	  "UseLocalSettings"
   MinMaxOverflowArchiveMode "Overwrite"
+  MaxMDLFileLineLength	  120
   Created		  "Tue Feb  9 15:03:33 2010"
   Creator		  "tfiliba"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "tfiliba"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed May  5 15:14:33 2010"
-  RTWModifiedTimeStamp	  0
-  ModelVersionFormat	  "1.%<AutoIncrement:26>"
+  LastModifiedDate	  "Tue Apr 12 19:34:55 2011"
+  RTWModifiedTimeStamp	  224537693
+  ModelVersionFormat	  "1.%<AutoIncrement:28>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -64,6 +65,7 @@ Model {
   CovMetricSettings	  "dw"
   CovNameIncrementing	  off
   CovHtmlReporting	  on
+  CovForceBlockReductionOff on
   covSaveCumulativeToWorkspaceVar on
   CovSaveSingleToWorkspaceVar on
   CovCumulativeVarName	  "covCumulativeData"
@@ -108,7 +110,7 @@ Model {
 	  $ObjectID		  2
 	  Version		  "1.6.0"
 	  StartTime		  "0.0"
-	  StopTime		  "2000"
+	  StopTime		  "200"
 	  AbsTol		  "auto"
 	  FixedStep		  "auto"
 	  InitialStep		  "auto"
@@ -135,7 +137,6 @@ Model {
 	  AutoInsertRateTranBlk	  off
 	  SampleTimeConstraint	  "Unconstrained"
 	  InsertRTBMode		  "Whenever possible"
-	  SignalSizeVariationType "Allow only fixed size"
 	}
 	Simulink.DataIOCC {
 	  $ObjectID		  3
@@ -156,12 +157,14 @@ Model {
 	  SignalLogging		  on
 	  InspectSignalLogs	  off
 	  SaveTime		  on
+	  ReturnWorkspaceOutputs  off
 	  StateSaveName		  "xout"
 	  TimeSaveName		  "tout"
 	  OutputSaveName	  "yout"
 	  SignalLoggingName	  "logsout"
 	  OutputOption		  "RefineOutputTimes"
 	  OutputTimes		  "[]"
+	  ReturnWorkspaceOutputsName "out"
 	  Refine		  "1"
 	}
 	Simulink.OptimizationCC {
@@ -182,6 +185,7 @@ Model {
 	  BooleanDataType	  on
 	  ConditionallyExecuteInputs on
 	  InlineParams		  off
+	  UseIntDivNetSlope	  off
 	  InlineInvariantSignals  off
 	  OptimizeBlockIOStorage  on
 	  BufferReuse		  on
@@ -189,6 +193,7 @@ Model {
 	  StrengthReduction	  off
 	  EnforceIntegerDowncast  on
 	  ExpressionFolding	  on
+	  BooleansAsBitfields	  off
 	  EnableMemcpy		  on
 	  MemcpyThreshold	  64
 	  PassReuseOutputArgsAs	  "Structure reference"
@@ -254,6 +259,9 @@ Model {
 	  ParameterUnderflowMsg	  "none"
 	  ParameterPrecisionLossMsg "warning"
 	  ParameterTunabilityLossMsg "warning"
+	  FixptConstUnderflowMsg  "none"
+	  FixptConstOverflowMsg	  "none"
+	  FixptConstPrecisionLossMsg "none"
 	  UnderSpecifiedDataTypeMsg "none"
 	  UnnecessaryDatatypeConvMsg "none"
 	  VectorMatrixConversionMsg "none"
@@ -278,6 +286,7 @@ Model {
 	  ModelReferenceSymbolNameMessage "warning"
 	  ModelReferenceExtraNoncontSigs "error"
 	  StateNameClashWarn	  "warning"
+	  SimStateInterfaceChecksumMismatchMsg "warning"
 	  StrictBusMsg		  "Warning"
 	  LoggingUnavailableSignals "error"
 	  BlockIODiagnostic	  "none"
@@ -325,6 +334,9 @@ Model {
 	  SFSimOverflowDetection  on
 	  SFSimEcho		  on
 	  SimBlas		  on
+	  SimCtrlC		  on
+	  SimExtrinsic		  on
+	  SimIntegrity		  on
 	  SimUseLocalCustomCode	  off
 	  SimBuildMode		  "sf_incremental_build"
 	}
@@ -420,6 +432,7 @@ Model {
 	      CustomSymbolStrType     "$N$R$M"
 	      CustomSymbolStrField    "$N$M"
 	      CustomSymbolStrFcn      "$R$N$M$F"
+	      CustomSymbolStrFcnArg   "rt$I$N$M"
 	      CustomSymbolStrBlkIO    "rtb_$N$M"
 	      CustomSymbolStrTmpVar   "$N$M"
 	      CustomSymbolStrMacro    "$R$N$M"
@@ -474,6 +487,7 @@ Model {
 	      ParMdlRefBuildCompliant on
 	      CompOptLevelCompliant   on
 	      IncludeMdlTerminateFcn  on
+	      GeneratePreprocessorConditionals "Disable all"
 	      CombineOutputUpdateFcns off
 	      SuppressErrorStatus     off
 	      ERTFirstTimeCompliant   off
@@ -488,6 +502,7 @@ Model {
 	      PurelyIntegerCode	      off
 	      SupportContinuousTime   on
 	      SupportNonInlinedSFcns  on
+	      SupportVariableSizeSignals off
 	      EnableShiftOperators    on
 	      ParenthesesLevel	      "Nominal"
 	      PortableWordSizes	      off
@@ -527,7 +542,7 @@ Model {
       }
       Name		      "Configuration"
       CurrentDlgPage	      "Solver"
-      ConfigPrmDlgPosition    " [ 217, 92, 1137, 838 ] "
+      ConfigPrmDlgPosition    " [ 214, 92, 1120, 681 ] "
     }
     PropName		    "ConfigurationSets"
   }
@@ -593,7 +608,7 @@ Model {
   }
   System {
     Name		    "packetizer_test"
-    Location		    [146, 78, 1150, 805]
+    Location		    [141, 54, 1145, 781]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -607,14 +622,17 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "51"
     ReportName		    "simulink-default.rpt"
+    SIDHighWatermark	    32
     Block {
       BlockType		      Reference
       Name		      " System Generator"
+      SID		      1
       Tag		      "genX"
       Ports		      []
       Position		      [19, 14, 70, 64]
       ShowName		      off
       AttributesFormatString  "System\\nGenerator"
+      LibraryVersion	      "1.2"
       UserDataPersistent      on
       UserData		      "DataTag0"
       SourceBlock	      "xbsIndex_r4/ System Generator"
@@ -661,8 +679,10 @@ Model {
     Block {
       BlockType		      Reference
       Name		      "Counter"
+      SID		      2
       Ports		      [0, 1]
       Position		      [215, 225, 275, 285]
+      LibraryVersion	      "1.2"
       SourceBlock	      "xbsIndex_r4/Counter"
       SourceType	      "Xilinx Counter Block"
       infoedit		      "Hardware notes: Free running counters are the least expensive in hardware.  A count limited cou"
@@ -700,8 +720,10 @@ Model {
     Block {
       BlockType		      Reference
       Name		      "Counter1"
+      SID		      3
       Ports		      [0, 1]
       Position		      [265, 335, 325, 395]
+      LibraryVersion	      "1.2"
       SourceBlock	      "xbsIndex_r4/Counter"
       SourceType	      "Xilinx Counter Block"
       infoedit		      "Hardware notes: Free running counters are the least expensive in hardware.  A count limited cou"
@@ -739,8 +761,10 @@ Model {
     Block {
       BlockType		      Reference
       Name		      "Gateway In"
+      SID		      4
       Ports		      [1, 1]
       Position		      [205, 160, 270, 180]
+      LibraryVersion	      "1.2"
       SourceBlock	      "xbsIndex_r4/Gateway In"
       SourceType	      "Xilinx Gateway In Block"
       infoedit		      "Gateway in block.  Converts inputs of type Simulink integer, double and fixed point to  Xilinx "
@@ -774,8 +798,10 @@ Model {
     Block {
       BlockType		      Reference
       Name		      "Gateway Out1"
+      SID		      5
       Ports		      [1, 1]
       Position		      [825, 245, 885, 265]
+      LibraryVersion	      "1.2"
       SourceBlock	      "xbsIndex_r4/Gateway Out"
       SourceType	      "Xilinx Gateway Out Block"
       infoedit		      "Gateway out block.  Converts Xilinx fixed point inputs into ouputs of type Simulink integer, do"
@@ -802,8 +828,10 @@ Model {
     Block {
       BlockType		      Reference
       Name		      "Gateway Out10"
+      SID		      6
       Ports		      [1, 1]
       Position		      [825, 800, 885, 820]
+      LibraryVersion	      "1.2"
       SourceBlock	      "xbsIndex_r4/Gateway Out"
       SourceType	      "Xilinx Gateway Out Block"
       infoedit		      "Gateway out block.  Converts Xilinx fixed point inputs into ouputs of type Simulink integer, do"
@@ -830,8 +858,10 @@ Model {
     Block {
       BlockType		      Reference
       Name		      "Gateway Out11"
+      SID		      7
       Ports		      [1, 1]
       Position		      [830, 970, 890, 990]
+      LibraryVersion	      "1.2"
       SourceBlock	      "xbsIndex_r4/Gateway Out"
       SourceType	      "Xilinx Gateway Out Block"
       infoedit		      "Gateway out block.  Converts Xilinx fixed point inputs into ouputs of type Simulink integer, do"
@@ -858,8 +888,10 @@ Model {
     Block {
       BlockType		      Reference
       Name		      "Gateway Out12"
+      SID		      8
       Ports		      [1, 1]
       Position		      [820, 1130, 880, 1150]
+      LibraryVersion	      "1.2"
       SourceBlock	      "xbsIndex_r4/Gateway Out"
       SourceType	      "Xilinx Gateway Out Block"
       infoedit		      "Gateway out block.  Converts Xilinx fixed point inputs into ouputs of type Simulink integer, do"
@@ -886,8 +918,10 @@ Model {
     Block {
       BlockType		      Reference
       Name		      "Gateway Out13"
+      SID		      9
       Ports		      [1, 1]
       Position		      [825, 1300, 885, 1320]
+      LibraryVersion	      "1.2"
       SourceBlock	      "xbsIndex_r4/Gateway Out"
       SourceType	      "Xilinx Gateway Out Block"
       infoedit		      "Gateway out block.  Converts Xilinx fixed point inputs into ouputs of type Simulink integer, do"
@@ -914,8 +948,10 @@ Model {
     Block {
       BlockType		      Reference
       Name		      "Gateway Out14"
+      SID		      10
       Ports		      [1, 1]
       Position		      [1310, 420, 1370, 440]
+      LibraryVersion	      "1.2"
       SourceBlock	      "xbsIndex_r4/Gateway Out"
       SourceType	      "Xilinx Gateway Out Block"
       infoedit		      "Gateway out block.  Converts Xilinx fixed point inputs into ouputs of type Simulink integer, do"
@@ -942,8 +978,10 @@ Model {
     Block {
       BlockType		      Reference
       Name		      "Gateway Out15"
+      SID		      11
       Ports		      [1, 1]
       Position		      [1310, 500, 1370, 520]
+      LibraryVersion	      "1.2"
       SourceBlock	      "xbsIndex_r4/Gateway Out"
       SourceType	      "Xilinx Gateway Out Block"
       infoedit		      "Gateway out block.  Converts Xilinx fixed point inputs into ouputs of type Simulink integer, do"
@@ -970,8 +1008,10 @@ Model {
     Block {
       BlockType		      Reference
       Name		      "Gateway Out16"
+      SID		      12
       Ports		      [1, 1]
       Position		      [1310, 580, 1370, 600]
+      LibraryVersion	      "1.2"
       SourceBlock	      "xbsIndex_r4/Gateway Out"
       SourceType	      "Xilinx Gateway Out Block"
       infoedit		      "Gateway out block.  Converts Xilinx fixed point inputs into ouputs of type Simulink integer, do"
@@ -998,8 +1038,10 @@ Model {
     Block {
       BlockType		      Reference
       Name		      "Gateway Out17"
+      SID		      13
       Ports		      [1, 1]
       Position		      [1315, 660, 1375, 680]
+      LibraryVersion	      "1.2"
       SourceBlock	      "xbsIndex_r4/Gateway Out"
       SourceType	      "Xilinx Gateway Out Block"
       infoedit		      "Gateway out block.  Converts Xilinx fixed point inputs into ouputs of type Simulink integer, do"
@@ -1026,8 +1068,10 @@ Model {
     Block {
       BlockType		      Reference
       Name		      "Gateway Out2"
+      SID		      14
       Ports		      [1, 1]
       Position		      [825, 575, 885, 595]
+      LibraryVersion	      "1.2"
       SourceBlock	      "xbsIndex_r4/Gateway Out"
       SourceType	      "Xilinx Gateway Out Block"
       infoedit		      "Gateway out block.  Converts Xilinx fixed point inputs into ouputs of type Simulink integer, do"
@@ -1054,8 +1098,10 @@ Model {
     Block {
       BlockType		      Reference
       Name		      "Gateway Out3"
+      SID		      15
       Ports		      [1, 1]
       Position		      [825, 885, 885, 905]
+      LibraryVersion	      "1.2"
       SourceBlock	      "xbsIndex_r4/Gateway Out"
       SourceType	      "Xilinx Gateway Out Block"
       infoedit		      "Gateway out block.  Converts Xilinx fixed point inputs into ouputs of type Simulink integer, do"
@@ -1082,8 +1128,10 @@ Model {
     Block {
       BlockType		      Reference
       Name		      "Gateway Out4"
+      SID		      16
       Ports		      [1, 1]
       Position		      [820, 1215, 880, 1235]
+      LibraryVersion	      "1.2"
       SourceBlock	      "xbsIndex_r4/Gateway Out"
       SourceType	      "Xilinx Gateway Out Block"
       infoedit		      "Gateway out block.  Converts Xilinx fixed point inputs into ouputs of type Simulink integer, do"
@@ -1110,8 +1158,10 @@ Model {
     Block {
       BlockType		      Reference
       Name		      "Gateway Out5"
+      SID		      17
       Ports		      [1, 1]
       Position		      [315, 65, 375, 85]
+      LibraryVersion	      "1.2"
       SourceBlock	      "xbsIndex_r4/Gateway Out"
       SourceType	      "Xilinx Gateway Out Block"
       infoedit		      "Gateway out block.  Converts Xilinx fixed point inputs into ouputs of type Simulink integer, do"
@@ -1138,8 +1188,10 @@ Model {
     Block {
       BlockType		      Reference
       Name		      "Gateway Out6"
+      SID		      18
       Ports		      [1, 1]
       Position		      [825, 160, 885, 180]
+      LibraryVersion	      "1.2"
       SourceBlock	      "xbsIndex_r4/Gateway Out"
       SourceType	      "Xilinx Gateway Out Block"
       infoedit		      "Gateway out block.  Converts Xilinx fixed point inputs into ouputs of type Simulink integer, do"
@@ -1166,8 +1218,10 @@ Model {
     Block {
       BlockType		      Reference
       Name		      "Gateway Out7"
+      SID		      19
       Ports		      [1, 1]
       Position		      [835, 295, 895, 315]
+      LibraryVersion	      "1.2"
       SourceBlock	      "xbsIndex_r4/Gateway Out"
       SourceType	      "Xilinx Gateway Out Block"
       infoedit		      "Gateway out block.  Converts Xilinx fixed point inputs into ouputs of type Simulink integer, do"
@@ -1194,8 +1248,10 @@ Model {
     Block {
       BlockType		      Reference
       Name		      "Gateway Out8"
+      SID		      20
       Ports		      [1, 1]
       Position		      [825, 490, 885, 510]
+      LibraryVersion	      "1.2"
       SourceBlock	      "xbsIndex_r4/Gateway Out"
       SourceType	      "Xilinx Gateway Out Block"
       infoedit		      "Gateway out block.  Converts Xilinx fixed point inputs into ouputs of type Simulink integer, do"
@@ -1222,8 +1278,10 @@ Model {
     Block {
       BlockType		      Reference
       Name		      "Gateway Out9"
+      SID		      21
       Ports		      [1, 1]
       Position		      [830, 660, 890, 680]
+      LibraryVersion	      "1.2"
       SourceBlock	      "xbsIndex_r4/Gateway Out"
       SourceType	      "Xilinx Gateway Out Block"
       infoedit		      "Gateway out block.  Converts Xilinx fixed point inputs into ouputs of type Simulink integer, do"
@@ -1250,6 +1308,7 @@ Model {
     Block {
       BlockType		      DiscretePulseGenerator
       Name		      "Pulse\nGenerator"
+      SID		      22
       Ports		      [0, 1]
       Position		      [100, 153, 145, 187]
       Amplitude		      "1"
@@ -1261,10 +1320,11 @@ Model {
     Block {
       BlockType		      Scope
       Name		      "Scope"
+      SID		      23
       Ports		      [3]
       Position		      [1105, 146, 1135, 274]
       Floating		      off
-      Location		      [1, 78, 1345, 813]
+      Location		      [6, 78, 1340, 809]
       Open		      off
       NumInputPorts	      "3"
       ZoomMode		      "xonly"
@@ -1282,6 +1342,7 @@ Model {
     Block {
       BlockType		      Scope
       Name		      "Scope1"
+      SID		      24
       Ports		      [1]
       Position		      [405, 40, 435, 110]
       Floating		      off
@@ -1300,6 +1361,7 @@ Model {
     Block {
       BlockType		      Scope
       Name		      "Scope2"
+      SID		      25
       Ports		      [3]
       Position		      [1105, 476, 1135, 604]
       Floating		      off
@@ -1322,6 +1384,7 @@ Model {
     Block {
       BlockType		      Scope
       Name		      "Scope3"
+      SID		      26
       Ports		      [3]
       Position		      [1105, 786, 1135, 914]
       Floating		      off
@@ -1344,6 +1407,7 @@ Model {
     Block {
       BlockType		      Scope
       Name		      "Scope4"
+      SID		      27
       Ports		      [3]
       Position		      [1100, 1116, 1130, 1244]
       Floating		      off
@@ -1366,11 +1430,12 @@ Model {
     Block {
       BlockType		      Scope
       Name		      "Scope5"
+      SID		      28
       Ports		      [4]
       Position		      [1415, 388, 1470, 712]
       Floating		      off
       Location		      [6, 78, 1340, 809]
-      Open		      on
+      Open		      off
       NumInputPorts	      "4"
       ZoomMode		      "xonly"
       List {
@@ -1389,8 +1454,10 @@ Model {
     Block {
       BlockType		      Reference
       Name		      "packetizer0"
+      SID		      29
       Ports		      [3, 4]
       Position		      [450, 130, 745, 380]
+      LibraryVersion	      "1.2"
       SourceBlock	      "xbsIndex_r4/MCode"
       SourceType	      "Xilinx MCode Block Block"
       infoedit		      "Pass input values to a MATLAB function for evaluation in Xilinx fixed-point type. The input por"
@@ -1401,7 +1468,8 @@ Model {
       period		      "1"
       inputsTable	      "{'boundInpExpr'=>['','','','16','16','4','0'],'inputs'=>['sync','din','sys_counter','packet_s"
       "ize','numcomputers','numtengbe','tengbe_id']}"
-      outputsTable	      "{'outputs'=>['dout','valid','end_of_frame','st'],'suppressOut'=>['off','off','off','on']}"
+      outputsTable	      "{'outputs'=>['dout','valid','end_of_frame','st','cidout'],'suppressOut'=>['off','off','off',"
+      "'on','off']}"
       dbl_ovrd		      off
       enable_stdout	      off
       enable_debug	      off
@@ -1429,8 +1497,10 @@ Model {
     Block {
       BlockType		      Reference
       Name		      "packetizer1"
+      SID		      30
       Ports		      [3, 4]
       Position		      [450, 460, 745, 710]
+      LibraryVersion	      "1.2"
       SourceBlock	      "xbsIndex_r4/MCode"
       SourceType	      "Xilinx MCode Block Block"
       infoedit		      "Pass input values to a MATLAB function for evaluation in Xilinx fixed-point type. The input por"
@@ -1441,7 +1511,8 @@ Model {
       period		      "1"
       inputsTable	      "{'boundInpExpr'=>['','','','16','16','4','1'],'inputs'=>['sync','din','sys_counter','packet_s"
       "ize','numcomputers','numtengbe','tengbe_id']}"
-      outputsTable	      "{'outputs'=>['dout','valid','end_of_frame','st'],'suppressOut'=>['off','off','off','on']}"
+      outputsTable	      "{'outputs'=>['dout','valid','end_of_frame','st','cidout'],'suppressOut'=>['off','off','off',"
+      "'on','off']}"
       dbl_ovrd		      off
       enable_stdout	      off
       enable_debug	      off
@@ -1469,8 +1540,10 @@ Model {
     Block {
       BlockType		      Reference
       Name		      "packetizer2"
+      SID		      31
       Ports		      [3, 4]
       Position		      [450, 770, 745, 1020]
+      LibraryVersion	      "1.2"
       SourceBlock	      "xbsIndex_r4/MCode"
       SourceType	      "Xilinx MCode Block Block"
       infoedit		      "Pass input values to a MATLAB function for evaluation in Xilinx fixed-point type. The input por"
@@ -1481,7 +1554,8 @@ Model {
       period		      "1"
       inputsTable	      "{'boundInpExpr'=>['','','','16','16','4','2'],'inputs'=>['sync','din','sys_counter','packet_s"
       "ize','numcomputers','numtengbe','tengbe_id']}"
-      outputsTable	      "{'outputs'=>['dout','valid','end_of_frame','st'],'suppressOut'=>['off','off','off','on']}"
+      outputsTable	      "{'outputs'=>['dout','valid','end_of_frame','st','cidout'],'suppressOut'=>['off','off','off',"
+      "'on','off']}"
       dbl_ovrd		      off
       enable_stdout	      off
       enable_debug	      off
@@ -1509,8 +1583,10 @@ Model {
     Block {
       BlockType		      Reference
       Name		      "packetizer3"
+      SID		      32
       Ports		      [3, 4]
       Position		      [450, 1100, 745, 1350]
+      LibraryVersion	      "1.2"
       SourceBlock	      "xbsIndex_r4/MCode"
       SourceType	      "Xilinx MCode Block Block"
       infoedit		      "Pass input values to a MATLAB function for evaluation in Xilinx fixed-point type. The input por"
@@ -1521,7 +1597,8 @@ Model {
       period		      "1"
       inputsTable	      "{'boundInpExpr'=>['','','','16','16','4','3'],'inputs'=>['sync','din','sys_counter','packet_s"
       "ize','numcomputers','numtengbe','tengbe_id']}"
-      outputsTable	      "{'outputs'=>['dout','valid','end_of_frame','st'],'suppressOut'=>['off','off','off','on']}"
+      outputsTable	      "{'outputs'=>['dout','valid','end_of_frame','st','cidout'],'suppressOut'=>['off','off','off',"
+      "'on','off']}"
       dbl_ovrd		      off
       enable_stdout	      off
       enable_debug	      off
